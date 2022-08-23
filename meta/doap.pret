@@ -1,0 +1,19 @@
+# This file contains general metadata about the project.
+
+@prefix : <http://usefulinc.com/ns/doap#>.
+
+`Hydrogen`
+	:programming-language "Perl" ;
+	:shortdesc            "utilities for the simplest elements of Perl";
+	:homepage             <https://metacpan.org/release/Hydrogen>;
+	:download-page        <https://metacpan.org/release/Hydrogen>;
+	:bug-database         <https://github.com/tobyink/p5-hydrogen/issues>;
+	:repository           [ a :GitRepository; :browse <https://github.com/tobyink/p5-hydrogen> ];
+	:created              2022-08-23;
+	:license              <http://dev.perl.org/licenses/>;
+	:maintainer           cpan:TOBYINK;
+	:developer            cpan:TOBYINK.
+
+<http://dev.perl.org/licenses/>
+	dc:title  "the same terms as the perl 5 programming language system itself".
+

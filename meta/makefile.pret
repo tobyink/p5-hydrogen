@@ -1,0 +1,15 @@
+# This file provides instructions for packaging.
+
+@prefix : <http://ontologi.es/doap-deps#>.
+
+`Hydrogen`
+	:runtime-requirement    [ :on "perl 5.008008"^^:CpanId ];
+	:runtime-requirement    [ :on "Exporter::Shiny"^^:CpanId ];
+	:test-requirement       [ :on "Test::More 0.96"^^:CpanId ];
+	:develop-recommendation [ :on "Dist::Inkt 0.001"^^:CpanId ];
+	:develop-requirement    [ :on "Sub::HandlesVia"^^:CpanId ];
+	:develop-requirement    [ :on "Mite"^^:CpanId ];
+	:develop-requirement    [ :on "Module::Runtime"^^:CpanId ];
+	:develop-requirement    [ :on "Types::Standard"^^:CpanId ];
+	.
+
