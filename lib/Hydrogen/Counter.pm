@@ -2,6 +2,7 @@
 use 5.008008;
 use strict;
 use warnings;
+no warnings qw( void once );
 use Hydrogen ();
 
 package Hydrogen::Counter;
@@ -40,6 +41,8 @@ Decrements the counter by C<< $amount >>, or by 1 if no value is given.
     my $__signature;
 
     sub dec {
+
+        package Hydrogen::Counter::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -110,6 +113,8 @@ Increments the counter by C<< $amount >>, or by 1 if no value is given.
     my $__signature;
 
     sub inc {
+
+        package Hydrogen::Counter::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -175,6 +180,8 @@ Sets the counter to its default value, or 0 if it has no default.
 =cut
 
 sub reset {
+
+    package Hydrogen::Counter::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::Counter::reset( \$counter )" );
@@ -207,6 +214,8 @@ Sets the counter to the given value.
 =cut
 
 sub set {
+
+    package Hydrogen::Counter::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 

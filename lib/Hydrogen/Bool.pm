@@ -2,6 +2,7 @@
 use 5.008008;
 use strict;
 use warnings;
+no warnings qw( void once );
 use Hydrogen ();
 
 package Hydrogen::Bool;
@@ -36,6 +37,8 @@ Returns the opposite value of the boolean.
 =cut
 
 sub not {
+
+    package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for not; usage: "
           . "Hydrogen::Bool::not( \$bool )" );
@@ -49,6 +52,8 @@ Sets the boolean to its default value, or false if it has no default.
 =cut
 
 sub reset {
+
+    package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::Bool::reset( \$bool )" );
@@ -74,6 +79,8 @@ Sets the value of the boolean to true.
 =cut
 
 sub set {
+
+    package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for set; usage: "
           . "Hydrogen::Bool::set( \$bool )" );
@@ -99,6 +106,8 @@ Toggles the truth value of the boolean.
 =cut
 
 sub toggle {
+
+    package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for toggle; usage: "
           . "Hydrogen::Bool::toggle( \$bool )" );
@@ -124,6 +133,8 @@ Sets the value of the boolean to false.
 =cut
 
 sub unset {
+
+    package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for unset; usage: "
           . "Hydrogen::Bool::unset( \$bool )" );

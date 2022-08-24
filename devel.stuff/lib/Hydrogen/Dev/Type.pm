@@ -4,6 +4,7 @@ use warnings;
 
 use Hydrogen::Dev::CodeGenerator ();
 use Hydrogen::Dev::Function ();
+use List::Util ();
 use Module::Runtime ();
 use Path::Tiny ();
 use Types::Standard ();
@@ -26,6 +27,7 @@ has function_names   => ( init_arg => undef, is => 'lazy' );
 has functions        => ( init_arg => undef, is => 'lazy' );
 has codegen          => ( init_arg => undef, is => 'lazy' );
 has type_constraint  => ( init_arg => undef, is => 'lazy' );
+has sandboxing_package      => ( init_arg => undef, is => 'lazy' );
 has type_desc_for_abstract  => ( init_arg => undef, is => 'lazy' );
 has type_desc_for_functions => ( init_arg => undef, is => 'lazy' );
 
@@ -110,7 +112,7 @@ sub _build_function_names {
 		@funcs = grep $_ ne 'scalar_reference', @funcs;
 	}
 
-	return \@funcs;
+	return [ List::Util::uniq(@funcs) ];
 }
 
 sub _make_function {
@@ -174,6 +176,10 @@ sub _build_type_desc_for_functions {
 	}->{ $self->type_name } // ( 'a ' . $self->lctype );
 }
 
+sub _build_sandboxing_package {
+	shift->target_module . '::__SANDBOX__';
+}
+
 sub _build_codegen {
 	my $self = shift;
 
@@ -190,7 +196,7 @@ sub _build_codegen {
 			if ( $value eq '[]' ) {
 				return "( \@{ \$_[0] } = () )";
 			}
-			"( \@{ \$_[0] } = \@{ $value } )";
+			"( \@{ \$_[0] } = \@{ + $value } )";
 		};
 	}
 	elsif ( $type eq 'Hash' ) {
@@ -199,7 +205,7 @@ sub _build_codegen {
 			if ( $value eq '{}' ) {
 				return "( \%{ \$_[0] } = () )";
 			}
-			"( %{ \$_[0] } = %{ $value } )";
+			"( %{ \$_[0] } = %{ + $value } )";
 		};
 	}
 
@@ -211,7 +217,7 @@ sub _build_codegen {
 		isa            => $self->type_constraint,
 		coerce         => !!0,
 		env            => {},
-		sandboxing_package => undef,
+		sandboxing_package => $self->sandboxing_package,
 		generator_for_slot => sub { my ($gen) = @_; '$_[0]'               },
 		generator_for_get  => sub { my ($gen) = @_; '$_[0]'               },
 		generator_for_set  => $setter,
@@ -253,7 +259,7 @@ sub compile_module {
 	my $self = shift;
 
 	local $Type::Tiny::AvoidCallbacks = 1;
-	local $Type::Tiny::SafePackage = "package @{[ $self->target_module ]}::__SANDBOX__;";
+	local $Type::Tiny::SafePackage = "package @{[ $self->sandboxing_package ]};";
 
 	return join q{} => (
 		$self->_compile_module_header,
@@ -272,6 +278,7 @@ sub _compile_module_header {
 	$code .= "use 5.008008;\n";
 	$code .= "use strict;\n";
 	$code .= "use warnings;\n";
+	$code .= "no warnings qw( void once );\n";
 	$code .= "use @{[ $self->dev->target_namespace ]} ();\n";
 	$code .= "\n";
 	

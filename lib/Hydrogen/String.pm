@@ -2,6 +2,7 @@
 use 5.008008;
 use strict;
 use warnings;
+no warnings qw( void once );
 use Hydrogen ();
 
 package Hydrogen::String;
@@ -71,6 +72,8 @@ Appends another string to the end of the current string and updates the original
 =cut
 
 sub append {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -137,6 +140,8 @@ Like C<chomp> from L<perlfunc>.
 =cut
 
 sub chomp {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for chomp; usage: "
           . "Hydrogen::String::chomp( \$string )" );
@@ -153,6 +158,8 @@ Like C<chop> from L<perlfunc>.
 =cut
 
 sub chop {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for chop; usage: "
           . "Hydrogen::String::chop( \$string )" );
@@ -169,6 +176,8 @@ Sets the string to the empty string.
 =cut
 
 sub clear {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
           . "Hydrogen::String::clear( \$string )" );
@@ -185,6 +194,8 @@ Returns C<< $string cmp $str >>.
 =cut
 
 sub cmp {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -233,6 +244,8 @@ Returns C<< fc($string) cmp fc($str) >>. Uses C<lc> instead of C<fc> in versions
 =cut
 
 sub cmpi {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -281,6 +294,8 @@ Returns true iff the string contains C<< $str >>.
 =cut
 
 sub contains {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -329,6 +344,8 @@ Returns true iff the string contains C<< $str >> case-insensitvely.
 =cut
 
 sub contains_i {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -377,6 +394,8 @@ Returns true iff the string ends with C<< $tail >>.
 =cut
 
 sub ends_with {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -425,6 +444,8 @@ Returns true iff the string ends with C<< $tail >> case-insensitvely.
 =cut
 
 sub ends_with_i {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -473,6 +494,8 @@ Returns C<< $string eq $str >>.
 =cut
 
 sub eq {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -521,6 +544,8 @@ Returns C<< fc($string) eq fc($str) >>. Uses C<lc> instead of C<fc> in versions 
 =cut
 
 sub eqi {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -567,6 +592,8 @@ Returns C<< fc($string) >>.
 =cut
 
 sub fc {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for fc; usage: "
           . "Hydrogen::String::fc( \$string )" );
@@ -582,6 +609,8 @@ Returns C<< $string ge $str >>.
 =cut
 
 sub ge {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -630,6 +659,8 @@ Returns C<< fc($string) ge fc($str) >>. Uses C<lc> instead of C<fc> in versions 
 =cut
 
 sub gei {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -676,6 +707,8 @@ Gets the current value of the string.
 =cut
 
 sub get {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
           . "Hydrogen::String::get( \$string )" );
@@ -691,6 +724,8 @@ Returns C<< $string gt $str >>.
 =cut
 
 sub gt {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -739,6 +774,8 @@ Returns C<< fc($string) gt fc($str) >>. Uses C<lc> instead of C<fc> in versions 
 =cut
 
 sub gti {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -785,6 +822,8 @@ Performs C<< ++ >> on the string.
 =cut
 
 sub inc {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for inc; usage: "
           . "Hydrogen::String::inc( \$string )" );
@@ -801,6 +840,8 @@ Returns C<< lc($string) >>.
 =cut
 
 sub lc {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for lc; usage: "
           . "Hydrogen::String::lc( \$string )" );
@@ -816,6 +857,8 @@ Returns C<< $string le $str >>.
 =cut
 
 sub le {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -864,6 +907,8 @@ Returns C<< fc($string) le fc($str) >>. Uses C<lc> instead of C<fc> in versions 
 =cut
 
 sub lei {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -910,6 +955,8 @@ Like C<length> from L<perlfunc>.
 =cut
 
 sub length {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for length; usage: "
           . "Hydrogen::String::length( \$string )" );
@@ -925,6 +972,8 @@ Returns C<< $string lt $str >>.
 =cut
 
 sub lt {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -973,6 +1022,8 @@ Returns C<< fc($string) lt fc($str) >>. Uses C<lc> instead of C<fc> in versions 
 =cut
 
 sub lti {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1021,6 +1072,8 @@ Returns true iff the string matches the regexp.
 =cut
 
 sub match {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1086,6 +1139,8 @@ Returns true iff the string matches the regexp case-insensitively.
 =cut
 
 sub match_i {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1151,6 +1206,8 @@ Returns C<< $string ne $str >>.
 =cut
 
 sub ne {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1199,6 +1256,8 @@ Returns C<< fc($string) ne fc($str) >>. Uses C<lc> instead of C<fc> in versions 
 =cut
 
 sub nei {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1247,6 +1306,8 @@ Prepends another string to the start of the current string and updates the origi
 =cut
 
 sub prepend {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1315,6 +1376,8 @@ Replaces the first regexp match within the string with the replacement string.
 =cut
 
 sub replace {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1426,6 +1489,8 @@ Replaces the all regexp matches within the string with the replacement string.
 =cut
 
 sub replace_globally {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1538,6 +1603,8 @@ Resets the original value to its default value, or an empty string if it has no 
 =cut
 
 sub reset {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::String::reset( \$string )" );
@@ -1573,6 +1640,8 @@ Sets the string to a new value.
 =cut
 
 sub set {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1641,6 +1710,8 @@ Returns true iff the string starts with C<< $head >>.
 =cut
 
 sub starts_with {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1689,6 +1760,8 @@ Returns true iff the string starts with C<< $head >> case-insensitvely.
 =cut
 
 sub starts_with_i {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1742,6 +1815,8 @@ Like C<substr> from L<perlfunc>, but is not an lvalue.
     my $__signature;
 
     sub substr {
+
+        package Hydrogen::String::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -1843,6 +1918,8 @@ Returns C<< uc($string) >>.
 =cut
 
 sub uc {
+
+    package Hydrogen::String::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uc; usage: "
           . "Hydrogen::String::uc( \$string )" );

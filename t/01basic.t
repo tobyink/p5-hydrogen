@@ -26,5 +26,17 @@ use Test::More;
 
 use_ok('Hydrogen');
 
+use_ok( "Hydrogen::$_" )
+	for qw(
+		Array     ArrayRef
+		Bool
+		Code      CodeRef
+		Counter
+		Hash      HashRef
+		Number
+		Scalar
+		String
+	);
+
 done_testing;
 

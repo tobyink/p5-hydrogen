@@ -2,6 +2,7 @@
 use 5.008008;
 use strict;
 use warnings;
+no warnings qw( void once );
 use Hydrogen ();
 
 package Hydrogen::Code;
@@ -34,6 +35,8 @@ Calls the coderef, passing it any arguments.
 =cut
 
 sub execute (&;@) {
+
+    package Hydrogen::Code::__SANDBOX__;
     $_[0]->( @_[ 1 .. $#_ ] );
 }
 

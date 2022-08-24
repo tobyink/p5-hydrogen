@@ -2,6 +2,7 @@
 use 5.008008;
 use strict;
 use warnings;
+no warnings qw( void once );
 use Hydrogen ();
 
 package Hydrogen::ArrayRef;
@@ -33,7 +34,6 @@ use Exporter::Shiny qw(
     elements
     first
     first_index
-    flatten
     flatten
     flatten_deep
     for_each
@@ -98,6 +98,8 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
     my $__signature;
 
     sub accessor {
+
+        package Hydrogen::ArrayRef::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -142,7 +144,7 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
         else {
             my @shv_tmp = @{ $_[0] };
             $shv_tmp[ $_[1] ] = $_[2];
-            ( @{ $_[0] } = @{ \@shv_tmp } );
+            ( @{ $_[0] } = @{ +\@shv_tmp } );
             $_[2];
         }
     }
@@ -155,6 +157,8 @@ All elements in the array, in list context.
 =cut
 
 sub all {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for all; usage: "
           . "Hydrogen::ArrayRef::all( \$array )" );
@@ -170,6 +174,8 @@ Like C<< List::Util::all() >>.
 =cut
 
 sub all_true {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -204,6 +210,8 @@ Like C<< List::Util::any() >>.
 =cut
 
 sub any {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -238,6 +246,8 @@ Executes the coderef (which should modify C<< $_ >>) against each element of the
 =cut
 
 sub apply {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -272,6 +282,8 @@ Empties the array.
 =cut
 
 sub clear {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
           . "Hydrogen::ArrayRef::clear( \$array )" );
@@ -286,6 +298,8 @@ The number of elements in the referenced array.
 =cut
 
 sub count {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for count; usage: "
           . "Hydrogen::ArrayRef::count( \$array )" );
@@ -301,6 +315,8 @@ Removes the indexed element from the array and returns it. Elements after it wil
 =cut
 
 sub delete {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -331,7 +347,7 @@ sub delete {
     1;
     my @shv_tmp = @{ $_[0] };
     my ($shv_return) = splice( @shv_tmp, $_[1], 1 );
-    ( @{ $_[0] } = @{ \@shv_tmp } );
+    ( @{ $_[0] } = @{ +\@shv_tmp } );
     $shv_return;
 }
 
@@ -342,6 +358,8 @@ All elements in the array, in list context.
 =cut
 
 sub elements {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for elements; usage: "
           . "Hydrogen::ArrayRef::elements( \$array )" );
@@ -357,6 +375,8 @@ Like C<< List::Util::first() >>.
 =cut
 
 sub first {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -391,6 +411,8 @@ Like C<< List::MoreUtils::first_index() >>.
 =cut
 
 sub first_index {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -423,19 +445,8 @@ All elements in the array, in list context.
 =cut
 
 sub flatten {
-    @_ == 1
-      or Hydrogen::croak( "Wrong number of parameters for flatten; usage: "
-          . "Hydrogen::ArrayRef::flatten( \$array )" );
-    @{ $_[0] };
-}
 
-=head2 C<< Hydrogen::ArrayRef::flatten( $array ) >>
-
-All elements in the array, in list context.
-
-=cut
-
-sub flatten {
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for flatten; usage: "
           . "Hydrogen::ArrayRef::flatten( \$array )" );
@@ -454,6 +465,8 @@ Flattens the arrayref into a list, including any nested arrayrefs.
     my $__signature;
 
     sub flatten_deep {
+
+        package Hydrogen::ArrayRef::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -500,6 +513,8 @@ Function which executes the coderef on each element of the array. The coderef wi
 =cut
 
 sub for_each {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -537,6 +552,8 @@ Function which executes the coderef on each pair of elements in the array. The c
 =cut
 
 sub for_each_pair {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -576,6 +593,8 @@ Returns a single element from the array by index.
 =cut
 
 sub get {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -615,6 +634,8 @@ Like C<grep> from L<perlfunc>.
 =cut
 
 sub grep {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -649,6 +670,8 @@ Returns the first C<< $count >> elements of the array in list context.
 =cut
 
 sub head {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -691,6 +714,8 @@ Inserts a value into the array with the given index. Elements after it will be "
 =cut
 
 sub insert {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -724,7 +749,7 @@ sub insert {
     1;
     my @shv_tmp = @{ $_[0] };
     my ($shv_return) = splice( @shv_tmp, $_[1], 0, $_[2] );
-    ( @{ $_[0] } = @{ \@shv_tmp } );
+    ( @{ $_[0] } = @{ +\@shv_tmp } );
 }
 
 =head2 C<< Hydrogen::ArrayRef::is_empty( $array ) >>
@@ -734,6 +759,8 @@ Boolean indicating if the referenced array is empty.
 =cut
 
 sub is_empty {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for is_empty; usage: "
           . "Hydrogen::ArrayRef::is_empty( \$array )" );
@@ -752,6 +779,8 @@ Returns a string joining all the elements in the array; if C<< $with >> is omitt
     my $__signature;
 
     sub join {
+
+        package Hydrogen::ArrayRef::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -798,6 +827,8 @@ Like C<map> from L<perlfunc>.
 =cut
 
 sub map {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -830,6 +861,8 @@ Like C<< List::Util::max() >>.
 =cut
 
 sub max {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for max; usage: "
           . "Hydrogen::ArrayRef::max( \$array )" );
@@ -843,6 +876,8 @@ Like C<< List::Util::maxstr() >>.
 =cut
 
 sub maxstr {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for maxstr; usage: "
           . "Hydrogen::ArrayRef::maxstr( \$array )" );
@@ -856,6 +891,8 @@ Like C<< List::Util::min() >>.
 =cut
 
 sub min {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for min; usage: "
           . "Hydrogen::ArrayRef::min( \$array )" );
@@ -869,6 +906,8 @@ Like C<< List::Util::minstr() >>.
 =cut
 
 sub minstr {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for minstr; usage: "
           . "Hydrogen::ArrayRef::minstr( \$array )" );
@@ -887,6 +926,8 @@ Given just a number, returns an iterator which reads that many elements from the
     my $__signature;
 
     sub natatime {
+
+        package Hydrogen::ArrayRef::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -947,6 +988,8 @@ Like C<< List::Util::notall() >>.
 =cut
 
 sub not_all_true {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -983,6 +1026,8 @@ Like C<< List::Util::pairfirst() >>.
 =cut
 
 sub pairfirst {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1017,6 +1062,8 @@ Like C<< List::Util::pairgrep() >>.
 =cut
 
 sub pairgrep {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1049,6 +1096,8 @@ Like C<< List::Util::pairkeys() >>.
 =cut
 
 sub pairkeys {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairkeys; usage: "
           . "Hydrogen::ArrayRef::pairkeys( \$array )" );
@@ -1064,6 +1113,8 @@ Like C<< List::Util::pairmap() >>.
 =cut
 
 sub pairmap {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1096,6 +1147,8 @@ Like C<< List::Util::pairs() >>.
 =cut
 
 sub pairs {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairs; usage: "
           . "Hydrogen::ArrayRef::pairs( \$array )" );
@@ -1109,6 +1162,8 @@ Like C<< List::Util::pairvalues() >>.
 =cut
 
 sub pairvalues {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairvalues; usage: "
           . "Hydrogen::ArrayRef::pairvalues( \$array )" );
@@ -1127,6 +1182,8 @@ If no C<< $count >> is given, returns one element of the array at random. If C<<
     my $__signature;
 
     sub pick_random {
+
+        package Hydrogen::ArrayRef::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -1176,13 +1233,15 @@ Removes the last element from the array and returns it.
 =cut
 
 sub pop {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pop; usage: "
           . "Hydrogen::ArrayRef::pop( \$array )" );
     1;
     my @shv_tmp    = @{ $_[0] };
     my $shv_return = pop @shv_tmp;
-    ( @{ $_[0] } = @{ \@shv_tmp } );
+    ( @{ $_[0] } = @{ +\@shv_tmp } );
     $shv_return;
 }
 
@@ -1198,6 +1257,8 @@ Prints a string joining all the elements in the array; if C<< $fh >> is omitted,
     my $__signature;
 
     sub print {
+
+        package Hydrogen::ArrayRef::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -1259,6 +1320,8 @@ Like C<< List::Util::product() >>.
 =cut
 
 sub product {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for product; usage: "
           . "Hydrogen::ArrayRef::product( \$array )" );
@@ -1272,10 +1335,12 @@ Adds elements to the end of the array.
 =cut
 
 sub push {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     1;
     my @shv_tmp    = @{ $_[0] };
     my $shv_return = push( @shv_tmp, @_[ 1 .. $#_ ] );
-    ( @{ $_[0] } = @{ \@shv_tmp } );
+    ( @{ $_[0] } = @{ +\@shv_tmp } );
     $shv_return;
 }
 
@@ -1288,6 +1353,8 @@ Like C<< List::Util::reduce() >>.
 =cut
 
 sub reduce {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1323,6 +1390,8 @@ Like C<< List::Util::reductions() >>.
 =cut
 
 sub reductions {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1356,12 +1425,14 @@ Resets the original value to its default value, or an empty arrayref if it has n
 =cut
 
 sub reset {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::ArrayRef::reset( \$array )" );
     (
         @{ $_[0] } = @{
-            do {
+            +do {
                 my $shv_final_unchecked = [];
                 do {
                     ( ref($shv_final_unchecked) eq 'ARRAY' )
@@ -1383,6 +1454,8 @@ Returns the reversed array in list context.
 =cut
 
 sub reverse {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reverse; usage: "
           . "Hydrogen::ArrayRef::reverse( \$array )" );
@@ -1398,6 +1471,8 @@ Like C<< List::Util::sample() >>.
 =cut
 
 sub sample {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1437,6 +1512,8 @@ Sets the element with the given index to the supplied value.
 =cut
 
 sub set {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1470,7 +1547,7 @@ sub set {
     1;
     my @shv_tmp = @{ $_[0] };
     $shv_tmp[ $_[1] ] = $_[2];
-    ( @{ $_[0] } = @{ \@shv_tmp } );
+    ( @{ $_[0] } = @{ +\@shv_tmp } );
     $_[2];
 }
 
@@ -1481,6 +1558,8 @@ Creates a new arrayref with the same elements as the original.
 =cut
 
 sub shallow_clone {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for shallow_clone; usage: "
@@ -1495,13 +1574,15 @@ Removes an element from the start of the array and returns it.
 =cut
 
 sub shift {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for shift; usage: "
           . "Hydrogen::ArrayRef::shift( \$array )" );
     1;
     my @shv_tmp    = @{ $_[0] };
     my $shv_return = shift @shv_tmp;
-    ( @{ $_[0] } = @{ \@shv_tmp } );
+    ( @{ $_[0] } = @{ +\@shv_tmp } );
     $shv_return;
 }
 
@@ -1512,6 +1593,8 @@ Returns the array in a random order; can be called in list context or scalar con
 =cut
 
 sub shuffle {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for shuffle; usage: "
           . "Hydrogen::ArrayRef::shuffle( \$array )" );
@@ -1526,13 +1609,15 @@ Rearranges the array in a random order, and changes the original value to point 
 =cut
 
 sub shuffle_in_place {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for shuffle_in_place; usage: "
           . "Hydrogen::ArrayRef::shuffle_in_place( \$array )" );
     1;
     my @shv_return = List::Util::shuffle( @{ $_[0] } );
-    ( @{ $_[0] } = @{ \@shv_return } );
+    ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
 =head2 C<< Hydrogen::ArrayRef::sort( $array, $coderef? ) >>
@@ -1547,6 +1632,8 @@ Like C<sort> from L<perlfunc>.
     my $__signature;
 
     sub sort {
+
+        package Hydrogen::ArrayRef::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -1591,6 +1678,8 @@ Like C<sort> from L<perlfunc>, but changes the original value to point to the ne
     my $__signature;
 
     sub sort_in_place {
+
+        package Hydrogen::ArrayRef::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
@@ -1623,7 +1712,7 @@ Like C<sort> from L<perlfunc>, but changes the original value to point to the ne
           $_[1]
           ? ( sort { $_[1]->( $a, $b ) } @{ $_[0] } )
           : ( sort @{ $_[0] } );
-        ( @{ $_[0] } = @{ \@shv_return } );
+        ( @{ $_[0] } = @{ +\@shv_return } );
     }
 }
 
@@ -1634,6 +1723,8 @@ Like C<splice> from L<perlfunc>.
 =cut
 
 sub splice {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for splice; usage: "
           . "Hydrogen::ArrayRef::splice( \$array, \$index, \$length, \@values )"
@@ -1674,7 +1765,7 @@ sub splice {
     defined($shv_index)  or $shv_index  = 0;
     defined($shv_length) or $shv_length = 0;
     my @shv_return = splice( @shv_tmp, $shv_index, $shv_length, @shv_values );
-    ( @{ $_[0] } = @{ \@shv_tmp } );
+    ( @{ $_[0] } = @{ +\@shv_tmp } );
     wantarray ? @shv_return : $shv_return[-1];
 }
 
@@ -1685,6 +1776,8 @@ Like C<< List::Util::sum0() >>.
 =cut
 
 sub sum {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for sum; usage: "
           . "Hydrogen::ArrayRef::sum( \$array )" );
@@ -1700,6 +1793,8 @@ Returns the last C<< $count >> elements of the array in list context.
 =cut
 
 sub tail {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -1742,6 +1837,8 @@ Returns the array filtered to remove duplicates; can be called in list context o
 =cut
 
 sub uniq {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniq; usage: "
           . "Hydrogen::ArrayRef::uniq( \$array )" );
@@ -1756,13 +1853,15 @@ Filters the array to remove duplicates, and changes the original value to point 
 =cut
 
 sub uniq_in_place {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for uniq_in_place; usage: "
           . "Hydrogen::ArrayRef::uniq_in_place( \$array )" );
     1;
     my @shv_return = List::Util::uniq( @{ $_[0] } );
-    ( @{ $_[0] } = @{ \@shv_return } );
+    ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
 =head2 C<< Hydrogen::ArrayRef::uniqnum( $array ) >>
@@ -1772,6 +1871,8 @@ Returns the array filtered to remove duplicates numerically; can be called in li
 =cut
 
 sub uniqnum {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniqnum; usage: "
           . "Hydrogen::ArrayRef::uniqnum( \$array )" );
@@ -1786,13 +1887,15 @@ Filters the array to remove duplicates numerically, and changes the original val
 =cut
 
 sub uniqnum_in_place {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for uniqnum_in_place; usage: "
           . "Hydrogen::ArrayRef::uniqnum_in_place( \$array )" );
     1;
     my @shv_return = List::Util::uniqnum( @{ $_[0] } );
-    ( @{ $_[0] } = @{ \@shv_return } );
+    ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
 =head2 C<< Hydrogen::ArrayRef::uniqstr( $array ) >>
@@ -1802,6 +1905,8 @@ Returns the array filtered to remove duplicates stringwise; can be called in lis
 =cut
 
 sub uniqstr {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniqstr; usage: "
           . "Hydrogen::ArrayRef::uniqstr( \$array )" );
@@ -1816,13 +1921,15 @@ Filters the array to remove duplicates stringwise, and changes the original valu
 =cut
 
 sub uniqstr_in_place {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for uniqstr_in_place; usage: "
           . "Hydrogen::ArrayRef::uniqstr_in_place( \$array )" );
     1;
     my @shv_return = List::Util::uniqstr( @{ $_[0] } );
-    ( @{ $_[0] } = @{ \@shv_return } );
+    ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
 =head2 C<< Hydrogen::ArrayRef::unshift( $array, @values ) >>
@@ -1832,10 +1939,12 @@ Adds an element to the start of the array.
 =cut
 
 sub unshift {
+
+    package Hydrogen::ArrayRef::__SANDBOX__;
     1;
     my @shv_tmp    = @{ $_[0] };
     my $shv_return = unshift( @shv_tmp, @_[ 1 .. $#_ ] );
-    ( @{ $_[0] } = @{ \@shv_tmp } );
+    ( @{ $_[0] } = @{ +\@shv_tmp } );
     $shv_return;
 }
 

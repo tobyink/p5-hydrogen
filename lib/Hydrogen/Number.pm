@@ -2,6 +2,7 @@
 use 5.008008;
 use strict;
 use warnings;
+no warnings qw( void once );
 use Hydrogen ();
 
 package Hydrogen::Number;
@@ -46,6 +47,8 @@ Finds the absolute value of the current number, updating the original value.
 =cut
 
 sub abs {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for abs; usage: "
           . "Hydrogen::Number::abs( \$number )" );
@@ -62,6 +65,8 @@ Adds a number to the existing number, updating the original value.
 =cut
 
 sub add {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -136,6 +141,8 @@ Returns C<< $number <=> $num >>.
 =cut
 
 sub cmp {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -188,6 +195,8 @@ Divides the existing number by a number, updating the original value.
 =cut
 
 sub div {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -262,6 +271,8 @@ Returns C<< $number == $num >>.
 =cut
 
 sub eq {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -314,6 +325,8 @@ Returns C<< $number >= $num >>.
 =cut
 
 sub ge {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -364,6 +377,8 @@ Returns the current value of the number.
 =cut
 
 sub get {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
           . "Hydrogen::Number::get( \$number )" );
@@ -379,6 +394,8 @@ Returns C<< $number > $num >>.
 =cut
 
 sub gt {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -431,6 +448,8 @@ Returns C<< $number <= $num >>.
 =cut
 
 sub le {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -483,6 +502,8 @@ Returns C<< $number < $num >>.
 =cut
 
 sub lt {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -535,6 +556,8 @@ Finds the current number modulo a divisor, updating the original value.
 =cut
 
 sub mod {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -609,6 +632,8 @@ Multiplies the existing number by a number, updating the original value.
 =cut
 
 sub mul {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -683,6 +708,8 @@ Returns C<< $number != $num >>.
 =cut
 
 sub ne {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -735,6 +762,8 @@ Sets the number to a new value.
 =cut
 
 sub set {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
@@ -809,6 +838,8 @@ Subtracts a number from the existing number, updating the original value.
 =cut
 
 sub sub {
+
+    package Hydrogen::Number::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 

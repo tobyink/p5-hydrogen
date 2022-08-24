@@ -2,6 +2,7 @@
 use 5.008008;
 use strict;
 use warnings;
+no warnings qw( void once );
 use Hydrogen ();
 
 package Hydrogen::Scalar;
@@ -33,6 +34,8 @@ Returns a getter coderef.
 =cut
 
 sub make_getter {
+
+    package Hydrogen::Scalar::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for make_getter; usage: "
           . "Hydrogen::Scalar::make_getter( \$scalar )" );
@@ -47,6 +50,8 @@ Returns a setter coderef.
 =cut
 
 sub make_setter {
+
+    package Hydrogen::Scalar::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for make_setter; usage: "
           . "Hydrogen::Scalar::make_setter( \$scalar )" );
