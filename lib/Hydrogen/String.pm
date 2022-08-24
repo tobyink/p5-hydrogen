@@ -111,30 +111,27 @@ sub append {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $shv_real_invocant . $_[1];
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $$__REF__ . $_[1];
+            do {
                 do {
-                    do {
 
-                        package Hydrogen::String::__SANDBOX__;
-                        defined($shv_final_unchecked) and do {
-                            ref( \$shv_final_unchecked ) eq 'SCALAR'
-                              or ref( \( my $val = $shv_final_unchecked ) ) eq
-                              'SCALAR';
-                        }
-                      }
-                      or Hydrogen::croak(
+                    package Hydrogen::String::__SANDBOX__;
+                    defined($shv_final_unchecked) and do {
+                        ref( \$shv_final_unchecked ) eq 'SCALAR'
+                          or ref( \( my $val = $shv_final_unchecked ) ) eq
+                          'SCALAR';
+                    }
+                  }
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Str", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Str", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< chomp( $string ) >>
@@ -151,12 +148,9 @@ sub chomp {
       or Hydrogen::croak( "Wrong number of parameters for chomp; usage: "
           . "Hydrogen::String::chomp( \$string )" );
     1;
-    do {
-        my $shv_real_invocant = $$__REF__;
-        my $shv_return        = chomp( my $shv_tmp = $shv_real_invocant );
-        ( ${$__REF__} = $shv_tmp );
-        $shv_return;
-    }
+    my $shv_return = chomp( my $shv_tmp = $$__REF__ );
+    ( ${$__REF__} = $shv_tmp );
+    $shv_return;
 }
 
 =head2 C<< chop( $string ) >>
@@ -173,12 +167,9 @@ sub chop {
       or Hydrogen::croak( "Wrong number of parameters for chop; usage: "
           . "Hydrogen::String::chop( \$string )" );
     1;
-    do {
-        my $shv_real_invocant = $$__REF__;
-        my $shv_return        = chop( my $shv_tmp = $shv_real_invocant );
-        ( ${$__REF__} = $shv_tmp );
-        $shv_return;
-    }
+    my $shv_return = chop( my $shv_tmp = $$__REF__ );
+    ( ${$__REF__} = $shv_tmp );
+    $shv_return;
 }
 
 =head2 C<< clear( $string ) >>
@@ -195,7 +186,7 @@ sub clear {
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
           . "Hydrogen::String::clear( \$string )" );
     1;
-    do { my $shv_real_invocant = $$__REF__; ( ${$__REF__} = q() ) }
+    ( ${$__REF__} = q() );
 }
 
 =head2 C<< cmp( $string, $str ) >>
@@ -246,7 +237,7 @@ sub cmp {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant cmp $_[1] }
+    $$__REF__ cmp $_[1];
 }
 
 =head2 C<< cmpi( $string, $str ) >>
@@ -297,10 +288,7 @@ sub cmpi {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) cmp CORE::lc( $_[1] );
-    }
+    CORE::lc($$__REF__) cmp CORE::lc( $_[1] );
 }
 
 =head2 C<< contains( $string, $str ) >>
@@ -351,10 +339,7 @@ sub contains {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        index( $shv_real_invocant, $_[1] ) != -1;
-    }
+    index( $$__REF__, $_[1] ) != -1;
 }
 
 =head2 C<< contains_i( $string, $str ) >>
@@ -405,10 +390,7 @@ sub contains_i {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        index( CORE::lc($shv_real_invocant), CORE::lc( $_[1] ) ) != -1;
-    }
+    index( CORE::lc($$__REF__), CORE::lc( $_[1] ) ) != -1;
 }
 
 =head2 C<< ends_with( $string, $tail ) >>
@@ -459,10 +441,7 @@ sub ends_with {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        substr( $shv_real_invocant, -length $_[1] ) eq $_[1];
-    }
+    substr( $$__REF__, -length $_[1] ) eq $_[1];
 }
 
 =head2 C<< ends_with_i( $string, $tail ) >>
@@ -513,11 +492,7 @@ sub ends_with_i {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc( substr( $shv_real_invocant, -length $_[1] ) ) eq
-          CORE::lc( $_[1] );
-    }
+    CORE::lc( substr( $$__REF__, -length $_[1] ) ) eq CORE::lc( $_[1] );
 }
 
 =head2 C<< eq( $string, $str ) >>
@@ -568,7 +543,7 @@ sub eq {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant eq $_[1] }
+    $$__REF__ eq $_[1];
 }
 
 =head2 C<< eqi( $string, $str ) >>
@@ -619,10 +594,7 @@ sub eqi {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) eq CORE::lc( $_[1] );
-    }
+    CORE::lc($$__REF__) eq CORE::lc( $_[1] );
 }
 
 =head2 C<< fc( $string ) >>
@@ -638,7 +610,7 @@ sub fc {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for fc; usage: "
           . "Hydrogen::String::fc( \$string )" );
-    do { my $shv_real_invocant = $$__REF__; CORE::lc($shv_real_invocant) }
+    CORE::lc($$__REF__);
 }
 
 =head2 C<< ge( $string, $str ) >>
@@ -689,7 +661,7 @@ sub ge {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant ge $_[1] }
+    $$__REF__ ge $_[1];
 }
 
 =head2 C<< gei( $string, $str ) >>
@@ -740,10 +712,7 @@ sub gei {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) ge CORE::lc( $_[1] );
-    }
+    CORE::lc($$__REF__) ge CORE::lc( $_[1] );
 }
 
 =head2 C<< get( $string ) >>
@@ -759,7 +728,7 @@ sub get {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
           . "Hydrogen::String::get( \$string )" );
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant }
+    $$__REF__;
 }
 
 =head2 C<< gt( $string, $str ) >>
@@ -810,7 +779,7 @@ sub gt {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant gt $_[1] }
+    $$__REF__ gt $_[1];
 }
 
 =head2 C<< gti( $string, $str ) >>
@@ -861,10 +830,7 @@ sub gti {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) gt CORE::lc( $_[1] );
-    }
+    CORE::lc($$__REF__) gt CORE::lc( $_[1] );
 }
 
 =head2 C<< inc( $string ) >>
@@ -881,12 +847,9 @@ sub inc {
       or Hydrogen::croak( "Wrong number of parameters for inc; usage: "
           . "Hydrogen::String::inc( \$string )" );
     1;
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do { my $shv_tmp = $shv_real_invocant; ++$shv_tmp }
-        );
-    }
+    (
+        ${$__REF__} = do { my $shv_tmp = $$__REF__; ++$shv_tmp }
+    );
 }
 
 =head2 C<< lc( $string ) >>
@@ -902,7 +865,7 @@ sub lc {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for lc; usage: "
           . "Hydrogen::String::lc( \$string )" );
-    do { my $shv_real_invocant = $$__REF__; lc($shv_real_invocant) }
+    lc($$__REF__);
 }
 
 =head2 C<< le( $string, $str ) >>
@@ -953,7 +916,7 @@ sub le {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant le $_[1] }
+    $$__REF__ le $_[1];
 }
 
 =head2 C<< lei( $string, $str ) >>
@@ -1004,10 +967,7 @@ sub lei {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) le CORE::lc( $_[1] );
-    }
+    CORE::lc($$__REF__) le CORE::lc( $_[1] );
 }
 
 =head2 C<< length( $string ) >>
@@ -1023,7 +983,7 @@ sub length {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for length; usage: "
           . "Hydrogen::String::length( \$string )" );
-    do { my $shv_real_invocant = $$__REF__; length($shv_real_invocant) }
+    length($$__REF__);
 }
 
 =head2 C<< lt( $string, $str ) >>
@@ -1074,7 +1034,7 @@ sub lt {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant lt $_[1] }
+    $$__REF__ lt $_[1];
 }
 
 =head2 C<< lti( $string, $str ) >>
@@ -1125,10 +1085,7 @@ sub lti {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) lt CORE::lc( $_[1] );
-    }
+    CORE::lc($$__REF__) lt CORE::lc( $_[1] );
 }
 
 =head2 C<< match( $string, $regexp ) >>
@@ -1196,7 +1153,7 @@ sub match {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant =~ /$_[1]/ }
+    $$__REF__ =~ /$_[1]/;
 }
 
 =head2 C<< match_i( $string, $regexp ) >>
@@ -1264,7 +1221,7 @@ sub match_i {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant =~ /$_[1]/i }
+    $$__REF__ =~ /$_[1]/i;
 }
 
 =head2 C<< ne( $string, $str ) >>
@@ -1315,7 +1272,7 @@ sub ne {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant ne $_[1] }
+    $$__REF__ ne $_[1];
 }
 
 =head2 C<< nei( $string, $str ) >>
@@ -1366,10 +1323,7 @@ sub nei {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) ne CORE::lc( $_[1] );
-    }
+    CORE::lc($$__REF__) ne CORE::lc( $_[1] );
 }
 
 =head2 C<< prepend( $string, $head ) >>
@@ -1420,30 +1374,27 @@ sub prepend {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $_[1] . $shv_real_invocant;
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $_[1] . $$__REF__;
+            do {
                 do {
-                    do {
 
-                        package Hydrogen::String::__SANDBOX__;
-                        defined($shv_final_unchecked) and do {
-                            ref( \$shv_final_unchecked ) eq 'SCALAR'
-                              or ref( \( my $val = $shv_final_unchecked ) ) eq
-                              'SCALAR';
-                        }
-                      }
-                      or Hydrogen::croak(
+                    package Hydrogen::String::__SANDBOX__;
+                    defined($shv_final_unchecked) and do {
+                        ref( \$shv_final_unchecked ) eq 'SCALAR'
+                          or ref( \( my $val = $shv_final_unchecked ) ) eq
+                          'SCALAR';
+                    }
+                  }
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Str", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Str", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< replace( $string, $regexp, $replacement ) >>
@@ -1531,36 +1482,33 @@ sub replace {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        my $shv_tmp           = $shv_real_invocant;
-        if ( ( ref( $_[2] ) eq 'CODE' ) ) {
-            my $shv_callback = $_[2];
-            $shv_tmp =~ s/$_[1]/$shv_callback->()/e;
-        }
-        else { $shv_tmp =~ s/$_[1]/$_[2]/ }
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $shv_tmp;
-                do {
-                    do {
-
-                        package Hydrogen::String::__SANDBOX__;
-                        defined($shv_final_unchecked) and do {
-                            ref( \$shv_final_unchecked ) eq 'SCALAR'
-                              or ref( \( my $val = $shv_final_unchecked ) ) eq
-                              'SCALAR';
-                        }
-                      }
-                      or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                        "Str", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
+    my $shv_tmp = $$__REF__;
+    if ( ( ref( $_[2] ) eq 'CODE' ) ) {
+        my $shv_callback = $_[2];
+        $shv_tmp =~ s/$_[1]/$shv_callback->()/e;
     }
+    else { $shv_tmp =~ s/$_[1]/$_[2]/ }
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $shv_tmp;
+            do {
+                do {
+
+                    package Hydrogen::String::__SANDBOX__;
+                    defined($shv_final_unchecked) and do {
+                        ref( \$shv_final_unchecked ) eq 'SCALAR'
+                          or ref( \( my $val = $shv_final_unchecked ) ) eq
+                          'SCALAR';
+                    }
+                  }
+                  or Hydrogen::croak(
+"Type check failed in delegated method: expected %s, got value %s",
+                    "Str", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< replace_globally( $string, $regexp, $replacement ) >>
@@ -1651,36 +1599,33 @@ sub replace_globally {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        my $shv_tmp           = $shv_real_invocant;
-        if ( ( ref( $_[2] ) eq 'CODE' ) ) {
-            my $shv_callback = $_[2];
-            $shv_tmp =~ s/$_[1]/$shv_callback->()/eg;
-        }
-        else { $shv_tmp =~ s/$_[1]/$_[2]/g }
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $shv_tmp;
-                do {
-                    do {
-
-                        package Hydrogen::String::__SANDBOX__;
-                        defined($shv_final_unchecked) and do {
-                            ref( \$shv_final_unchecked ) eq 'SCALAR'
-                              or ref( \( my $val = $shv_final_unchecked ) ) eq
-                              'SCALAR';
-                        }
-                      }
-                      or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                        "Str", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
+    my $shv_tmp = $$__REF__;
+    if ( ( ref( $_[2] ) eq 'CODE' ) ) {
+        my $shv_callback = $_[2];
+        $shv_tmp =~ s/$_[1]/$shv_callback->()/eg;
     }
+    else { $shv_tmp =~ s/$_[1]/$_[2]/g }
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $shv_tmp;
+            do {
+                do {
+
+                    package Hydrogen::String::__SANDBOX__;
+                    defined($shv_final_unchecked) and do {
+                        ref( \$shv_final_unchecked ) eq 'SCALAR'
+                          or ref( \( my $val = $shv_final_unchecked ) ) eq
+                          'SCALAR';
+                    }
+                  }
+                  or Hydrogen::croak(
+"Type check failed in delegated method: expected %s, got value %s",
+                    "Str", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< reset( $string ) >>
@@ -1696,30 +1641,27 @@ sub reset {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::String::reset( \$string )" );
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = q{};
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = q{};
+            do {
                 do {
-                    do {
 
-                        package Hydrogen::String::__SANDBOX__;
-                        defined($shv_final_unchecked) and do {
-                            ref( \$shv_final_unchecked ) eq 'SCALAR'
-                              or ref( \( my $val = $shv_final_unchecked ) ) eq
-                              'SCALAR';
-                        }
-                      }
-                      or Hydrogen::croak(
+                    package Hydrogen::String::__SANDBOX__;
+                    defined($shv_final_unchecked) and do {
+                        ref( \$shv_final_unchecked ) eq 'SCALAR'
+                          or ref( \( my $val = $shv_final_unchecked ) ) eq
+                          'SCALAR';
+                    }
+                  }
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Str", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Str", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< set( $string, $value ) >>
@@ -1770,30 +1712,27 @@ sub set {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $_[1];
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $_[1];
+            do {
                 do {
-                    do {
 
-                        package Hydrogen::String::__SANDBOX__;
-                        defined($shv_final_unchecked) and do {
-                            ref( \$shv_final_unchecked ) eq 'SCALAR'
-                              or ref( \( my $val = $shv_final_unchecked ) ) eq
-                              'SCALAR';
-                        }
-                      }
-                      or Hydrogen::croak(
+                    package Hydrogen::String::__SANDBOX__;
+                    defined($shv_final_unchecked) and do {
+                        ref( \$shv_final_unchecked ) eq 'SCALAR'
+                          or ref( \( my $val = $shv_final_unchecked ) ) eq
+                          'SCALAR';
+                    }
+                  }
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Str", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Str", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< starts_with( $string, $head ) >>
@@ -1844,10 +1783,7 @@ sub starts_with {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        substr( $shv_real_invocant, 0, length $_[1] ) eq $_[1];
-    }
+    substr( $$__REF__, 0, length $_[1] ) eq $_[1];
 }
 
 =head2 C<< starts_with_i( $string, $head ) >>
@@ -1900,11 +1836,7 @@ sub starts_with_i {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        CORE::lc( substr( $shv_real_invocant, 0, length $_[1] ) ) eq
-          CORE::lc( $_[1] );
-    }
+    CORE::lc( substr( $$__REF__, 0, length $_[1] ) ) eq CORE::lc( $_[1] );
 }
 
 =head2 C<< substr( $string, $start, $length?, $replacement? ) >>
@@ -1985,39 +1917,33 @@ Like C<substr> from L<perlfunc>, but is not an lvalue.
             (@_);
         };
         @_ = &$__signature;
-        do {
-            my $shv_real_invocant = $$__REF__;
-            if    ( ( @_ - 1 ) == 1 ) { substr( $shv_real_invocant, $_[1] ) }
-            elsif ( ( @_ - 1 ) == 2 ) {
-                substr( $shv_real_invocant, $_[1], $_[2] );
-            }
-            elsif ( ( @_ - 1 ) == 3 ) {
-                my $shv_tmp    = $shv_real_invocant;
-                my $shv_return = substr( $shv_tmp, $_[1], $_[2], $_[3] );
-                (
-                    ${$__REF__} = do {
-                        my $shv_final_unchecked = $shv_tmp;
+        if    ( ( @_ - 1 ) == 1 ) { substr( $$__REF__, $_[1] ) }
+        elsif ( ( @_ - 1 ) == 2 ) { substr( $$__REF__, $_[1], $_[2] ) }
+        elsif ( ( @_ - 1 ) == 3 ) {
+            my $shv_tmp    = $$__REF__;
+            my $shv_return = substr( $shv_tmp, $_[1], $_[2], $_[3] );
+            (
+                ${$__REF__} = do {
+                    my $shv_final_unchecked = $shv_tmp;
+                    do {
                         do {
-                            do {
 
-                                package Hydrogen::String::__SANDBOX__;
-                                defined($shv_final_unchecked) and do {
-                                    ref( \$shv_final_unchecked ) eq 'SCALAR'
-                                      or
-                                      ref( \( my $val = $shv_final_unchecked ) )
-                                      eq 'SCALAR';
-                                }
-                              }
-                              or Hydrogen::croak(
+                            package Hydrogen::String::__SANDBOX__;
+                            defined($shv_final_unchecked) and do {
+                                ref( \$shv_final_unchecked ) eq 'SCALAR'
+                                  or ref( \( my $val = $shv_final_unchecked ) )
+                                  eq 'SCALAR';
+                            }
+                          }
+                          or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                                "Str", $shv_final_unchecked
-                              );
-                            $shv_final_unchecked;
-                        };
-                    }
-                );
-                $shv_return;
-            }
+                            "Str", $shv_final_unchecked
+                          );
+                        $shv_final_unchecked;
+                    };
+                }
+            );
+            $shv_return;
         }
     }
 }
@@ -2035,7 +1961,7 @@ sub uc {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uc; usage: "
           . "Hydrogen::String::uc( \$string )" );
-    do { my $shv_real_invocant = $$__REF__; uc($shv_real_invocant) }
+    uc($$__REF__);
 }
 
 1;

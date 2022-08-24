@@ -104,10 +104,9 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
         };
         @_ = &$__signature;
         1;
-        my $shv_ref_invocant = do { $$__REF__ };
-        if ( ( @_ - 1 ) == 1 ) { ($shv_ref_invocant)->{ $_[1] } }
+        if ( ( @_ - 1 ) == 1 ) { ($$__REF__)->{ $_[1] } }
         else {
-            my %shv_tmp = %{$shv_ref_invocant};
+            my %shv_tmp = %{$$__REF__};
             $shv_tmp{ $_[1] } = $_[2];
             ( %{ $_[0] } = %{ +\%shv_tmp } );
         }
@@ -127,8 +126,7 @@ sub all (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for all; usage: "
           . "Hydrogen::Hash::all( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    %{$shv_ref_invocant};
+    %{$$__REF__};
 }
 
 =head2 C<< clear( %hash ) >>
@@ -145,7 +143,6 @@ sub clear (\%) {
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
           . "Hydrogen::Hash::clear( %hash )" );
     1;
-    my $shv_ref_invocant = do { $$__REF__ };
     ( %{ $_[0] } = () );
 }
 
@@ -162,8 +159,7 @@ sub count (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for count; usage: "
           . "Hydrogen::Hash::count( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    scalar keys %{$shv_ref_invocant};
+    scalar keys %{$$__REF__};
 }
 
 =head2 C<< defined( %hash, $key ) >>
@@ -207,8 +203,7 @@ sub defined (\%$) {
 
         (@_);
     };
-    my $shv_ref_invocant = do { $$__REF__ };
-    defined( ($shv_ref_invocant)->{ $_[1] } );
+    defined( ($$__REF__)->{ $_[1] } );
 }
 
 =head2 C<< delete( %hash, $key ) >>
@@ -225,9 +220,8 @@ sub delete (\%$;@) {
       or Hydrogen::croak( "Wrong number of parameters for delete; usage: "
           . "Hydrogen::Hash::delete( %hash, \$key )" );
     1;
-    my $shv_ref_invocant = do { $$__REF__ };
-    my %shv_tmp          = %{$shv_ref_invocant};
-    my @shv_return       = delete @shv_tmp{ @_[ 1 .. $#_ ] };
+    my %shv_tmp    = %{$$__REF__};
+    my @shv_return = delete @shv_tmp{ @_[ 1 .. $#_ ] };
     ( %{ $_[0] } = %{ +\%shv_tmp } );
     wantarray ? @shv_return : $shv_return[-1];
 }
@@ -245,8 +239,7 @@ sub elements (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for elements; usage: "
           . "Hydrogen::Hash::elements( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    %{$shv_ref_invocant};
+    %{$$__REF__};
 }
 
 =head2 C<< exists( %hash, $key ) >>
@@ -290,8 +283,7 @@ sub exists (\%$) {
 
         (@_);
     };
-    my $shv_ref_invocant = do { $$__REF__ };
-    defined( ($shv_ref_invocant)->{ $_[1] } );
+    defined( ($$__REF__)->{ $_[1] } );
 }
 
 =head2 C<< for_each_key( %hash, $coderef ) >>
@@ -330,8 +322,7 @@ sub for_each_key (\%$) {
 
         (@_);
     };
-    my $shv_ref_invocant = do { $$__REF__ };
-    for my $shv_key ( keys %{$shv_ref_invocant} ) { &{ $_[1] }($shv_key) };
+    for my $shv_key ( keys %{$$__REF__} ) { &{ $_[1] }($shv_key) };
     $__REF__;
 }
 
@@ -371,8 +362,7 @@ sub for_each_pair (\%$) {
 
         (@_);
     };
-    my $shv_ref_invocant = do { $$__REF__ };
-    while ( my ( $shv_key, $shv_value ) = each %{$shv_ref_invocant} ) {
+    while ( my ( $shv_key, $shv_value ) = each %{$$__REF__} ) {
         &{ $_[1] }( $shv_key, $shv_value );
     };
     $__REF__;
@@ -414,8 +404,7 @@ sub for_each_value (\%$) {
 
         (@_);
     };
-    my $shv_ref_invocant = do { $$__REF__ };
-    for my $shv_value ( values %{$shv_ref_invocant} ) { &{ $_[1] }($shv_value) };
+    for my $shv_value ( values %{$$__REF__} ) { &{ $_[1] }($shv_value) };
     $__REF__;
 }
 
@@ -432,10 +421,7 @@ sub get (\%$;@) {
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
           . "Hydrogen::Hash::get( %hash, \$key )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    ( @_ - 1 ) > 1
-      ? @{$shv_ref_invocant}{ @_[ 1 .. $#_ ] }
-      : ($shv_ref_invocant)->{ $_[1] };
+    ( @_ - 1 ) > 1 ? @{$$__REF__}{ @_[ 1 .. $#_ ] } : ($$__REF__)->{ $_[1] };
 }
 
 =head2 C<< is_empty( %hash ) >>
@@ -451,8 +437,7 @@ sub is_empty (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for is_empty; usage: "
           . "Hydrogen::Hash::is_empty( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    !scalar keys %{$shv_ref_invocant};
+    !scalar keys %{$$__REF__};
 }
 
 =head2 C<< keys( %hash ) >>
@@ -468,8 +453,7 @@ sub keys (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for keys; usage: "
           . "Hydrogen::Hash::keys( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    keys %{$shv_ref_invocant};
+    keys %{$$__REF__};
 }
 
 =head2 C<< kv( %hash ) >>
@@ -485,8 +469,7 @@ sub kv (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for kv; usage: "
           . "Hydrogen::Hash::kv( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    map [ $_ => ($shv_ref_invocant)->{$_} ], keys %{$shv_ref_invocant};
+    map [ $_ => ($$__REF__)->{$_} ], keys %{$$__REF__};
 }
 
 =head2 C<< reset( %hash ) >>
@@ -502,7 +485,6 @@ sub reset (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::Hash::reset( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
     (
         %{ $_[0] } = %{
             +do {
@@ -533,7 +515,6 @@ sub set (\%$$;@) {
     @_ >= 3
       or Hydrogen::croak( "Wrong number of parameters for set; usage: "
           . "Hydrogen::Hash::set( %hash, \$key, \$value, ... )" );
-    my $shv_ref_invocant = do { $$__REF__ };
     my (@shv_params) = @_[ 1 .. $#_ ];
     scalar(@shv_params) % 2 and do {
         require Carp;
@@ -564,7 +545,7 @@ sub set (\%$$;@) {
             $shv_params[$shv_tmp];
         };
     };
-    my %shv_tmp = %{$shv_ref_invocant};
+    my %shv_tmp = %{$$__REF__};
     @shv_tmp{ @shv_params[@shv_keys_idx] } = @shv_params[@shv_values_idx];
     ( %{ $_[0] } = %{ +\%shv_tmp } );
     wantarray
@@ -586,8 +567,7 @@ sub shallow_clone (\%) {
       or
       Hydrogen::croak( "Wrong number of parameters for shallow_clone; usage: "
           . "Hydrogen::Hash::shallow_clone( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    +{ %{$shv_ref_invocant} };
+    +{ %{$$__REF__} };
 }
 
 =head2 C<< sorted_keys( %hash ) >>
@@ -603,8 +583,7 @@ sub sorted_keys (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for sorted_keys; usage: "
           . "Hydrogen::Hash::sorted_keys( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    sort( keys %{$shv_ref_invocant} );
+    sort( keys %{$$__REF__} );
 }
 
 =head2 C<< values( %hash ) >>
@@ -620,8 +599,7 @@ sub values (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for values; usage: "
           . "Hydrogen::Hash::values( %hash )" );
-    my $shv_ref_invocant = do { $$__REF__ };
-    values %{$shv_ref_invocant};
+    values %{$$__REF__};
 }
 
 1;

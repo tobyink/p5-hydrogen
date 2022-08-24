@@ -38,10 +38,7 @@ sub execute (&;@) {
     my $__REF__ = \$_[0];
 
     package Hydrogen::Code::__SANDBOX__;
-    do {
-        my $shv_real_invocant = $$__REF__;
-        $shv_real_invocant->( @_[ 1 .. $#_ ] );
-    }
+    $$__REF__->( @_[ 1 .. $#_ ] );
 }
 
 1;

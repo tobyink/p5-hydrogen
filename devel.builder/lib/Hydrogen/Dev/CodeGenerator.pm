@@ -13,6 +13,7 @@ use parent 'Sub::HandlesVia::CodeGenerator';
 
 sub class               { shift; };
 sub _handle_shiftself   { shift; };
+sub _handle_getter_code { shift; };
 sub _function_for_croak { 'Hydrogen::croak'; };
 
 sub _build_generator_for_type_assertion {

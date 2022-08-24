@@ -79,30 +79,27 @@ Decrements the counter by C<< $amount >>, or by 1 if no value is given.
             (@_);
         };
         @_ = &$__signature;
-        do {
-            my $shv_real_invocant = $$__REF__;
-            (
-                ${$__REF__} = do {
-                    my $shv_final_unchecked =
-                      $shv_real_invocant - ( ( @_ - 1 ) ? $_[1] : 1 );
-                    do {
-                        (
-                            do {
-                                my $tmp = $shv_final_unchecked;
-                                defined($tmp)
-                                  and !ref($tmp)
-                                  and $tmp =~ /\A-?[0-9]+\z/;
-                            }
-                          )
-                          or Hydrogen::croak(
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked =
+                  $$__REF__ - ( ( @_ - 1 ) ? $_[1] : 1 );
+                do {
+                    (
+                        do {
+                            my $tmp = $shv_final_unchecked;
+                            defined($tmp)
+                              and !ref($tmp)
+                              and $tmp =~ /\A-?[0-9]+\z/;
+                        }
+                      )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                            "Int", $shv_final_unchecked
-                          );
-                        $shv_final_unchecked;
-                    };
-                }
-            );
-        }
+                        "Int", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
     }
 }
 
@@ -156,51 +153,10 @@ Increments the counter by C<< $amount >>, or by 1 if no value is given.
             (@_);
         };
         @_ = &$__signature;
-        do {
-            my $shv_real_invocant = $$__REF__;
-            (
-                ${$__REF__} = do {
-                    my $shv_final_unchecked =
-                      $shv_real_invocant + ( ( @_ - 1 ) ? $_[1] : 1 );
-                    do {
-                        (
-                            do {
-                                my $tmp = $shv_final_unchecked;
-                                defined($tmp)
-                                  and !ref($tmp)
-                                  and $tmp =~ /\A-?[0-9]+\z/;
-                            }
-                          )
-                          or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                            "Int", $shv_final_unchecked
-                          );
-                        $shv_final_unchecked;
-                    };
-                }
-            );
-        }
-    }
-}
-
-=head2 C<< reset( $counter ) >>
-
-Sets the counter to its default value, or 0 if it has no default.
-
-=cut
-
-sub reset {
-    my $__REF__ = \$_[0];
-
-    package Hydrogen::Counter::__SANDBOX__;
-    @_ == 1
-      or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
-          . "Hydrogen::Counter::reset( \$counter )" );
-    do {
-        my $shv_real_invocant = $$__REF__;
         (
             ${$__REF__} = do {
-                my $shv_final_unchecked = 0;
+                my $shv_final_unchecked =
+                  $$__REF__ + ( ( @_ - 1 ) ? $_[1] : 1 );
                 do {
                     (
                         do {
@@ -219,6 +175,39 @@ sub reset {
             }
         );
     }
+}
+
+=head2 C<< reset( $counter ) >>
+
+Sets the counter to its default value, or 0 if it has no default.
+
+=cut
+
+sub reset {
+    my $__REF__ = \$_[0];
+
+    package Hydrogen::Counter::__SANDBOX__;
+    @_ == 1
+      or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
+          . "Hydrogen::Counter::reset( \$counter )" );
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = 0;
+            do {
+                (
+                    do {
+                        my $tmp = $shv_final_unchecked;
+                        defined($tmp) and !ref($tmp) and $tmp =~ /\A-?[0-9]+\z/;
+                    }
+                  )
+                  or Hydrogen::croak(
+"Type check failed in delegated method: expected %s, got value %s",
+                    "Int", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< set( $counter, $value ) >>
@@ -265,29 +254,24 @@ sub set {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $_[1];
-                do {
-                    (
-                        do {
-                            my $tmp = $shv_final_unchecked;
-                            defined($tmp)
-                              and !ref($tmp)
-                              and $tmp =~ /\A-?[0-9]+\z/;
-                        }
-                      )
-                      or Hydrogen::croak(
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $_[1];
+            do {
+                (
+                    do {
+                        my $tmp = $shv_final_unchecked;
+                        defined($tmp) and !ref($tmp) and $tmp =~ /\A-?[0-9]+\z/;
+                    }
+                  )
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Int", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Int", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 1;

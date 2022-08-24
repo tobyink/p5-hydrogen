@@ -261,18 +261,20 @@ sub _build_codegen {
 	}
 
 	return 'Hydrogen::Dev::CodeGenerator'->new(
-		toolkit        => $self->dev->target_namespace,
-		target         => $target_module,
-		attribute      => 'dummy',
-		attribute_spec => {},
-		isa            => $self->type_constraint,
-		coerce         => !!0,
-		env            => {},
-		sandboxing_package => $self->sandboxing_package,
-		generator_for_self => sub { my ($gen) = @_;  '$__REF__' },
-		generator_for_slot => sub { my ($gen) = @_; '$$__REF__' },
-		generator_for_get  => sub { my ($gen) = @_; '$$__REF__' },
-		generator_for_set  => $setter,
+		toolkit                    => $self->dev->target_namespace,
+		target                     => $target_module,
+		attribute                  => 'dummy',
+		attribute_spec             => {},
+		isa                        => $self->type_constraint,
+		set_checks_isa             => $self->type_constraint == Types::Standard::Any,
+		coerce                     => false,
+		env                        => {},
+		sandboxing_package         => $self->sandboxing_package,
+		generator_for_self         => sub {  '$__REF__' },
+		generator_for_slot         => sub { '$$__REF__' },
+		generator_for_get          => sub { '$$__REF__' },
+		generator_for_set          => $setter,
+		generator_for_default      => sub { $code_for_default },
 		generator_for_usage_string => sub {
 			my ( $gen, $method_name, $guts ) = @_;
 			if ( $prototyped and $type eq 'Code' ) {
@@ -292,7 +294,6 @@ sub _build_codegen {
 				}
 			}
 		},
-		generator_for_default => sub { $code_for_default },
 	);
 }
 

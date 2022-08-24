@@ -58,23 +58,7 @@ sub make_setter {
       or Hydrogen::croak( "Wrong number of parameters for make_setter; usage: "
           . "Hydrogen::Scalar::make_setter( \$scalar )" );
     my $s = $__REF__;
-    sub {
-        my $val = shift;
-        unshift @_, $s;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $val;
-                do {
-                    ( !!1 )
-                      or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                        "Any", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+    sub { my $val = shift; unshift @_, $s; ( ${$__REF__} = $val ) }
 }
 
 1;

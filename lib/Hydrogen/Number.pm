@@ -54,10 +54,7 @@ sub abs {
       or Hydrogen::croak( "Wrong number of parameters for abs; usage: "
           . "Hydrogen::Number::abs( \$number )" );
     1;
-    do {
-        my $shv_real_invocant = $$__REF__;
-        ( ${$__REF__} = abs($shv_real_invocant) );
-    }
+    ( ${$__REF__} = abs($$__REF__) );
 }
 
 =head2 C<< add( $number, $addend ) >>
@@ -112,32 +109,29 @@ sub add {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $shv_real_invocant + $_[1];
-                do {
-                    (
-                        do {
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $$__REF__ + $_[1];
+            do {
+                (
+                    do {
 
-                            package Hydrogen::Number::__SANDBOX__;
-                            use Scalar::Util ();
-                            defined($shv_final_unchecked)
-                              && !ref($shv_final_unchecked)
-                              && Scalar::Util::looks_like_number(
-                                $shv_final_unchecked);
-                        }
-                      )
-                      or Hydrogen::croak(
+                        package Hydrogen::Number::__SANDBOX__;
+                        use Scalar::Util ();
+                        defined($shv_final_unchecked)
+                          && !ref($shv_final_unchecked)
+                          && Scalar::Util::looks_like_number(
+                            $shv_final_unchecked);
+                    }
+                  )
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Num", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Num", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< cmp( $number, $num ) >>
@@ -192,7 +186,7 @@ sub cmp {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant <=> $_[1] }
+    $$__REF__ <=> $_[1];
 }
 
 =head2 C<< div( $number, $divisor ) >>
@@ -247,32 +241,29 @@ sub div {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $shv_real_invocant / $_[1];
-                do {
-                    (
-                        do {
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $$__REF__ / $_[1];
+            do {
+                (
+                    do {
 
-                            package Hydrogen::Number::__SANDBOX__;
-                            use Scalar::Util ();
-                            defined($shv_final_unchecked)
-                              && !ref($shv_final_unchecked)
-                              && Scalar::Util::looks_like_number(
-                                $shv_final_unchecked);
-                        }
-                      )
-                      or Hydrogen::croak(
+                        package Hydrogen::Number::__SANDBOX__;
+                        use Scalar::Util ();
+                        defined($shv_final_unchecked)
+                          && !ref($shv_final_unchecked)
+                          && Scalar::Util::looks_like_number(
+                            $shv_final_unchecked);
+                    }
+                  )
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Num", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Num", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< eq( $number, $num ) >>
@@ -327,7 +318,7 @@ sub eq {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant == $_[1] }
+    $$__REF__ == $_[1];
 }
 
 =head2 C<< ge( $number, $num ) >>
@@ -382,7 +373,7 @@ sub ge {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant >= $_[1] }
+    $$__REF__ >= $_[1];
 }
 
 =head2 C<< get( $number ) >>
@@ -398,7 +389,7 @@ sub get {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
           . "Hydrogen::Number::get( \$number )" );
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant }
+    $$__REF__;
 }
 
 =head2 C<< gt( $number, $num ) >>
@@ -453,7 +444,7 @@ sub gt {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant > $_[1] }
+    $$__REF__ > $_[1];
 }
 
 =head2 C<< le( $number, $num ) >>
@@ -508,7 +499,7 @@ sub le {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant <= $_[1] }
+    $$__REF__ <= $_[1];
 }
 
 =head2 C<< lt( $number, $num ) >>
@@ -563,7 +554,7 @@ sub lt {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant < $_[1] }
+    $$__REF__ < $_[1];
 }
 
 =head2 C<< mod( $number, $divisor ) >>
@@ -618,32 +609,29 @@ sub mod {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $shv_real_invocant % $_[1];
-                do {
-                    (
-                        do {
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $$__REF__ % $_[1];
+            do {
+                (
+                    do {
 
-                            package Hydrogen::Number::__SANDBOX__;
-                            use Scalar::Util ();
-                            defined($shv_final_unchecked)
-                              && !ref($shv_final_unchecked)
-                              && Scalar::Util::looks_like_number(
-                                $shv_final_unchecked);
-                        }
-                      )
-                      or Hydrogen::croak(
+                        package Hydrogen::Number::__SANDBOX__;
+                        use Scalar::Util ();
+                        defined($shv_final_unchecked)
+                          && !ref($shv_final_unchecked)
+                          && Scalar::Util::looks_like_number(
+                            $shv_final_unchecked);
+                    }
+                  )
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Num", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Num", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< mul( $number, $factor ) >>
@@ -698,32 +686,29 @@ sub mul {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $shv_real_invocant * $_[1];
-                do {
-                    (
-                        do {
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $$__REF__ * $_[1];
+            do {
+                (
+                    do {
 
-                            package Hydrogen::Number::__SANDBOX__;
-                            use Scalar::Util ();
-                            defined($shv_final_unchecked)
-                              && !ref($shv_final_unchecked)
-                              && Scalar::Util::looks_like_number(
-                                $shv_final_unchecked);
-                        }
-                      )
-                      or Hydrogen::croak(
+                        package Hydrogen::Number::__SANDBOX__;
+                        use Scalar::Util ();
+                        defined($shv_final_unchecked)
+                          && !ref($shv_final_unchecked)
+                          && Scalar::Util::looks_like_number(
+                            $shv_final_unchecked);
+                    }
+                  )
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Num", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Num", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< ne( $number, $num ) >>
@@ -778,7 +763,7 @@ sub ne {
 
         (@_);
     };
-    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant != $_[1] }
+    $$__REF__ != $_[1];
 }
 
 =head2 C<< set( $number, $value ) >>
@@ -833,32 +818,29 @@ sub set {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $_[1];
-                do {
-                    (
-                        do {
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $_[1];
+            do {
+                (
+                    do {
 
-                            package Hydrogen::Number::__SANDBOX__;
-                            use Scalar::Util ();
-                            defined($shv_final_unchecked)
-                              && !ref($shv_final_unchecked)
-                              && Scalar::Util::looks_like_number(
-                                $shv_final_unchecked);
-                        }
-                      )
-                      or Hydrogen::croak(
+                        package Hydrogen::Number::__SANDBOX__;
+                        use Scalar::Util ();
+                        defined($shv_final_unchecked)
+                          && !ref($shv_final_unchecked)
+                          && Scalar::Util::looks_like_number(
+                            $shv_final_unchecked);
+                    }
+                  )
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Num", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Num", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 =head2 C<< sub( $number, $subtrahend ) >>
@@ -913,32 +895,29 @@ sub sub {
 
         (@_);
     };
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = $shv_real_invocant - $_[1];
-                do {
-                    (
-                        do {
+    (
+        ${$__REF__} = do {
+            my $shv_final_unchecked = $$__REF__ - $_[1];
+            do {
+                (
+                    do {
 
-                            package Hydrogen::Number::__SANDBOX__;
-                            use Scalar::Util ();
-                            defined($shv_final_unchecked)
-                              && !ref($shv_final_unchecked)
-                              && Scalar::Util::looks_like_number(
-                                $shv_final_unchecked);
-                        }
-                      )
-                      or Hydrogen::croak(
+                        package Hydrogen::Number::__SANDBOX__;
+                        use Scalar::Util ();
+                        defined($shv_final_unchecked)
+                          && !ref($shv_final_unchecked)
+                          && Scalar::Util::looks_like_number(
+                            $shv_final_unchecked);
+                    }
+                  )
+                  or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                        "Num", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+                    "Num", $shv_final_unchecked
+                  );
+                $shv_final_unchecked;
+            };
+        }
+    );
 }
 
 1;

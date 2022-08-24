@@ -43,7 +43,7 @@ sub not {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for not; usage: "
           . "Hydrogen::Bool::not( \$bool )" );
-    do { my $shv_real_invocant = $$__REF__; !$shv_real_invocant }
+    !$$__REF__;
 }
 
 =head2 C<< reset( $bool ) >>
@@ -59,22 +59,7 @@ sub reset {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::Bool::reset( \$bool )" );
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = !!0;
-                do {
-                    ( !!1 )
-                      or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                        "Any", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+    ( ${$__REF__} = !!0 );
 }
 
 =head2 C<< set( $bool ) >>
@@ -90,22 +75,7 @@ sub set {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for set; usage: "
           . "Hydrogen::Bool::set( \$bool )" );
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = !!1;
-                do {
-                    ( !!1 )
-                      or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                        "Any", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+    ( ${$__REF__} = !!1 );
 }
 
 =head2 C<< toggle( $bool ) >>
@@ -121,22 +91,7 @@ sub toggle {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for toggle; usage: "
           . "Hydrogen::Bool::toggle( \$bool )" );
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = !$shv_real_invocant;
-                do {
-                    ( !!1 )
-                      or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                        "Any", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+    ( ${$__REF__} = !$$__REF__ );
 }
 
 =head2 C<< unset( $bool ) >>
@@ -152,22 +107,7 @@ sub unset {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for unset; usage: "
           . "Hydrogen::Bool::unset( \$bool )" );
-    do {
-        my $shv_real_invocant = $$__REF__;
-        (
-            ${$__REF__} = do {
-                my $shv_final_unchecked = !!0;
-                do {
-                    ( !!1 )
-                      or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                        "Any", $shv_final_unchecked
-                      );
-                    $shv_final_unchecked;
-                };
-            }
-        );
-    }
+    ( ${$__REF__} = !!0 );
 }
 
 1;
