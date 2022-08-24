@@ -77,6 +77,15 @@ sub _reference_type_names {
 	);
 }
 
+sub write_all {
+	my $self = shift;
+
+	$self->write_modules;
+	$self->write_curry_modules;
+	$self->write_tests;
+	$self->write_curry_tests;
+}
+
 sub write_modules {
 	my $self = shift;
 
@@ -87,11 +96,31 @@ sub write_modules {
 	return $self;
 }
 
+sub write_curry_modules {
+	my $self = shift;
+
+	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
+		$type->write_curry_module unless $type->is_prototyped;
+	}
+
+	return $self;
+}
+
 sub write_tests {
 	my $self = shift;
 
 	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
 		$type->write_test;
+	}
+
+	return $self;
+}
+
+sub write_curry_tests {
+	my $self = shift;
+
+	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
+		$type->write_curry_test unless $type->is_prototyped;
 	}
 
 	return $self;

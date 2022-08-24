@@ -111,6 +111,38 @@ L<Hydrogen::Scalar>
 
 L<Hydrogen::String>
 
+=item *
+
+L<Hydrogen::Curry::ArrayRef>
+
+=item *
+
+L<Hydrogen::Curry::Bool>
+
+=item *
+
+L<Hydrogen::Curry::CodeRef>
+
+=item *
+
+L<Hydrogen::Curry::Counter>
+
+=item *
+
+L<Hydrogen::Curry::HashRef>
+
+=item *
+
+L<Hydrogen::Curry::Number>
+
+=item *
+
+L<Hydrogen::Curry::Scalar>
+
+=item *
+
+L<Hydrogen::Curry::String>
+
 =back
 
 =head1 BUGS

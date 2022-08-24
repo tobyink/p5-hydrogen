@@ -76,7 +76,6 @@ sub compile_pod {
 	return $pod;
 }
 
-
 sub compile_code {
 	my $self = shift;
 
@@ -136,6 +135,46 @@ sub compile_code {
 	return $code . "\n";
 }
 
+sub compile_curry_pod {
+	my $self = shift;
+
+	my $pod = '';
+	$pod .= sprintf "=head2 C<< %s::curry_%s( %s ) >>\n\n",
+		$self->type->curry_module, $self->function_name, $self->type->example_var;
+	$pod .= sprintf "Curry the first argument of C<< %s::%s >>.\n\n",
+		$self->type->target_module, $self->function_name;
+	$pod .= "=cut\n\n";
+
+	return $pod;
+}
+
+sub compile_curry_code {
+	my $self = shift;
+
+	my $mod   = $self->type->target_module;
+	my $func  = $self->function_name;
+	my $check = $self->type->type_constraint->inline_check( '$_[0]' );
+	my $name  = $self->type->type_constraint->display_name;
+
+	return sprintf <<'CODE', $func, $func, $check, $func, $name, $mod, $func;
+sub curry_%s {
+    @_ == 1
+        or Hydrogen::croak(
+            "Wrong number of parameters in signature for curry_%s: got %%d, %%s",
+            scalar(@_), "expected exactly 1 parameter"
+        );
+    %s
+        or Hydrogen::croak(
+            "Type check failed in signature for curry_%s: %%s should be %%s",
+            "\\$_[0]", "%s"
+        );
+    my $ref = \$_[0];
+    return sub { %s::%s( $$ref, @_ ) };
+}
+
+CODE
+}
+
 sub compile_test {
 	my $self = shift;
 
@@ -159,9 +198,32 @@ sub compile_test {
 		$t .= "    my \$e = exception {\n";
 		$t .= '        ' . $self->_munge_line( $_ ) . "\n" for @lines;
 		$t .= "    };\n";
-		$t .= "    is( \$e, undef, 'no exception thrown running $func example' );\n";
+		$t .= "    is \$e, undef, 'no exception thrown running $func example';\n";
 	}
 
+	$t .= "};\n\n";
+
+	return $t;
+}
+
+sub compile_curry_test {
+	my $self = shift;
+
+	my $func = 'curry_' . $self->function_name;
+	my $t = '';
+
+	$t .= sprintf "subtest '%s' => sub {\n",
+		$func;
+	$t .= sprintf "    ok exists(&%s::%s), 'function exists';\n",
+		$self->type->curry_module, $func;
+	$t .= sprintf "    ok \$EXPORTS{'%s'}, 'function is importable';\n",
+		$func;
+	$t .= "    my \$e = exception {\n";
+	$t .= sprintf "        my \$curried = %s::%s( %s );\n",
+		$self->type->curry_module, $func, $self->type->code_for_default;
+	$t .= "        is ref( \$curried ), 'CODE', 'function returns a coderef';\n";
+	$t .= "    };\n";
+	$t .= "    is \$e, undef, 'no exception thrown running $func';\n";
 	$t .= "};\n\n";
 
 	return $t;

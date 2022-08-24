@@ -967,7 +967,9 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 =head1 SEE ALSO
 
-L<Hydrogen>, L<Sub::HandlesVia::HandlerLibrary::Number>.
+L<Hydrogen>,
+L<Hydrogen::Curry::Number>,
+L<Sub::HandlesVia::HandlerLibrary::Number>.
 
 =head1 AUTHOR
 

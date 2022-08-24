@@ -10,7 +10,6 @@ use lib "$Bin/../lib";
 use Hydrogen::Dev;
 
 my $dev = 'Hydrogen::Dev'->new;
-$dev->write_modules;
-$dev->write_tests;
+$dev->write_all;
 
 exit( 0 );
