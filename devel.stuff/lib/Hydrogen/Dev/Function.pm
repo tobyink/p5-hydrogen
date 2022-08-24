@@ -128,6 +128,8 @@ sub compile_code {
 		$code = $tidy;
 	}
 
+	$code =~ s/CORE::fc/CORE::lc/;
+
 	return $code . "\n";
 }
 
