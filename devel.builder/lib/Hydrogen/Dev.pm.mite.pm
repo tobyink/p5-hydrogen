@@ -149,7 +149,7 @@
             my $value =
               exists( $args->{"target_version"} )
               ? $args->{"target_version"}
-              : "0.001";
+              : $self->_build_target_version;
             do {
 
                 package Hydrogen::Dev::Mite;

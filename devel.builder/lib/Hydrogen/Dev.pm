@@ -7,14 +7,14 @@ use Hydrogen::Dev::Type ();
 package Hydrogen::Dev;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.001';
+our $VERSION   = '0.002';
 
 use Hydrogen::Dev::Mite -all;
 
 param author_cpanid    => ( isa => 'Str', default => 'tobyink' );
 param author_name      => ( isa => 'Str', default => 'Toby Inkster' );
 param copyright_years  => ( isa => 'Str', default => '2022' );
-param target_version   => ( isa => 'Str', default => $VERSION );
+param target_version   => ( isa => 'Str', builder => sub { $VERSION } );
 param bug_tracker      => ( isa => 'Str', default => 'http://github.com/tobyink/p5-hydrogen/issues' );
 param target_namespace => ( isa => 'Str', default => 'Hydrogen' );
 param target_directory => ( isa => 'Str', default => 'lib' );
