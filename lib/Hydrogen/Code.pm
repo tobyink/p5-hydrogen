@@ -25,7 +25,6 @@ The functions use prototypes, so you don't have to pass a reference.
 
 use Exporter::Shiny qw(
     execute
-    execute_method
 );
 
 =head2 C<< Hydrogen::Code::execute { CODE } @args >>

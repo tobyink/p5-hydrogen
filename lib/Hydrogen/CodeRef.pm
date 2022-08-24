@@ -23,7 +23,6 @@ Each function expects a reference to a sub as its first argument.
 
 use Exporter::Shiny qw(
     execute
-    execute_method
 );
 
 =head2 C<< Hydrogen::CodeRef::execute( $code, @args ) >>

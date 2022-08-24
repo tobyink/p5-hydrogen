@@ -118,7 +118,7 @@ Returns the hash in list context.
 sub all (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for all; usage: "
-          . "Hydrogen::Hash::all( \$hash )" );
+          . "Hydrogen::Hash::all( %hash )" );
     %{ $_[0] };
 }
 
@@ -131,7 +131,7 @@ Empties the hash.
 sub clear (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
-          . "Hydrogen::Hash::clear( \$hash )" );
+          . "Hydrogen::Hash::clear( %hash )" );
     1;
     ( %{ $_[0] } = () );
 }
@@ -145,7 +145,7 @@ Returns the number of keys in the hash.
 sub count (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for count; usage: "
-          . "Hydrogen::Hash::count( \$hash )" );
+          . "Hydrogen::Hash::count( %hash )" );
     scalar keys %{ $_[0] };
 }
 
@@ -199,7 +199,7 @@ Removes a value from the hashref by its key.
 sub delete (\%$;@) {
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for delete; usage: "
-          . "Hydrogen::Hash::delete( \$hash, \$key )" );
+          . "Hydrogen::Hash::delete( %hash, \$key )" );
     1;
     my %shv_tmp    = %{ $_[0] };
     my @shv_return = delete @shv_tmp{ @_[ 1 .. $#_ ] };
@@ -216,7 +216,7 @@ Returns the hash in list context.
 sub elements (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for elements; usage: "
-          . "Hydrogen::Hash::elements( \$hash )" );
+          . "Hydrogen::Hash::elements( %hash )" );
     %{ $_[0] };
 }
 
@@ -383,7 +383,7 @@ Returns a value from the hashref by its key.
 sub get (\%$;@) {
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
-          . "Hydrogen::Hash::get( \$hash, \$key )" );
+          . "Hydrogen::Hash::get( %hash, \$key )" );
     ( @_ - 1 ) > 1 ? @{ $_[0] }{ @_[ 1 .. $#_ ] } : ( $_[0] )->{ $_[1] };
 }
 
@@ -396,7 +396,7 @@ Returns true iff there are no keys in the hash.
 sub is_empty (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for is_empty; usage: "
-          . "Hydrogen::Hash::is_empty( \$hash )" );
+          . "Hydrogen::Hash::is_empty( %hash )" );
     !scalar keys %{ $_[0] };
 }
 
@@ -409,7 +409,7 @@ Returns the list of keys in the hash.
 sub keys (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for keys; usage: "
-          . "Hydrogen::Hash::keys( \$hash )" );
+          . "Hydrogen::Hash::keys( %hash )" );
     keys %{ $_[0] };
 }
 
@@ -422,7 +422,7 @@ Returns a list of arrayrefs, where each arrayref is a key-value pair.
 sub kv (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for kv; usage: "
-          . "Hydrogen::Hash::kv( \$hash )" );
+          . "Hydrogen::Hash::kv( %hash )" );
     map [ $_ => ( $_[0] )->{$_} ], keys %{ $_[0] };
 }
 
@@ -435,7 +435,7 @@ Resets the original value to its default value, or an empty hashref if it has no
 sub reset (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
-          . "Hydrogen::Hash::reset( \$hash )" );
+          . "Hydrogen::Hash::reset( %hash )" );
     (
         %{ $_[0] } = %{
             do {
@@ -462,7 +462,7 @@ Given a key and value, adds the key to the hashref with the given value.
 sub set (\%$$;@) {
     @_ >= 3
       or Hydrogen::croak( "Wrong number of parameters for set; usage: "
-          . "Hydrogen::Hash::set( \$hash, \$key, \$value, ... )" );
+          . "Hydrogen::Hash::set( %hash, \$key, \$value, ... )" );
     my (@shv_params) = @_[ 1 .. $#_ ];
     scalar(@shv_params) % 2 and do {
         require Carp;
@@ -511,7 +511,7 @@ sub shallow_clone (\%) {
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for shallow_clone; usage: "
-          . "Hydrogen::Hash::shallow_clone( \$hash )" );
+          . "Hydrogen::Hash::shallow_clone( %hash )" );
     +{ %{ $_[0] } };
 }
 
@@ -524,7 +524,7 @@ Returns an alphabetically sorted list of keys in the hash.
 sub sorted_keys (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for sorted_keys; usage: "
-          . "Hydrogen::Hash::sorted_keys( \$hash )" );
+          . "Hydrogen::Hash::sorted_keys( %hash )" );
     sort( keys %{ $_[0] } );
 }
 
@@ -537,7 +537,7 @@ Returns the list of values in the hash.
 sub values (\%) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for values; usage: "
-          . "Hydrogen::Hash::values( \$hash )" );
+          . "Hydrogen::Hash::values( %hash )" );
     values %{ $_[0] };
 }
 

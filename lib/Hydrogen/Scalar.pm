@@ -24,7 +24,6 @@ Each function expects a scalar as its first argument.
 use Exporter::Shiny qw(
     make_getter
     make_setter
-    scalar_reference
 );
 
 =head2 C<< Hydrogen::Scalar::make_getter( $scalar ) >>
@@ -82,11 +81,11 @@ No functions are exported by this module by default. To import them all
 
 To import a particular function, use:
 
-    use Hydrogen::Scalar 'scalar_reference';
+    use Hydrogen::Scalar 'make_getter';
 
 To rename functions:
 
-    use Hydrogen::Scalar 'scalar_reference' => { -as => 'myfunc' };
+    use Hydrogen::Scalar 'make_getter' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 

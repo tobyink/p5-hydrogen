@@ -159,7 +159,7 @@ All elements in the array, in list context.
 sub all (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for all; usage: "
-          . "Hydrogen::Array::all( \$array )" );
+          . "Hydrogen::Array::all( \@array )" );
     @{ $_[0] };
 }
 
@@ -276,7 +276,7 @@ Empties the array.
 sub clear (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
-          . "Hydrogen::Array::clear( \$array )" );
+          . "Hydrogen::Array::clear( \@array )" );
     1;
     ( @{ $_[0] } = () );
 }
@@ -290,7 +290,7 @@ The number of elements in the referenced array.
 sub count (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for count; usage: "
-          . "Hydrogen::Array::count( \$array )" );
+          . "Hydrogen::Array::count( \@array )" );
     scalar( @{ $_[0] } );
 }
 
@@ -346,7 +346,7 @@ All elements in the array, in list context.
 sub elements (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for elements; usage: "
-          . "Hydrogen::Array::elements( \$array )" );
+          . "Hydrogen::Array::elements( \@array )" );
     @{ $_[0] };
 }
 
@@ -427,7 +427,7 @@ All elements in the array, in list context.
 sub flatten (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for flatten; usage: "
-          . "Hydrogen::Array::flatten( \$array )" );
+          . "Hydrogen::Array::flatten( \@array )" );
     @{ $_[0] };
 }
 
@@ -440,7 +440,7 @@ All elements in the array, in list context.
 sub flatten (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for flatten; usage: "
-          . "Hydrogen::Array::flatten( \$array )" );
+          . "Hydrogen::Array::flatten( \@array )" );
     @{ $_[0] };
 }
 
@@ -738,7 +738,7 @@ Boolean indicating if the referenced array is empty.
 sub is_empty (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for is_empty; usage: "
-          . "Hydrogen::Array::is_empty( \$array )" );
+          . "Hydrogen::Array::is_empty( \@array )" );
     !scalar( @{ $_[0] } );
 }
 
@@ -834,7 +834,7 @@ Like C<< List::Util::max() >>.
 sub max (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for max; usage: "
-          . "Hydrogen::Array::max( \$array )" );
+          . "Hydrogen::Array::max( \@array )" );
     &List::Util::max( @{ $_[0] } );
 }
 
@@ -847,7 +847,7 @@ Like C<< List::Util::maxstr() >>.
 sub maxstr (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for maxstr; usage: "
-          . "Hydrogen::Array::maxstr( \$array )" );
+          . "Hydrogen::Array::maxstr( \@array )" );
     &List::Util::maxstr( @{ $_[0] } );
 }
 
@@ -860,7 +860,7 @@ Like C<< List::Util::min() >>.
 sub min (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for min; usage: "
-          . "Hydrogen::Array::min( \$array )" );
+          . "Hydrogen::Array::min( \@array )" );
     &List::Util::min( @{ $_[0] } );
 }
 
@@ -873,7 +873,7 @@ Like C<< List::Util::minstr() >>.
 sub minstr (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for minstr; usage: "
-          . "Hydrogen::Array::minstr( \$array )" );
+          . "Hydrogen::Array::minstr( \@array )" );
     &List::Util::minstr( @{ $_[0] } );
 }
 
@@ -1053,7 +1053,7 @@ Like C<< List::Util::pairkeys() >>.
 sub pairkeys (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairkeys; usage: "
-          . "Hydrogen::Array::pairkeys( \$array )" );
+          . "Hydrogen::Array::pairkeys( \@array )" );
     &List::Util::pairkeys( @{ $_[0] } );
 }
 
@@ -1100,7 +1100,7 @@ Like C<< List::Util::pairs() >>.
 sub pairs (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairs; usage: "
-          . "Hydrogen::Array::pairs( \$array )" );
+          . "Hydrogen::Array::pairs( \@array )" );
     &List::Util::pairs( @{ $_[0] } );
 }
 
@@ -1113,7 +1113,7 @@ Like C<< List::Util::pairvalues() >>.
 sub pairvalues (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairvalues; usage: "
-          . "Hydrogen::Array::pairvalues( \$array )" );
+          . "Hydrogen::Array::pairvalues( \@array )" );
     &List::Util::pairvalues( @{ $_[0] } );
 }
 
@@ -1180,7 +1180,7 @@ Removes the last element from the array and returns it.
 sub pop (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pop; usage: "
-          . "Hydrogen::Array::pop( \$array )" );
+          . "Hydrogen::Array::pop( \@array )" );
     1;
     my @shv_tmp    = @{ $_[0] };
     my $shv_return = pop @shv_tmp;
@@ -1263,7 +1263,7 @@ Like C<< List::Util::product() >>.
 sub product (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for product; usage: "
-          . "Hydrogen::Array::product( \$array )" );
+          . "Hydrogen::Array::product( \@array )" );
     &List::Util::product( 1, @{ $_[0] } );
 }
 
@@ -1360,7 +1360,7 @@ Resets the original value to its default value, or an empty arrayref if it has n
 sub reset (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
-          . "Hydrogen::Array::reset( \$array )" );
+          . "Hydrogen::Array::reset( \@array )" );
     (
         @{ $_[0] } = @{
             do {
@@ -1387,7 +1387,7 @@ Returns the reversed array in list context.
 sub reverse (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reverse; usage: "
-          . "Hydrogen::Array::reverse( \$array )" );
+          . "Hydrogen::Array::reverse( \@array )" );
     reverse @{ $_[0] };
 }
 
@@ -1486,7 +1486,7 @@ sub shallow_clone (\@) {
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for shallow_clone; usage: "
-          . "Hydrogen::Array::shallow_clone( \$array )" );
+          . "Hydrogen::Array::shallow_clone( \@array )" );
     [ @{ $_[0] } ];
 }
 
@@ -1499,7 +1499,7 @@ Removes an element from the start of the array and returns it.
 sub shift (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for shift; usage: "
-          . "Hydrogen::Array::shift( \$array )" );
+          . "Hydrogen::Array::shift( \@array )" );
     1;
     my @shv_tmp    = @{ $_[0] };
     my $shv_return = shift @shv_tmp;
@@ -1516,7 +1516,7 @@ Returns the array in a random order; can be called in list context or scalar con
 sub shuffle (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for shuffle; usage: "
-          . "Hydrogen::Array::shuffle( \$array )" );
+          . "Hydrogen::Array::shuffle( \@array )" );
     my @shv_return = List::Util::shuffle( @{ $_[0] } );
     wantarray ? @shv_return : \@shv_return;
 }
@@ -1531,7 +1531,7 @@ sub shuffle_in_place (\@) {
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for shuffle_in_place; usage: "
-          . "Hydrogen::Array::shuffle_in_place( \$array )" );
+          . "Hydrogen::Array::shuffle_in_place( \@array )" );
     1;
     my @shv_return = List::Util::shuffle( @{ $_[0] } );
     ( @{ $_[0] } = @{ \@shv_return } );
@@ -1638,7 +1638,7 @@ Like C<splice> from L<perlfunc>.
 sub splice (\@$;@) {
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for splice; usage: "
-          . "Hydrogen::Array::splice( \$array, \$index, \$length, \@values )" );
+          . "Hydrogen::Array::splice( \@array, \$index, \$length, \@values )" );
     if ( ( @_ - 1 ) >= 1 ) {
         do {
             (
@@ -1688,7 +1688,7 @@ Like C<< List::Util::sum0() >>.
 sub sum (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for sum; usage: "
-          . "Hydrogen::Array::sum( \$array )" );
+          . "Hydrogen::Array::sum( \@array )" );
     &List::Util::sum( 0, @{ $_[0] } );
 }
 
@@ -1745,7 +1745,7 @@ Returns the array filtered to remove duplicates; can be called in list context o
 sub uniq (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniq; usage: "
-          . "Hydrogen::Array::uniq( \$array )" );
+          . "Hydrogen::Array::uniq( \@array )" );
     my @shv_return = List::Util::uniq( @{ $_[0] } );
     wantarray ? @shv_return : \@shv_return;
 }
@@ -1760,7 +1760,7 @@ sub uniq_in_place (\@) {
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for uniq_in_place; usage: "
-          . "Hydrogen::Array::uniq_in_place( \$array )" );
+          . "Hydrogen::Array::uniq_in_place( \@array )" );
     1;
     my @shv_return = List::Util::uniq( @{ $_[0] } );
     ( @{ $_[0] } = @{ \@shv_return } );
@@ -1775,7 +1775,7 @@ Returns the array filtered to remove duplicates numerically; can be called in li
 sub uniqnum (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniqnum; usage: "
-          . "Hydrogen::Array::uniqnum( \$array )" );
+          . "Hydrogen::Array::uniqnum( \@array )" );
     my @shv_return = List::Util::uniqnum( @{ $_[0] } );
     wantarray ? @shv_return : \@shv_return;
 }
@@ -1790,7 +1790,7 @@ sub uniqnum_in_place (\@) {
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for uniqnum_in_place; usage: "
-          . "Hydrogen::Array::uniqnum_in_place( \$array )" );
+          . "Hydrogen::Array::uniqnum_in_place( \@array )" );
     1;
     my @shv_return = List::Util::uniqnum( @{ $_[0] } );
     ( @{ $_[0] } = @{ \@shv_return } );
@@ -1805,7 +1805,7 @@ Returns the array filtered to remove duplicates stringwise; can be called in lis
 sub uniqstr (\@) {
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniqstr; usage: "
-          . "Hydrogen::Array::uniqstr( \$array )" );
+          . "Hydrogen::Array::uniqstr( \@array )" );
     my @shv_return = List::Util::uniqstr( @{ $_[0] } );
     wantarray ? @shv_return : \@shv_return;
 }
@@ -1820,7 +1820,7 @@ sub uniqstr_in_place (\@) {
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for uniqstr_in_place; usage: "
-          . "Hydrogen::Array::uniqstr_in_place( \$array )" );
+          . "Hydrogen::Array::uniqstr_in_place( \@array )" );
     1;
     my @shv_return = List::Util::uniqstr( @{ $_[0] } );
     ( @{ $_[0] } = @{ \@shv_return } );
