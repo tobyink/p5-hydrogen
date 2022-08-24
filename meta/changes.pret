@@ -22,3 +22,12 @@
 		];
 	].
 
+`Hydrogen 0.004 cpan:TOBYINK`
+	issued  2022-08-24;
+	changeset [
+		item [
+			a dcs:Documentation;
+			label "Improved SYNOPSIS and SEE ALSO sections.";
+		];
+	].
+

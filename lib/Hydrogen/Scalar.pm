@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::Scalar;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.003';
+our $VERSION   = '0.004';
 
 =head1 NAME
 
