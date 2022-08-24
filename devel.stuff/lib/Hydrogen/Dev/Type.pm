@@ -11,6 +11,9 @@ use Types::Standard ();
 
 package Hydrogen::Dev::Type;
 
+our $AUTHORITY = 'cpan:TOBYINK';
+our $VERSION   = '0.001';
+
 use Moo;
 
 has dev              => ( is => 'ro', required => !!1, weak_ref => !!1 );
@@ -296,9 +299,8 @@ sub _compile_module_header {
 	# Package meta
 	$code .= "package @{[ $self->target_module ]};\n";
 	$code .= "\n";
-	# XXX: don't hard code these!
-	$code .= "our \$AUTHORITY = 'cpan:TOBYINK';\n";
-	$code .= "our \$VERSION   = '0.001';\n";
+	$code .= "our \$AUTHORITY = 'cpan:@{[ uc $self->dev->author_cpanid ]}';\n";
+	$code .= "our \$VERSION   = '@{[ $self->dev->target_version ]}';\n";
 	$code .= "\n";
 	
 	# Pod intro

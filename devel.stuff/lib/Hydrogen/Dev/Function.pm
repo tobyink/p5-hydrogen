@@ -6,6 +6,9 @@ use Sub::HandlesVia::Handler ();
 
 package Hydrogen::Dev::Function;
 
+our $AUTHORITY = 'cpan:TOBYINK';
+our $VERSION   = '0.001';
+
 use Moo;
 
 has function_name    => ( is => 'ro', required => !!1 );

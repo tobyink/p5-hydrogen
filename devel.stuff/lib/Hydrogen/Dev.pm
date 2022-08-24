@@ -6,8 +6,16 @@ use Hydrogen::Dev::Type ();
 
 package Hydrogen::Dev;
 
+our $AUTHORITY = 'cpan:TOBYINK';
+our $VERSION   = '0.001';
+
 use Moo;
 
+has author_cpanid    => ( is => 'ro', default => 'tobyink' );
+has author_name      => ( is => 'ro', default => 'Toby Inkster' );
+has copyright_years  => ( is => 'ro', default => '2022' );
+has target_version   => ( is => 'ro', default => $VERSION );
+has bug_tracker      => ( is => 'ro', default => 'http://github.com/tobyink/p5-hydrogen/issues' );
 has target_namespace => ( is => 'ro', default => 'Hydrogen' );
 has target_directory => ( is => 'ro', default => 'lib' );
 has test_directory   => ( is => 'ro', default => 't/unit' );
@@ -90,23 +98,27 @@ sub write_tests {
 }
 
 sub compile_bug_section {
-	return <<'EOTEXT';
+	my $self = shift;
+
+	return <<"EOTEXT";
 =head1 BUGS
 
 Please report any bugs to
-L<http://github.com/tobyink/p5-hydrogen/issues>.
+L<@{[ $self->bug_tracker ]}>.
 EOTEXT
 }
 
 sub compile_author_section {
-	return <<'EOTEXT';
+	my $self = shift;
+
+	return <<"EOTEXT";
 =head1 AUTHOR
 
-Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
+@{[ $self->author_name ]} E<lt>@{[ lc $self->author_cpanid ]}\@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2022 by Toby Inkster.
+This software is copyright (c) @{[ $self->copyright_years ]} by @{[ $self->author_name ]}.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
