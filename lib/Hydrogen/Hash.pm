@@ -59,6 +59,7 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
     my $__signature;
 
     sub accessor (\%$;$) {
+        my $__REF__ = \$_[0];
 
         package Hydrogen::Hash::__SANDBOX__;
         $__signature ||= sub {
@@ -103,9 +104,10 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
         };
         @_ = &$__signature;
         1;
-        if ( ( @_ - 1 ) == 1 ) { ( $_[0] )->{ $_[1] } }
+        my $shv_ref_invocant = do { $$__REF__ };
+        if ( ( @_ - 1 ) == 1 ) { ($shv_ref_invocant)->{ $_[1] } }
         else {
-            my %shv_tmp = %{ $_[0] };
+            my %shv_tmp = %{$shv_ref_invocant};
             $shv_tmp{ $_[1] } = $_[2];
             ( %{ $_[0] } = %{ +\%shv_tmp } );
         }
@@ -119,12 +121,14 @@ Returns the hash in list context.
 =cut
 
 sub all (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for all; usage: "
           . "Hydrogen::Hash::all( %hash )" );
-    %{ $_[0] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    %{$shv_ref_invocant};
 }
 
 =head2 C<< Hydrogen::Hash::clear( %hash ) >>
@@ -134,12 +138,14 @@ Empties the hash.
 =cut
 
 sub clear (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
           . "Hydrogen::Hash::clear( %hash )" );
     1;
+    my $shv_ref_invocant = do { $$__REF__ };
     ( %{ $_[0] } = () );
 }
 
@@ -150,12 +156,14 @@ Returns the number of keys in the hash.
 =cut
 
 sub count (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for count; usage: "
           . "Hydrogen::Hash::count( %hash )" );
-    scalar keys %{ $_[0] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    scalar keys %{$shv_ref_invocant};
 }
 
 =head2 C<< Hydrogen::Hash::defined( %hash, $key ) >>
@@ -167,6 +175,7 @@ Indicates whether a value exists and is defined in the hashref by its key.
 =cut
 
 sub defined (\%$) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ = do {
@@ -198,7 +207,8 @@ sub defined (\%$) {
 
         (@_);
     };
-    defined( ( $_[0] )->{ $_[1] } );
+    my $shv_ref_invocant = do { $$__REF__ };
+    defined( ($shv_ref_invocant)->{ $_[1] } );
 }
 
 =head2 C<< Hydrogen::Hash::delete( %hash, $key ) >>
@@ -208,14 +218,16 @@ Removes a value from the hashref by its key.
 =cut
 
 sub delete (\%$;@) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for delete; usage: "
           . "Hydrogen::Hash::delete( %hash, \$key )" );
     1;
-    my %shv_tmp    = %{ $_[0] };
-    my @shv_return = delete @shv_tmp{ @_[ 1 .. $#_ ] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    my %shv_tmp          = %{$shv_ref_invocant};
+    my @shv_return       = delete @shv_tmp{ @_[ 1 .. $#_ ] };
     ( %{ $_[0] } = %{ +\%shv_tmp } );
     wantarray ? @shv_return : $shv_return[-1];
 }
@@ -227,12 +239,14 @@ Returns the hash in list context.
 =cut
 
 sub elements (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for elements; usage: "
           . "Hydrogen::Hash::elements( %hash )" );
-    %{ $_[0] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    %{$shv_ref_invocant};
 }
 
 =head2 C<< Hydrogen::Hash::exists( %hash, $key ) >>
@@ -244,6 +258,7 @@ Indicates whether a value exists in the hashref by its key.
 =cut
 
 sub exists (\%$) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ = do {
@@ -275,7 +290,8 @@ sub exists (\%$) {
 
         (@_);
     };
-    defined( ( $_[0] )->{ $_[1] } );
+    my $shv_ref_invocant = do { $$__REF__ };
+    defined( ($shv_ref_invocant)->{ $_[1] } );
 }
 
 =head2 C<< Hydrogen::Hash::for_each_key( %hash, $coderef ) >>
@@ -287,6 +303,7 @@ Function which calls the coderef for each key in the hash, passing just the key 
 =cut
 
 sub for_each_key (\%$) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ = do {
@@ -313,8 +330,9 @@ sub for_each_key (\%$) {
 
         (@_);
     };
-    for my $shv_key ( keys %{ $_[0] } ) { &{ $_[1] }($shv_key) };
-    ( my $__SELF__ = $_[0] );
+    my $shv_ref_invocant = do { $$__REF__ };
+    for my $shv_key ( keys %{$shv_ref_invocant} ) { &{ $_[1] }($shv_key) };
+    $__REF__;
 }
 
 =head2 C<< Hydrogen::Hash::for_each_pair( %hash, $coderef ) >>
@@ -326,6 +344,7 @@ Function which calls the coderef for each key in the hash, passing the key and v
 =cut
 
 sub for_each_pair (\%$) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ = do {
@@ -352,10 +371,11 @@ sub for_each_pair (\%$) {
 
         (@_);
     };
-    while ( my ( $shv_key, $shv_value ) = each %{ $_[0] } ) {
+    my $shv_ref_invocant = do { $$__REF__ };
+    while ( my ( $shv_key, $shv_value ) = each %{$shv_ref_invocant} ) {
         &{ $_[1] }( $shv_key, $shv_value );
     };
-    ( my $__SELF__ = $_[0] );
+    $__REF__;
 }
 
 =head2 C<< Hydrogen::Hash::for_each_value( %hash, $coderef ) >>
@@ -367,6 +387,7 @@ Function which calls the coderef for each value in the hash, passing just the va
 =cut
 
 sub for_each_value (\%$) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ = do {
@@ -393,8 +414,9 @@ sub for_each_value (\%$) {
 
         (@_);
     };
-    for my $shv_value ( values %{ $_[0] } ) { &{ $_[1] }($shv_value) };
-    ( my $__SELF__ = $_[0] );
+    my $shv_ref_invocant = do { $$__REF__ };
+    for my $shv_value ( values %{$shv_ref_invocant} ) { &{ $_[1] }($shv_value) };
+    $__REF__;
 }
 
 =head2 C<< Hydrogen::Hash::get( %hash, $key ) >>
@@ -404,12 +426,16 @@ Returns a value from the hashref by its key.
 =cut
 
 sub get (\%$;@) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
           . "Hydrogen::Hash::get( %hash, \$key )" );
-    ( @_ - 1 ) > 1 ? @{ $_[0] }{ @_[ 1 .. $#_ ] } : ( $_[0] )->{ $_[1] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    ( @_ - 1 ) > 1
+      ? @{$shv_ref_invocant}{ @_[ 1 .. $#_ ] }
+      : ($shv_ref_invocant)->{ $_[1] };
 }
 
 =head2 C<< Hydrogen::Hash::is_empty( %hash ) >>
@@ -419,12 +445,14 @@ Returns true iff there are no keys in the hash.
 =cut
 
 sub is_empty (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for is_empty; usage: "
           . "Hydrogen::Hash::is_empty( %hash )" );
-    !scalar keys %{ $_[0] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    !scalar keys %{$shv_ref_invocant};
 }
 
 =head2 C<< Hydrogen::Hash::keys( %hash ) >>
@@ -434,12 +462,14 @@ Returns the list of keys in the hash.
 =cut
 
 sub keys (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for keys; usage: "
           . "Hydrogen::Hash::keys( %hash )" );
-    keys %{ $_[0] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    keys %{$shv_ref_invocant};
 }
 
 =head2 C<< Hydrogen::Hash::kv( %hash ) >>
@@ -449,12 +479,14 @@ Returns a list of arrayrefs, where each arrayref is a key-value pair.
 =cut
 
 sub kv (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for kv; usage: "
           . "Hydrogen::Hash::kv( %hash )" );
-    map [ $_ => ( $_[0] )->{$_} ], keys %{ $_[0] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    map [ $_ => ($shv_ref_invocant)->{$_} ], keys %{$shv_ref_invocant};
 }
 
 =head2 C<< Hydrogen::Hash::reset( %hash ) >>
@@ -464,11 +496,13 @@ Resets the original value to its default value, or an empty hashref if it has no
 =cut
 
 sub reset (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::Hash::reset( %hash )" );
+    my $shv_ref_invocant = do { $$__REF__ };
     (
         %{ $_[0] } = %{
             +do {
@@ -493,11 +527,13 @@ Given a key and value, adds the key to the hashref with the given value.
 =cut
 
 sub set (\%$$;@) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ >= 3
       or Hydrogen::croak( "Wrong number of parameters for set; usage: "
           . "Hydrogen::Hash::set( %hash, \$key, \$value, ... )" );
+    my $shv_ref_invocant = do { $$__REF__ };
     my (@shv_params) = @_[ 1 .. $#_ ];
     scalar(@shv_params) % 2 and do {
         require Carp;
@@ -528,7 +564,7 @@ sub set (\%$$;@) {
             $shv_params[$shv_tmp];
         };
     };
-    my %shv_tmp = %{ $_[0] };
+    my %shv_tmp = %{$shv_ref_invocant};
     @shv_tmp{ @shv_params[@shv_keys_idx] } = @shv_params[@shv_values_idx];
     ( %{ $_[0] } = %{ +\%shv_tmp } );
     wantarray
@@ -543,13 +579,15 @@ Creates a new hashref with the same keys and values as the original.
 =cut
 
 sub shallow_clone (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for shallow_clone; usage: "
           . "Hydrogen::Hash::shallow_clone( %hash )" );
-    +{ %{ $_[0] } };
+    my $shv_ref_invocant = do { $$__REF__ };
+    +{ %{$shv_ref_invocant} };
 }
 
 =head2 C<< Hydrogen::Hash::sorted_keys( %hash ) >>
@@ -559,12 +597,14 @@ Returns an alphabetically sorted list of keys in the hash.
 =cut
 
 sub sorted_keys (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for sorted_keys; usage: "
           . "Hydrogen::Hash::sorted_keys( %hash )" );
-    sort( keys %{ $_[0] } );
+    my $shv_ref_invocant = do { $$__REF__ };
+    sort( keys %{$shv_ref_invocant} );
 }
 
 =head2 C<< Hydrogen::Hash::values( %hash ) >>
@@ -574,12 +614,14 @@ Returns the list of values in the hash.
 =cut
 
 sub values (\%) {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Hash::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for values; usage: "
           . "Hydrogen::Hash::values( %hash )" );
-    values %{ $_[0] };
+    my $shv_ref_invocant = do { $$__REF__ };
+    values %{$shv_ref_invocant};
 }
 
 1;

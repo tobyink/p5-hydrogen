@@ -47,13 +47,17 @@ Finds the absolute value of the current number, updating the original value.
 =cut
 
 sub abs {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for abs; usage: "
           . "Hydrogen::Number::abs( \$number )" );
     1;
-    ( $_[0] = abs( $_[0] ) );
+    do {
+        my $shv_real_invocant = $$__REF__;
+        ( ${$__REF__} = abs($shv_real_invocant) );
+    }
 }
 
 =head2 C<< Hydrogen::Number::add( $number, $addend ) >>
@@ -65,6 +69,7 @@ Adds a number to the existing number, updating the original value.
 =cut
 
 sub add {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -107,29 +112,32 @@ sub add {
 
         (@_);
     };
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = $_[0] + $_[1];
-            do {
-                (
-                    do {
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = $shv_real_invocant + $_[1];
+                do {
+                    (
+                        do {
 
-                        package Hydrogen::Number::__SANDBOX__;
-                        use Scalar::Util ();
-                        defined($shv_final_unchecked)
-                          && !ref($shv_final_unchecked)
-                          && Scalar::Util::looks_like_number(
-                            $shv_final_unchecked);
-                    }
-                  )
-                  or Hydrogen::croak(
+                            package Hydrogen::Number::__SANDBOX__;
+                            use Scalar::Util ();
+                            defined($shv_final_unchecked)
+                              && !ref($shv_final_unchecked)
+                              && Scalar::Util::looks_like_number(
+                                $shv_final_unchecked);
+                        }
+                      )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Num", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 =head2 C<< Hydrogen::Number::cmp( $number, $num ) >>
@@ -141,6 +149,7 @@ Returns C<< $number <=> $num >>.
 =cut
 
 sub cmp {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -183,7 +192,7 @@ sub cmp {
 
         (@_);
     };
-    $_[0] <=> $_[1];
+    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant <=> $_[1] }
 }
 
 =head2 C<< Hydrogen::Number::div( $number, $divisor ) >>
@@ -195,6 +204,7 @@ Divides the existing number by a number, updating the original value.
 =cut
 
 sub div {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -237,29 +247,32 @@ sub div {
 
         (@_);
     };
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = $_[0] / $_[1];
-            do {
-                (
-                    do {
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = $shv_real_invocant / $_[1];
+                do {
+                    (
+                        do {
 
-                        package Hydrogen::Number::__SANDBOX__;
-                        use Scalar::Util ();
-                        defined($shv_final_unchecked)
-                          && !ref($shv_final_unchecked)
-                          && Scalar::Util::looks_like_number(
-                            $shv_final_unchecked);
-                    }
-                  )
-                  or Hydrogen::croak(
+                            package Hydrogen::Number::__SANDBOX__;
+                            use Scalar::Util ();
+                            defined($shv_final_unchecked)
+                              && !ref($shv_final_unchecked)
+                              && Scalar::Util::looks_like_number(
+                                $shv_final_unchecked);
+                        }
+                      )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Num", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 =head2 C<< Hydrogen::Number::eq( $number, $num ) >>
@@ -271,6 +284,7 @@ Returns C<< $number == $num >>.
 =cut
 
 sub eq {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -313,7 +327,7 @@ sub eq {
 
         (@_);
     };
-    $_[0] == $_[1];
+    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant == $_[1] }
 }
 
 =head2 C<< Hydrogen::Number::ge( $number, $num ) >>
@@ -325,6 +339,7 @@ Returns C<< $number >= $num >>.
 =cut
 
 sub ge {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -367,7 +382,7 @@ sub ge {
 
         (@_);
     };
-    $_[0] >= $_[1];
+    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant >= $_[1] }
 }
 
 =head2 C<< Hydrogen::Number::get( $number ) >>
@@ -377,12 +392,13 @@ Returns the current value of the number.
 =cut
 
 sub get {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
           . "Hydrogen::Number::get( \$number )" );
-    $_[0];
+    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant }
 }
 
 =head2 C<< Hydrogen::Number::gt( $number, $num ) >>
@@ -394,6 +410,7 @@ Returns C<< $number > $num >>.
 =cut
 
 sub gt {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -436,7 +453,7 @@ sub gt {
 
         (@_);
     };
-    $_[0] > $_[1];
+    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant > $_[1] }
 }
 
 =head2 C<< Hydrogen::Number::le( $number, $num ) >>
@@ -448,6 +465,7 @@ Returns C<< $number <= $num >>.
 =cut
 
 sub le {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -490,7 +508,7 @@ sub le {
 
         (@_);
     };
-    $_[0] <= $_[1];
+    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant <= $_[1] }
 }
 
 =head2 C<< Hydrogen::Number::lt( $number, $num ) >>
@@ -502,6 +520,7 @@ Returns C<< $number < $num >>.
 =cut
 
 sub lt {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -544,7 +563,7 @@ sub lt {
 
         (@_);
     };
-    $_[0] < $_[1];
+    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant < $_[1] }
 }
 
 =head2 C<< Hydrogen::Number::mod( $number, $divisor ) >>
@@ -556,6 +575,7 @@ Finds the current number modulo a divisor, updating the original value.
 =cut
 
 sub mod {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -598,29 +618,32 @@ sub mod {
 
         (@_);
     };
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = $_[0] % $_[1];
-            do {
-                (
-                    do {
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = $shv_real_invocant % $_[1];
+                do {
+                    (
+                        do {
 
-                        package Hydrogen::Number::__SANDBOX__;
-                        use Scalar::Util ();
-                        defined($shv_final_unchecked)
-                          && !ref($shv_final_unchecked)
-                          && Scalar::Util::looks_like_number(
-                            $shv_final_unchecked);
-                    }
-                  )
-                  or Hydrogen::croak(
+                            package Hydrogen::Number::__SANDBOX__;
+                            use Scalar::Util ();
+                            defined($shv_final_unchecked)
+                              && !ref($shv_final_unchecked)
+                              && Scalar::Util::looks_like_number(
+                                $shv_final_unchecked);
+                        }
+                      )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Num", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 =head2 C<< Hydrogen::Number::mul( $number, $factor ) >>
@@ -632,6 +655,7 @@ Multiplies the existing number by a number, updating the original value.
 =cut
 
 sub mul {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -674,29 +698,32 @@ sub mul {
 
         (@_);
     };
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = $_[0] * $_[1];
-            do {
-                (
-                    do {
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = $shv_real_invocant * $_[1];
+                do {
+                    (
+                        do {
 
-                        package Hydrogen::Number::__SANDBOX__;
-                        use Scalar::Util ();
-                        defined($shv_final_unchecked)
-                          && !ref($shv_final_unchecked)
-                          && Scalar::Util::looks_like_number(
-                            $shv_final_unchecked);
-                    }
-                  )
-                  or Hydrogen::croak(
+                            package Hydrogen::Number::__SANDBOX__;
+                            use Scalar::Util ();
+                            defined($shv_final_unchecked)
+                              && !ref($shv_final_unchecked)
+                              && Scalar::Util::looks_like_number(
+                                $shv_final_unchecked);
+                        }
+                      )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Num", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 =head2 C<< Hydrogen::Number::ne( $number, $num ) >>
@@ -708,6 +735,7 @@ Returns C<< $number != $num >>.
 =cut
 
 sub ne {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -750,7 +778,7 @@ sub ne {
 
         (@_);
     };
-    $_[0] != $_[1];
+    do { my $shv_real_invocant = $$__REF__; $shv_real_invocant != $_[1] }
 }
 
 =head2 C<< Hydrogen::Number::set( $number, $value ) >>
@@ -762,6 +790,7 @@ Sets the number to a new value.
 =cut
 
 sub set {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -804,29 +833,32 @@ sub set {
 
         (@_);
     };
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = $_[1];
-            do {
-                (
-                    do {
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = $_[1];
+                do {
+                    (
+                        do {
 
-                        package Hydrogen::Number::__SANDBOX__;
-                        use Scalar::Util ();
-                        defined($shv_final_unchecked)
-                          && !ref($shv_final_unchecked)
-                          && Scalar::Util::looks_like_number(
-                            $shv_final_unchecked);
-                    }
-                  )
-                  or Hydrogen::croak(
+                            package Hydrogen::Number::__SANDBOX__;
+                            use Scalar::Util ();
+                            defined($shv_final_unchecked)
+                              && !ref($shv_final_unchecked)
+                              && Scalar::Util::looks_like_number(
+                                $shv_final_unchecked);
+                        }
+                      )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Num", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 =head2 C<< Hydrogen::Number::sub( $number, $subtrahend ) >>
@@ -838,6 +870,7 @@ Subtracts a number from the existing number, updating the original value.
 =cut
 
 sub sub {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Number::__SANDBOX__;
     @_ = do {
@@ -880,29 +913,32 @@ sub sub {
 
         (@_);
     };
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = $_[0] - $_[1];
-            do {
-                (
-                    do {
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = $shv_real_invocant - $_[1];
+                do {
+                    (
+                        do {
 
-                        package Hydrogen::Number::__SANDBOX__;
-                        use Scalar::Util ();
-                        defined($shv_final_unchecked)
-                          && !ref($shv_final_unchecked)
-                          && Scalar::Util::looks_like_number(
-                            $shv_final_unchecked);
-                    }
-                  )
-                  or Hydrogen::croak(
+                            package Hydrogen::Number::__SANDBOX__;
+                            use Scalar::Util ();
+                            defined($shv_final_unchecked)
+                              && !ref($shv_final_unchecked)
+                              && Scalar::Util::looks_like_number(
+                                $shv_final_unchecked);
+                        }
+                      )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Num", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 1;

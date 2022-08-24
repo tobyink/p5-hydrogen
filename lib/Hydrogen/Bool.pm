@@ -37,12 +37,13 @@ Returns the opposite value of the boolean.
 =cut
 
 sub not {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for not; usage: "
           . "Hydrogen::Bool::not( \$bool )" );
-    !$_[0];
+    do { my $shv_real_invocant = $$__REF__; !$shv_real_invocant }
 }
 
 =head2 C<< Hydrogen::Bool::reset( $bool ) >>
@@ -52,24 +53,28 @@ Sets the boolean to its default value, or false if it has no default.
 =cut
 
 sub reset {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
           . "Hydrogen::Bool::reset( \$bool )" );
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = !!0;
-            do {
-                ( !!1 )
-                  or Hydrogen::croak(
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = !!0;
+                do {
+                    ( !!1 )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Any", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Any", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 =head2 C<< Hydrogen::Bool::set( $bool ) >>
@@ -79,24 +84,28 @@ Sets the value of the boolean to true.
 =cut
 
 sub set {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for set; usage: "
           . "Hydrogen::Bool::set( \$bool )" );
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = !!1;
-            do {
-                ( !!1 )
-                  or Hydrogen::croak(
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = !!1;
+                do {
+                    ( !!1 )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Any", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Any", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 =head2 C<< Hydrogen::Bool::toggle( $bool ) >>
@@ -106,24 +115,28 @@ Toggles the truth value of the boolean.
 =cut
 
 sub toggle {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for toggle; usage: "
           . "Hydrogen::Bool::toggle( \$bool )" );
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = !$_[0];
-            do {
-                ( !!1 )
-                  or Hydrogen::croak(
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = !$shv_real_invocant;
+                do {
+                    ( !!1 )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Any", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Any", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 =head2 C<< Hydrogen::Bool::unset( $bool ) >>
@@ -133,24 +146,28 @@ Sets the value of the boolean to false.
 =cut
 
 sub unset {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Bool::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for unset; usage: "
           . "Hydrogen::Bool::unset( \$bool )" );
-    (
-        $_[0] = do {
-            my $shv_final_unchecked = !!0;
-            do {
-                ( !!1 )
-                  or Hydrogen::croak(
+    do {
+        my $shv_real_invocant = $$__REF__;
+        (
+            ${$__REF__} = do {
+                my $shv_final_unchecked = !!0;
+                do {
+                    ( !!1 )
+                      or Hydrogen::croak(
 "Type check failed in delegated method: expected %s, got value %s",
-                    "Any", $shv_final_unchecked
-                  );
-                $shv_final_unchecked;
-            };
-        }
-    );
+                        "Any", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        );
+    }
 }
 
 1;

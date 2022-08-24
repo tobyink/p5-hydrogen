@@ -22,6 +22,7 @@ has lctype           => ( init_arg => undef, is => 'lazy' );
 has example_var      => ( init_arg => undef, is => 'lazy' );
 has target_module    => ( init_arg => undef, is => 'lazy' );
 has target_filename  => ( init_arg => undef, is => 'lazy' );
+has test_filename    => ( init_arg => undef, is => 'lazy' );
 has handler_library  => ( init_arg => undef, is => 'lazy' );
 has function_names   => ( init_arg => undef, is => 'lazy' );
 has functions        => ( init_arg => undef, is => 'lazy' );
@@ -88,6 +89,16 @@ sub _build_target_filename {
 		$self->dev->target_directory,
 		Module::Runtime::module_notional_filename( $self->target_module ),
 	);
+}
+
+sub _build_test_filename {
+	my $self = shift;
+
+	my $testfile = lc( $self->target_module );
+	$testfile =~ s{::}{-}g;
+	$testfile .= '.t';
+
+	return Path::Tiny::path( $self->dev->test_directory, $testfile );
 }
 
 sub _build_handler_library {
@@ -189,7 +200,7 @@ sub _build_codegen {
 	my $example_var      = $self->example_var;
 	my $code_for_default = $self->code_for_default;
 
-	my $setter = sub { my ($gen, $value) = @_; "( \$_[0] = $value )" };
+	my $setter = sub { my ($gen, $value) = @_; "( \${ \$__REF__ } = $value )" };
 	if ( $type eq 'Array' ) {
 		$setter = sub {
 			my ($gen, $value) = @_;
@@ -218,10 +229,10 @@ sub _build_codegen {
 		coerce         => !!0,
 		env            => {},
 		sandboxing_package => $self->sandboxing_package,
-		generator_for_slot => sub { my ($gen) = @_; '$_[0]'               },
-		generator_for_get  => sub { my ($gen) = @_; '$_[0]'               },
+		generator_for_self => sub { my ($gen) = @_;  '$__REF__' },
+		generator_for_slot => sub { my ($gen) = @_; '$$__REF__' },
+		generator_for_get  => sub { my ($gen) = @_; '$$__REF__' },
 		generator_for_set  => $setter,
-		generator_for_self => sub { my ($gen) = @_; '( my $__SELF__ = $_[0] )' },
 		generator_for_usage_string => sub {
 			my ( $gen, $method_name, $guts ) = @_;
 			if ( $prototyped and $type eq 'Code' ) {
@@ -363,6 +374,66 @@ See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 L<@{[ $self->dev->target_namespace ]}>, L<@{[ $self->handler_library ]}>.
 
 @{[ $self->dev->compile_author_section ]}
+FOOTER
+}
+
+sub write_test {
+	my $self = shift;
+
+	my $file = $self->test_filename;
+	$file->parent->mkpath;
+	$file->spew( $self->compile_test );
+
+	return $self;
+}
+
+sub compile_test {
+	my $self = shift;
+
+	return join q{} => (
+		$self->_compile_test_header,
+		$self->_compile_test_functions,
+		$self->_compile_test_footer,
+	);
+}
+
+sub _compile_test_header {
+	my $self = shift;
+
+	return <<"HEADER";
+use 5.008008;
+use strict;
+use warnings;
+
+use Test::More 0.96;
+use Test::Fatal;
+
+use @{[ $self->target_module ]};
+
+isa_ok( '@{[ $self->target_module ]}', 'Exporter::Tiny' );
+
+my %EXPORTS = map +( \$_ => 1 ), \@@{[ $self->target_module ]}::EXPORT_OK;
+
+HEADER
+}
+
+sub _compile_test_functions {
+	my $self = shift;
+
+	my $code = '';
+	for my $f ( @{ $self->functions } ) {
+		$code .= $f->compile_test;
+	}
+
+	return $code;
+}
+
+sub _compile_test_footer {
+	my $self = shift;
+
+	return <<"FOOTER";
+# :)
+done_testing;
 FOOTER
 }
 

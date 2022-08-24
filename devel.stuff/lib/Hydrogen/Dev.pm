@@ -10,6 +10,7 @@ use Moo;
 
 has target_namespace => ( is => 'ro', default => 'Hydrogen' );
 has target_directory => ( is => 'ro', default => 'lib' );
+has test_directory   => ( is => 'ro', default => 't/unit' );
 
 has types            => ( is => 'lazy', init_arg => undef );
 has reference_types  => ( is => 'lazy', init_arg => undef );
@@ -73,6 +74,16 @@ sub write_modules {
 
 	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
 		$type->write_module;
+	}
+
+	return $self;
+}
+
+sub write_tests {
+	my $self = shift;
+
+	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
+		$type->write_test;
 	}
 
 	return $self;

@@ -34,13 +34,14 @@ Returns a getter coderef.
 =cut
 
 sub make_getter {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Scalar::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for make_getter; usage: "
           . "Hydrogen::Scalar::make_getter( \$scalar )" );
-    my $s = ( my $__SELF__ = $_[0] );
-    sub { unshift @_, $s; $_[0] }
+    my $s = $__REF__;
+    sub { unshift @_, $s; $$__REF__ }
 }
 
 =head2 C<< Hydrogen::Scalar::make_setter( $scalar ) >>
@@ -50,17 +51,18 @@ Returns a setter coderef.
 =cut
 
 sub make_setter {
+    my $__REF__ = \$_[0];
 
     package Hydrogen::Scalar::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for make_setter; usage: "
           . "Hydrogen::Scalar::make_setter( \$scalar )" );
-    my $s = ( my $__SELF__ = $_[0] );
+    my $s = $__REF__;
     sub {
         my $val = shift;
         unshift @_, $s;
         (
-            $_[0] = do {
+            ${$__REF__} = do {
                 my $shv_final_unchecked = $val;
                 do {
                     ( !!1 )
