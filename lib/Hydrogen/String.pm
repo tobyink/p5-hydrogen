@@ -299,7 +299,7 @@ sub cmpi {
     };
     do {
         my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) cmp CORE::fc( $_[1] );
+        CORE::lc($shv_real_invocant) cmp CORE::lc( $_[1] );
     }
 }
 
@@ -407,7 +407,7 @@ sub contains_i {
     };
     do {
         my $shv_real_invocant = $$__REF__;
-        index( CORE::lc($shv_real_invocant), CORE::fc( $_[1] ) ) != -1;
+        index( CORE::lc($shv_real_invocant), CORE::lc( $_[1] ) ) != -1;
     }
 }
 
@@ -516,7 +516,7 @@ sub ends_with_i {
     do {
         my $shv_real_invocant = $$__REF__;
         CORE::lc( substr( $shv_real_invocant, -length $_[1] ) ) eq
-          CORE::fc( $_[1] );
+          CORE::lc( $_[1] );
     }
 }
 
@@ -621,7 +621,7 @@ sub eqi {
     };
     do {
         my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) eq CORE::fc( $_[1] );
+        CORE::lc($shv_real_invocant) eq CORE::lc( $_[1] );
     }
 }
 
@@ -742,7 +742,7 @@ sub gei {
     };
     do {
         my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) ge CORE::fc( $_[1] );
+        CORE::lc($shv_real_invocant) ge CORE::lc( $_[1] );
     }
 }
 
@@ -863,7 +863,7 @@ sub gti {
     };
     do {
         my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) gt CORE::fc( $_[1] );
+        CORE::lc($shv_real_invocant) gt CORE::lc( $_[1] );
     }
 }
 
@@ -1006,7 +1006,7 @@ sub lei {
     };
     do {
         my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) le CORE::fc( $_[1] );
+        CORE::lc($shv_real_invocant) le CORE::lc( $_[1] );
     }
 }
 
@@ -1127,7 +1127,7 @@ sub lti {
     };
     do {
         my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) lt CORE::fc( $_[1] );
+        CORE::lc($shv_real_invocant) lt CORE::lc( $_[1] );
     }
 }
 
@@ -1368,7 +1368,7 @@ sub nei {
     };
     do {
         my $shv_real_invocant = $$__REF__;
-        CORE::lc($shv_real_invocant) ne CORE::fc( $_[1] );
+        CORE::lc($shv_real_invocant) ne CORE::lc( $_[1] );
     }
 }
 
@@ -1903,7 +1903,7 @@ sub starts_with_i {
     do {
         my $shv_real_invocant = $$__REF__;
         CORE::lc( substr( $shv_real_invocant, 0, length $_[1] ) ) eq
-          CORE::fc( $_[1] );
+          CORE::lc( $_[1] );
     }
 }
 

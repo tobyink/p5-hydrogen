@@ -128,7 +128,7 @@ sub compile_code {
 		$code = $tidy;
 	}
 
-	$code =~ s/CORE::fc/CORE::lc/;
+	$code =~ s/CORE::fc/CORE::lc/g;
 
 	return $code . "\n";
 }
