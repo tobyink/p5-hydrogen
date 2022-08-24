@@ -9,19 +9,19 @@ package Hydrogen::Dev;
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.001';
 
-use Moo;
+use Hydrogen::Dev::Mite -all;
 
-has author_cpanid    => ( is => 'ro', default => 'tobyink' );
-has author_name      => ( is => 'ro', default => 'Toby Inkster' );
-has copyright_years  => ( is => 'ro', default => '2022' );
-has target_version   => ( is => 'ro', default => $VERSION );
-has bug_tracker      => ( is => 'ro', default => 'http://github.com/tobyink/p5-hydrogen/issues' );
-has target_namespace => ( is => 'ro', default => 'Hydrogen' );
-has target_directory => ( is => 'ro', default => 'lib' );
-has test_directory   => ( is => 'ro', default => 't/unit' );
+param author_cpanid    => ( isa => 'Str', default => 'tobyink' );
+param author_name      => ( isa => 'Str', default => 'Toby Inkster' );
+param copyright_years  => ( isa => 'Str', default => '2022' );
+param target_version   => ( isa => 'Str', default => $VERSION );
+param bug_tracker      => ( isa => 'Str', default => 'http://github.com/tobyink/p5-hydrogen/issues' );
+param target_namespace => ( isa => 'Str', default => 'Hydrogen' );
+param target_directory => ( isa => 'Str', default => 'lib' );
+param test_directory   => ( isa => 'Str', default => 't/unit' );
 
-has types            => ( is => 'lazy', init_arg => undef );
-has reference_types  => ( is => 'lazy', init_arg => undef );
+field types            => ( isa => 'ArrayRef', builder => true );
+field reference_types  => ( isa => 'ArrayRef', builder => true );
 
 sub _make_type {
 	shift;

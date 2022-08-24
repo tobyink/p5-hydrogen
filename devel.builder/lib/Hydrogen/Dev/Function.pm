@@ -9,12 +9,12 @@ package Hydrogen::Dev::Function;
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.001';
 
-use Moo;
+use Hydrogen::Dev::Mite -all;
 
-has function_name    => ( is => 'ro', required => !!1 );
-has type             => ( is => 'ro', required => !!1, weak_ref => !!1, handles => [ 'dev', 'type_name' ] );
+param function_name           => ( isa => 'Str' );
+param type                    => ( isa => 'Hydrogen::Dev::Type', weak_ref => true, handles => [ 'dev', 'type_name' ] );
 
-has handler          => ( is => 'lazy', init_arg => undef );
+field handler                 => ( builder => true );
 
 sub _build_handler {
 	my $self = shift;
@@ -88,7 +88,7 @@ sub compile_code {
 			Array => ' (\@)',
 			Code  => ' (&)',
 			Hash  => ' (\%)',
-		}->{ $self->type_name} // '';
+		}->{ $self->type_name } // '';
 	}
 	elsif ( $self->type->is_prototyped ) {
 		my ( $required, $optional ) = ( '', ';@' );

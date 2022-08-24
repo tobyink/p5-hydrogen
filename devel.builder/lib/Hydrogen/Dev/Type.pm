@@ -14,26 +14,26 @@ package Hydrogen::Dev::Type;
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.001';
 
-use Moo;
+use Hydrogen::Dev::Mite -all;
 
-has dev              => ( is => 'ro', required => !!1, weak_ref => !!1 );
-has type_name        => ( is => 'ro', required => !!1 );
-has is_prototyped    => ( is => 'ro', default => !!0 );
+param dev                     => ( isa => 'Hydrogen::Dev', weak_ref => true );
+param type_name               => ( isa => 'Str' );
+param is_prototyped           => ( isa => 'Bool', default => false );
 
-has code_for_default => ( init_arg => undef, is => 'lazy' );
-has lctype           => ( init_arg => undef, is => 'lazy' );
-has example_var      => ( init_arg => undef, is => 'lazy' );
-has target_module    => ( init_arg => undef, is => 'lazy' );
-has target_filename  => ( init_arg => undef, is => 'lazy' );
-has test_filename    => ( init_arg => undef, is => 'lazy' );
-has handler_library  => ( init_arg => undef, is => 'lazy' );
-has function_names   => ( init_arg => undef, is => 'lazy' );
-has functions        => ( init_arg => undef, is => 'lazy' );
-has codegen          => ( init_arg => undef, is => 'lazy' );
-has type_constraint  => ( init_arg => undef, is => 'lazy' );
-has sandboxing_package      => ( init_arg => undef, is => 'lazy' );
-has type_desc_for_abstract  => ( init_arg => undef, is => 'lazy' );
-has type_desc_for_functions => ( init_arg => undef, is => 'lazy' );
+field code_for_default        => ( builder => true );
+field lctype                  => ( builder => true );
+field example_var             => ( builder => true );
+field target_module           => ( builder => true );
+field target_filename         => ( builder => true );
+field test_filename           => ( builder => true );
+field handler_library         => ( builder => true );
+field function_names          => ( builder => true );
+field functions               => ( builder => true );
+field codegen                 => ( builder => true );
+field type_constraint         => ( builder => true );
+field sandboxing_package      => ( builder => true );
+field type_desc_for_abstract  => ( builder => true );
+field type_desc_for_functions => ( builder => true );
 
 sub _build_code_for_default {
 	my $self = shift;
