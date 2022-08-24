@@ -9,7 +9,7 @@ use Hydrogen::String ();
 package Hydrogen::Curry::String;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.002';
+our $VERSION   = '0.003';
 
 =head1 NAME
 

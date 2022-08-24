@@ -9,7 +9,16 @@
 	changeset [
 		item [
 			a dcs:Addition;
-			label "Hydrogen::Curry::* modules";
+			label "Hydrogen::Curry::* modules.";
+		];
+	].
+
+`Hydrogen 0.003 cpan:TOBYINK`
+	issued  2022-08-24;
+	changeset [
+		item [
+			a dcs:Documentation;
+			label "Don't fully qualify function names in pod headings.";
 		];
 	].
 
