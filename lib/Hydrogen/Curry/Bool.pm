@@ -9,7 +9,7 @@ use Hydrogen::Bool ();
 package Hydrogen::Curry::Bool;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.004';
+our $VERSION   = '0.005';
 
 =head1 NAME
 

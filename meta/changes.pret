@@ -31,3 +31,12 @@
 		];
 	].
 
+`Hydrogen 0.005 cpan:TOBYINK`
+	issued  2022-08-24;
+	changeset [
+		item [
+			a dcs:Change;
+			label "Simplified generated code.";
+		];
+	].
+
