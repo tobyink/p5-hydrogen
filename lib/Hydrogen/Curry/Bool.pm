@@ -31,7 +31,7 @@ use Exporter::Shiny qw(
     curry_unset
 );
 
-=head2 C<< Hydrogen::Curry::Bool::curry_not( $bool ) >>
+=head2 C<< curry_not( $bool ) >>
 
 Curry the first argument of C<< Hydrogen::Bool::not >>.
 
@@ -52,7 +52,7 @@ sub curry_not {
     return sub { Hydrogen::Bool::not( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Bool::curry_reset( $bool ) >>
+=head2 C<< curry_reset( $bool ) >>
 
 Curry the first argument of C<< Hydrogen::Bool::reset >>.
 
@@ -73,7 +73,7 @@ sub curry_reset {
     return sub { Hydrogen::Bool::reset( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Bool::curry_set( $bool ) >>
+=head2 C<< curry_set( $bool ) >>
 
 Curry the first argument of C<< Hydrogen::Bool::set >>.
 
@@ -94,7 +94,7 @@ sub curry_set {
     return sub { Hydrogen::Bool::set( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Bool::curry_toggle( $bool ) >>
+=head2 C<< curry_toggle( $bool ) >>
 
 Curry the first argument of C<< Hydrogen::Bool::toggle >>.
 
@@ -115,7 +115,7 @@ sub curry_toggle {
     return sub { Hydrogen::Bool::toggle( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Bool::curry_unset( $bool ) >>
+=head2 C<< curry_unset( $bool ) >>
 
 Curry the first argument of C<< Hydrogen::Bool::unset >>.
 

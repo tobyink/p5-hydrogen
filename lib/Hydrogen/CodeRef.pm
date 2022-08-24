@@ -26,7 +26,7 @@ use Exporter::Shiny qw(
     execute
 );
 
-=head2 C<< Hydrogen::CodeRef::execute( $code, @args ) >>
+=head2 C<< execute( $code, @args ) >>
 
 Calls the coderef, passing it any arguments.
 

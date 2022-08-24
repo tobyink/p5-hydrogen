@@ -41,7 +41,7 @@ use Exporter::Shiny qw(
     curry_sub
 );
 
-=head2 C<< Hydrogen::Curry::Number::curry_abs( $number ) >>
+=head2 C<< curry_abs( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::abs >>.
 
@@ -62,7 +62,7 @@ sub curry_abs {
     return sub { Hydrogen::Number::abs( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_add( $number ) >>
+=head2 C<< curry_add( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::add >>.
 
@@ -83,7 +83,7 @@ sub curry_add {
     return sub { Hydrogen::Number::add( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_cmp( $number ) >>
+=head2 C<< curry_cmp( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::cmp >>.
 
@@ -104,7 +104,7 @@ sub curry_cmp {
     return sub { Hydrogen::Number::cmp( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_div( $number ) >>
+=head2 C<< curry_div( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::div >>.
 
@@ -125,7 +125,7 @@ sub curry_div {
     return sub { Hydrogen::Number::div( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_eq( $number ) >>
+=head2 C<< curry_eq( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::eq >>.
 
@@ -146,7 +146,7 @@ sub curry_eq {
     return sub { Hydrogen::Number::eq( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_ge( $number ) >>
+=head2 C<< curry_ge( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::ge >>.
 
@@ -167,7 +167,7 @@ sub curry_ge {
     return sub { Hydrogen::Number::ge( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_get( $number ) >>
+=head2 C<< curry_get( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::get >>.
 
@@ -188,7 +188,7 @@ sub curry_get {
     return sub { Hydrogen::Number::get( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_gt( $number ) >>
+=head2 C<< curry_gt( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::gt >>.
 
@@ -209,7 +209,7 @@ sub curry_gt {
     return sub { Hydrogen::Number::gt( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_le( $number ) >>
+=head2 C<< curry_le( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::le >>.
 
@@ -230,7 +230,7 @@ sub curry_le {
     return sub { Hydrogen::Number::le( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_lt( $number ) >>
+=head2 C<< curry_lt( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::lt >>.
 
@@ -251,7 +251,7 @@ sub curry_lt {
     return sub { Hydrogen::Number::lt( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_mod( $number ) >>
+=head2 C<< curry_mod( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::mod >>.
 
@@ -272,7 +272,7 @@ sub curry_mod {
     return sub { Hydrogen::Number::mod( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_mul( $number ) >>
+=head2 C<< curry_mul( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::mul >>.
 
@@ -293,7 +293,7 @@ sub curry_mul {
     return sub { Hydrogen::Number::mul( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_ne( $number ) >>
+=head2 C<< curry_ne( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::ne >>.
 
@@ -314,7 +314,7 @@ sub curry_ne {
     return sub { Hydrogen::Number::ne( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_set( $number ) >>
+=head2 C<< curry_set( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::set >>.
 
@@ -335,7 +335,7 @@ sub curry_set {
     return sub { Hydrogen::Number::set( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Number::curry_sub( $number ) >>
+=head2 C<< curry_sub( $number ) >>
 
 Curry the first argument of C<< Hydrogen::Number::sub >>.
 

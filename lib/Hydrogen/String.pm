@@ -63,7 +63,7 @@ use Exporter::Shiny qw(
     uc
 );
 
-=head2 C<< Hydrogen::String::append( $string, $tail ) >>
+=head2 C<< append( $string, $tail ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -137,7 +137,7 @@ sub append {
     }
 }
 
-=head2 C<< Hydrogen::String::chomp( $string ) >>
+=head2 C<< chomp( $string ) >>
 
 Like C<chomp> from L<perlfunc>.
 
@@ -159,7 +159,7 @@ sub chomp {
     }
 }
 
-=head2 C<< Hydrogen::String::chop( $string ) >>
+=head2 C<< chop( $string ) >>
 
 Like C<chop> from L<perlfunc>.
 
@@ -181,7 +181,7 @@ sub chop {
     }
 }
 
-=head2 C<< Hydrogen::String::clear( $string ) >>
+=head2 C<< clear( $string ) >>
 
 Sets the string to the empty string.
 
@@ -198,7 +198,7 @@ sub clear {
     do { my $shv_real_invocant = $$__REF__; ( ${$__REF__} = q() ) }
 }
 
-=head2 C<< Hydrogen::String::cmp( $string, $str ) >>
+=head2 C<< cmp( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -249,7 +249,7 @@ sub cmp {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant cmp $_[1] }
 }
 
-=head2 C<< Hydrogen::String::cmpi( $string, $str ) >>
+=head2 C<< cmpi( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -303,7 +303,7 @@ sub cmpi {
     }
 }
 
-=head2 C<< Hydrogen::String::contains( $string, $str ) >>
+=head2 C<< contains( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -357,7 +357,7 @@ sub contains {
     }
 }
 
-=head2 C<< Hydrogen::String::contains_i( $string, $str ) >>
+=head2 C<< contains_i( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -411,7 +411,7 @@ sub contains_i {
     }
 }
 
-=head2 C<< Hydrogen::String::ends_with( $string, $tail ) >>
+=head2 C<< ends_with( $string, $tail ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -465,7 +465,7 @@ sub ends_with {
     }
 }
 
-=head2 C<< Hydrogen::String::ends_with_i( $string, $tail ) >>
+=head2 C<< ends_with_i( $string, $tail ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -520,7 +520,7 @@ sub ends_with_i {
     }
 }
 
-=head2 C<< Hydrogen::String::eq( $string, $str ) >>
+=head2 C<< eq( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -571,7 +571,7 @@ sub eq {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant eq $_[1] }
 }
 
-=head2 C<< Hydrogen::String::eqi( $string, $str ) >>
+=head2 C<< eqi( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -625,7 +625,7 @@ sub eqi {
     }
 }
 
-=head2 C<< Hydrogen::String::fc( $string ) >>
+=head2 C<< fc( $string ) >>
 
 Returns C<< fc($string) >>.
 
@@ -641,7 +641,7 @@ sub fc {
     do { my $shv_real_invocant = $$__REF__; CORE::lc($shv_real_invocant) }
 }
 
-=head2 C<< Hydrogen::String::ge( $string, $str ) >>
+=head2 C<< ge( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -692,7 +692,7 @@ sub ge {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant ge $_[1] }
 }
 
-=head2 C<< Hydrogen::String::gei( $string, $str ) >>
+=head2 C<< gei( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -746,7 +746,7 @@ sub gei {
     }
 }
 
-=head2 C<< Hydrogen::String::get( $string ) >>
+=head2 C<< get( $string ) >>
 
 Gets the current value of the string.
 
@@ -762,7 +762,7 @@ sub get {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant }
 }
 
-=head2 C<< Hydrogen::String::gt( $string, $str ) >>
+=head2 C<< gt( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -813,7 +813,7 @@ sub gt {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant gt $_[1] }
 }
 
-=head2 C<< Hydrogen::String::gti( $string, $str ) >>
+=head2 C<< gti( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -867,7 +867,7 @@ sub gti {
     }
 }
 
-=head2 C<< Hydrogen::String::inc( $string ) >>
+=head2 C<< inc( $string ) >>
 
 Performs C<< ++ >> on the string.
 
@@ -889,7 +889,7 @@ sub inc {
     }
 }
 
-=head2 C<< Hydrogen::String::lc( $string ) >>
+=head2 C<< lc( $string ) >>
 
 Returns C<< lc($string) >>.
 
@@ -905,7 +905,7 @@ sub lc {
     do { my $shv_real_invocant = $$__REF__; lc($shv_real_invocant) }
 }
 
-=head2 C<< Hydrogen::String::le( $string, $str ) >>
+=head2 C<< le( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -956,7 +956,7 @@ sub le {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant le $_[1] }
 }
 
-=head2 C<< Hydrogen::String::lei( $string, $str ) >>
+=head2 C<< lei( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1010,7 +1010,7 @@ sub lei {
     }
 }
 
-=head2 C<< Hydrogen::String::length( $string ) >>
+=head2 C<< length( $string ) >>
 
 Like C<length> from L<perlfunc>.
 
@@ -1026,7 +1026,7 @@ sub length {
     do { my $shv_real_invocant = $$__REF__; length($shv_real_invocant) }
 }
 
-=head2 C<< Hydrogen::String::lt( $string, $str ) >>
+=head2 C<< lt( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1077,7 +1077,7 @@ sub lt {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant lt $_[1] }
 }
 
-=head2 C<< Hydrogen::String::lti( $string, $str ) >>
+=head2 C<< lti( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1131,7 +1131,7 @@ sub lti {
     }
 }
 
-=head2 C<< Hydrogen::String::match( $string, $regexp ) >>
+=head2 C<< match( $string, $regexp ) >>
 
 Additional arguments: B<< Str|RegexpRef >>.
 
@@ -1199,7 +1199,7 @@ sub match {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant =~ /$_[1]/ }
 }
 
-=head2 C<< Hydrogen::String::match_i( $string, $regexp ) >>
+=head2 C<< match_i( $string, $regexp ) >>
 
 Additional arguments: B<< Str|RegexpRef >>.
 
@@ -1267,7 +1267,7 @@ sub match_i {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant =~ /$_[1]/i }
 }
 
-=head2 C<< Hydrogen::String::ne( $string, $str ) >>
+=head2 C<< ne( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1318,7 +1318,7 @@ sub ne {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant ne $_[1] }
 }
 
-=head2 C<< Hydrogen::String::nei( $string, $str ) >>
+=head2 C<< nei( $string, $str ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1372,7 +1372,7 @@ sub nei {
     }
 }
 
-=head2 C<< Hydrogen::String::prepend( $string, $head ) >>
+=head2 C<< prepend( $string, $head ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1446,7 +1446,7 @@ sub prepend {
     }
 }
 
-=head2 C<< Hydrogen::String::replace( $string, $regexp, $replacement ) >>
+=head2 C<< replace( $string, $regexp, $replacement ) >>
 
 Additional arguments: B<< Str|RegexpRef >>, B<< Str|CodeRef >>.
 
@@ -1563,7 +1563,7 @@ sub replace {
     }
 }
 
-=head2 C<< Hydrogen::String::replace_globally( $string, $regexp, $replacement ) >>
+=head2 C<< replace_globally( $string, $regexp, $replacement ) >>
 
 Additional arguments: B<< Str|RegexpRef >>, B<< Str|CodeRef >>.
 
@@ -1683,7 +1683,7 @@ sub replace_globally {
     }
 }
 
-=head2 C<< Hydrogen::String::reset( $string ) >>
+=head2 C<< reset( $string ) >>
 
 Resets the original value to its default value, or an empty string if it has no default.
 
@@ -1722,7 +1722,7 @@ sub reset {
     }
 }
 
-=head2 C<< Hydrogen::String::set( $string, $value ) >>
+=head2 C<< set( $string, $value ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1796,7 +1796,7 @@ sub set {
     }
 }
 
-=head2 C<< Hydrogen::String::starts_with( $string, $head ) >>
+=head2 C<< starts_with( $string, $head ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1850,7 +1850,7 @@ sub starts_with {
     }
 }
 
-=head2 C<< Hydrogen::String::starts_with_i( $string, $head ) >>
+=head2 C<< starts_with_i( $string, $head ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -1907,7 +1907,7 @@ sub starts_with_i {
     }
 }
 
-=head2 C<< Hydrogen::String::substr( $string, $start, $length?, $replacement? ) >>
+=head2 C<< substr( $string, $start, $length?, $replacement? ) >>
 
 Additional arguments: B<< Int >>, B<< Optional[Int] >>, B<< Optional[Str] >>.
 
@@ -2022,7 +2022,7 @@ Like C<substr> from L<perlfunc>, but is not an lvalue.
     }
 }
 
-=head2 C<< Hydrogen::String::uc( $string ) >>
+=head2 C<< uc( $string ) >>
 
 Returns C<< uc($string) >>.
 

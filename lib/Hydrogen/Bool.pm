@@ -30,7 +30,7 @@ use Exporter::Shiny qw(
     unset
 );
 
-=head2 C<< Hydrogen::Bool::not( $bool ) >>
+=head2 C<< not( $bool ) >>
 
 Returns the opposite value of the boolean.
 
@@ -46,7 +46,7 @@ sub not {
     do { my $shv_real_invocant = $$__REF__; !$shv_real_invocant }
 }
 
-=head2 C<< Hydrogen::Bool::reset( $bool ) >>
+=head2 C<< reset( $bool ) >>
 
 Sets the boolean to its default value, or false if it has no default.
 
@@ -77,7 +77,7 @@ sub reset {
     }
 }
 
-=head2 C<< Hydrogen::Bool::set( $bool ) >>
+=head2 C<< set( $bool ) >>
 
 Sets the value of the boolean to true.
 
@@ -108,7 +108,7 @@ sub set {
     }
 }
 
-=head2 C<< Hydrogen::Bool::toggle( $bool ) >>
+=head2 C<< toggle( $bool ) >>
 
 Toggles the truth value of the boolean.
 
@@ -139,7 +139,7 @@ sub toggle {
     }
 }
 
-=head2 C<< Hydrogen::Bool::unset( $bool ) >>
+=head2 C<< unset( $bool ) >>
 
 Sets the value of the boolean to false.
 

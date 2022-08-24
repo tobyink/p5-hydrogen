@@ -30,7 +30,7 @@ use Exporter::Shiny qw(
     curry_set
 );
 
-=head2 C<< Hydrogen::Curry::Counter::curry_dec( $counter ) >>
+=head2 C<< curry_dec( $counter ) >>
 
 Curry the first argument of C<< Hydrogen::Counter::dec >>.
 
@@ -51,7 +51,7 @@ sub curry_dec {
     return sub { Hydrogen::Counter::dec( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Counter::curry_inc( $counter ) >>
+=head2 C<< curry_inc( $counter ) >>
 
 Curry the first argument of C<< Hydrogen::Counter::inc >>.
 
@@ -72,7 +72,7 @@ sub curry_inc {
     return sub { Hydrogen::Counter::inc( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Counter::curry_reset( $counter ) >>
+=head2 C<< curry_reset( $counter ) >>
 
 Curry the first argument of C<< Hydrogen::Counter::reset >>.
 
@@ -93,7 +93,7 @@ sub curry_reset {
     return sub { Hydrogen::Counter::reset( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Counter::curry_set( $counter ) >>
+=head2 C<< curry_set( $counter ) >>
 
 Curry the first argument of C<< Hydrogen::Counter::set >>.
 

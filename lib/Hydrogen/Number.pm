@@ -40,7 +40,7 @@ use Exporter::Shiny qw(
     sub
 );
 
-=head2 C<< Hydrogen::Number::abs( $number ) >>
+=head2 C<< abs( $number ) >>
 
 Finds the absolute value of the current number, updating the original value.
 
@@ -60,7 +60,7 @@ sub abs {
     }
 }
 
-=head2 C<< Hydrogen::Number::add( $number, $addend ) >>
+=head2 C<< add( $number, $addend ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -140,7 +140,7 @@ sub add {
     }
 }
 
-=head2 C<< Hydrogen::Number::cmp( $number, $num ) >>
+=head2 C<< cmp( $number, $num ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -195,7 +195,7 @@ sub cmp {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant <=> $_[1] }
 }
 
-=head2 C<< Hydrogen::Number::div( $number, $divisor ) >>
+=head2 C<< div( $number, $divisor ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -275,7 +275,7 @@ sub div {
     }
 }
 
-=head2 C<< Hydrogen::Number::eq( $number, $num ) >>
+=head2 C<< eq( $number, $num ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -330,7 +330,7 @@ sub eq {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant == $_[1] }
 }
 
-=head2 C<< Hydrogen::Number::ge( $number, $num ) >>
+=head2 C<< ge( $number, $num ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -385,7 +385,7 @@ sub ge {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant >= $_[1] }
 }
 
-=head2 C<< Hydrogen::Number::get( $number ) >>
+=head2 C<< get( $number ) >>
 
 Returns the current value of the number.
 
@@ -401,7 +401,7 @@ sub get {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant }
 }
 
-=head2 C<< Hydrogen::Number::gt( $number, $num ) >>
+=head2 C<< gt( $number, $num ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -456,7 +456,7 @@ sub gt {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant > $_[1] }
 }
 
-=head2 C<< Hydrogen::Number::le( $number, $num ) >>
+=head2 C<< le( $number, $num ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -511,7 +511,7 @@ sub le {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant <= $_[1] }
 }
 
-=head2 C<< Hydrogen::Number::lt( $number, $num ) >>
+=head2 C<< lt( $number, $num ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -566,7 +566,7 @@ sub lt {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant < $_[1] }
 }
 
-=head2 C<< Hydrogen::Number::mod( $number, $divisor ) >>
+=head2 C<< mod( $number, $divisor ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -646,7 +646,7 @@ sub mod {
     }
 }
 
-=head2 C<< Hydrogen::Number::mul( $number, $factor ) >>
+=head2 C<< mul( $number, $factor ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -726,7 +726,7 @@ sub mul {
     }
 }
 
-=head2 C<< Hydrogen::Number::ne( $number, $num ) >>
+=head2 C<< ne( $number, $num ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -781,7 +781,7 @@ sub ne {
     do { my $shv_real_invocant = $$__REF__; $shv_real_invocant != $_[1] }
 }
 
-=head2 C<< Hydrogen::Number::set( $number, $value ) >>
+=head2 C<< set( $number, $value ) >>
 
 Additional arguments: B<< Num >>.
 
@@ -861,7 +861,7 @@ sub set {
     }
 }
 
-=head2 C<< Hydrogen::Number::sub( $number, $subtrahend ) >>
+=head2 C<< sub( $number, $subtrahend ) >>
 
 Additional arguments: B<< Num >>.
 

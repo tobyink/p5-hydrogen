@@ -29,7 +29,7 @@ use Exporter::Shiny qw(
     set
 );
 
-=head2 C<< Hydrogen::Counter::dec( $counter, $amount? ) >>
+=head2 C<< dec( $counter, $amount? ) >>
 
 Additional arguments: B<< Optional[Int] >>.
 
@@ -106,7 +106,7 @@ Decrements the counter by C<< $amount >>, or by 1 if no value is given.
     }
 }
 
-=head2 C<< Hydrogen::Counter::inc( $counter, $amount? ) >>
+=head2 C<< inc( $counter, $amount? ) >>
 
 Additional arguments: B<< Optional[Int] >>.
 
@@ -183,7 +183,7 @@ Increments the counter by C<< $amount >>, or by 1 if no value is given.
     }
 }
 
-=head2 C<< Hydrogen::Counter::reset( $counter ) >>
+=head2 C<< reset( $counter ) >>
 
 Sets the counter to its default value, or 0 if it has no default.
 
@@ -221,7 +221,7 @@ sub reset {
     }
 }
 
-=head2 C<< Hydrogen::Counter::set( $counter, $value ) >>
+=head2 C<< set( $counter, $value ) >>
 
 Additional arguments: B<< Int >>.
 

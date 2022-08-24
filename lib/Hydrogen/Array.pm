@@ -88,7 +88,7 @@ use Exporter::Shiny qw(
     unshift
 );
 
-=head2 C<< Hydrogen::Array::accessor( @array, $index, $value? ) >>
+=head2 C<< accessor( @array, $index, $value? ) >>
 
 Additional arguments: B<< Int >>, B<< Optional[Any] >>.
 
@@ -154,7 +154,7 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
     }
 }
 
-=head2 C<< Hydrogen::Array::all( @array ) >>
+=head2 C<< all( @array ) >>
 
 All elements in the array, in list context.
 
@@ -171,7 +171,7 @@ sub all (\@) {
     @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::all_true( @array, $coderef ) >>
+=head2 C<< all_true( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -209,7 +209,7 @@ sub all_true (\@$) {
     &List::Util::all( $_[1], @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::any( @array, $coderef ) >>
+=head2 C<< any( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -247,7 +247,7 @@ sub any (\@$) {
     &List::Util::any( $_[1], @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::apply( @array, $coderef ) >>
+=head2 C<< apply( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -287,7 +287,7 @@ sub apply (\@$) {
     wantarray ? @shv_tmp : $shv_tmp[-1];
 }
 
-=head2 C<< Hydrogen::Array::clear( @array ) >>
+=head2 C<< clear( @array ) >>
 
 Empties the array.
 
@@ -305,7 +305,7 @@ sub clear (\@) {
     ( @{ $_[0] } = () );
 }
 
-=head2 C<< Hydrogen::Array::count( @array ) >>
+=head2 C<< count( @array ) >>
 
 The number of elements in the referenced array.
 
@@ -322,7 +322,7 @@ sub count (\@) {
     scalar( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::delete( @array, $index ) >>
+=head2 C<< delete( @array, $index ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -369,7 +369,7 @@ sub delete (\@$) {
     $shv_return;
 }
 
-=head2 C<< Hydrogen::Array::elements( @array ) >>
+=head2 C<< elements( @array ) >>
 
 All elements in the array, in list context.
 
@@ -386,7 +386,7 @@ sub elements (\@) {
     @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::first( @array, $coderef ) >>
+=head2 C<< first( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -424,7 +424,7 @@ sub first (\@$) {
     &List::Util::first( $_[1], @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::first_index( @array, $coderef ) >>
+=head2 C<< first_index( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -463,7 +463,7 @@ sub first_index (\@$) {
         @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::flatten( @array ) >>
+=head2 C<< flatten( @array ) >>
 
 All elements in the array, in list context.
 
@@ -480,7 +480,7 @@ sub flatten (\@) {
     @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::flatten_deep( @array, $depth? ) >>
+=head2 C<< flatten_deep( @array, $depth? ) >>
 
 Additional arguments: B<< Optional[Int] >>.
 
@@ -533,7 +533,7 @@ Flattens the arrayref into a list, including any nested arrayrefs.
     }
 }
 
-=head2 C<< Hydrogen::Array::for_each( @array, $coderef ) >>
+=head2 C<< for_each( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -574,7 +574,7 @@ sub for_each (\@$) {
     $__REF__;
 }
 
-=head2 C<< Hydrogen::Array::for_each_pair( @array, $coderef ) >>
+=head2 C<< for_each_pair( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -625,7 +625,7 @@ sub for_each_pair (\@$) {
     $__REF__;
 }
 
-=head2 C<< Hydrogen::Array::get( @array, $index ) >>
+=head2 C<< get( @array, $index ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -668,7 +668,7 @@ sub get (\@$) {
     ($shv_ref_invocant)->[ $_[1] ];
 }
 
-=head2 C<< Hydrogen::Array::grep( @array, $coderef ) >>
+=head2 C<< grep( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -706,7 +706,7 @@ sub grep (\@$) {
     grep( $_[1]->($_), @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::head( @array, $count ) >>
+=head2 C<< head( @array, $count ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -752,7 +752,7 @@ sub head (\@$) {
     ( @{$shv_ref_invocant} )[ 0 .. ( $shv_count - 1 ) ];
 }
 
-=head2 C<< Hydrogen::Array::insert( @array, $index, $value ) >>
+=head2 C<< insert( @array, $index, $value ) >>
 
 Additional arguments: B<< Int >>, B<< Any >>.
 
@@ -801,7 +801,7 @@ sub insert (\@$$) {
     ( @{ $_[0] } = @{ +\@shv_tmp } );
 }
 
-=head2 C<< Hydrogen::Array::is_empty( @array ) >>
+=head2 C<< is_empty( @array ) >>
 
 Boolean indicating if the referenced array is empty.
 
@@ -818,7 +818,7 @@ sub is_empty (\@) {
     !scalar( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::join( @array, $with? ) >>
+=head2 C<< join( @array, $with? ) >>
 
 Additional arguments: B<< Optional[Str] >>.
 
@@ -871,7 +871,7 @@ Returns a string joining all the elements in the array; if C<< $with >> is omitt
     }
 }
 
-=head2 C<< Hydrogen::Array::map( @array, $coderef ) >>
+=head2 C<< map( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -909,7 +909,7 @@ sub map (\@$) {
     map( $_[1]->($_), @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::max( @array ) >>
+=head2 C<< max( @array ) >>
 
 Like C<< List::Util::max() >>.
 
@@ -926,7 +926,7 @@ sub max (\@) {
     &List::Util::max( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::maxstr( @array ) >>
+=head2 C<< maxstr( @array ) >>
 
 Like C<< List::Util::maxstr() >>.
 
@@ -943,7 +943,7 @@ sub maxstr (\@) {
     &List::Util::maxstr( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::min( @array ) >>
+=head2 C<< min( @array ) >>
 
 Like C<< List::Util::min() >>.
 
@@ -960,7 +960,7 @@ sub min (\@) {
     &List::Util::min( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::minstr( @array ) >>
+=head2 C<< minstr( @array ) >>
 
 Like C<< List::Util::minstr() >>.
 
@@ -977,7 +977,7 @@ sub minstr (\@) {
     &List::Util::minstr( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::natatime( @array, $n, $callback? ) >>
+=head2 C<< natatime( @array, $n, $callback? ) >>
 
 Additional arguments: B<< Int >>, B<< Optional[CodeRef] >>.
 
@@ -1044,7 +1044,7 @@ Given just a number, returns an iterator which reads that many elements from the
     }
 }
 
-=head2 C<< Hydrogen::Array::not_all_true( @array, $coderef ) >>
+=head2 C<< not_all_true( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1084,7 +1084,7 @@ sub not_all_true (\@$) {
     &List::Util::notall( $_[1], @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::pairfirst( @array, $coderef ) >>
+=head2 C<< pairfirst( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1122,7 +1122,7 @@ sub pairfirst (\@$) {
     List::Util::pairfirst { $_[1]->($_) } @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::pairgrep( @array, $coderef ) >>
+=head2 C<< pairgrep( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1160,7 +1160,7 @@ sub pairgrep (\@$) {
     List::Util::pairgrep { $_[1]->($_) } @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::pairkeys( @array ) >>
+=head2 C<< pairkeys( @array ) >>
 
 Like C<< List::Util::pairkeys() >>.
 
@@ -1177,7 +1177,7 @@ sub pairkeys (\@) {
     &List::Util::pairkeys( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::pairmap( @array, $coderef ) >>
+=head2 C<< pairmap( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1215,7 +1215,7 @@ sub pairmap (\@$) {
     List::Util::pairmap { $_[1]->($_) } @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::pairs( @array ) >>
+=head2 C<< pairs( @array ) >>
 
 Like C<< List::Util::pairs() >>.
 
@@ -1232,7 +1232,7 @@ sub pairs (\@) {
     &List::Util::pairs( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::pairvalues( @array ) >>
+=head2 C<< pairvalues( @array ) >>
 
 Like C<< List::Util::pairvalues() >>.
 
@@ -1249,7 +1249,7 @@ sub pairvalues (\@) {
     &List::Util::pairvalues( @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::pick_random( @array, $count ) >>
+=head2 C<< pick_random( @array, $count ) >>
 
 Additional arguments: B<< Optional[Int] >>.
 
@@ -1307,7 +1307,7 @@ If no C<< $count >> is given, returns one element of the array at random. If C<<
     }
 }
 
-=head2 C<< Hydrogen::Array::pop( @array ) >>
+=head2 C<< pop( @array ) >>
 
 Removes the last element from the array and returns it.
 
@@ -1328,7 +1328,7 @@ sub pop (\@) {
     $shv_return;
 }
 
-=head2 C<< Hydrogen::Array::print( @array, $fh?, $with? ) >>
+=head2 C<< print( @array, $fh?, $with? ) >>
 
 Additional arguments: B<< Optional[FileHandle] >>, B<< Optional[Str] >>.
 
@@ -1398,7 +1398,7 @@ Prints a string joining all the elements in the array; if C<< $fh >> is omitted,
     }
 }
 
-=head2 C<< Hydrogen::Array::product( @array ) >>
+=head2 C<< product( @array ) >>
 
 Like C<< List::Util::product() >>.
 
@@ -1415,7 +1415,7 @@ sub product (\@) {
     &List::Util::product( 1, @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::push( @array, @values ) >>
+=head2 C<< push( @array, @values ) >>
 
 Adds elements to the end of the array.
 
@@ -1433,7 +1433,7 @@ sub push (\@;@) {
     $shv_return;
 }
 
-=head2 C<< Hydrogen::Array::reduce( @array, $coderef ) >>
+=head2 C<< reduce( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1472,7 +1472,7 @@ sub reduce (\@$) {
     List::Util::reduce { $shv_callback->( $a, $b ) } @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::reductions( @array, $coderef ) >>
+=head2 C<< reductions( @array, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1511,7 +1511,7 @@ sub reductions (\@$) {
     List::Util::reductions { $shv_callback->( $a, $b ) } @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::reset( @array ) >>
+=head2 C<< reset( @array ) >>
 
 Resets the original value to its default value, or an empty arrayref if it has no default.
 
@@ -1542,7 +1542,7 @@ sub reset (\@) {
     );
 }
 
-=head2 C<< Hydrogen::Array::reverse( @array ) >>
+=head2 C<< reverse( @array ) >>
 
 Returns the reversed array in list context.
 
@@ -1559,7 +1559,7 @@ sub reverse (\@) {
     reverse @{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::Array::sample( @array, $count ) >>
+=head2 C<< sample( @array, $count ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -1602,7 +1602,7 @@ sub sample (\@$) {
     &List::Util::sample( $_[1], @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::set( @array, $index, $value ) >>
+=head2 C<< set( @array, $index, $value ) >>
 
 Additional arguments: B<< Int >>, B<< Any >>.
 
@@ -1652,7 +1652,7 @@ sub set (\@$$) {
     $_[2];
 }
 
-=head2 C<< Hydrogen::Array::shallow_clone( @array ) >>
+=head2 C<< shallow_clone( @array ) >>
 
 Creates a new arrayref with the same elements as the original.
 
@@ -1670,7 +1670,7 @@ sub shallow_clone (\@) {
     [ @{$shv_ref_invocant} ];
 }
 
-=head2 C<< Hydrogen::Array::shift( @array ) >>
+=head2 C<< shift( @array ) >>
 
 Removes an element from the start of the array and returns it.
 
@@ -1691,7 +1691,7 @@ sub shift (\@) {
     $shv_return;
 }
 
-=head2 C<< Hydrogen::Array::shuffle( @array ) >>
+=head2 C<< shuffle( @array ) >>
 
 Returns the array in a random order; can be called in list context or scalar context and will return an arrayref in the latter case.
 
@@ -1709,7 +1709,7 @@ sub shuffle (\@) {
     wantarray ? @shv_return : \@shv_return;
 }
 
-=head2 C<< Hydrogen::Array::shuffle_in_place( @array ) >>
+=head2 C<< shuffle_in_place( @array ) >>
 
 Rearranges the array in a random order, and changes the original value to point to the new order.
 
@@ -1729,7 +1729,7 @@ sub shuffle_in_place (\@) {
     ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
-=head2 C<< Hydrogen::Array::sort( @array, $coderef? ) >>
+=head2 C<< sort( @array, $coderef? ) >>
 
 Additional arguments: B<< Optional[CodeRef] >>.
 
@@ -1777,7 +1777,7 @@ Like C<sort> from L<perlfunc>.
     }
 }
 
-=head2 C<< Hydrogen::Array::sort_in_place( @array, $coderef? ) >>
+=head2 C<< sort_in_place( @array, $coderef? ) >>
 
 Additional arguments: B<< Optional[CodeRef] >>.
 
@@ -1829,7 +1829,7 @@ Like C<sort> from L<perlfunc>, but changes the original value to point to the ne
     }
 }
 
-=head2 C<< Hydrogen::Array::splice( @array, $index, $length, @values ) >>
+=head2 C<< splice( @array, $index, $length, @values ) >>
 
 Like C<splice> from L<perlfunc>.
 
@@ -1883,7 +1883,7 @@ sub splice (\@$;@) {
     wantarray ? @shv_return : $shv_return[-1];
 }
 
-=head2 C<< Hydrogen::Array::sum( @array ) >>
+=head2 C<< sum( @array ) >>
 
 Like C<< List::Util::sum0() >>.
 
@@ -1900,7 +1900,7 @@ sub sum (\@) {
     &List::Util::sum( 0, @{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::Array::tail( @array, $count ) >>
+=head2 C<< tail( @array, $count ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -1948,7 +1948,7 @@ sub tail (\@$) {
     ( @{$shv_ref_invocant} )[ $shv_start .. $shv_end ];
 }
 
-=head2 C<< Hydrogen::Array::uniq( @array ) >>
+=head2 C<< uniq( @array ) >>
 
 Returns the array filtered to remove duplicates; can be called in list context or scalar context and will return an arrayref in the latter case.
 
@@ -1966,7 +1966,7 @@ sub uniq (\@) {
     wantarray ? @shv_return : \@shv_return;
 }
 
-=head2 C<< Hydrogen::Array::uniq_in_place( @array ) >>
+=head2 C<< uniq_in_place( @array ) >>
 
 Filters the array to remove duplicates, and changes the original value to point to the filtered array.
 
@@ -1986,7 +1986,7 @@ sub uniq_in_place (\@) {
     ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
-=head2 C<< Hydrogen::Array::uniqnum( @array ) >>
+=head2 C<< uniqnum( @array ) >>
 
 Returns the array filtered to remove duplicates numerically; can be called in list context or scalar context and will return an arrayref in the latter case.
 
@@ -2004,7 +2004,7 @@ sub uniqnum (\@) {
     wantarray ? @shv_return : \@shv_return;
 }
 
-=head2 C<< Hydrogen::Array::uniqnum_in_place( @array ) >>
+=head2 C<< uniqnum_in_place( @array ) >>
 
 Filters the array to remove duplicates numerically, and changes the original value to point to the filtered array.
 
@@ -2024,7 +2024,7 @@ sub uniqnum_in_place (\@) {
     ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
-=head2 C<< Hydrogen::Array::uniqstr( @array ) >>
+=head2 C<< uniqstr( @array ) >>
 
 Returns the array filtered to remove duplicates stringwise; can be called in list context or scalar context and will return an arrayref in the latter case.
 
@@ -2042,7 +2042,7 @@ sub uniqstr (\@) {
     wantarray ? @shv_return : \@shv_return;
 }
 
-=head2 C<< Hydrogen::Array::uniqstr_in_place( @array ) >>
+=head2 C<< uniqstr_in_place( @array ) >>
 
 Filters the array to remove duplicates stringwise, and changes the original value to point to the filtered array.
 
@@ -2062,7 +2062,7 @@ sub uniqstr_in_place (\@) {
     ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
-=head2 C<< Hydrogen::Array::unshift( @array, @values ) >>
+=head2 C<< unshift( @array, @values ) >>
 
 Adds an element to the start of the array.
 

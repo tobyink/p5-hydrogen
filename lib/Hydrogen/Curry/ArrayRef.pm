@@ -87,7 +87,7 @@ use Exporter::Shiny qw(
     curry_unshift
 );
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_accessor( $array ) >>
+=head2 C<< curry_accessor( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::accessor >>.
 
@@ -108,7 +108,7 @@ sub curry_accessor {
     return sub { Hydrogen::ArrayRef::accessor( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_all( $array ) >>
+=head2 C<< curry_all( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::all >>.
 
@@ -129,7 +129,7 @@ sub curry_all {
     return sub { Hydrogen::ArrayRef::all( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_all_true( $array ) >>
+=head2 C<< curry_all_true( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::all_true >>.
 
@@ -150,7 +150,7 @@ sub curry_all_true {
     return sub { Hydrogen::ArrayRef::all_true( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_any( $array ) >>
+=head2 C<< curry_any( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::any >>.
 
@@ -171,7 +171,7 @@ sub curry_any {
     return sub { Hydrogen::ArrayRef::any( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_apply( $array ) >>
+=head2 C<< curry_apply( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::apply >>.
 
@@ -192,7 +192,7 @@ sub curry_apply {
     return sub { Hydrogen::ArrayRef::apply( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_clear( $array ) >>
+=head2 C<< curry_clear( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::clear >>.
 
@@ -213,7 +213,7 @@ sub curry_clear {
     return sub { Hydrogen::ArrayRef::clear( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_count( $array ) >>
+=head2 C<< curry_count( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::count >>.
 
@@ -234,7 +234,7 @@ sub curry_count {
     return sub { Hydrogen::ArrayRef::count( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_delete( $array ) >>
+=head2 C<< curry_delete( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::delete >>.
 
@@ -255,7 +255,7 @@ sub curry_delete {
     return sub { Hydrogen::ArrayRef::delete( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_elements( $array ) >>
+=head2 C<< curry_elements( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::elements >>.
 
@@ -276,7 +276,7 @@ sub curry_elements {
     return sub { Hydrogen::ArrayRef::elements( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_first( $array ) >>
+=head2 C<< curry_first( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::first >>.
 
@@ -297,7 +297,7 @@ sub curry_first {
     return sub { Hydrogen::ArrayRef::first( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_first_index( $array ) >>
+=head2 C<< curry_first_index( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::first_index >>.
 
@@ -318,7 +318,7 @@ sub curry_first_index {
     return sub { Hydrogen::ArrayRef::first_index( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_flatten( $array ) >>
+=head2 C<< curry_flatten( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::flatten >>.
 
@@ -339,7 +339,7 @@ sub curry_flatten {
     return sub { Hydrogen::ArrayRef::flatten( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_flatten_deep( $array ) >>
+=head2 C<< curry_flatten_deep( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::flatten_deep >>.
 
@@ -360,7 +360,7 @@ sub curry_flatten_deep {
     return sub { Hydrogen::ArrayRef::flatten_deep( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_for_each( $array ) >>
+=head2 C<< curry_for_each( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::for_each >>.
 
@@ -381,7 +381,7 @@ sub curry_for_each {
     return sub { Hydrogen::ArrayRef::for_each( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_for_each_pair( $array ) >>
+=head2 C<< curry_for_each_pair( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::for_each_pair >>.
 
@@ -402,7 +402,7 @@ sub curry_for_each_pair {
     return sub { Hydrogen::ArrayRef::for_each_pair( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_get( $array ) >>
+=head2 C<< curry_get( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::get >>.
 
@@ -423,7 +423,7 @@ sub curry_get {
     return sub { Hydrogen::ArrayRef::get( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_grep( $array ) >>
+=head2 C<< curry_grep( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::grep >>.
 
@@ -444,7 +444,7 @@ sub curry_grep {
     return sub { Hydrogen::ArrayRef::grep( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_head( $array ) >>
+=head2 C<< curry_head( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::head >>.
 
@@ -465,7 +465,7 @@ sub curry_head {
     return sub { Hydrogen::ArrayRef::head( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_insert( $array ) >>
+=head2 C<< curry_insert( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::insert >>.
 
@@ -486,7 +486,7 @@ sub curry_insert {
     return sub { Hydrogen::ArrayRef::insert( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_is_empty( $array ) >>
+=head2 C<< curry_is_empty( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::is_empty >>.
 
@@ -507,7 +507,7 @@ sub curry_is_empty {
     return sub { Hydrogen::ArrayRef::is_empty( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_join( $array ) >>
+=head2 C<< curry_join( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::join >>.
 
@@ -528,7 +528,7 @@ sub curry_join {
     return sub { Hydrogen::ArrayRef::join( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_map( $array ) >>
+=head2 C<< curry_map( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::map >>.
 
@@ -549,7 +549,7 @@ sub curry_map {
     return sub { Hydrogen::ArrayRef::map( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_max( $array ) >>
+=head2 C<< curry_max( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::max >>.
 
@@ -570,7 +570,7 @@ sub curry_max {
     return sub { Hydrogen::ArrayRef::max( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_maxstr( $array ) >>
+=head2 C<< curry_maxstr( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::maxstr >>.
 
@@ -591,7 +591,7 @@ sub curry_maxstr {
     return sub { Hydrogen::ArrayRef::maxstr( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_min( $array ) >>
+=head2 C<< curry_min( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::min >>.
 
@@ -612,7 +612,7 @@ sub curry_min {
     return sub { Hydrogen::ArrayRef::min( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_minstr( $array ) >>
+=head2 C<< curry_minstr( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::minstr >>.
 
@@ -633,7 +633,7 @@ sub curry_minstr {
     return sub { Hydrogen::ArrayRef::minstr( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_natatime( $array ) >>
+=head2 C<< curry_natatime( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::natatime >>.
 
@@ -654,7 +654,7 @@ sub curry_natatime {
     return sub { Hydrogen::ArrayRef::natatime( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_not_all_true( $array ) >>
+=head2 C<< curry_not_all_true( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::not_all_true >>.
 
@@ -675,7 +675,7 @@ sub curry_not_all_true {
     return sub { Hydrogen::ArrayRef::not_all_true( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_pairfirst( $array ) >>
+=head2 C<< curry_pairfirst( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::pairfirst >>.
 
@@ -696,7 +696,7 @@ sub curry_pairfirst {
     return sub { Hydrogen::ArrayRef::pairfirst( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_pairgrep( $array ) >>
+=head2 C<< curry_pairgrep( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::pairgrep >>.
 
@@ -717,7 +717,7 @@ sub curry_pairgrep {
     return sub { Hydrogen::ArrayRef::pairgrep( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_pairkeys( $array ) >>
+=head2 C<< curry_pairkeys( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::pairkeys >>.
 
@@ -738,7 +738,7 @@ sub curry_pairkeys {
     return sub { Hydrogen::ArrayRef::pairkeys( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_pairmap( $array ) >>
+=head2 C<< curry_pairmap( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::pairmap >>.
 
@@ -759,7 +759,7 @@ sub curry_pairmap {
     return sub { Hydrogen::ArrayRef::pairmap( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_pairs( $array ) >>
+=head2 C<< curry_pairs( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::pairs >>.
 
@@ -780,7 +780,7 @@ sub curry_pairs {
     return sub { Hydrogen::ArrayRef::pairs( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_pairvalues( $array ) >>
+=head2 C<< curry_pairvalues( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::pairvalues >>.
 
@@ -801,7 +801,7 @@ sub curry_pairvalues {
     return sub { Hydrogen::ArrayRef::pairvalues( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_pick_random( $array ) >>
+=head2 C<< curry_pick_random( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::pick_random >>.
 
@@ -822,7 +822,7 @@ sub curry_pick_random {
     return sub { Hydrogen::ArrayRef::pick_random( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_pop( $array ) >>
+=head2 C<< curry_pop( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::pop >>.
 
@@ -843,7 +843,7 @@ sub curry_pop {
     return sub { Hydrogen::ArrayRef::pop( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_print( $array ) >>
+=head2 C<< curry_print( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::print >>.
 
@@ -864,7 +864,7 @@ sub curry_print {
     return sub { Hydrogen::ArrayRef::print( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_product( $array ) >>
+=head2 C<< curry_product( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::product >>.
 
@@ -885,7 +885,7 @@ sub curry_product {
     return sub { Hydrogen::ArrayRef::product( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_push( $array ) >>
+=head2 C<< curry_push( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::push >>.
 
@@ -906,7 +906,7 @@ sub curry_push {
     return sub { Hydrogen::ArrayRef::push( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_reduce( $array ) >>
+=head2 C<< curry_reduce( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::reduce >>.
 
@@ -927,7 +927,7 @@ sub curry_reduce {
     return sub { Hydrogen::ArrayRef::reduce( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_reductions( $array ) >>
+=head2 C<< curry_reductions( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::reductions >>.
 
@@ -948,7 +948,7 @@ sub curry_reductions {
     return sub { Hydrogen::ArrayRef::reductions( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_reset( $array ) >>
+=head2 C<< curry_reset( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::reset >>.
 
@@ -969,7 +969,7 @@ sub curry_reset {
     return sub { Hydrogen::ArrayRef::reset( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_reverse( $array ) >>
+=head2 C<< curry_reverse( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::reverse >>.
 
@@ -990,7 +990,7 @@ sub curry_reverse {
     return sub { Hydrogen::ArrayRef::reverse( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_sample( $array ) >>
+=head2 C<< curry_sample( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::sample >>.
 
@@ -1011,7 +1011,7 @@ sub curry_sample {
     return sub { Hydrogen::ArrayRef::sample( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_set( $array ) >>
+=head2 C<< curry_set( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::set >>.
 
@@ -1032,7 +1032,7 @@ sub curry_set {
     return sub { Hydrogen::ArrayRef::set( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_shallow_clone( $array ) >>
+=head2 C<< curry_shallow_clone( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::shallow_clone >>.
 
@@ -1053,7 +1053,7 @@ sub curry_shallow_clone {
     return sub { Hydrogen::ArrayRef::shallow_clone( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_shift( $array ) >>
+=head2 C<< curry_shift( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::shift >>.
 
@@ -1074,7 +1074,7 @@ sub curry_shift {
     return sub { Hydrogen::ArrayRef::shift( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_shuffle( $array ) >>
+=head2 C<< curry_shuffle( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::shuffle >>.
 
@@ -1095,7 +1095,7 @@ sub curry_shuffle {
     return sub { Hydrogen::ArrayRef::shuffle( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_shuffle_in_place( $array ) >>
+=head2 C<< curry_shuffle_in_place( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::shuffle_in_place >>.
 
@@ -1116,7 +1116,7 @@ sub curry_shuffle_in_place {
     return sub { Hydrogen::ArrayRef::shuffle_in_place( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_sort( $array ) >>
+=head2 C<< curry_sort( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::sort >>.
 
@@ -1137,7 +1137,7 @@ sub curry_sort {
     return sub { Hydrogen::ArrayRef::sort( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_sort_in_place( $array ) >>
+=head2 C<< curry_sort_in_place( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::sort_in_place >>.
 
@@ -1158,7 +1158,7 @@ sub curry_sort_in_place {
     return sub { Hydrogen::ArrayRef::sort_in_place( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_splice( $array ) >>
+=head2 C<< curry_splice( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::splice >>.
 
@@ -1179,7 +1179,7 @@ sub curry_splice {
     return sub { Hydrogen::ArrayRef::splice( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_sum( $array ) >>
+=head2 C<< curry_sum( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::sum >>.
 
@@ -1200,7 +1200,7 @@ sub curry_sum {
     return sub { Hydrogen::ArrayRef::sum( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_tail( $array ) >>
+=head2 C<< curry_tail( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::tail >>.
 
@@ -1221,7 +1221,7 @@ sub curry_tail {
     return sub { Hydrogen::ArrayRef::tail( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_uniq( $array ) >>
+=head2 C<< curry_uniq( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::uniq >>.
 
@@ -1242,7 +1242,7 @@ sub curry_uniq {
     return sub { Hydrogen::ArrayRef::uniq( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_uniq_in_place( $array ) >>
+=head2 C<< curry_uniq_in_place( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::uniq_in_place >>.
 
@@ -1263,7 +1263,7 @@ sub curry_uniq_in_place {
     return sub { Hydrogen::ArrayRef::uniq_in_place( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_uniqnum( $array ) >>
+=head2 C<< curry_uniqnum( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::uniqnum >>.
 
@@ -1284,7 +1284,7 @@ sub curry_uniqnum {
     return sub { Hydrogen::ArrayRef::uniqnum( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_uniqnum_in_place( $array ) >>
+=head2 C<< curry_uniqnum_in_place( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::uniqnum_in_place >>.
 
@@ -1305,7 +1305,7 @@ sub curry_uniqnum_in_place {
     return sub { Hydrogen::ArrayRef::uniqnum_in_place( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_uniqstr( $array ) >>
+=head2 C<< curry_uniqstr( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::uniqstr >>.
 
@@ -1326,7 +1326,7 @@ sub curry_uniqstr {
     return sub { Hydrogen::ArrayRef::uniqstr( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_uniqstr_in_place( $array ) >>
+=head2 C<< curry_uniqstr_in_place( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::uniqstr_in_place >>.
 
@@ -1347,7 +1347,7 @@ sub curry_uniqstr_in_place {
     return sub { Hydrogen::ArrayRef::uniqstr_in_place( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::ArrayRef::curry_unshift( $array ) >>
+=head2 C<< curry_unshift( $array ) >>
 
 Curry the first argument of C<< Hydrogen::ArrayRef::unshift >>.
 

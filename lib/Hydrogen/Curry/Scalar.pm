@@ -28,7 +28,7 @@ use Exporter::Shiny qw(
     curry_make_setter
 );
 
-=head2 C<< Hydrogen::Curry::Scalar::curry_make_getter( $scalar ) >>
+=head2 C<< curry_make_getter( $scalar ) >>
 
 Curry the first argument of C<< Hydrogen::Scalar::make_getter >>.
 
@@ -49,7 +49,7 @@ sub curry_make_getter {
     return sub { Hydrogen::Scalar::make_getter( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::Scalar::curry_make_setter( $scalar ) >>
+=head2 C<< curry_make_setter( $scalar ) >>
 
 Curry the first argument of C<< Hydrogen::Scalar::make_setter >>.
 

@@ -27,7 +27,7 @@ use Exporter::Shiny qw(
     make_setter
 );
 
-=head2 C<< Hydrogen::Scalar::make_getter( $scalar ) >>
+=head2 C<< make_getter( $scalar ) >>
 
 Returns a getter coderef.
 
@@ -44,7 +44,7 @@ sub make_getter {
     sub { unshift @_, $s; $$__REF__ }
 }
 
-=head2 C<< Hydrogen::Scalar::make_setter( $scalar ) >>
+=head2 C<< make_setter( $scalar ) >>
 
 Returns a setter coderef.
 

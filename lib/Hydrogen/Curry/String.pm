@@ -64,7 +64,7 @@ use Exporter::Shiny qw(
     curry_uc
 );
 
-=head2 C<< Hydrogen::Curry::String::curry_append( $string ) >>
+=head2 C<< curry_append( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::append >>.
 
@@ -85,7 +85,7 @@ sub curry_append {
     return sub { Hydrogen::String::append( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_chomp( $string ) >>
+=head2 C<< curry_chomp( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::chomp >>.
 
@@ -106,7 +106,7 @@ sub curry_chomp {
     return sub { Hydrogen::String::chomp( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_chop( $string ) >>
+=head2 C<< curry_chop( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::chop >>.
 
@@ -127,7 +127,7 @@ sub curry_chop {
     return sub { Hydrogen::String::chop( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_clear( $string ) >>
+=head2 C<< curry_clear( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::clear >>.
 
@@ -148,7 +148,7 @@ sub curry_clear {
     return sub { Hydrogen::String::clear( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_cmp( $string ) >>
+=head2 C<< curry_cmp( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::cmp >>.
 
@@ -169,7 +169,7 @@ sub curry_cmp {
     return sub { Hydrogen::String::cmp( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_cmpi( $string ) >>
+=head2 C<< curry_cmpi( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::cmpi >>.
 
@@ -190,7 +190,7 @@ sub curry_cmpi {
     return sub { Hydrogen::String::cmpi( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_contains( $string ) >>
+=head2 C<< curry_contains( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::contains >>.
 
@@ -211,7 +211,7 @@ sub curry_contains {
     return sub { Hydrogen::String::contains( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_contains_i( $string ) >>
+=head2 C<< curry_contains_i( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::contains_i >>.
 
@@ -232,7 +232,7 @@ sub curry_contains_i {
     return sub { Hydrogen::String::contains_i( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_ends_with( $string ) >>
+=head2 C<< curry_ends_with( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::ends_with >>.
 
@@ -253,7 +253,7 @@ sub curry_ends_with {
     return sub { Hydrogen::String::ends_with( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_ends_with_i( $string ) >>
+=head2 C<< curry_ends_with_i( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::ends_with_i >>.
 
@@ -274,7 +274,7 @@ sub curry_ends_with_i {
     return sub { Hydrogen::String::ends_with_i( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_eq( $string ) >>
+=head2 C<< curry_eq( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::eq >>.
 
@@ -295,7 +295,7 @@ sub curry_eq {
     return sub { Hydrogen::String::eq( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_eqi( $string ) >>
+=head2 C<< curry_eqi( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::eqi >>.
 
@@ -316,7 +316,7 @@ sub curry_eqi {
     return sub { Hydrogen::String::eqi( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_fc( $string ) >>
+=head2 C<< curry_fc( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::fc >>.
 
@@ -337,7 +337,7 @@ sub curry_fc {
     return sub { Hydrogen::String::fc( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_ge( $string ) >>
+=head2 C<< curry_ge( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::ge >>.
 
@@ -358,7 +358,7 @@ sub curry_ge {
     return sub { Hydrogen::String::ge( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_gei( $string ) >>
+=head2 C<< curry_gei( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::gei >>.
 
@@ -379,7 +379,7 @@ sub curry_gei {
     return sub { Hydrogen::String::gei( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_get( $string ) >>
+=head2 C<< curry_get( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::get >>.
 
@@ -400,7 +400,7 @@ sub curry_get {
     return sub { Hydrogen::String::get( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_gt( $string ) >>
+=head2 C<< curry_gt( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::gt >>.
 
@@ -421,7 +421,7 @@ sub curry_gt {
     return sub { Hydrogen::String::gt( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_gti( $string ) >>
+=head2 C<< curry_gti( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::gti >>.
 
@@ -442,7 +442,7 @@ sub curry_gti {
     return sub { Hydrogen::String::gti( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_inc( $string ) >>
+=head2 C<< curry_inc( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::inc >>.
 
@@ -463,7 +463,7 @@ sub curry_inc {
     return sub { Hydrogen::String::inc( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_lc( $string ) >>
+=head2 C<< curry_lc( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::lc >>.
 
@@ -484,7 +484,7 @@ sub curry_lc {
     return sub { Hydrogen::String::lc( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_le( $string ) >>
+=head2 C<< curry_le( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::le >>.
 
@@ -505,7 +505,7 @@ sub curry_le {
     return sub { Hydrogen::String::le( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_lei( $string ) >>
+=head2 C<< curry_lei( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::lei >>.
 
@@ -526,7 +526,7 @@ sub curry_lei {
     return sub { Hydrogen::String::lei( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_length( $string ) >>
+=head2 C<< curry_length( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::length >>.
 
@@ -547,7 +547,7 @@ sub curry_length {
     return sub { Hydrogen::String::length( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_lt( $string ) >>
+=head2 C<< curry_lt( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::lt >>.
 
@@ -568,7 +568,7 @@ sub curry_lt {
     return sub { Hydrogen::String::lt( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_lti( $string ) >>
+=head2 C<< curry_lti( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::lti >>.
 
@@ -589,7 +589,7 @@ sub curry_lti {
     return sub { Hydrogen::String::lti( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_match( $string ) >>
+=head2 C<< curry_match( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::match >>.
 
@@ -610,7 +610,7 @@ sub curry_match {
     return sub { Hydrogen::String::match( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_match_i( $string ) >>
+=head2 C<< curry_match_i( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::match_i >>.
 
@@ -631,7 +631,7 @@ sub curry_match_i {
     return sub { Hydrogen::String::match_i( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_ne( $string ) >>
+=head2 C<< curry_ne( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::ne >>.
 
@@ -652,7 +652,7 @@ sub curry_ne {
     return sub { Hydrogen::String::ne( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_nei( $string ) >>
+=head2 C<< curry_nei( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::nei >>.
 
@@ -673,7 +673,7 @@ sub curry_nei {
     return sub { Hydrogen::String::nei( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_prepend( $string ) >>
+=head2 C<< curry_prepend( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::prepend >>.
 
@@ -694,7 +694,7 @@ sub curry_prepend {
     return sub { Hydrogen::String::prepend( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_replace( $string ) >>
+=head2 C<< curry_replace( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::replace >>.
 
@@ -715,7 +715,7 @@ sub curry_replace {
     return sub { Hydrogen::String::replace( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_replace_globally( $string ) >>
+=head2 C<< curry_replace_globally( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::replace_globally >>.
 
@@ -736,7 +736,7 @@ sub curry_replace_globally {
     return sub { Hydrogen::String::replace_globally( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_reset( $string ) >>
+=head2 C<< curry_reset( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::reset >>.
 
@@ -757,7 +757,7 @@ sub curry_reset {
     return sub { Hydrogen::String::reset( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_set( $string ) >>
+=head2 C<< curry_set( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::set >>.
 
@@ -778,7 +778,7 @@ sub curry_set {
     return sub { Hydrogen::String::set( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_starts_with( $string ) >>
+=head2 C<< curry_starts_with( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::starts_with >>.
 
@@ -799,7 +799,7 @@ sub curry_starts_with {
     return sub { Hydrogen::String::starts_with( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_starts_with_i( $string ) >>
+=head2 C<< curry_starts_with_i( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::starts_with_i >>.
 
@@ -820,7 +820,7 @@ sub curry_starts_with_i {
     return sub { Hydrogen::String::starts_with_i( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_substr( $string ) >>
+=head2 C<< curry_substr( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::substr >>.
 
@@ -841,7 +841,7 @@ sub curry_substr {
     return sub { Hydrogen::String::substr( $$ref, @_ ) };
 }
 
-=head2 C<< Hydrogen::Curry::String::curry_uc( $string ) >>
+=head2 C<< curry_uc( $string ) >>
 
 Curry the first argument of C<< Hydrogen::String::uc >>.
 

@@ -30,30 +30,30 @@ sub compile_pod {
 
 	if ( $self->type->is_prototyped and $self->type_name eq 'Code' ) {
 		if ( $h->usage ) {
-			$pod .= sprintf "=head2 C<< %s::%s %s %s >>\n\n",
-				$self->type->target_module, $self->function_name, $self->type->example_var, $h->usage;
+			$pod .= sprintf "=head2 C<< %s %s %s >>\n\n",
+				$self->function_name, $self->type->example_var, $h->usage;
 		}
 		elsif ( $h->args == 0 ) {
-			$pod .= sprintf "=head2 C<< %s::%s %s >>\n\n",
-				$self->type->target_module, $self->function_name, $self->type->example_var;
+			$pod .= sprintf "=head2 C<< %s %s >>\n\n",
+				$self->function_name, $self->type->example_var;
 		}
 		else {
-			$pod .= sprintf "=head2 C<< %s::%s >>\n\n",
-				$self->type->target_module, $self->function_name;
+			$pod .= sprintf "=head2 C<< %s >>\n\n",
+				$self->function_name;
 		}
 	}
 	else {
 		if ( $h->usage ) {
-			$pod .= sprintf "=head2 C<< %s::%s( %s, %s ) >>\n\n",
-				$self->type->target_module, $self->function_name, $self->type->example_var, $h->usage;
+			$pod .= sprintf "=head2 C<< %s( %s, %s ) >>\n\n",
+				$self->function_name, $self->type->example_var, $h->usage;
 		}
 		elsif ( $h->args == 0 ) {
-			$pod .= sprintf "=head2 C<< %s::%s( %s ) >>\n\n",
-				$self->type->target_module, $self->function_name, $self->type->example_var;
+			$pod .= sprintf "=head2 C<< %s( %s ) >>\n\n",
+				$self->function_name, $self->type->example_var;
 		}
 		else {
-			$pod .= sprintf "=head2 C<< %s::%s >>\n\n",
-				$self->type->target_module, $self->function_name;
+			$pod .= sprintf "=head2 C<< %s >>\n\n",
+				$self->function_name;
 		}
 	}
 
@@ -139,8 +139,8 @@ sub compile_curry_pod {
 	my $self = shift;
 
 	my $pod = '';
-	$pod .= sprintf "=head2 C<< %s::curry_%s( %s ) >>\n\n",
-		$self->type->curry_module, $self->function_name, $self->type->example_var;
+	$pod .= sprintf "=head2 C<< curry_%s( %s ) >>\n\n",
+		$self->function_name, $self->type->example_var;
 	$pod .= sprintf "Curry the first argument of C<< %s::%s >>.\n\n",
 		$self->type->target_module, $self->function_name;
 	$pod .= "=cut\n\n";

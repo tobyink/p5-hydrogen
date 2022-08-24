@@ -45,7 +45,7 @@ use Exporter::Shiny qw(
     values
 );
 
-=head2 C<< Hydrogen::HashRef::accessor( $hash, $key, $value? ) >>
+=head2 C<< accessor( $hash, $key, $value? ) >>
 
 Additional arguments: B<< Str >>, B<< Optional[Any] >>.
 
@@ -112,7 +112,7 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
     }
 }
 
-=head2 C<< Hydrogen::HashRef::all( $hash ) >>
+=head2 C<< all( $hash ) >>
 
 Returns the hash in list context.
 
@@ -129,7 +129,7 @@ sub all {
     %{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::HashRef::clear( $hash ) >>
+=head2 C<< clear( $hash ) >>
 
 Empties the hash.
 
@@ -147,7 +147,7 @@ sub clear {
     ( %{ $_[0] } = () );
 }
 
-=head2 C<< Hydrogen::HashRef::count( $hash ) >>
+=head2 C<< count( $hash ) >>
 
 Returns the number of keys in the hash.
 
@@ -164,7 +164,7 @@ sub count {
     scalar keys %{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::HashRef::defined( $hash, $key ) >>
+=head2 C<< defined( $hash, $key ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -209,7 +209,7 @@ sub defined {
     defined( ($shv_ref_invocant)->{ $_[1] } );
 }
 
-=head2 C<< Hydrogen::HashRef::delete( $hash, $key ) >>
+=head2 C<< delete( $hash, $key ) >>
 
 Removes a value from the hashref by its key.
 
@@ -230,7 +230,7 @@ sub delete {
     wantarray ? @shv_return : $shv_return[-1];
 }
 
-=head2 C<< Hydrogen::HashRef::elements( $hash ) >>
+=head2 C<< elements( $hash ) >>
 
 Returns the hash in list context.
 
@@ -247,7 +247,7 @@ sub elements {
     %{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::HashRef::exists( $hash, $key ) >>
+=head2 C<< exists( $hash, $key ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -292,7 +292,7 @@ sub exists {
     defined( ($shv_ref_invocant)->{ $_[1] } );
 }
 
-=head2 C<< Hydrogen::HashRef::for_each_key( $hash, $coderef ) >>
+=head2 C<< for_each_key( $hash, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -333,7 +333,7 @@ sub for_each_key {
     $__REF__;
 }
 
-=head2 C<< Hydrogen::HashRef::for_each_pair( $hash, $coderef ) >>
+=head2 C<< for_each_pair( $hash, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -376,7 +376,7 @@ sub for_each_pair {
     $__REF__;
 }
 
-=head2 C<< Hydrogen::HashRef::for_each_value( $hash, $coderef ) >>
+=head2 C<< for_each_value( $hash, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -417,7 +417,7 @@ sub for_each_value {
     $__REF__;
 }
 
-=head2 C<< Hydrogen::HashRef::get( $hash, $key ) >>
+=head2 C<< get( $hash, $key ) >>
 
 Returns a value from the hashref by its key.
 
@@ -436,7 +436,7 @@ sub get {
       : ($shv_ref_invocant)->{ $_[1] };
 }
 
-=head2 C<< Hydrogen::HashRef::is_empty( $hash ) >>
+=head2 C<< is_empty( $hash ) >>
 
 Returns true iff there are no keys in the hash.
 
@@ -453,7 +453,7 @@ sub is_empty {
     !scalar keys %{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::HashRef::keys( $hash ) >>
+=head2 C<< keys( $hash ) >>
 
 Returns the list of keys in the hash.
 
@@ -470,7 +470,7 @@ sub keys {
     keys %{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::HashRef::kv( $hash ) >>
+=head2 C<< kv( $hash ) >>
 
 Returns a list of arrayrefs, where each arrayref is a key-value pair.
 
@@ -487,7 +487,7 @@ sub kv {
     map [ $_ => ($shv_ref_invocant)->{$_} ], keys %{$shv_ref_invocant};
 }
 
-=head2 C<< Hydrogen::HashRef::reset( $hash ) >>
+=head2 C<< reset( $hash ) >>
 
 Resets the original value to its default value, or an empty hashref if it has no default.
 
@@ -518,7 +518,7 @@ sub reset {
     );
 }
 
-=head2 C<< Hydrogen::HashRef::set( $hash, $key, $value, ... ) >>
+=head2 C<< set( $hash, $key, $value, ... ) >>
 
 Given a key and value, adds the key to the hashref with the given value.
 
@@ -570,7 +570,7 @@ sub set {
       : $shv_tmp{ $shv_params[ $shv_keys_idx[0] ] };
 }
 
-=head2 C<< Hydrogen::HashRef::shallow_clone( $hash ) >>
+=head2 C<< shallow_clone( $hash ) >>
 
 Creates a new hashref with the same keys and values as the original.
 
@@ -588,7 +588,7 @@ sub shallow_clone {
     +{ %{$shv_ref_invocant} };
 }
 
-=head2 C<< Hydrogen::HashRef::sorted_keys( $hash ) >>
+=head2 C<< sorted_keys( $hash ) >>
 
 Returns an alphabetically sorted list of keys in the hash.
 
@@ -605,7 +605,7 @@ sub sorted_keys {
     sort( keys %{$shv_ref_invocant} );
 }
 
-=head2 C<< Hydrogen::HashRef::values( $hash ) >>
+=head2 C<< values( $hash ) >>
 
 Returns the list of values in the hash.
 

@@ -27,7 +27,7 @@ use Exporter::Shiny qw(
     curry_execute
 );
 
-=head2 C<< Hydrogen::Curry::CodeRef::curry_execute( $code ) >>
+=head2 C<< curry_execute( $code ) >>
 
 Curry the first argument of C<< Hydrogen::CodeRef::execute >>.
 
