@@ -1,0 +1,6 @@
+In the Hydrogen root directory (the directory which contains dist.ini), run:
+
+    perl devel.builder/bin/write_modules.pl
+
+And the contents of "lib/Hydrogen" and "t/unit" will be automatically
+generated. The files in those directories should not be manually modified.
