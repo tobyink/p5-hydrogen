@@ -41,6 +41,20 @@ Hydrogen - utilities for the simplest elements of Perl
 
 =head1 SYNOPSIS
 
+Normal version of the function:
+
+    use feature 'say';
+    use Hydrogen::HashRef { prefix => 'hhr_' }, qw( get set );
+    
+    my %hash;
+    hhr_set( \%hash, Alice => 123 );
+    hhr_set( \%hash, Bob   => 456 );
+    
+    say $hash{Alice};                ## ==> 123
+    say hhr_get( \%hash, 'Bob' );    ## ==> 456
+
+Version of the function which uses prototypes:
+
     use feature 'say';
     use Hydrogen::Hash { prefix => 'hh_' }, qw( get set );
     
@@ -48,8 +62,23 @@ Hydrogen - utilities for the simplest elements of Perl
     hh_set( %hash, Alice => 123 );
     hh_set( %hash, Bob   => 456 );
     
-    say $hash{Alice};              ## ==> 123
-    say hh_get( %hash, 'Bob' );    ## ==> 456
+    say $hash{Alice};                ## ==> 123
+    say hh_get( %hash, 'Bob' );      ## ==> 456
+
+Currying:
+
+    use feature 'say';
+    use Hydrogen::Curry::HashRef qw( curry_get curry_set );
+    
+    my %hash;
+    my $setter = curry_set( \%hash );
+    my $getter = curry_get( \%hash );
+    
+    $setter->( Alice => 123 );
+    $setter->( Bob   => 456 );
+    
+    say $hash{Alice};                ## ==> 123
+    say $getter->( 'Bob' );          ## ==> 456
 
 =head1 DESCRIPTION
 

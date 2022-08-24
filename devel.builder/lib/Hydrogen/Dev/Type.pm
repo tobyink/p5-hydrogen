@@ -94,12 +94,10 @@ sub _build_curry_module {
 	my $target_module = sprintf '%s::Curry::%s',
 		$self->dev->target_namespace, $self->type_name;
 
-	if ( not $self->is_prototyped ) {
-		for my $rtn ( $self->dev->_reference_type_names ) {
-			next if $rtn ne $self->type_name;
-			$target_module .= 'Ref';
-			last;
-		}
+	for my $rtn ( $self->dev->_reference_type_names ) {
+		next if $rtn ne $self->type_name;
+		$target_module .= 'Ref';
+		last;
 	}
 
 	return $target_module;

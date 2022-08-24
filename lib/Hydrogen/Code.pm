@@ -71,7 +71,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 =head1 SEE ALSO
 
 L<Hydrogen>,
-L<Hydrogen::Curry::Code>,
+L<Hydrogen::Curry::CodeRef>,
 L<Sub::HandlesVia::HandlerLibrary::Code>.
 
 =head1 AUTHOR
