@@ -17,9 +17,9 @@ subtest 'curry_not' => sub {
     ok $EXPORTS{'curry_not'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::Bool::curry_not( !!0 );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_not' );
+    is $e, undef, 'no exception thrown running curry_not';
 };
 
 subtest 'curry_reset' => sub {
@@ -27,9 +27,9 @@ subtest 'curry_reset' => sub {
     ok $EXPORTS{'curry_reset'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::Bool::curry_reset( !!0 );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_reset' );
+    is $e, undef, 'no exception thrown running curry_reset';
 };
 
 subtest 'curry_set' => sub {
@@ -37,9 +37,9 @@ subtest 'curry_set' => sub {
     ok $EXPORTS{'curry_set'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::Bool::curry_set( !!0 );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_set' );
+    is $e, undef, 'no exception thrown running curry_set';
 };
 
 subtest 'curry_toggle' => sub {
@@ -47,9 +47,9 @@ subtest 'curry_toggle' => sub {
     ok $EXPORTS{'curry_toggle'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::Bool::curry_toggle( !!0 );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_toggle' );
+    is $e, undef, 'no exception thrown running curry_toggle';
 };
 
 subtest 'curry_unset' => sub {
@@ -57,9 +57,9 @@ subtest 'curry_unset' => sub {
     ok $EXPORTS{'curry_unset'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::Bool::curry_unset( !!0 );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_unset' );
+    is $e, undef, 'no exception thrown running curry_unset';
 };
 
 # :)

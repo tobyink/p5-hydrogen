@@ -20,7 +20,7 @@ subtest 'abs' => sub {
           Hydrogen::Number::abs( $testnumber );
           is( $testnumber, 5, q{$testnumber is 5} );
     };
-    is( $e, undef, 'no exception thrown running abs example' );
+    is $e, undef, 'no exception thrown running abs example';
 };
 
 subtest 'add' => sub {
@@ -31,7 +31,7 @@ subtest 'add' => sub {
           Hydrogen::Number::add( $testnumber, 5 );
           is( $testnumber, 9, q{$testnumber is 9} );
     };
-    is( $e, undef, 'no exception thrown running add example' );
+    is $e, undef, 'no exception thrown running add example';
 };
 
 subtest 'cmp' => sub {
@@ -47,7 +47,7 @@ subtest 'div' => sub {
           Hydrogen::Number::div( $testnumber, 2 );
           is( $testnumber, 3, q{$testnumber is 3} );
     };
-    is( $e, undef, 'no exception thrown running div example' );
+    is $e, undef, 'no exception thrown running div example';
 };
 
 subtest 'eq' => sub {
@@ -67,7 +67,7 @@ subtest 'get' => sub {
           my $testnumber = 4;
           is( Hydrogen::Number::get( $testnumber ), 4, q{Hydrogen::Number::get( $testnumber ) is 4} );
     };
-    is( $e, undef, 'no exception thrown running get example' );
+    is $e, undef, 'no exception thrown running get example';
 };
 
 subtest 'gt' => sub {
@@ -93,7 +93,7 @@ subtest 'mod' => sub {
           Hydrogen::Number::mod( $testnumber, 2 );
           is( $testnumber, 1, q{$testnumber is 1} );
     };
-    is( $e, undef, 'no exception thrown running mod example' );
+    is $e, undef, 'no exception thrown running mod example';
 };
 
 subtest 'mul' => sub {
@@ -104,7 +104,7 @@ subtest 'mul' => sub {
           Hydrogen::Number::mul( $testnumber, 5 );
           is( $testnumber, 10, q{$testnumber is 10} );
     };
-    is( $e, undef, 'no exception thrown running mul example' );
+    is $e, undef, 'no exception thrown running mul example';
 };
 
 subtest 'ne' => sub {
@@ -120,7 +120,7 @@ subtest 'set' => sub {
           Hydrogen::Number::set( $testnumber, 5 );
           is( $testnumber, 5, q{$testnumber is 5} );
     };
-    is( $e, undef, 'no exception thrown running set example' );
+    is $e, undef, 'no exception thrown running set example';
 };
 
 subtest 'sub' => sub {
@@ -131,7 +131,7 @@ subtest 'sub' => sub {
           Hydrogen::Number::sub( $testnumber, 6 );
           is( $testnumber, 3, q{$testnumber is 3} );
     };
-    is( $e, undef, 'no exception thrown running sub example' );
+    is $e, undef, 'no exception thrown running sub example';
 };
 
 # :)

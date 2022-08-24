@@ -19,7 +19,7 @@ subtest 'not' => sub {
           my $testbool = 1;
           ok( !(Hydrogen::Bool::not( $testbool )), q{Hydrogen::Bool::not( $testbool ) is false} );
     };
-    is( $e, undef, 'no exception thrown running not example' );
+    is $e, undef, 'no exception thrown running not example';
 };
 
 subtest 'reset' => sub {
@@ -35,7 +35,7 @@ subtest 'set' => sub {
           Hydrogen::Bool::set( $testbool );
           ok( $testbool, q{$testbool is true} );
     };
-    is( $e, undef, 'no exception thrown running set example' );
+    is $e, undef, 'no exception thrown running set example';
 };
 
 subtest 'toggle' => sub {
@@ -48,7 +48,7 @@ subtest 'toggle' => sub {
           Hydrogen::Bool::toggle( $testbool );
           ok( !($testbool), q{$testbool is false} );
     };
-    is( $e, undef, 'no exception thrown running toggle example' );
+    is $e, undef, 'no exception thrown running toggle example';
 };
 
 subtest 'unset' => sub {
@@ -59,7 +59,7 @@ subtest 'unset' => sub {
           Hydrogen::Bool::unset( $testbool );
           ok( !($testbool), q{$testbool is false} );
     };
-    is( $e, undef, 'no exception thrown running unset example' );
+    is $e, undef, 'no exception thrown running unset example';
 };
 
 # :)

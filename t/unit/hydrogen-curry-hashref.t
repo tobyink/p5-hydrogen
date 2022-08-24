@@ -17,9 +17,9 @@ subtest 'curry_accessor' => sub {
     ok $EXPORTS{'curry_accessor'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_accessor( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_accessor' );
+    is $e, undef, 'no exception thrown running curry_accessor';
 };
 
 subtest 'curry_all' => sub {
@@ -27,9 +27,9 @@ subtest 'curry_all' => sub {
     ok $EXPORTS{'curry_all'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_all( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_all' );
+    is $e, undef, 'no exception thrown running curry_all';
 };
 
 subtest 'curry_clear' => sub {
@@ -37,9 +37,9 @@ subtest 'curry_clear' => sub {
     ok $EXPORTS{'curry_clear'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_clear( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_clear' );
+    is $e, undef, 'no exception thrown running curry_clear';
 };
 
 subtest 'curry_count' => sub {
@@ -47,9 +47,9 @@ subtest 'curry_count' => sub {
     ok $EXPORTS{'curry_count'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_count( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_count' );
+    is $e, undef, 'no exception thrown running curry_count';
 };
 
 subtest 'curry_defined' => sub {
@@ -57,9 +57,9 @@ subtest 'curry_defined' => sub {
     ok $EXPORTS{'curry_defined'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_defined( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_defined' );
+    is $e, undef, 'no exception thrown running curry_defined';
 };
 
 subtest 'curry_delete' => sub {
@@ -67,9 +67,9 @@ subtest 'curry_delete' => sub {
     ok $EXPORTS{'curry_delete'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_delete( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_delete' );
+    is $e, undef, 'no exception thrown running curry_delete';
 };
 
 subtest 'curry_elements' => sub {
@@ -77,9 +77,9 @@ subtest 'curry_elements' => sub {
     ok $EXPORTS{'curry_elements'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_elements( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_elements' );
+    is $e, undef, 'no exception thrown running curry_elements';
 };
 
 subtest 'curry_exists' => sub {
@@ -87,9 +87,9 @@ subtest 'curry_exists' => sub {
     ok $EXPORTS{'curry_exists'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_exists( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_exists' );
+    is $e, undef, 'no exception thrown running curry_exists';
 };
 
 subtest 'curry_for_each_key' => sub {
@@ -97,9 +97,9 @@ subtest 'curry_for_each_key' => sub {
     ok $EXPORTS{'curry_for_each_key'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_for_each_key( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_for_each_key' );
+    is $e, undef, 'no exception thrown running curry_for_each_key';
 };
 
 subtest 'curry_for_each_pair' => sub {
@@ -107,9 +107,9 @@ subtest 'curry_for_each_pair' => sub {
     ok $EXPORTS{'curry_for_each_pair'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_for_each_pair( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_for_each_pair' );
+    is $e, undef, 'no exception thrown running curry_for_each_pair';
 };
 
 subtest 'curry_for_each_value' => sub {
@@ -117,9 +117,9 @@ subtest 'curry_for_each_value' => sub {
     ok $EXPORTS{'curry_for_each_value'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_for_each_value( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_for_each_value' );
+    is $e, undef, 'no exception thrown running curry_for_each_value';
 };
 
 subtest 'curry_get' => sub {
@@ -127,9 +127,9 @@ subtest 'curry_get' => sub {
     ok $EXPORTS{'curry_get'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_get( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_get' );
+    is $e, undef, 'no exception thrown running curry_get';
 };
 
 subtest 'curry_is_empty' => sub {
@@ -137,9 +137,9 @@ subtest 'curry_is_empty' => sub {
     ok $EXPORTS{'curry_is_empty'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_is_empty( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_is_empty' );
+    is $e, undef, 'no exception thrown running curry_is_empty';
 };
 
 subtest 'curry_keys' => sub {
@@ -147,9 +147,9 @@ subtest 'curry_keys' => sub {
     ok $EXPORTS{'curry_keys'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_keys( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_keys' );
+    is $e, undef, 'no exception thrown running curry_keys';
 };
 
 subtest 'curry_kv' => sub {
@@ -157,9 +157,9 @@ subtest 'curry_kv' => sub {
     ok $EXPORTS{'curry_kv'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_kv( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_kv' );
+    is $e, undef, 'no exception thrown running curry_kv';
 };
 
 subtest 'curry_reset' => sub {
@@ -167,9 +167,9 @@ subtest 'curry_reset' => sub {
     ok $EXPORTS{'curry_reset'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_reset( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_reset' );
+    is $e, undef, 'no exception thrown running curry_reset';
 };
 
 subtest 'curry_set' => sub {
@@ -177,9 +177,9 @@ subtest 'curry_set' => sub {
     ok $EXPORTS{'curry_set'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_set( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_set' );
+    is $e, undef, 'no exception thrown running curry_set';
 };
 
 subtest 'curry_shallow_clone' => sub {
@@ -187,9 +187,9 @@ subtest 'curry_shallow_clone' => sub {
     ok $EXPORTS{'curry_shallow_clone'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_shallow_clone( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_shallow_clone' );
+    is $e, undef, 'no exception thrown running curry_shallow_clone';
 };
 
 subtest 'curry_sorted_keys' => sub {
@@ -197,9 +197,9 @@ subtest 'curry_sorted_keys' => sub {
     ok $EXPORTS{'curry_sorted_keys'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_sorted_keys( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_sorted_keys' );
+    is $e, undef, 'no exception thrown running curry_sorted_keys';
 };
 
 subtest 'curry_values' => sub {
@@ -207,9 +207,9 @@ subtest 'curry_values' => sub {
     ok $EXPORTS{'curry_values'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::HashRef::curry_values( {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_values' );
+    is $e, undef, 'no exception thrown running curry_values';
 };
 
 # :)

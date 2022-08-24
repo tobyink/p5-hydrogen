@@ -20,7 +20,7 @@ subtest 'append' => sub {
           Hydrogen::String::append( $teststring, 'bar' );
           is( $teststring, 'foobar', q{$teststring is 'foobar'} );
     };
-    is( $e, undef, 'no exception thrown running append example' );
+    is $e, undef, 'no exception thrown running append example';
 };
 
 subtest 'chomp' => sub {
@@ -41,7 +41,7 @@ subtest 'clear' => sub {
           Hydrogen::String::clear( $teststring );
           note $teststring; ## nothing
     };
-    is( $e, undef, 'no exception thrown running clear example' );
+    is $e, undef, 'no exception thrown running clear example';
 };
 
 subtest 'cmp' => sub {
@@ -106,7 +106,7 @@ subtest 'get' => sub {
           my $teststring = 'foo';
           is( Hydrogen::String::get( $teststring ), 'foo', q{Hydrogen::String::get( $teststring ) is 'foo'} );
     };
-    is( $e, undef, 'no exception thrown running get example' );
+    is $e, undef, 'no exception thrown running get example';
 };
 
 subtest 'gt' => sub {
@@ -146,7 +146,7 @@ subtest 'length' => sub {
           my $teststring = 'foo';
           is( Hydrogen::String::length( $teststring ), 3, q{Hydrogen::String::length( $teststring ) is 3} );
     };
-    is( $e, undef, 'no exception thrown running length example' );
+    is $e, undef, 'no exception thrown running length example';
 };
 
 subtest 'lt' => sub {
@@ -168,7 +168,7 @@ subtest 'match' => sub {
             note 'matched!';
           }
     };
-    is( $e, undef, 'no exception thrown running match example' );
+    is $e, undef, 'no exception thrown running match example';
 };
 
 subtest 'match_i' => sub {
@@ -180,7 +180,7 @@ subtest 'match_i' => sub {
             note 'matched!';
           }
     };
-    is( $e, undef, 'no exception thrown running match_i example' );
+    is $e, undef, 'no exception thrown running match_i example';
 };
 
 subtest 'ne' => sub {
@@ -201,7 +201,7 @@ subtest 'prepend' => sub {
           Hydrogen::String::prepend( $teststring, 'bar' );
           is( $teststring, 'barfoo', q{$teststring is 'barfoo'} );
     };
-    is( $e, undef, 'no exception thrown running prepend example' );
+    is $e, undef, 'no exception thrown running prepend example';
 };
 
 subtest 'replace' => sub {
@@ -216,7 +216,7 @@ subtest 'replace' => sub {
           Hydrogen::String::replace( $teststring2, qr/O/i => sub { return 'e' } );
           is( $teststring2, 'feo', q{$teststring2 is 'feo'} );
     };
-    is( $e, undef, 'no exception thrown running replace example' );
+    is $e, undef, 'no exception thrown running replace example';
 };
 
 subtest 'replace_globally' => sub {
@@ -231,7 +231,7 @@ subtest 'replace_globally' => sub {
           Hydrogen::String::replace_globally( $teststring2, qr/O/i => sub { return 'e' } );
           is( $teststring2, 'fee', q{$teststring2 is 'fee'} );
     };
-    is( $e, undef, 'no exception thrown running replace_globally example' );
+    is $e, undef, 'no exception thrown running replace_globally example';
 };
 
 subtest 'reset' => sub {
@@ -247,7 +247,7 @@ subtest 'set' => sub {
           Hydrogen::String::set( $teststring, 'bar' );
           is( $teststring, 'bar', q{$teststring is 'bar'} );
     };
-    is( $e, undef, 'no exception thrown running set example' );
+    is $e, undef, 'no exception thrown running set example';
 };
 
 subtest 'starts_with' => sub {

@@ -17,9 +17,9 @@ subtest 'curry_make_getter' => sub {
     ok $EXPORTS{'curry_make_getter'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::Scalar::curry_make_getter( undef );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_make_getter' );
+    is $e, undef, 'no exception thrown running curry_make_getter';
 };
 
 subtest 'curry_make_setter' => sub {
@@ -27,9 +27,9 @@ subtest 'curry_make_setter' => sub {
     ok $EXPORTS{'curry_make_setter'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::Scalar::curry_make_setter( undef );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_make_setter' );
+    is $e, undef, 'no exception thrown running curry_make_setter';
 };
 
 # :)

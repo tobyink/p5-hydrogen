@@ -24,7 +24,7 @@ subtest 'all' => sub {
           my $testhash = { foo => 0, bar => 1 };
           my %hash = Hydrogen::HashRef::all( $testhash );
     };
-    is( $e, undef, 'no exception thrown running all example' );
+    is $e, undef, 'no exception thrown running all example';
 };
 
 subtest 'clear' => sub {
@@ -36,7 +36,7 @@ subtest 'clear' => sub {
           ok( !(exists $testhash->{foo}), q{exists $testhash->{foo} is false} );
           ok( !(exists $testhash->{bar}), q{exists $testhash->{bar} is false} );
     };
-    is( $e, undef, 'no exception thrown running clear example' );
+    is $e, undef, 'no exception thrown running clear example';
 };
 
 subtest 'count' => sub {
@@ -46,7 +46,7 @@ subtest 'count' => sub {
           my $testhash = { foo => 0, bar => 1 };
           is( Hydrogen::HashRef::count( $testhash ), 2, q{Hydrogen::HashRef::count( $testhash ) is 2} );
     };
-    is( $e, undef, 'no exception thrown running count example' );
+    is $e, undef, 'no exception thrown running count example';
 };
 
 subtest 'defined' => sub {
@@ -56,7 +56,7 @@ subtest 'defined' => sub {
           my $testhash = { foo => 0, bar => 1 };
           is( Hydrogen::HashRef::defined( $testhash, 'foo' ), 1, q{Hydrogen::HashRef::defined( $testhash, 'foo' ) is 1} );
     };
-    is( $e, undef, 'no exception thrown running defined example' );
+    is $e, undef, 'no exception thrown running defined example';
 };
 
 subtest 'delete' => sub {
@@ -67,7 +67,7 @@ subtest 'delete' => sub {
           Hydrogen::HashRef::delete( $testhash, 'foo' );
           ok( !(exists $testhash->{foo}), q{exists $testhash->{foo} is false} );
     };
-    is( $e, undef, 'no exception thrown running delete example' );
+    is $e, undef, 'no exception thrown running delete example';
 };
 
 subtest 'elements' => sub {
@@ -77,7 +77,7 @@ subtest 'elements' => sub {
           my $testhash = { foo => 0, bar => 1 };
           my %hash = Hydrogen::HashRef::elements( $testhash );
     };
-    is( $e, undef, 'no exception thrown running elements example' );
+    is $e, undef, 'no exception thrown running elements example';
 };
 
 subtest 'exists' => sub {
@@ -88,7 +88,7 @@ subtest 'exists' => sub {
           ok( Hydrogen::HashRef::exists( $testhash, 'foo' ), q{Hydrogen::HashRef::exists( $testhash, 'foo' ) is true} );
           ok( !(Hydrogen::HashRef::exists( $testhash, 'baz' )), q{Hydrogen::HashRef::exists( $testhash, 'baz' ) is false} );
     };
-    is( $e, undef, 'no exception thrown running exists example' );
+    is $e, undef, 'no exception thrown running exists example';
 };
 
 subtest 'for_each_key' => sub {
@@ -113,7 +113,7 @@ subtest 'get' => sub {
           my $testhash = { foo => 0, bar => 1 };
           is( Hydrogen::HashRef::get( $testhash, 'bar' ), 1, q{Hydrogen::HashRef::get( $testhash, 'bar' ) is 1} );
     };
-    is( $e, undef, 'no exception thrown running get example' );
+    is $e, undef, 'no exception thrown running get example';
 };
 
 subtest 'is_empty' => sub {
@@ -125,7 +125,7 @@ subtest 'is_empty' => sub {
           $testhash = {} ;
           ok( Hydrogen::HashRef::is_empty( $testhash ), q{Hydrogen::HashRef::is_empty( $testhash ) is true} );
     };
-    is( $e, undef, 'no exception thrown running is_empty example' );
+    is $e, undef, 'no exception thrown running is_empty example';
 };
 
 subtest 'keys' => sub {
@@ -136,7 +136,7 @@ subtest 'keys' => sub {
           # says 'foo' and 'bar' in an unpredictable order
           note for Hydrogen::HashRef::keys( $testhash );
     };
-    is( $e, undef, 'no exception thrown running keys example' );
+    is $e, undef, 'no exception thrown running keys example';
 };
 
 subtest 'kv' => sub {
@@ -159,7 +159,7 @@ subtest 'set' => sub {
           is( $testhash->{baz}, 1, q{$testhash->{baz} is 1} );
           is( $testhash->{bar}, 2, q{$testhash->{bar} is 2} );
     };
-    is( $e, undef, 'no exception thrown running set example' );
+    is $e, undef, 'no exception thrown running set example';
 };
 
 subtest 'shallow_clone' => sub {
@@ -175,7 +175,7 @@ subtest 'sorted_keys' => sub {
           # says 'bar' then 'foo'
           note for Hydrogen::HashRef::sorted_keys( $testhash );
     };
-    is( $e, undef, 'no exception thrown running sorted_keys example' );
+    is $e, undef, 'no exception thrown running sorted_keys example';
 };
 
 subtest 'values' => sub {
@@ -186,7 +186,7 @@ subtest 'values' => sub {
           # says '0' and '1' in an unpredictable order
           note for Hydrogen::HashRef::values( $testhash );
     };
-    is( $e, undef, 'no exception thrown running values example' );
+    is $e, undef, 'no exception thrown running values example';
 };
 
 # :)

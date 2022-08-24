@@ -22,7 +22,7 @@ subtest 'execute' => sub {
           # $coderef->( 1, 2, 3 )
           Hydrogen::CodeRef::execute( $testcode, 1, 2, 3 );
     };
-    is( $e, undef, 'no exception thrown running execute example' );
+    is $e, undef, 'no exception thrown running execute example';
 };
 
 # :)

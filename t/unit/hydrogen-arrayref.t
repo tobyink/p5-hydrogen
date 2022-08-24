@@ -21,7 +21,7 @@ subtest 'accessor' => sub {
           is_deeply( $testarray, [ 'foo', 'quux', 'baz' ], q{$testarray deep match} );
           is( Hydrogen::ArrayRef::accessor( $testarray, 2 ), 'baz', q{Hydrogen::ArrayRef::accessor( $testarray, 2 ) is 'baz'} );
     };
-    is( $e, undef, 'no exception thrown running accessor example' );
+    is $e, undef, 'no exception thrown running accessor example';
 };
 
 subtest 'all' => sub {
@@ -31,7 +31,7 @@ subtest 'all' => sub {
           my $testarray = [ 'foo', 'bar' ];
           my @list = Hydrogen::ArrayRef::all( $testarray );
     };
-    is( $e, undef, 'no exception thrown running all example' );
+    is $e, undef, 'no exception thrown running all example';
 };
 
 subtest 'all_true' => sub {
@@ -57,7 +57,7 @@ subtest 'clear' => sub {
           Hydrogen::ArrayRef::clear( $testarray );
           is_deeply( $testarray, [], q{$testarray deep match} );
     };
-    is( $e, undef, 'no exception thrown running clear example' );
+    is $e, undef, 'no exception thrown running clear example';
 };
 
 subtest 'count' => sub {
@@ -67,7 +67,7 @@ subtest 'count' => sub {
           my $testarray = [ 'foo', 'bar' ];
           is( Hydrogen::ArrayRef::count( $testarray ), 2, q{Hydrogen::ArrayRef::count( $testarray ) is 2} );
     };
-    is( $e, undef, 'no exception thrown running count example' );
+    is $e, undef, 'no exception thrown running count example';
 };
 
 subtest 'delete' => sub {
@@ -82,7 +82,7 @@ subtest 'elements' => sub {
           my $testarray = [ 'foo', 'bar' ];
           my @list = Hydrogen::ArrayRef::elements( $testarray );
     };
-    is( $e, undef, 'no exception thrown running elements example' );
+    is $e, undef, 'no exception thrown running elements example';
 };
 
 subtest 'first' => sub {
@@ -112,7 +112,7 @@ subtest 'for_each' => sub {
           my $testarray = [ 'foo', 'bar', 'baz' ];
           Hydrogen::ArrayRef::for_each( $testarray, sub { note "Item $_[1] is $_[0]." } );
     };
-    is( $e, undef, 'no exception thrown running for_each example' );
+    is $e, undef, 'no exception thrown running for_each example';
 };
 
 subtest 'for_each_pair' => sub {
@@ -129,7 +129,7 @@ subtest 'get' => sub {
           is( Hydrogen::ArrayRef::get( $testarray,  1 ), 'bar', q{Hydrogen::ArrayRef::get( $testarray,  1 ) is 'bar'} );
           is( Hydrogen::ArrayRef::get( $testarray, -1 ), 'baz', q{Hydrogen::ArrayRef::get( $testarray, -1 ) is 'baz'} );
     };
-    is( $e, undef, 'no exception thrown running get example' );
+    is $e, undef, 'no exception thrown running get example';
 };
 
 subtest 'grep' => sub {
@@ -150,7 +150,7 @@ subtest 'insert' => sub {
           Hydrogen::ArrayRef::insert( $testarray, 1, 'quux' );
           is_deeply( $testarray, [ 'foo', 'quux', 'bar', 'baz' ], q{$testarray deep match} );
     };
-    is( $e, undef, 'no exception thrown running insert example' );
+    is $e, undef, 'no exception thrown running insert example';
 };
 
 subtest 'is_empty' => sub {
@@ -162,7 +162,7 @@ subtest 'is_empty' => sub {
           $testarray = [] ;
           ok( Hydrogen::ArrayRef::is_empty( $testarray ), q{Hydrogen::ArrayRef::is_empty( $testarray ) is true} );
     };
-    is( $e, undef, 'no exception thrown running is_empty example' );
+    is $e, undef, 'no exception thrown running is_empty example';
 };
 
 subtest 'join' => sub {
@@ -173,7 +173,7 @@ subtest 'join' => sub {
           is( Hydrogen::ArrayRef::join( $testarray ), 'foo,bar,baz', q{Hydrogen::ArrayRef::join( $testarray ) is 'foo,bar,baz'} );
           is( Hydrogen::ArrayRef::join( $testarray, '|' ), 'foo|bar|baz', q{Hydrogen::ArrayRef::join( $testarray, '|' ) is 'foo|bar|baz'} );
     };
-    is( $e, undef, 'no exception thrown running join example' );
+    is $e, undef, 'no exception thrown running join example';
 };
 
 subtest 'map' => sub {
@@ -255,7 +255,7 @@ subtest 'pop' => sub {
           is( Hydrogen::ArrayRef::pop( $testarray ), 'bar', q{Hydrogen::ArrayRef::pop( $testarray ) is 'bar'} );
           is_deeply( $testarray, [ 'foo' ], q{$testarray deep match} );
     };
-    is( $e, undef, 'no exception thrown running pop example' );
+    is $e, undef, 'no exception thrown running pop example';
 };
 
 subtest 'print' => sub {
@@ -276,7 +276,7 @@ subtest 'push' => sub {
           Hydrogen::ArrayRef::push( $testarray, 'bar', 'baz' );
           is_deeply( $testarray, [ 'foo', 'bar', 'baz' ], q{$testarray deep match} );
     };
-    is( $e, undef, 'no exception thrown running push example' );
+    is $e, undef, 'no exception thrown running push example';
 };
 
 subtest 'reduce' => sub {
@@ -297,7 +297,7 @@ subtest 'reset' => sub {
           Hydrogen::ArrayRef::reset( $testarray );
           is_deeply( $testarray, [], q{$testarray deep match} );
     };
-    is( $e, undef, 'no exception thrown running reset example' );
+    is $e, undef, 'no exception thrown running reset example';
 };
 
 subtest 'reverse' => sub {
@@ -318,7 +318,7 @@ subtest 'set' => sub {
           Hydrogen::ArrayRef::set( $testarray, 1, 'quux' );
           is_deeply( $testarray, [ 'foo', 'quux', 'baz' ], q{$testarray deep match} );
     };
-    is( $e, undef, 'no exception thrown running set example' );
+    is $e, undef, 'no exception thrown running set example';
 };
 
 subtest 'shallow_clone' => sub {
@@ -335,7 +335,7 @@ subtest 'shift' => sub {
           is( Hydrogen::ArrayRef::shift( $testarray ), 'bar', q{Hydrogen::ArrayRef::shift( $testarray ) is 'bar'} );
           is_deeply( $testarray, [ 'baz' ], q{$testarray deep match} );
     };
-    is( $e, undef, 'no exception thrown running shift example' );
+    is $e, undef, 'no exception thrown running shift example';
 };
 
 subtest 'shuffle' => sub {
@@ -411,7 +411,7 @@ subtest 'unshift' => sub {
           Hydrogen::ArrayRef::unshift( $testarray, 'bar', 'baz' );
           is_deeply( $testarray, [ 'bar', 'baz', 'foo' ], q{$testarray deep match} );
     };
-    is( $e, undef, 'no exception thrown running unshift example' );
+    is $e, undef, 'no exception thrown running unshift example';
 };
 
 # :)

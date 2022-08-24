@@ -23,7 +23,7 @@ subtest 'dec' => sub {
           Hydrogen::Counter::dec( $testcounter, 5 );
           is( $testcounter, 3, q{$testcounter is 3} );
     };
-    is( $e, undef, 'no exception thrown running dec example' );
+    is $e, undef, 'no exception thrown running dec example';
 };
 
 subtest 'inc' => sub {
@@ -37,7 +37,7 @@ subtest 'inc' => sub {
           Hydrogen::Counter::inc( $testcounter, 3 );
           is( $testcounter, 5, q{$testcounter is 5} );
     };
-    is( $e, undef, 'no exception thrown running inc example' );
+    is $e, undef, 'no exception thrown running inc example';
 };
 
 subtest 'reset' => sub {
@@ -48,7 +48,7 @@ subtest 'reset' => sub {
           Hydrogen::Counter::reset( $testcounter );
           is( $testcounter, 0, q{$testcounter is 0} );
     };
-    is( $e, undef, 'no exception thrown running reset example' );
+    is $e, undef, 'no exception thrown running reset example';
 };
 
 subtest 'set' => sub {
@@ -59,7 +59,7 @@ subtest 'set' => sub {
           Hydrogen::Counter::set( $testcounter, 5 );
           is( $testcounter, 5, q{$testcounter is 5} );
     };
-    is( $e, undef, 'no exception thrown running set example' );
+    is $e, undef, 'no exception thrown running set example';
 };
 
 # :)

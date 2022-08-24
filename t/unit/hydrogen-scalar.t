@@ -21,7 +21,7 @@ subtest 'make_getter' => sub {
           $testscalar = 11 ;
           is( $getter->(), 11, q{$getter->() is 11} );
     };
-    is( $e, undef, 'no exception thrown running make_getter example' );
+    is $e, undef, 'no exception thrown running make_getter example';
 };
 
 subtest 'make_setter' => sub {
@@ -33,7 +33,7 @@ subtest 'make_setter' => sub {
           $setter->( 11 );
           is( $testscalar, 11, q{$testscalar is 11} );
     };
-    is( $e, undef, 'no exception thrown running make_setter example' );
+    is $e, undef, 'no exception thrown running make_setter example';
 };
 
 # :)

@@ -17,9 +17,9 @@ subtest 'curry_execute' => sub {
     ok $EXPORTS{'curry_execute'}, 'function is importable';
     my $e = exception {
         my $curried = Hydrogen::Curry::CodeRef::curry_execute( sub {} );
-        is( ref( $curried ), 'CODE', 'function returns a coderef' );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is( $e, undef, 'no exception thrown running curry_execute' );
+    is $e, undef, 'no exception thrown running curry_execute';
 };
 
 # :)
