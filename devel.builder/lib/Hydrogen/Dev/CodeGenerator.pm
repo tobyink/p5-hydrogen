@@ -25,11 +25,11 @@ sub _build_generator_for_type_assertion {
 			return sprintf '%s = !!%s;', $varname, $varname;
 		}
 		if ( $gen->coerce and $type->has_coercion ) {
-			return sprintf 'do { my $coerced = %s; %s or %s("Type check failed after coercion in delegated method: expected %%s, got value %%s", %s, $coerced); $coerced };',
-				$type->coercion->inline_coercion( $varname ), $type->inline_check( '$coerced' ), $self->_function_for_croak, B::perlstring( $type->display_name );
+			return sprintf 'do { my $coerced = %s; %s or %s("Type check failed after coercion for %s: expected %%s, got value %%s", %s, $coerced); $coerced };',
+				$type->coercion->inline_coercion( $varname ), $type->inline_check( '$coerced' ), $self->_function_for_croak, $gen->{_function_name}, B::perlstring( $type->display_name );
 		}
-		return sprintf 'do { %s or %s("Type check failed in delegated method: expected %%s, got value %%s", %s, %s); %s };',
-			$type->inline_check( $varname ), $self->_function_for_croak, B::perlstring( $type->display_name ), $varname, $varname;
+		return sprintf 'do { %s or %s("Type check failed for %s: expected %%s, got value %%s", %s, %s); %s };',
+			$type->inline_check( $varname ), $self->_function_for_croak, $gen->{_function_name}, B::perlstring( $type->display_name ), $varname, $varname;
 	};
 }
 

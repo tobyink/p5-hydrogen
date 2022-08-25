@@ -496,7 +496,7 @@ sub reset (\%) {
                 do {
                     ( ref($shv_final_unchecked) eq 'HASH' )
                       or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
+"Type check failed for reset: expected %s, got value %s",
                         "HashRef", $shv_final_unchecked
                       );
                     $shv_final_unchecked;
@@ -543,9 +543,8 @@ sub set (\%$$;@) {
                 }
               }
               or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                "Str", $shv_params[$shv_tmp]
-              );
+                "Type check failed for set: expected %s, got value %s",
+                "Str", $shv_params[$shv_tmp] );
             $shv_params[$shv_tmp];
         };
     };

@@ -129,9 +129,8 @@ sub append {
                     }
                   }
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Str", $shv_final_unchecked
-                  );
+                    "Type check failed for append: expected %s, got value %s",
+                    "Str", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -1392,7 +1391,7 @@ sub prepend {
                     }
                   }
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
+                    "Type check failed for prepend: expected %s, got value %s",
                     "Str", $shv_final_unchecked
                   );
                 $shv_final_unchecked;
@@ -1506,7 +1505,7 @@ sub replace {
                     }
                   }
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
+                    "Type check failed for replace: expected %s, got value %s",
                     "Str", $shv_final_unchecked
                   );
                 $shv_final_unchecked;
@@ -1623,7 +1622,7 @@ sub replace_globally {
                     }
                   }
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
+"Type check failed for replace_globally: expected %s, got value %s",
                     "Str", $shv_final_unchecked
                   );
                 $shv_final_unchecked;
@@ -1659,9 +1658,8 @@ sub reset {
                     }
                   }
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Str", $shv_final_unchecked
-                  );
+                    "Type check failed for reset: expected %s, got value %s",
+                    "Str", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -1730,9 +1728,8 @@ sub set {
                     }
                   }
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Str", $shv_final_unchecked
-                  );
+                    "Type check failed for set: expected %s, got value %s",
+                    "Str", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -1940,7 +1937,7 @@ Like C<substr> from L<perlfunc>, but is not an lvalue.
                             }
                           }
                           or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
+"Type check failed for substr: expected %s, got value %s",
                             "Str", $shv_final_unchecked
                           );
                         $shv_final_unchecked;

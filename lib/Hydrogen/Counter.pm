@@ -97,7 +97,7 @@ Decrements the counter by C<< $amount >>, or by 1 if no value is given.
                         }
                       )
                       or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
+                        "Type check failed for dec: expected %s, got value %s",
                         "Int", $shv_final_unchecked
                       );
                     $shv_final_unchecked;
@@ -171,7 +171,7 @@ Increments the counter by C<< $amount >>, or by 1 if no value is given.
                         }
                       )
                       or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
+                        "Type check failed for inc: expected %s, got value %s",
                         "Int", $shv_final_unchecked
                       );
                     $shv_final_unchecked;
@@ -205,9 +205,8 @@ sub reset {
                     }
                   )
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Int", $shv_final_unchecked
-                  );
+                    "Type check failed for reset: expected %s, got value %s",
+                    "Int", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -269,9 +268,8 @@ sub set {
                     }
                   )
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Int", $shv_final_unchecked
-                  );
+                    "Type check failed for set: expected %s, got value %s",
+                    "Int", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }

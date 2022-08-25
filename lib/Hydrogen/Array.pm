@@ -1485,7 +1485,7 @@ sub reset (\@) {
                 do {
                     ( ref($shv_final_unchecked) eq 'ARRAY' )
                       or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
+"Type check failed for reset: expected %s, got value %s",
                         "ArrayRef", $shv_final_unchecked
                       );
                     $shv_final_unchecked;
@@ -1795,9 +1795,8 @@ sub splice (\@$;@) {
                 }
               )
               or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                "Int", $_[1]
-              );
+                "Type check failed for splice: expected %s, got value %s",
+                "Int", $_[1] );
             $_[1];
         };
     }
@@ -1811,9 +1810,8 @@ sub splice (\@$;@) {
                 }
               )
               or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                "Int", $_[2]
-              );
+                "Type check failed for splice: expected %s, got value %s",
+                "Int", $_[2] );
             $_[2];
         };
     }

@@ -129,9 +129,8 @@ sub add {
                     }
                   )
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
+                    "Type check failed for add: expected %s, got value %s",
+                    "Num", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -261,9 +260,8 @@ sub div {
                     }
                   )
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
+                    "Type check failed for div: expected %s, got value %s",
+                    "Num", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -629,9 +627,8 @@ sub mod {
                     }
                   )
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
+                    "Type check failed for mod: expected %s, got value %s",
+                    "Num", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -706,9 +703,8 @@ sub mul {
                     }
                   )
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
+                    "Type check failed for mul: expected %s, got value %s",
+                    "Num", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -838,9 +834,8 @@ sub set {
                     }
                   )
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
+                    "Type check failed for set: expected %s, got value %s",
+                    "Num", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
@@ -915,9 +910,8 @@ sub sub {
                     }
                   )
                   or Hydrogen::croak(
-"Type check failed in delegated method: expected %s, got value %s",
-                    "Num", $shv_final_unchecked
-                  );
+                    "Type check failed for sub: expected %s, got value %s",
+                    "Num", $shv_final_unchecked );
                 $shv_final_unchecked;
             };
         }
