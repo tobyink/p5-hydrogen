@@ -49,3 +49,15 @@
 		];
 	].
 
+`Hydrogen 0.007 cpan:TOBYINK`
+	issued  2022-08-25;
+	changeset [
+		item [
+			a dcs:Change;
+			label "Some improved error messages.";
+		];
+		item [
+			a dcs:Addition;
+			label "Hydrogen::Topic::* modules.";
+		];
+	].
