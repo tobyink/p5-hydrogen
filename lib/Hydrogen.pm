@@ -244,6 +244,24 @@ L<Hydrogen::Topic::String>
 
 =back
 
+=head1 BONUS FUNCTIONS
+
+Hydrogen uses the following functions internally, but they may also be
+useful to you.
+
+=head2 C<< Hydrogen::croak( $message, @args? ) >>
+
+Acts like C<croak> from L<Carp>, but if C<< @args >> is provided, will
+C<sprintf> first. If C<< @args >> contains references, those will be
+dumped using L<Data::Dumper>.
+
+=head2 C<< Hydrogen::fc( $string? ) >>
+
+Acts like C<CORE::fc> if that function is available, and C<CORE::lc>
+otherwise.
+
+If no C<< $string >> is provided, operates on C<< $_ >>.
+
 =head1 BUGS
 
 Please report any bugs to
