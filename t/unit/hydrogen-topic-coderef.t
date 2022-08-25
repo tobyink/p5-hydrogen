@@ -6,21 +6,22 @@ use warnings;
 use Test::More 0.96;
 use Test::Fatal;
 
-use Hydrogen::CodeRef;
+use Hydrogen::Topic::CodeRef;
 
-isa_ok( 'Hydrogen::CodeRef', 'Exporter::Tiny' );
+isa_ok( 'Hydrogen::Topic::CodeRef', 'Exporter::Tiny' );
 
-my %EXPORTS = map +( $_ => 1 ), @Hydrogen::CodeRef::EXPORT_OK;
+my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Topic::CodeRef::EXPORT_OK;
 
 subtest 'execute' => sub {
-    ok exists(&Hydrogen::CodeRef::execute), 'function exists';
+    ok exists(&Hydrogen::Topic::CodeRef::execute), 'function exists';
     ok $EXPORTS{'execute'}, 'function is importable';
     my $e = exception {
+        local $_;
         my $coderef = sub { 'code' };
-        my $testcoderef = $coderef;
+        $_ = $coderef;
         
         # $coderef->( 1, 2, 3 )
-        Hydrogen::CodeRef::execute( $testcoderef, 1, 2, 3 );
+        Hydrogen::Topic::CodeRef::execute( 1, 2, 3 );
     };
     is $e, undef, 'no exception thrown running execute example';
 };

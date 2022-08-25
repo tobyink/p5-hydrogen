@@ -275,7 +275,7 @@ sub compile_test {
 			join( '::', $self->type->target_module, $func ),
 		);
 		$t .= "    my \$e = exception {\n";
-		$t .= '        ' . $self->_munge_line( $_ ) . "\n" for @lines;
+		$t .= '      ' . $self->_munge_line( $_ ) . "\n" for @lines;
 		$t .= "    };\n";
 		$t .= "    is \$e, undef, 'no exception thrown running $func example';\n";
 	}
@@ -303,6 +303,38 @@ sub compile_curry_test {
 	$t .= "        is ref( \$curried ), 'CODE', 'function returns a coderef';\n";
 	$t .= "    };\n";
 	$t .= "    is \$e, undef, 'no exception thrown running $func';\n";
+	$t .= "};\n\n";
+
+	return $t;
+}
+
+sub compile_topic_test {
+	my $self = shift;
+
+	my $func = $self->function_name;
+	my $t = '';
+
+	$t .= sprintf "subtest '%s' => sub {\n",
+		$func;
+	$t .= sprintf "    ok exists(&%s::%s), 'function exists';\n",
+		$self->type->topic_module, $func;
+	$t .= sprintf "    ok \$EXPORTS{'%s'}, 'function is importable';\n",
+		$func;
+
+	my $h = $self->handler;
+	if ( $h->_examples and not $self->type->example_var =~ /^\{/ ) {
+		my @lines = split /\n/, $h->_examples->(
+			'My::Class',
+			"attribute",
+			join( '::', $self->type->topic_module, $func ),
+		);
+		$t .= "    my \$e = exception {\n";
+		$t .= "        local \$_;\n";
+		$t .= '      ' . $self->_munge_line_topic( $_ ) . "\n" for @lines;
+		$t .= "    };\n";
+		$t .= "    is \$e, undef, 'no exception thrown running $func example';\n";
+	}
+
 	$t .= "};\n\n";
 
 	return $t;
@@ -373,6 +405,48 @@ sub _munge_line {
 	}
 
 	$line =~ s/ [%] (\w+) -> [{] (.+?) [}] /\$$1\{$2\}/xg;
+
+	$line =~ s/\bsay\b/note/;
+	return $line;
+}
+
+sub _munge_line_topic {
+	my ( $self, $line ) = @_;
+
+	my $func = $self->function_name;
+	my $egvar = '$_';
+	my $default = $self->type->code_for_default;
+
+	$line =~ s/my \$object(\d*)\s*=\s*My::Class->new\( attribute => (.+) \)/$egvar = $2/;
+	$line =~ s/my \$object(\d*)\s*=\s*My::Class->new\(\)/$egvar = $default/;
+	$line =~ s/\$object(\d*)->attribute/$egvar/g;
+	$line =~ s/\$object(\d*)->_set_attribute\(\s*(.+)\s*\)/$egvar = $2/g;
+
+	my $qqn = quotemeta( $self->type->topic_module . "::$func" );
+	$line =~ s/\$object(\d*)->($qqn)\(\s*\)/$2()/;
+	$line =~ s/\$object(\d*)->($qqn)\(/$2(/;
+	$line =~ s/\$object(\d*)->($qqn)/$2()/;
+
+	if ( $line =~ /^(\s*)say Dumper\((.*)\)\s*;\s*#(.*)# ==>(.*)$/ ) {
+		my ( $space, $expr, $pfx, $expected ) = ( $1, __trim("$2"), $3, __trim("$4") );
+		my $esc = '';
+		if ( $expr =~ /^[@%]/ ) {
+			$esc = '\\';
+		}
+		$line = "${space}${pfx}is_deeply( ${esc}${expr}, $expected, q{$expr deep match} );";
+	}
+	elsif ( $line =~ /^(\s*)say(.*);\s*#(.*)# ==>(.*)$/ ) {
+		my ( $space, $expr, $pfx, $expected ) = ( $1, __trim("$2"), $3, __trim("$4") );
+		if ( $expected eq 'true' ) {
+			$line = "${space}${pfx}ok( $expr, q{$expr is true} );";
+		}
+		elsif ( $expected eq 'false' ) {
+			$line = "${space}${pfx}ok( !($expr), q{$expr is false} );";
+		}
+		else {
+			$line = "${space}${pfx}is( $expr, $expected, q{$expr is $expected} );";
+		}
+	}
 
 	$line =~ s/\bsay\b/note/;
 	return $line;

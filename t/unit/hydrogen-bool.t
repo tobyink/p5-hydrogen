@@ -16,8 +16,8 @@ subtest 'not' => sub {
     ok exists(&Hydrogen::Bool::not), 'function exists';
     ok $EXPORTS{'not'}, 'function is importable';
     my $e = exception {
-          my $testbool = 1;
-          ok( !(Hydrogen::Bool::not( $testbool )), q{Hydrogen::Bool::not( $testbool ) is false} );
+        my $testbool = 1;
+        ok( !(Hydrogen::Bool::not( $testbool )), q{Hydrogen::Bool::not( $testbool ) is false} );
     };
     is $e, undef, 'no exception thrown running not example';
 };
@@ -31,9 +31,9 @@ subtest 'set' => sub {
     ok exists(&Hydrogen::Bool::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
     my $e = exception {
-          my $testbool = !!0;
-          Hydrogen::Bool::set( $testbool );
-          ok( $testbool, q{$testbool is true} );
+        my $testbool = !!0;
+        Hydrogen::Bool::set( $testbool );
+        ok( $testbool, q{$testbool is true} );
     };
     is $e, undef, 'no exception thrown running set example';
 };
@@ -42,11 +42,11 @@ subtest 'toggle' => sub {
     ok exists(&Hydrogen::Bool::toggle), 'function exists';
     ok $EXPORTS{'toggle'}, 'function is importable';
     my $e = exception {
-          my $testbool = !!0;
-          Hydrogen::Bool::toggle( $testbool );
-          ok( $testbool, q{$testbool is true} );
-          Hydrogen::Bool::toggle( $testbool );
-          ok( !($testbool), q{$testbool is false} );
+        my $testbool = !!0;
+        Hydrogen::Bool::toggle( $testbool );
+        ok( $testbool, q{$testbool is true} );
+        Hydrogen::Bool::toggle( $testbool );
+        ok( !($testbool), q{$testbool is false} );
     };
     is $e, undef, 'no exception thrown running toggle example';
 };
@@ -55,9 +55,9 @@ subtest 'unset' => sub {
     ok exists(&Hydrogen::Bool::unset), 'function exists';
     ok $EXPORTS{'unset'}, 'function is importable';
     my $e = exception {
-          my $testbool = !!0;
-          Hydrogen::Bool::unset( $testbool );
-          ok( !($testbool), q{$testbool is false} );
+        my $testbool = !!0;
+        Hydrogen::Bool::unset( $testbool );
+        ok( !($testbool), q{$testbool is false} );
     };
     is $e, undef, 'no exception thrown running unset example';
 };

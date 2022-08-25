@@ -85,6 +85,7 @@ sub write_all {
 	$self->write_topic_modules;
 	$self->write_tests;
 	$self->write_curry_tests;
+	$self->write_topic_tests;
 }
 
 sub write_modules {
@@ -132,6 +133,16 @@ sub write_curry_tests {
 
 	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
 		$type->write_curry_test unless $type->is_prototyped;
+	}
+
+	return $self;
+}
+
+sub write_topic_tests {
+	my $self = shift;
+
+	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
+		$type->write_topic_test unless $type->is_prototyped;
 	}
 
 	return $self;
