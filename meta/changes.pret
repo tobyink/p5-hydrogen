@@ -61,3 +61,20 @@
 			label "Hydrogen::Topic::* modules.";
 		];
 	].
+
+`Hydrogen 0.008 cpan:TOBYINK`
+	issued  2022-08-25;
+	changeset [
+		item [
+			a dcs:Documentation;
+			label "Improve the module listing in Hydrogen.pm.";
+		];
+		item [
+			a dcs:Documentation;
+			label "Give an example of topicalized function usage in Hydrogen.pm SYNOPSIS.";
+		];
+		item [
+			a dcs:Documentation;
+			label "Document Hydrogen.pm's own exported functions.";
+		];
+	].

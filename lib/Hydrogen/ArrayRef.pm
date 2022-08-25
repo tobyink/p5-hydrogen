@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::ArrayRef;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.007';
+our $VERSION   = '0.008';
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ Hydrogen::ArrayRef - a standard library for arrayrefs
 
 =head1 VERSION
 
-This documentation is for Hydrogen::ArrayRef 0.007.
+This documentation is for Hydrogen::ArrayRef 0.008.
 
 =cut
 
