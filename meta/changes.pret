@@ -40,3 +40,12 @@
 		];
 	].
 
+`Hydrogen 0.006 cpan:TOBYINK`
+	issued  2022-08-25;
+	changeset [
+		item [
+			a dcs:Documentation;
+			label "Better variable names in usage descriptions.";
+		];
+	].
+
