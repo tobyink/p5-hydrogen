@@ -12,7 +12,7 @@ our $VERSION   = '0.007';
 
 =head1 NAME
 
-Hydrogen::Topic::ArrayRef - functions from Hydrogen::ArrayRef applied to C<< $_ >>
+Hydrogen::Topic::ArrayRef - functions from Hydrogen::ArrayRef applied to C<$_>
 
 =head1 VERSION
 

@@ -12,7 +12,7 @@ our $VERSION   = '0.007';
 
 =head1 NAME
 
-Hydrogen::Topic::Scalar - functions from Hydrogen::Scalar applied to C<< $_ >>
+Hydrogen::Topic::Scalar - functions from Hydrogen::Scalar applied to C<$_>
 
 =head1 VERSION
 

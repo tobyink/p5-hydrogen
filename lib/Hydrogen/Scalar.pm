@@ -93,6 +93,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::Curry::Scalar>,
+L<Hydrogen::Topic::Scalar>,
 L<Sub::HandlesVia::HandlerLibrary::Scalar>.
 
 =head1 AUTHOR

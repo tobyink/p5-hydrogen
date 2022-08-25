@@ -12,7 +12,7 @@ our $VERSION   = '0.007';
 
 =head1 NAME
 
-Hydrogen::Topic::String - functions from Hydrogen::String applied to C<< $_ >>
+Hydrogen::Topic::String - functions from Hydrogen::String applied to C<$_>
 
 =head1 VERSION
 

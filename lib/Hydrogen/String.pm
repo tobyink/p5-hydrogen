@@ -1993,6 +1993,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::Curry::String>,
+L<Hydrogen::Topic::String>,
 L<Sub::HandlesVia::HandlerLibrary::String>.
 
 =head1 AUTHOR

@@ -142,6 +142,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::Curry::Bool>,
+L<Hydrogen::Topic::Bool>,
 L<Sub::HandlesVia::HandlerLibrary::Bool>.
 
 =head1 AUTHOR

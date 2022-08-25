@@ -516,6 +516,7 @@ See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 L<@{[ $self->dev->target_namespace ]}>,
 L<@{[ $self->curry_module ]}>,
+L<@{[ $self->topic_module ]}>,
 L<@{[ $self->handler_library ]}>.
 
 @{[ $self->dev->compile_author_section ]}
@@ -692,7 +693,7 @@ sub _compile_topic_module_header {
 	# Pod intro
 	$code .= "=head1 NAME\n";
 	$code .= "\n";
-	$code .= "@{[ $self->topic_module ]} - functions from @{[ $self->target_module ]} applied to C<< \$_ >>\n";
+	$code .= "@{[ $self->topic_module ]} - functions from @{[ $self->target_module ]} applied to C<\$_>\n";
 	$code .= "\n";
 	$code .= "=head1 VERSION\n";
 	$code .= "\n";

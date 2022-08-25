@@ -12,7 +12,7 @@ our $VERSION   = '0.007';
 
 =head1 NAME
 
-Hydrogen::Topic::Counter - functions from Hydrogen::Counter applied to C<< $_ >>
+Hydrogen::Topic::Counter - functions from Hydrogen::Counter applied to C<$_>
 
 =head1 VERSION
 

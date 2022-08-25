@@ -2039,6 +2039,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::Curry::ArrayRef>,
+L<Hydrogen::Topic::ArrayRef>,
 L<Sub::HandlesVia::HandlerLibrary::Array>.
 
 =head1 AUTHOR

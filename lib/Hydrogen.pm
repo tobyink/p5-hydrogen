@@ -87,6 +87,19 @@ Currying:
     say $hash{Alice};                ## ==> 123
     say $getter->( 'Bob' );          ## ==> 456
 
+Using the C<< $_ >> topic variable:
+
+    use feature 'say';
+    use Hydrogen::Topic::HashRef qw( get set );
+    
+    local $_ = {};
+    
+    set( Alice => 123 );
+    set( Bob   => 456 );
+    
+    say $_->{Alice};                 ## ==> 123
+    say get( 'Bob' );                ## ==> 456
+
 =head1 DESCRIPTION
 
 L<Hydrogen> provides a standard library for doing really simple things in
@@ -105,10 +118,6 @@ make a coderef pointing to Perl's C<< += >> operator!
 
 =item *
 
-L<Hydrogen::Array>
-
-=item *
-
 L<Hydrogen::ArrayRef>
 
 =item *
@@ -117,19 +126,11 @@ L<Hydrogen::Bool>
 
 =item *
 
-L<Hydrogen::Code>
-
-=item *
-
 L<Hydrogen::CodeRef>
 
 =item *
 
 L<Hydrogen::Counter>
-
-=item *
-
-L<Hydrogen::Hash>
 
 =item *
 
@@ -146,6 +147,30 @@ L<Hydrogen::Scalar>
 =item *
 
 L<Hydrogen::String>
+
+=back
+
+=head2 Prototyped Functions
+
+=over
+
+=item *
+
+L<Hydrogen::Array>
+
+=item *
+
+L<Hydrogen::Code>
+
+=item *
+
+L<Hydrogen::Hash>
+
+=back
+
+=head2 Curry Functions
+
+=over
 
 =item *
 
@@ -178,6 +203,44 @@ L<Hydrogen::Curry::Scalar>
 =item *
 
 L<Hydrogen::Curry::String>
+
+=back
+
+=head2 Topicalized Functions
+
+=over
+
+=item *
+
+L<Hydrogen::Topic::ArrayRef>
+
+=item *
+
+L<Hydrogen::Topic::Bool>
+
+=item *
+
+L<Hydrogen::Topic::CodeRef>
+
+=item *
+
+L<Hydrogen::Topic::Counter>
+
+=item *
+
+L<Hydrogen::Topic::HashRef>
+
+=item *
+
+L<Hydrogen::Topic::Number>
+
+=item *
+
+L<Hydrogen::Topic::Scalar>
+
+=item *
+
+L<Hydrogen::Topic::String>
 
 =back
 

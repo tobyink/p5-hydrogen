@@ -304,6 +304,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::Curry::Counter>,
+L<Hydrogen::Topic::Counter>,
 L<Sub::HandlesVia::HandlerLibrary::Counter>.
 
 =head1 AUTHOR
