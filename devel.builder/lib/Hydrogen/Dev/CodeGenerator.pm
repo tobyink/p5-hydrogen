@@ -50,7 +50,7 @@ sub _handle_sigcheck {
 				is_wrapper     => !!0,
 				mite_signature => $self,
 			},
-			$state->{shifted_self}
+			$state->{shifted_self} || $self->attribute_spec->{is_topic}
 				? @{ $handler->signature }
 				: ( $self->isa, @{ $handler->signature } ),
 		);
@@ -82,7 +82,7 @@ sub _handle_sigcheck {
 		my $max_args = $handler->max_args;
 		
 		my $plus = 1;
-		if ( $state->{shifted_self} ) {
+		if ( $state->{shifted_self} || $self->attribute_spec->{is_topic} ) {
 			$plus = 0;
 		}
 		

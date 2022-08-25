@@ -5,24 +5,24 @@ use warnings;
 no warnings qw( void once );
 use Hydrogen ();
 
-package Hydrogen::String;
+package Hydrogen::Topic::String;
 
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.006';
 
 =head1 NAME
 
-Hydrogen::String - a standard library for strings
+Hydrogen::Topic::String - functions from Hydrogen::String applied to C<< $_ >>
 
 =head1 VERSION
 
-This documentation is for Hydrogen::String 0.006.
+This documentation is for Hydrogen::Topic::String 0.006.
 
 =cut
 
 =head1 FUNCTIONS
 
-Each function expects a string scalar as its first argument.
+Each function implicitly operates on C<< $_ >>, expecting it to be a string scalar.
 
 =cut
 
@@ -67,25 +67,26 @@ use Exporter::Shiny qw(
     uc
 );
 
-=head2 C<< append( $string, $tail ) >>
+=head2 C<< append( $tail ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Appends another string to the end of the current string and updates the original value.
 
 =cut
 
 sub append {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "append", scalar(@_), "expected exactly 2 parameters" );
+            "append", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -100,24 +101,11 @@ sub append {
             "Type check failed in signature for append: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for append: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
     (
-        ${$__REF__} = do {
-            my $shv_final_unchecked = $$__REF__ . $_[1];
+        $_ = do {
+            my $shv_final_unchecked = $_ . $_[0];
             do {
                 do {
 
@@ -137,80 +125,84 @@ sub append {
     );
 }
 
-=head2 C<< chomp( $string ) >>
+=head2 C<< chomp() >>
+
+Operates on C<< $_ >>, which must be a string scalar.
 
 Like C<chomp> from L<perlfunc>.
 
 =cut
 
 sub chomp {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for chomp; usage: "
-          . "Hydrogen::String::chomp( \$string )" );
+          . "Hydrogen::Topic::String::chomp()" );
     1;
-    my $shv_return = chomp( my $shv_tmp = $$__REF__ );
-    ( ${$__REF__} = $shv_tmp );
+    my $shv_return = chomp( my $shv_tmp = $_ );
+    ( $_ = $shv_tmp );
     $shv_return;
 }
 
-=head2 C<< chop( $string ) >>
+=head2 C<< chop() >>
+
+Operates on C<< $_ >>, which must be a string scalar.
 
 Like C<chop> from L<perlfunc>.
 
 =cut
 
 sub chop {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for chop; usage: "
-          . "Hydrogen::String::chop( \$string )" );
+          . "Hydrogen::Topic::String::chop()" );
     1;
-    my $shv_return = chop( my $shv_tmp = $$__REF__ );
-    ( ${$__REF__} = $shv_tmp );
+    my $shv_return = chop( my $shv_tmp = $_ );
+    ( $_ = $shv_tmp );
     $shv_return;
 }
 
-=head2 C<< clear( $string ) >>
+=head2 C<< clear() >>
+
+Operates on C<< $_ >>, which must be a string scalar.
 
 Sets the string to the empty string.
 
 =cut
 
 sub clear {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
-          . "Hydrogen::String::clear( \$string )" );
+          . "Hydrogen::Topic::String::clear()" );
     1;
-    ( ${$__REF__} = q() );
+    ( $_ = q() );
 }
 
-=head2 C<< cmp( $string, $str ) >>
+=head2 C<< cmp( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< $string cmp $str >>.
+Arguments: B<< Str >>.
+
+Returns C<< $_ cmp $str >>.
 
 =cut
 
 sub cmp {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "cmp", scalar(@_), "expected exactly 2 parameters" );
+            "cmp", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -225,43 +217,31 @@ sub cmp {
             "Type check failed in signature for cmp: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for cmp: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    $$__REF__ cmp $_[1];
+    $_ cmp $_[0];
 }
 
-=head2 C<< cmpi( $string, $str ) >>
+=head2 C<< cmpi( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< fc($string) cmp fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
+Arguments: B<< Str >>.
+
+Returns C<< fc($_) cmp fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
 
 =cut
 
 sub cmpi {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "cmpi", scalar(@_), "expected exactly 2 parameters" );
+            "cmpi", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -276,43 +256,31 @@ sub cmpi {
             "Type check failed in signature for cmpi: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for cmpi: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    Hydrogen::fc($$__REF__) cmp Hydrogen::fc( $_[1] );
+    Hydrogen::fc($_) cmp Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< contains( $string, $str ) >>
+=head2 C<< contains( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Returns true iff the string contains C<< $str >>.
 
 =cut
 
 sub contains {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "contains", scalar(@_), "expected exactly 2 parameters" );
+            "contains", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -327,43 +295,31 @@ sub contains {
             "Type check failed in signature for contains: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for contains: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    index( $$__REF__, $_[1] ) != -1;
+    index( $_, $_[0] ) != -1;
 }
 
-=head2 C<< contains_i( $string, $str ) >>
+=head2 C<< contains_i( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Returns true iff the string contains C<< $str >> case-insensitvely.
 
 =cut
 
 sub contains_i {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "contains_i", scalar(@_), "expected exactly 2 parameters" );
+            "contains_i", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -378,43 +334,31 @@ sub contains_i {
             "Type check failed in signature for contains_i: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for contains_i: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    index( Hydrogen::fc($$__REF__), Hydrogen::fc( $_[1] ) ) != -1;
+    index( Hydrogen::fc($_), Hydrogen::fc( $_[0] ) ) != -1;
 }
 
-=head2 C<< ends_with( $string, $tail ) >>
+=head2 C<< ends_with( $tail ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Returns true iff the string ends with C<< $tail >>.
 
 =cut
 
 sub ends_with {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "ends_with", scalar(@_), "expected exactly 2 parameters" );
+            "ends_with", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -429,43 +373,31 @@ sub ends_with {
             "Type check failed in signature for ends_with: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for ends_with: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    substr( $$__REF__, -length $_[1] ) eq $_[1];
+    substr( $_, -length $_[0] ) eq $_[0];
 }
 
-=head2 C<< ends_with_i( $string, $tail ) >>
+=head2 C<< ends_with_i( $tail ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Returns true iff the string ends with C<< $tail >> case-insensitvely.
 
 =cut
 
 sub ends_with_i {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "ends_with_i", scalar(@_), "expected exactly 2 parameters" );
+            "ends_with_i", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -480,43 +412,31 @@ sub ends_with_i {
             "Type check failed in signature for ends_with_i: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for ends_with_i: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    Hydrogen::fc( substr( $$__REF__, -length $_[1] ) ) eq Hydrogen::fc( $_[1] );
+    Hydrogen::fc( substr( $_, -length $_[0] ) ) eq Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< eq( $string, $str ) >>
+=head2 C<< eq( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< $string eq $str >>.
+Arguments: B<< Str >>.
+
+Returns C<< $_ eq $str >>.
 
 =cut
 
 sub eq {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "eq", scalar(@_), "expected exactly 2 parameters" );
+            "eq", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -531,43 +451,31 @@ sub eq {
             "Type check failed in signature for eq: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for eq: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    $$__REF__ eq $_[1];
+    $_ eq $_[0];
 }
 
-=head2 C<< eqi( $string, $str ) >>
+=head2 C<< eqi( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< fc($string) eq fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
+Arguments: B<< Str >>.
+
+Returns C<< fc($_) eq fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
 
 =cut
 
 sub eqi {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "eqi", scalar(@_), "expected exactly 2 parameters" );
+            "eqi", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -582,59 +490,48 @@ sub eqi {
             "Type check failed in signature for eqi: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for eqi: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    Hydrogen::fc($$__REF__) eq Hydrogen::fc( $_[1] );
+    Hydrogen::fc($_) eq Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< fc( $string ) >>
+=head2 C<< fc() >>
 
-Returns C<< fc($string) >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Returns C<< fc($_) >>.
 
 =cut
 
 sub fc {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for fc; usage: "
-          . "Hydrogen::String::fc( \$string )" );
-    Hydrogen::fc($$__REF__);
+          . "Hydrogen::Topic::String::fc()" );
+    Hydrogen::fc($_);
 }
 
-=head2 C<< ge( $string, $str ) >>
+=head2 C<< ge( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< $string ge $str >>.
+Arguments: B<< Str >>.
+
+Returns C<< $_ ge $str >>.
 
 =cut
 
 sub ge {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "ge", scalar(@_), "expected exactly 2 parameters" );
+            "ge", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -649,43 +546,31 @@ sub ge {
             "Type check failed in signature for ge: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for ge: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    $$__REF__ ge $_[1];
+    $_ ge $_[0];
 }
 
-=head2 C<< gei( $string, $str ) >>
+=head2 C<< gei( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< fc($string) ge fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
+Arguments: B<< Str >>.
+
+Returns C<< fc($_) ge fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
 
 =cut
 
 sub gei {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "gei", scalar(@_), "expected exactly 2 parameters" );
+            "gei", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -700,59 +585,48 @@ sub gei {
             "Type check failed in signature for gei: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for gei: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    Hydrogen::fc($$__REF__) ge Hydrogen::fc( $_[1] );
+    Hydrogen::fc($_) ge Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< get( $string ) >>
+=head2 C<< get() >>
+
+Operates on C<< $_ >>, which must be a string scalar.
 
 Gets the current value of the string.
 
 =cut
 
 sub get {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
-          . "Hydrogen::String::get( \$string )" );
-    $$__REF__;
+          . "Hydrogen::Topic::String::get()" );
+    $_;
 }
 
-=head2 C<< gt( $string, $str ) >>
+=head2 C<< gt( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< $string gt $str >>.
+Arguments: B<< Str >>.
+
+Returns C<< $_ gt $str >>.
 
 =cut
 
 sub gt {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "gt", scalar(@_), "expected exactly 2 parameters" );
+            "gt", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -767,43 +641,31 @@ sub gt {
             "Type check failed in signature for gt: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for gt: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    $$__REF__ gt $_[1];
+    $_ gt $_[0];
 }
 
-=head2 C<< gti( $string, $str ) >>
+=head2 C<< gti( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< fc($string) gt fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
+Arguments: B<< Str >>.
+
+Returns C<< fc($_) gt fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
 
 =cut
 
 sub gti {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "gti", scalar(@_), "expected exactly 2 parameters" );
+            "gti", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -818,78 +680,66 @@ sub gti {
             "Type check failed in signature for gti: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for gti: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    Hydrogen::fc($$__REF__) gt Hydrogen::fc( $_[1] );
+    Hydrogen::fc($_) gt Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< inc( $string ) >>
+=head2 C<< inc() >>
+
+Operates on C<< $_ >>, which must be a string scalar.
 
 Performs C<< ++ >> on the string.
 
 =cut
 
 sub inc {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for inc; usage: "
-          . "Hydrogen::String::inc( \$string )" );
+          . "Hydrogen::Topic::String::inc()" );
     1;
-    (
-        ${$__REF__} = do { my $shv_tmp = $$__REF__; ++$shv_tmp }
-    );
+    ( $_ = do { my $shv_tmp = $_; ++$shv_tmp } );
 }
 
-=head2 C<< lc( $string ) >>
+=head2 C<< lc() >>
 
-Returns C<< lc($string) >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Returns C<< lc($_) >>.
 
 =cut
 
 sub lc {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for lc; usage: "
-          . "Hydrogen::String::lc( \$string )" );
-    lc($$__REF__);
+          . "Hydrogen::Topic::String::lc()" );
+    lc($_);
 }
 
-=head2 C<< le( $string, $str ) >>
+=head2 C<< le( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< $string le $str >>.
+Arguments: B<< Str >>.
+
+Returns C<< $_ le $str >>.
 
 =cut
 
 sub le {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "le", scalar(@_), "expected exactly 2 parameters" );
+            "le", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -904,43 +754,31 @@ sub le {
             "Type check failed in signature for le: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for le: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    $$__REF__ le $_[1];
+    $_ le $_[0];
 }
 
-=head2 C<< lei( $string, $str ) >>
+=head2 C<< lei( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< fc($string) le fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
+Arguments: B<< Str >>.
+
+Returns C<< fc($_) le fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
 
 =cut
 
 sub lei {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "lei", scalar(@_), "expected exactly 2 parameters" );
+            "lei", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -955,59 +793,48 @@ sub lei {
             "Type check failed in signature for lei: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for lei: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    Hydrogen::fc($$__REF__) le Hydrogen::fc( $_[1] );
+    Hydrogen::fc($_) le Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< length( $string ) >>
+=head2 C<< length() >>
+
+Operates on C<< $_ >>, which must be a string scalar.
 
 Like C<length> from L<perlfunc>.
 
 =cut
 
 sub length {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for length; usage: "
-          . "Hydrogen::String::length( \$string )" );
-    length($$__REF__);
+          . "Hydrogen::Topic::String::length()" );
+    length($_);
 }
 
-=head2 C<< lt( $string, $str ) >>
+=head2 C<< lt( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< $string lt $str >>.
+Arguments: B<< Str >>.
+
+Returns C<< $_ lt $str >>.
 
 =cut
 
 sub lt {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "lt", scalar(@_), "expected exactly 2 parameters" );
+            "lt", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -1022,43 +849,31 @@ sub lt {
             "Type check failed in signature for lt: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for lt: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    $$__REF__ lt $_[1];
+    $_ lt $_[0];
 }
 
-=head2 C<< lti( $string, $str ) >>
+=head2 C<< lti( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< fc($string) lt fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
+Arguments: B<< Str >>.
+
+Returns C<< fc($_) lt fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
 
 =cut
 
 sub lti {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "lti", scalar(@_), "expected exactly 2 parameters" );
+            "lti", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -1073,58 +888,33 @@ sub lti {
             "Type check failed in signature for lti: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for lti: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    Hydrogen::fc($$__REF__) lt Hydrogen::fc( $_[1] );
+    Hydrogen::fc($_) lt Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< match( $string, $regexp ) >>
+=head2 C<< match( $regexp ) >>
 
-Additional arguments: B<< Str|RegexpRef >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str|RegexpRef >>.
 
 Returns true iff the string matches the regexp.
 
 =cut
 
 sub match {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "match", scalar(@_), "expected exactly 2 parameters" );
+            "match", scalar(@_), "expected exactly 1 parameters" );
 
-        # Parameter $_[0] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[0] ) and do {
-                ref( \$_[0] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for match: %s should be %s",
-            "\$_[0]", "Str" );
-
-        # Parameter $_[1] (type: Str|RegexpRef)
+        # Parameter $_[0] (type: Str|RegexpRef)
         do {
 
             package Hydrogen::String::__SANDBOX__;
@@ -1132,9 +922,9 @@ sub match {
                 do {
 
                     package Hydrogen::String::__SANDBOX__;
-                    defined( $_[1] ) and do {
-                        ref( \$_[1] ) eq 'SCALAR'
-                          or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
+                    defined( $_[0] ) and do {
+                        ref( \$_[0] ) eq 'SCALAR'
+                          or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
                     }
                   }
                   or (
@@ -1143,56 +933,44 @@ sub match {
                         package Hydrogen::String::__SANDBOX__;
                         use Scalar::Util ();
                         use re           ();
-                        ref( $_[1] ) && !!re::is_regexp( $_[1] )
-                          or Scalar::Util::blessed( $_[1] )
-                          && $_[1]->isa('Regexp');
+                        ref( $_[0] ) && !!re::is_regexp( $_[0] )
+                          or Scalar::Util::blessed( $_[0] )
+                          && $_[0]->isa('Regexp');
                     }
                   )
             );
           }
           or Hydrogen::croak(
             "Type check failed in signature for match: %s should be %s",
-            "\$_[1]", "Str|RegexpRef" );
+            "\$_[0]", "Str|RegexpRef" );
 
         (@_);
     };
-    $$__REF__ =~ /$_[1]/;
+    $_ =~ /$_[0]/;
 }
 
-=head2 C<< match_i( $string, $regexp ) >>
+=head2 C<< match_i( $regexp ) >>
 
-Additional arguments: B<< Str|RegexpRef >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str|RegexpRef >>.
 
 Returns true iff the string matches the regexp case-insensitively.
 
 =cut
 
 sub match_i {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "match_i", scalar(@_), "expected exactly 2 parameters" );
+            "match_i", scalar(@_), "expected exactly 1 parameters" );
 
-        # Parameter $_[0] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[0] ) and do {
-                ref( \$_[0] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for match_i: %s should be %s",
-            "\$_[0]", "Str" );
-
-        # Parameter $_[1] (type: Str|RegexpRef)
+        # Parameter $_[0] (type: Str|RegexpRef)
         do {
 
             package Hydrogen::String::__SANDBOX__;
@@ -1200,9 +978,9 @@ sub match_i {
                 do {
 
                     package Hydrogen::String::__SANDBOX__;
-                    defined( $_[1] ) and do {
-                        ref( \$_[1] ) eq 'SCALAR'
-                          or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
+                    defined( $_[0] ) and do {
+                        ref( \$_[0] ) eq 'SCALAR'
+                          or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
                     }
                   }
                   or (
@@ -1211,41 +989,42 @@ sub match_i {
                         package Hydrogen::String::__SANDBOX__;
                         use Scalar::Util ();
                         use re           ();
-                        ref( $_[1] ) && !!re::is_regexp( $_[1] )
-                          or Scalar::Util::blessed( $_[1] )
-                          && $_[1]->isa('Regexp');
+                        ref( $_[0] ) && !!re::is_regexp( $_[0] )
+                          or Scalar::Util::blessed( $_[0] )
+                          && $_[0]->isa('Regexp');
                     }
                   )
             );
           }
           or Hydrogen::croak(
             "Type check failed in signature for match_i: %s should be %s",
-            "\$_[1]", "Str|RegexpRef" );
+            "\$_[0]", "Str|RegexpRef" );
 
         (@_);
     };
-    $$__REF__ =~ /$_[1]/i;
+    $_ =~ /$_[0]/i;
 }
 
-=head2 C<< ne( $string, $str ) >>
+=head2 C<< ne( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< $string ne $str >>.
+Arguments: B<< Str >>.
+
+Returns C<< $_ ne $str >>.
 
 =cut
 
 sub ne {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "ne", scalar(@_), "expected exactly 2 parameters" );
+            "ne", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -1260,43 +1039,31 @@ sub ne {
             "Type check failed in signature for ne: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for ne: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    $$__REF__ ne $_[1];
+    $_ ne $_[0];
 }
 
-=head2 C<< nei( $string, $str ) >>
+=head2 C<< nei( $str ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
 
-Returns C<< fc($string) ne fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
+Arguments: B<< Str >>.
+
+Returns C<< fc($_) ne fc($str) >>. Uses C<lc> instead of C<fc> in versions of Perl older than 5.16.
 
 =cut
 
 sub nei {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "nei", scalar(@_), "expected exactly 2 parameters" );
+            "nei", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -1311,43 +1078,31 @@ sub nei {
             "Type check failed in signature for nei: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for nei: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    Hydrogen::fc($$__REF__) ne Hydrogen::fc( $_[1] );
+    Hydrogen::fc($_) ne Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< prepend( $string, $head ) >>
+=head2 C<< prepend( $head ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Prepends another string to the start of the current string and updates the original value.
 
 =cut
 
 sub prepend {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "prepend", scalar(@_), "expected exactly 2 parameters" );
+            "prepend", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -1362,24 +1117,11 @@ sub prepend {
             "Type check failed in signature for prepend: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for prepend: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
     (
-        ${$__REF__} = do {
-            my $shv_final_unchecked = $_[1] . $$__REF__;
+        $_ = do {
+            my $shv_final_unchecked = $_[0] . $_;
             do {
                 do {
 
@@ -1400,40 +1142,58 @@ sub prepend {
     );
 }
 
-=head2 C<< replace( $string, $regexp, $replacement ) >>
+=head2 C<< replace( $regexp, $replacement ) >>
 
-Additional arguments: B<< Str|RegexpRef >>, B<< Str|CodeRef >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str|RegexpRef >>, B<< Str|CodeRef >>.
 
 Replaces the first regexp match within the string with the replacement string.
 
 =cut
 
 sub replace {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 3
+        @_ == 2
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "replace", scalar(@_), "expected exactly 3 parameters" );
+            "replace", scalar(@_), "expected exactly 2 parameters" );
 
-        # Parameter $_[0] (type: Str)
+        # Parameter $_[0] (type: Str|RegexpRef)
         do {
 
             package Hydrogen::String::__SANDBOX__;
-            defined( $_[0] ) and do {
-                ref( \$_[0] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
-            }
+            (
+                do {
+
+                    package Hydrogen::String::__SANDBOX__;
+                    defined( $_[0] ) and do {
+                        ref( \$_[0] ) eq 'SCALAR'
+                          or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
+                    }
+                  }
+                  or (
+                    do {
+
+                        package Hydrogen::String::__SANDBOX__;
+                        use Scalar::Util ();
+                        use re           ();
+                        ref( $_[0] ) && !!re::is_regexp( $_[0] )
+                          or Scalar::Util::blessed( $_[0] )
+                          && $_[0]->isa('Regexp');
+                    }
+                  )
+            );
           }
           or Hydrogen::croak(
             "Type check failed in signature for replace: %s should be %s",
-            "\$_[0]", "Str" );
+            "\$_[0]", "Str|RegexpRef" );
 
-        # Parameter $_[1] (type: Str|RegexpRef)
+        # Parameter $_[1] (type: Str|CodeRef)
         do {
 
             package Hydrogen::String::__SANDBOX__;
@@ -1446,53 +1206,23 @@ sub replace {
                           or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
                     }
                   }
-                  or (
-                    do {
-
-                        package Hydrogen::String::__SANDBOX__;
-                        use Scalar::Util ();
-                        use re           ();
-                        ref( $_[1] ) && !!re::is_regexp( $_[1] )
-                          or Scalar::Util::blessed( $_[1] )
-                          && $_[1]->isa('Regexp');
-                    }
-                  )
+                  or ( ref( $_[1] ) eq 'CODE' )
             );
           }
           or Hydrogen::croak(
             "Type check failed in signature for replace: %s should be %s",
-            "\$_[1]", "Str|RegexpRef" );
-
-        # Parameter $_[2] (type: Str|CodeRef)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            (
-                do {
-
-                    package Hydrogen::String::__SANDBOX__;
-                    defined( $_[2] ) and do {
-                        ref( \$_[2] ) eq 'SCALAR'
-                          or ref( \( my $val = $_[2] ) ) eq 'SCALAR';
-                    }
-                  }
-                  or ( ref( $_[2] ) eq 'CODE' )
-            );
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for replace: %s should be %s",
-            "\$_[2]", "Str|CodeRef" );
+            "\$_[1]", "Str|CodeRef" );
 
         (@_);
     };
-    my $shv_tmp = $$__REF__;
-    if ( ( ref( $_[2] ) eq 'CODE' ) ) {
-        my $shv_callback = $_[2];
-        $shv_tmp =~ s/$_[1]/$shv_callback->()/e;
+    my $shv_tmp = $_;
+    if ( ( ref( $_[1] ) eq 'CODE' ) ) {
+        my $shv_callback = $_[1];
+        $shv_tmp =~ s/$_[0]/$shv_callback->()/e;
     }
-    else { $shv_tmp =~ s/$_[1]/$_[2]/ }
+    else { $shv_tmp =~ s/$_[0]/$_[1]/ }
     (
-        ${$__REF__} = do {
+        $_ = do {
             my $shv_final_unchecked = $shv_tmp;
             do {
                 do {
@@ -1514,41 +1244,59 @@ sub replace {
     );
 }
 
-=head2 C<< replace_globally( $string, $regexp, $replacement ) >>
+=head2 C<< replace_globally( $regexp, $replacement ) >>
 
-Additional arguments: B<< Str|RegexpRef >>, B<< Str|CodeRef >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str|RegexpRef >>, B<< Str|CodeRef >>.
 
 Replaces the all regexp matches within the string with the replacement string.
 
 =cut
 
 sub replace_globally {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 3
+        @_ == 2
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "replace_globally", scalar(@_), "expected exactly 3 parameters" );
+            "replace_globally", scalar(@_), "expected exactly 2 parameters" );
 
-        # Parameter $_[0] (type: Str)
+        # Parameter $_[0] (type: Str|RegexpRef)
         do {
 
             package Hydrogen::String::__SANDBOX__;
-            defined( $_[0] ) and do {
-                ref( \$_[0] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
-            }
+            (
+                do {
+
+                    package Hydrogen::String::__SANDBOX__;
+                    defined( $_[0] ) and do {
+                        ref( \$_[0] ) eq 'SCALAR'
+                          or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
+                    }
+                  }
+                  or (
+                    do {
+
+                        package Hydrogen::String::__SANDBOX__;
+                        use Scalar::Util ();
+                        use re           ();
+                        ref( $_[0] ) && !!re::is_regexp( $_[0] )
+                          or Scalar::Util::blessed( $_[0] )
+                          && $_[0]->isa('Regexp');
+                    }
+                  )
+            );
           }
           or Hydrogen::croak(
 "Type check failed in signature for replace_globally: %s should be %s",
-            "\$_[0]", "Str"
+            "\$_[0]", "Str|RegexpRef"
           );
 
-        # Parameter $_[1] (type: Str|RegexpRef)
+        # Parameter $_[1] (type: Str|CodeRef)
         do {
 
             package Hydrogen::String::__SANDBOX__;
@@ -1561,55 +1309,24 @@ sub replace_globally {
                           or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
                     }
                   }
-                  or (
-                    do {
-
-                        package Hydrogen::String::__SANDBOX__;
-                        use Scalar::Util ();
-                        use re           ();
-                        ref( $_[1] ) && !!re::is_regexp( $_[1] )
-                          or Scalar::Util::blessed( $_[1] )
-                          && $_[1]->isa('Regexp');
-                    }
-                  )
+                  or ( ref( $_[1] ) eq 'CODE' )
             );
           }
           or Hydrogen::croak(
 "Type check failed in signature for replace_globally: %s should be %s",
-            "\$_[1]", "Str|RegexpRef"
-          );
-
-        # Parameter $_[2] (type: Str|CodeRef)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            (
-                do {
-
-                    package Hydrogen::String::__SANDBOX__;
-                    defined( $_[2] ) and do {
-                        ref( \$_[2] ) eq 'SCALAR'
-                          or ref( \( my $val = $_[2] ) ) eq 'SCALAR';
-                    }
-                  }
-                  or ( ref( $_[2] ) eq 'CODE' )
-            );
-          }
-          or Hydrogen::croak(
-"Type check failed in signature for replace_globally: %s should be %s",
-            "\$_[2]", "Str|CodeRef"
+            "\$_[1]", "Str|CodeRef"
           );
 
         (@_);
     };
-    my $shv_tmp = $$__REF__;
-    if ( ( ref( $_[2] ) eq 'CODE' ) ) {
-        my $shv_callback = $_[2];
-        $shv_tmp =~ s/$_[1]/$shv_callback->()/eg;
+    my $shv_tmp = $_;
+    if ( ( ref( $_[1] ) eq 'CODE' ) ) {
+        my $shv_callback = $_[1];
+        $shv_tmp =~ s/$_[0]/$shv_callback->()/eg;
     }
-    else { $shv_tmp =~ s/$_[1]/$_[2]/g }
+    else { $shv_tmp =~ s/$_[0]/$_[1]/g }
     (
-        ${$__REF__} = do {
+        $_ = do {
             my $shv_final_unchecked = $shv_tmp;
             do {
                 do {
@@ -1631,21 +1348,22 @@ sub replace_globally {
     );
 }
 
-=head2 C<< reset( $string ) >>
+=head2 C<< reset() >>
+
+Operates on C<< $_ >>, which must be a string scalar.
 
 Resets the original value to its default value, or an empty string if it has no default.
 
 =cut
 
 sub reset {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
-          . "Hydrogen::String::reset( \$string )" );
+          . "Hydrogen::Topic::String::reset()" );
     (
-        ${$__REF__} = do {
+        $_ = do {
             my $shv_final_unchecked = q{};
             do {
                 do {
@@ -1666,25 +1384,26 @@ sub reset {
     );
 }
 
-=head2 C<< set( $string, $value ) >>
+=head2 C<< set( $value ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Sets the string to a new value.
 
 =cut
 
 sub set {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "set", scalar(@_), "expected exactly 2 parameters" );
+            "set", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -1699,24 +1418,11 @@ sub set {
             "Type check failed in signature for set: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for set: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
     (
-        ${$__REF__} = do {
-            my $shv_final_unchecked = $_[1];
+        $_ = do {
+            my $shv_final_unchecked = $_[0];
             do {
                 do {
 
@@ -1736,25 +1442,26 @@ sub set {
     );
 }
 
-=head2 C<< starts_with( $string, $head ) >>
+=head2 C<< starts_with( $head ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Returns true iff the string starts with C<< $head >>.
 
 =cut
 
 sub starts_with {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "starts_with", scalar(@_), "expected exactly 2 parameters" );
+            "starts_with", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -1769,43 +1476,31 @@ sub starts_with {
             "Type check failed in signature for starts_with: %s should be %s",
             "\$_[0]", "Str" );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for starts_with: %s should be %s",
-            "\$_[1]", "Str" );
-
         (@_);
     };
-    substr( $$__REF__, 0, length $_[1] ) eq $_[1];
+    substr( $_, 0, length $_[0] ) eq $_[0];
 }
 
-=head2 C<< starts_with_i( $string, $head ) >>
+=head2 C<< starts_with_i( $head ) >>
 
-Additional arguments: B<< Str >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Str >>.
 
 Returns true iff the string starts with C<< $head >> case-insensitvely.
 
 =cut
 
 sub starts_with_i {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
     @_ = do {
         my ( %tmp, $tmp );
 
-        @_ == 2
+        @_ == 1
           or Hydrogen::croak(
             "Wrong number of parameters in signature for %s: got %d, %s",
-            "starts_with_i", scalar(@_), "expected exactly 2 parameters" );
+            "starts_with_i", scalar(@_), "expected exactly 1 parameters" );
 
         # Parameter $_[0] (type: Str)
         do {
@@ -1821,28 +1516,16 @@ sub starts_with_i {
             "\$_[0]", "Str"
           );
 
-        # Parameter $_[1] (type: Str)
-        do {
-
-            package Hydrogen::String::__SANDBOX__;
-            defined( $_[1] ) and do {
-                ref( \$_[1] ) eq 'SCALAR'
-                  or ref( \( my $val = $_[1] ) ) eq 'SCALAR';
-            }
-          }
-          or Hydrogen::croak(
-            "Type check failed in signature for starts_with_i: %s should be %s",
-            "\$_[1]", "Str"
-          );
-
         (@_);
     };
-    Hydrogen::fc( substr( $$__REF__, 0, length $_[1] ) ) eq Hydrogen::fc( $_[1] );
+    Hydrogen::fc( substr( $_, 0, length $_[0] ) ) eq Hydrogen::fc( $_[0] );
 }
 
-=head2 C<< substr( $string, $start, $length?, $replacement? ) >>
+=head2 C<< substr( $start, $length?, $replacement? ) >>
 
-Additional arguments: B<< Int >>, B<< Optional[Int] >>, B<< Optional[Str] >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Arguments: B<< Int >>, B<< Optional[Int] >>, B<< Optional[Str] >>.
 
 Like C<substr> from L<perlfunc>, but is not an lvalue.
 
@@ -1852,31 +1535,30 @@ Like C<substr> from L<perlfunc>, but is not an lvalue.
     my $__signature;
 
     sub substr {
-        my $__REF__ = \$_[0];
 
         package Hydrogen::String::__SANDBOX__;
         $__signature ||= sub {
             my ( %tmp, $tmp );
 
-            @_ >= 2 && @_ <= 4
+            @_ >= 1 && @_ <= 3
               or Hydrogen::croak(
                 "Wrong number of parameters in signature for %s: got %d, %s",
-                "substr", scalar(@_), "expected exactly 2 parameters" );
+                "substr", scalar(@_), "expected exactly 1 parameters" );
 
-            # Parameter $_[0] (type: Str)
-            do {
-
-                package Hydrogen::String::__SANDBOX__;
-                defined( $_[0] ) and do {
-                    ref( \$_[0] ) eq 'SCALAR'
-                      or ref( \( my $val = $_[0] ) ) eq 'SCALAR';
+            # Parameter $_[0] (type: Int)
+            (
+                do {
+                    my $tmp = $_[0];
+                    defined($tmp) and !ref($tmp) and $tmp =~ /\A-?[0-9]+\z/;
                 }
-              }
+              )
               or Hydrogen::croak(
                 "Type check failed in signature for substr: %s should be %s",
-                "\$_[0]", "Str" );
+                "\$_[0]", "Int" );
 
-            # Parameter $_[1] (type: Int)
+            # Parameter $_[1] (type: Optional[Int])
+            $#_ >= 1
+              or return (@_);
             (
                 do {
                     my $tmp = $_[1];
@@ -1885,46 +1567,33 @@ Like C<substr> from L<perlfunc>, but is not an lvalue.
               )
               or Hydrogen::croak(
                 "Type check failed in signature for substr: %s should be %s",
-                "\$_[1]", "Int" );
+                "\$_[1]", "Optional[Int]" );
 
-            # Parameter $_[2] (type: Optional[Int])
+            # Parameter $_[2] (type: Optional[Str])
             $#_ >= 2
-              or return (@_);
-            (
-                do {
-                    my $tmp = $_[2];
-                    defined($tmp) and !ref($tmp) and $tmp =~ /\A-?[0-9]+\z/;
-                }
-              )
-              or Hydrogen::croak(
-                "Type check failed in signature for substr: %s should be %s",
-                "\$_[2]", "Optional[Int]" );
-
-            # Parameter $_[3] (type: Optional[Str])
-            $#_ >= 3
               or return (@_);
             do {
 
                 package Hydrogen::String::__SANDBOX__;
-                defined( $_[3] ) and do {
-                    ref( \$_[3] ) eq 'SCALAR'
-                      or ref( \( my $val = $_[3] ) ) eq 'SCALAR';
+                defined( $_[2] ) and do {
+                    ref( \$_[2] ) eq 'SCALAR'
+                      or ref( \( my $val = $_[2] ) ) eq 'SCALAR';
                 }
               }
               or Hydrogen::croak(
                 "Type check failed in signature for substr: %s should be %s",
-                "\$_[3]", "Optional[Str]" );
+                "\$_[2]", "Optional[Str]" );
 
             (@_);
         };
         @_ = &$__signature;
-        if    ( ( @_ - 1 ) == 1 ) { substr( $$__REF__, $_[1] ) }
-        elsif ( ( @_ - 1 ) == 2 ) { substr( $$__REF__, $_[1], $_[2] ) }
-        elsif ( ( @_ - 1 ) == 3 ) {
-            my $shv_tmp    = $$__REF__;
-            my $shv_return = substr( $shv_tmp, $_[1], $_[2], $_[3] );
+        if    ( ( 0 + @_ ) == 1 ) { substr( $_, $_[0] ) }
+        elsif ( ( 0 + @_ ) == 2 ) { substr( $_, $_[0], $_[1] ) }
+        elsif ( ( 0 + @_ ) == 3 ) {
+            my $shv_tmp    = $_;
+            my $shv_return = substr( $shv_tmp, $_[0], $_[1], $_[2] );
             (
-                ${$__REF__} = do {
+                $_ = do {
                     my $shv_final_unchecked = $shv_tmp;
                     do {
                         do {
@@ -1949,20 +1618,21 @@ Like C<substr> from L<perlfunc>, but is not an lvalue.
     }
 }
 
-=head2 C<< uc( $string ) >>
+=head2 C<< uc() >>
 
-Returns C<< uc($string) >>.
+Operates on C<< $_ >>, which must be a string scalar.
+
+Returns C<< uc($_) >>.
 
 =cut
 
 sub uc {
-    my $__REF__ = \$_[0];
 
     package Hydrogen::String::__SANDBOX__;
-    @_ == 1
+    @_ == 0
       or Hydrogen::croak( "Wrong number of parameters for uc; usage: "
-          . "Hydrogen::String::uc( \$string )" );
-    uc($$__REF__);
+          . "Hydrogen::Topic::String::uc()" );
+    uc($_);
 }
 
 1;
@@ -1972,15 +1642,15 @@ sub uc {
 No functions are exported by this module by default. To import them all
 (this is usually a bad idea), use:
 
-    use Hydrogen::String -all;
+    use Hydrogen::Topic::String -all;
 
 To import a particular function, use:
 
-    use Hydrogen::String 'chop';
+    use Hydrogen::Topic::String 'chop';
 
 To rename functions:
 
-    use Hydrogen::String 'chop' => { -as => 'myfunc' };
+    use Hydrogen::Topic::String 'chop' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
@@ -1992,7 +1662,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 =head1 SEE ALSO
 
 L<Hydrogen>,
-L<Hydrogen::Curry::String>,
+L<Hydrogen::String>,
 L<Sub::HandlesVia::HandlerLibrary::String>.
 
 =head1 AUTHOR

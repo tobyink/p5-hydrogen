@@ -15,11 +15,11 @@ our $VERSION   = '0.006';
 
 Hydrogen::Curry::Counter - easily curry functions from Hydrogen::Counter
 
-=cut
 =head1 VERSION
 
 This documentation is for Hydrogen::Curry::Counter 0.006.
 
+=cut
 
 =head1 FUNCTIONS
 

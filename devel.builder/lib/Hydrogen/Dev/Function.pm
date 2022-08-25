@@ -104,7 +104,9 @@ sub compile_code {
 	}
 
 	my $func = $self->function_name;
+	$self->type->codegen->{_function_name} = $func;
 	my $eval = $self->type->codegen->_generate_ec_args_for_handler( $func, $h );
+	delete $self->type->codegen->{_function_name};
 
 	my $make_ref = 'my $__REF__ = \\$_[0];';
 
@@ -130,7 +132,7 @@ sub compile_code {
 		$code = $tidy;
 	}
 
-	$code =~ s/CORE::fc/CORE::lc/g;
+	$code =~ s/CORE::fc/Hydrogen::fc/g;
 
 	return $code . "\n";
 }
@@ -173,6 +175,83 @@ sub curry_%s {
 }
 
 CODE
+}
+
+sub compile_topic_pod {
+	my $self = shift;
+
+	my $h = $self->handler;
+	my $pod = '';
+
+	if ( $h->usage ) {
+		$pod .= sprintf "=head2 C<< %s( %s ) >>\n\n",
+			$self->function_name, $h->usage;
+	}
+	elsif ( $h->args == 0 ) {
+		$pod .= sprintf "=head2 C<< %s() >>\n\n",
+			$self->function_name;
+	}
+	else {
+		$pod .= sprintf "=head2 C<< %s >>\n\n",
+			$self->function_name;
+	}
+
+	$pod .= "Operates on C<< \$_ >>, which must be @{[ $self->type->type_desc_for_functions ]}.\n\n";
+
+	if ( $h->signature and @{ $h->signature } ) {
+		$pod .= sprintf "Arguments: %s.\n\n",
+			join q[, ], map sprintf( 'B<< %s >>', $_->display_name ), @{ $h->signature };
+	}
+
+	if ( $h->documentation ) {
+		my $docs = $h->documentation;
+		my $example_var = '$_';
+		$docs =~ s/\$object->attr/$example_var/g;
+		$docs =~ s/Chainable method/Function/;
+		$docs =~ s/attribute/original value/;
+		$pod .= $docs . "\n\n";
+	}
+
+	$pod .= "=cut\n\n";
+
+	return $pod;
+}
+
+sub compile_topic_code {
+	my $self = shift;
+
+	my $h = $self->handler;
+
+	my $func = $self->function_name;
+	$self->type->topic_codegen->{_function_name} = $func;
+	my $eval = $self->type->topic_codegen->_generate_ec_args_for_handler( $func, $h );
+	delete $self->type->topic_codegen->{_function_name};
+
+	my $code = join "\n", @{ $eval->{source} };
+	$code =~ s/sub\s*\{/sub $func {/xs;
+	if ( $eval->{environment}{'$__signature'} ) {
+		$code = "{ my \$__signature; $code }";
+		delete $eval->{environment}{'$__signature'};
+	}
+
+	if ( keys %{ $eval->{environment} } ) {
+		require Data::Dumper;
+		warn Data::Dumper::Dumper($eval);
+		die "ARGH!";
+	}
+
+	if (eval { require Perl::Tidy }) {
+		my $tidy = '';
+		Perl::Tidy::perltidy(
+			source      => \$code,
+			destination => \$tidy,
+		);
+		$code = $tidy;
+	}
+
+	$code =~ s/CORE::fc/Hydrogen::fc/g;
+
+	return $code . "\n";
 }
 
 sub compile_test {

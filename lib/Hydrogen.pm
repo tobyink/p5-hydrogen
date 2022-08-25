@@ -10,7 +10,7 @@ package Hydrogen;
 our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.006';
 
-use Exporter::Shiny qw( croak );
+use Exporter::Shiny qw( croak fc );
 
 sub croak {
     my ( $message, @args ) = @_;
@@ -25,6 +25,13 @@ sub croak {
     require Carp;
     @_ = $message;
     goto \&Carp::croak;
+}
+
+if ( $] ge '5.016' ) {
+    *fc = \&CORE::GLOBAL::fc;
+}
+else {
+   eval 'sub fc { lc( @_ ? $_[0] : $_ ) }';
 }
 
 1;

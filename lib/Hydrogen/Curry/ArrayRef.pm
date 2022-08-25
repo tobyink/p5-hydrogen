@@ -15,11 +15,11 @@ our $VERSION   = '0.006';
 
 Hydrogen::Curry::ArrayRef - easily curry functions from Hydrogen::ArrayRef
 
-=cut
 =head1 VERSION
 
 This documentation is for Hydrogen::Curry::ArrayRef 0.006.
 
+=cut
 
 =head1 FUNCTIONS
 

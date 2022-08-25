@@ -25,14 +25,18 @@ field lctype                  => ( builder => true );
 field example_var             => ( builder => true );
 field target_module           => ( builder => true );
 field curry_module            => ( builder => true );
+field topic_module            => ( builder => true );
 field target_filename         => ( builder => true );
 field curry_filename          => ( builder => true );
+field topic_filename          => ( builder => true );
 field test_filename           => ( builder => true );
 field curry_test_filename     => ( builder => true );
+field topic_test_filename     => ( builder => true );
 field handler_library         => ( builder => true );
 field function_names          => ( builder => true );
 field functions               => ( builder => true );
 field codegen                 => ( builder => true );
+field topic_codegen           => ( builder => true );
 field type_constraint         => ( builder => true );
 field sandboxing_package      => ( builder => true );
 field type_desc_for_abstract  => ( builder => true );
@@ -106,6 +110,21 @@ sub _build_curry_module {
 	return $target_module;
 }
 
+sub _build_topic_module {
+	my $self = shift;
+
+	my $target_module = sprintf '%s::Topic::%s',
+		$self->dev->target_namespace, $self->type_name;
+
+	for my $rtn ( $self->dev->_reference_type_names ) {
+		next if $rtn ne $self->type_name;
+		$target_module .= 'Ref';
+		last;
+	}
+
+	return $target_module;
+}
+
 sub _build_target_filename {
 	my $self = shift;
 
@@ -124,6 +143,15 @@ sub _build_curry_filename {
 	);
 }
 
+sub _build_topic_filename {
+	my $self = shift;
+
+	return Path::Tiny::path(
+		$self->dev->target_directory,
+		Module::Runtime::module_notional_filename( $self->topic_module ),
+	);
+}
+
 sub _build_test_filename {
 	my $self = shift;
 
@@ -138,6 +166,16 @@ sub _build_curry_test_filename {
 	my $self = shift;
 
 	my $testfile = lc( $self->curry_module );
+	$testfile =~ s{::}{-}g;
+	$testfile .= '.t';
+
+	return Path::Tiny::path( $self->dev->test_directory, $testfile );
+}
+
+sub _build_topic_test_filename {
+	my $self = shift;
+
+	my $testfile = lc( $self->topic_module );
 	$testfile =~ s{::}{-}g;
 	$testfile .= '.t';
 
@@ -264,7 +302,7 @@ sub _build_codegen {
 	}
 
 	return 'Hydrogen::Dev::CodeGenerator'->new(
-		toolkit                    => $self->dev->target_namespace,
+		toolkit                    => $self,
 		target                     => $target_module,
 		attribute                  => 'dummy',
 		attribute_spec             => {},
@@ -295,6 +333,64 @@ sub _build_codegen {
 				else {
 					return "$target_module\::$method_name( $example_var )";
 				}
+			}
+		},
+	);
+}
+
+sub _build_topic_codegen {
+	my $self = shift;
+
+	my $type             = $self->type_name;
+	my $target_module    = $self->topic_module;
+	my $prototyped       = $self->is_prototyped;
+	my $code_for_default = $self->code_for_default;
+
+	my $setter = sub { my ($gen, $value) = @_; "( \$_ = $value )" };
+	if ( $type eq 'Array' ) {
+		$setter = sub {
+			my ($gen, $value) = @_;
+			if ( $value eq '[]' ) {
+				return "( \@{ \$_ } = () )";
+			}
+			"( \@{ \$_ } = \@{ + $value } )";
+		};
+	}
+	elsif ( $type eq 'Hash' ) {
+		$setter = sub {
+			my ($gen, $value) = @_;
+			if ( $value eq '{}' ) {
+				return "( \%{ \$_ } = () )";
+			}
+			"( %{ \$_ } = %{ + $value } )";
+		};
+	}
+
+	return 'Hydrogen::Dev::CodeGenerator'->new(
+		toolkit                    => $self,
+		target                     => $target_module,
+		attribute                  => 'dummy',
+		attribute_spec             => { is_topic => true },
+		isa                        => $self->type_constraint,
+		set_checks_isa             => $self->type_constraint == Types::Standard::Any,
+		coerce                     => false,
+		env                        => {},
+		sandboxing_package         => $self->sandboxing_package,
+		generator_for_self         => sub { '$_' },
+		generator_for_slot         => sub { '$_' },
+		generator_for_get          => sub { '$_' },
+		generator_for_set          => $setter,
+		generator_for_args         => sub { '@_' },
+		generator_for_arg          => sub { my $n = pop() - 1; "\$_[$n]" },
+		generator_for_argc         => sub { '(0+@_)' },
+		generator_for_default      => sub { $code_for_default },
+		generator_for_usage_string => sub {
+			my ( $gen, $method_name, $guts ) = @_;
+			if ( length $guts ) {
+				return "$target_module\::$method_name( $guts )";
+			}
+			else {
+				return "$target_module\::$method_name()";
 			}
 		},
 	);
@@ -476,11 +572,11 @@ sub _compile_curry_module_header {
 	$code .= "\n";
 	$code .= "@{[ $self->curry_module ]} - easily curry functions from @{[ $self->target_module ]}\n";
 	$code .= "\n";
-	$code .= "=cut\n";
 	$code .= "=head1 VERSION\n";
 	$code .= "\n";
 	$code .= "This documentation is for @{[ $self->curry_module ]} @{[ $self->dev->target_version ]}.\n";
 	$code .= "\n";
+	$code .= "=cut\n";
 	$code .= "\n";
 
 	# Begin functions list in pod
@@ -535,6 +631,128 @@ To import a particular function, use:
 To rename functions:
 
     use @{[ $self->curry_module ]} '$egfunc' => { -as => 'myfunc' };
+
+See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
+
+@{[ $self->dev->compile_bug_section ]}
+=head1 SEE ALSO
+
+L<@{[ $self->dev->target_namespace ]}>,
+L<@{[ $self->target_module ]}>,
+L<@{[ $self->handler_library ]}>.
+
+@{[ $self->dev->compile_author_section ]}
+FOOTER
+}
+
+sub write_topic_module {
+	my $self = shift;
+
+	my $file = $self->topic_filename;
+	$file->parent->mkpath;
+	$file->spew( $self->compile_topic_module );
+
+	return $self;
+}
+
+sub compile_topic_module {
+	my $self = shift;
+
+	local $Type::Tiny::AvoidCallbacks = 1;
+	local $Type::Tiny::SafePackage = "package @{[ $self->sandboxing_package ]};";
+
+	return join q{} => (
+		$self->_compile_topic_module_header,
+		$self->_compile_topic_module_functions,
+		$self->_compile_topic_module_footer,
+	);
+}
+
+sub _compile_topic_module_header {
+	my $self = shift;
+
+	my $code = '';
+
+	# Pragmata
+	$code .= "# This file was autogenerated.\n";
+	$code .= "use 5.008008;\n";
+	$code .= "use strict;\n";
+	$code .= "use warnings;\n";
+	$code .= "no warnings qw( void once );\n";
+	$code .= "use @{[ $self->dev->target_namespace ]} ();\n";
+	$code .= "\n";
+	
+	# Package meta
+	$code .= "package @{[ $self->topic_module ]};\n";
+	$code .= "\n";
+	$code .= "our \$AUTHORITY = 'cpan:@{[ uc $self->dev->author_cpanid ]}';\n";
+	$code .= "our \$VERSION   = '@{[ $self->dev->target_version ]}';\n";
+	$code .= "\n";
+	
+	# Pod intro
+	$code .= "=head1 NAME\n";
+	$code .= "\n";
+	$code .= "@{[ $self->topic_module ]} - functions from @{[ $self->target_module ]} applied to C<< \$_ >>\n";
+	$code .= "\n";
+	$code .= "=head1 VERSION\n";
+	$code .= "\n";
+	$code .= "This documentation is for @{[ $self->topic_module ]} @{[ $self->dev->target_version ]}.\n";
+	$code .= "\n";
+	$code .= "=cut\n";
+	$code .= "\n";
+
+	# Begin functions list in pod
+	$code .= "=head1 FUNCTIONS\n";
+	$code .= "\n";
+	$code .= "Each function implicitly operates on C<< \$_ >>, expecting it to be @{[ $self->type_desc_for_functions ]}.\n";
+	$code .= "\n";
+	$code .= "=cut\n";
+	$code .= "\n";
+
+	# Exporter::Shiny
+	$code .= "use Exporter::Shiny qw(\n";
+	$code .= "    $_\n" for @{ $self->function_names };
+	$code .= ");\n";
+	$code .= "\n";
+
+	return $code;
+}
+
+sub _compile_topic_module_functions {
+	my $self = shift;
+
+	my $code = '';
+	for my $f ( @{ $self->functions } ) {
+		$code .= $f->compile_topic_pod;
+		$code .= $f->compile_topic_code;
+	}
+
+	return $code;
+}
+
+sub _compile_topic_module_footer {
+	my $self = shift;
+
+	my @funcs = @{ $self->function_names };
+	my $egfunc = $funcs[2] // $funcs[0];
+
+	return <<"FOOTER";
+1;
+
+=head1 EXPORT
+
+No functions are exported by this module by default. To import them all
+(this is usually a bad idea), use:
+
+    use @{[ $self->topic_module ]} -all;
+
+To import a particular function, use:
+
+    use @{[ $self->topic_module ]} '$egfunc';
+
+To rename functions:
+
+    use @{[ $self->topic_module ]} '$egfunc' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 

@@ -186,7 +186,7 @@
     }
 
     # Accessors for codegen
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 35
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 38
     sub codegen {
         @_ == 1 or croak('Reader "codegen" usage: $self->codegen()');
         (
@@ -196,7 +196,7 @@
     }
 
     # Accessors for curry_filename
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 29
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 30
     sub curry_filename {
         @_ == 1
           or croak('Reader "curry_filename" usage: $self->curry_filename()');
@@ -217,7 +217,7 @@
     }
 
     # Accessors for curry_test_filename
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 31
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 33
     sub curry_test_filename {
         @_ == 1
           or croak(
@@ -256,7 +256,7 @@
     }
 
     # Accessors for function_names
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 33
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 36
     sub function_names {
         @_ == 1
           or croak('Reader "function_names" usage: $self->function_names()');
@@ -267,7 +267,7 @@
     }
 
     # Accessors for functions
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 34
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 37
     sub functions {
         @_ == 1 or croak('Reader "functions" usage: $self->functions()');
         (
@@ -277,7 +277,7 @@
     }
 
     # Accessors for handler_library
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 32
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 35
     sub handler_library {
         @_ == 1
           or croak('Reader "handler_library" usage: $self->handler_library()');
@@ -314,7 +314,7 @@
     }
 
     # Accessors for sandboxing_package
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 37
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 41
     sub sandboxing_package {
         @_ == 1
           or croak(
@@ -327,7 +327,7 @@
     }
 
     # Accessors for target_filename
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 28
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 29
     sub target_filename {
         @_ == 1
           or croak('Reader "target_filename" usage: $self->target_filename()');
@@ -349,7 +349,7 @@
     }
 
     # Accessors for test_filename
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 30
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 32
     sub test_filename {
         @_ == 1
           or croak('Reader "test_filename" usage: $self->test_filename()');
@@ -359,8 +359,54 @@
             : ( $_[0]{"test_filename"} = $_[0]->_build_test_filename ) );
     }
 
+    # Accessors for topic_codegen
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 39
+    sub topic_codegen {
+        @_ == 1
+          or croak('Reader "topic_codegen" usage: $self->topic_codegen()');
+        (
+            exists( $_[0]{"topic_codegen"} )
+            ? $_[0]{"topic_codegen"}
+            : ( $_[0]{"topic_codegen"} = $_[0]->_build_topic_codegen ) );
+    }
+
+    # Accessors for topic_filename
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 31
+    sub topic_filename {
+        @_ == 1
+          or croak('Reader "topic_filename" usage: $self->topic_filename()');
+        (
+            exists( $_[0]{"topic_filename"} )
+            ? $_[0]{"topic_filename"}
+            : ( $_[0]{"topic_filename"} = $_[0]->_build_topic_filename ) );
+    }
+
+    # Accessors for topic_module
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 28
+    sub topic_module {
+        @_ == 1 or croak('Reader "topic_module" usage: $self->topic_module()');
+        (
+            exists( $_[0]{"topic_module"} )
+            ? $_[0]{"topic_module"}
+            : ( $_[0]{"topic_module"} = $_[0]->_build_topic_module ) );
+    }
+
+    # Accessors for topic_test_filename
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 34
+    sub topic_test_filename {
+        @_ == 1
+          or croak(
+            'Reader "topic_test_filename" usage: $self->topic_test_filename()');
+        (
+            exists( $_[0]{"topic_test_filename"} )
+            ? $_[0]{"topic_test_filename"}
+            : ( $_[0]{"topic_test_filename"} =
+                  $_[0]->_build_topic_test_filename )
+        );
+    }
+
     # Accessors for type_constraint
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 36
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 40
     sub type_constraint {
         @_ == 1
           or croak('Reader "type_constraint" usage: $self->type_constraint()');
@@ -371,7 +417,7 @@
     }
 
     # Accessors for type_desc_for_abstract
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 38
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 42
     sub type_desc_for_abstract {
         @_ == 1
           or croak(
@@ -386,7 +432,7 @@
     }
 
     # Accessors for type_desc_for_functions
-    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 39
+    # field declaration, file lib/Hydrogen/Dev/Type.pm, line 43
     sub type_desc_for_functions {
         @_ == 1
           or croak(
