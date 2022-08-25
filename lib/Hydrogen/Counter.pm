@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::Counter - a standard library for integer counters
 
+=head1 VERSION
+
+This documentation is for Hydrogen::Counter 0.006.
+
 =cut
 
 =head1 FUNCTIONS

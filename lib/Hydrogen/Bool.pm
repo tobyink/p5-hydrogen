@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::Bool - a standard library for booleans
 
+=head1 VERSION
+
+This documentation is for Hydrogen::Bool 0.006.
+
 =cut
 
 =head1 FUNCTIONS

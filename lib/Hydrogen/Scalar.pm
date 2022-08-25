@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::Scalar - a standard library for scalars
 
+=head1 VERSION
+
+This documentation is for Hydrogen::Scalar 0.006.
+
 =cut
 
 =head1 FUNCTIONS

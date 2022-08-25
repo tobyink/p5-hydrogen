@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::Array - a standard library for arrays
 
+=head1 VERSION
+
+This documentation is for Hydrogen::Array 0.006.
+
 =cut
 
 =head1 FUNCTIONS

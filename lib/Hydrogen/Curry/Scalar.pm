@@ -16,6 +16,10 @@ our $VERSION   = '0.006';
 Hydrogen::Curry::Scalar - easily curry functions from Hydrogen::Scalar
 
 =cut
+=head1 VERSION
+
+This documentation is for Hydrogen::Curry::Scalar 0.006.
+
 
 =head1 FUNCTIONS
 

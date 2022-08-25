@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::Number - a standard library for numbers
 
+=head1 VERSION
+
+This documentation is for Hydrogen::Number 0.006.
+
 =cut
 
 =head1 FUNCTIONS

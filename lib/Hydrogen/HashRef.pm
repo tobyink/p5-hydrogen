@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::HashRef - a standard library for hashrefs
 
+=head1 VERSION
+
+This documentation is for Hydrogen::HashRef 0.006.
+
 =cut
 
 =head1 FUNCTIONS

@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::Hash - a standard library for hashes
 
+=head1 VERSION
+
+This documentation is for Hydrogen::Hash 0.006.
+
 =cut
 
 =head1 FUNCTIONS

@@ -16,6 +16,10 @@ our $VERSION   = '0.006';
 Hydrogen::Curry::Number - easily curry functions from Hydrogen::Number
 
 =cut
+=head1 VERSION
+
+This documentation is for Hydrogen::Curry::Number 0.006.
+
 
 =head1 FUNCTIONS
 

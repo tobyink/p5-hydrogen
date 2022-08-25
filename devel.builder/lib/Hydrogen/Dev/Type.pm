@@ -349,6 +349,10 @@ sub _compile_module_header {
 	$code .= "\n";
 	$code .= "@{[ $self->target_module ]} - a standard library for @{[ $self->type_desc_for_abstract ]}\n";
 	$code .= "\n";
+	$code .= "=head1 VERSION\n";
+	$code .= "\n";
+	$code .= "This documentation is for @{[ $self->target_module ]} @{[ $self->dev->target_version ]}.\n";
+	$code .= "\n";
 	$code .= "=cut\n";
 	$code .= "\n";
 
@@ -473,6 +477,10 @@ sub _compile_curry_module_header {
 	$code .= "@{[ $self->curry_module ]} - easily curry functions from @{[ $self->target_module ]}\n";
 	$code .= "\n";
 	$code .= "=cut\n";
+	$code .= "=head1 VERSION\n";
+	$code .= "\n";
+	$code .= "This documentation is for @{[ $self->curry_module ]} @{[ $self->dev->target_version ]}.\n";
+	$code .= "\n";
 	$code .= "\n";
 
 	# Begin functions list in pod

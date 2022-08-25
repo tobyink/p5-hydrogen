@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::ArrayRef - a standard library for arrayrefs
 
+=head1 VERSION
+
+This documentation is for Hydrogen::ArrayRef 0.006.
+
 =cut
 
 =head1 FUNCTIONS

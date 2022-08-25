@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::String - a standard library for strings
 
+=head1 VERSION
+
+This documentation is for Hydrogen::String 0.006.
+
 =cut
 
 =head1 FUNCTIONS

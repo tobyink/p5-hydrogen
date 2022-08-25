@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::CodeRef - a standard library for coderefs
 
+=head1 VERSION
+
+This documentation is for Hydrogen::CodeRef 0.006.
+
 =cut
 
 =head1 FUNCTIONS

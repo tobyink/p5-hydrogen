@@ -14,6 +14,10 @@ our $VERSION   = '0.006';
 
 Hydrogen::Code - a standard library for code blocks
 
+=head1 VERSION
+
+This documentation is for Hydrogen::Code 0.006.
+
 =cut
 
 =head1 FUNCTIONS
