@@ -16,10 +16,10 @@ subtest 'accessor' => sub {
     ok exists(&Hydrogen::ArrayRef::accessor), 'function exists';
     ok $EXPORTS{'accessor'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          Hydrogen::ArrayRef::accessor( $testarray, 1, 'quux' );
-          is_deeply( $testarray, [ 'foo', 'quux', 'baz' ], q{$testarray deep match} );
-          is( Hydrogen::ArrayRef::accessor( $testarray, 2 ), 'baz', q{Hydrogen::ArrayRef::accessor( $testarray, 2 ) is 'baz'} );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          Hydrogen::ArrayRef::accessor( $testarrayref, 1, 'quux' );
+          is_deeply( $testarrayref, [ 'foo', 'quux', 'baz' ], q{$testarrayref deep match} );
+          is( Hydrogen::ArrayRef::accessor( $testarrayref, 2 ), 'baz', q{Hydrogen::ArrayRef::accessor( $testarrayref, 2 ) is 'baz'} );
     };
     is $e, undef, 'no exception thrown running accessor example';
 };
@@ -28,8 +28,8 @@ subtest 'all' => sub {
     ok exists(&Hydrogen::ArrayRef::all), 'function exists';
     ok $EXPORTS{'all'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar' ];
-          my @list = Hydrogen::ArrayRef::all( $testarray );
+          my $testarrayref = [ 'foo', 'bar' ];
+          my @list = Hydrogen::ArrayRef::all( $testarrayref );
     };
     is $e, undef, 'no exception thrown running all example';
 };
@@ -53,9 +53,9 @@ subtest 'clear' => sub {
     ok exists(&Hydrogen::ArrayRef::clear), 'function exists';
     ok $EXPORTS{'clear'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo' ];
-          Hydrogen::ArrayRef::clear( $testarray );
-          is_deeply( $testarray, [], q{$testarray deep match} );
+          my $testarrayref = [ 'foo' ];
+          Hydrogen::ArrayRef::clear( $testarrayref );
+          is_deeply( $testarrayref, [], q{$testarrayref deep match} );
     };
     is $e, undef, 'no exception thrown running clear example';
 };
@@ -64,8 +64,8 @@ subtest 'count' => sub {
     ok exists(&Hydrogen::ArrayRef::count), 'function exists';
     ok $EXPORTS{'count'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar' ];
-          is( Hydrogen::ArrayRef::count( $testarray ), 2, q{Hydrogen::ArrayRef::count( $testarray ) is 2} );
+          my $testarrayref = [ 'foo', 'bar' ];
+          is( Hydrogen::ArrayRef::count( $testarrayref ), 2, q{Hydrogen::ArrayRef::count( $testarrayref ) is 2} );
     };
     is $e, undef, 'no exception thrown running count example';
 };
@@ -79,8 +79,8 @@ subtest 'elements' => sub {
     ok exists(&Hydrogen::ArrayRef::elements), 'function exists';
     ok $EXPORTS{'elements'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar' ];
-          my @list = Hydrogen::ArrayRef::elements( $testarray );
+          my $testarrayref = [ 'foo', 'bar' ];
+          my @list = Hydrogen::ArrayRef::elements( $testarrayref );
     };
     is $e, undef, 'no exception thrown running elements example';
 };
@@ -109,8 +109,8 @@ subtest 'for_each' => sub {
     ok exists(&Hydrogen::ArrayRef::for_each), 'function exists';
     ok $EXPORTS{'for_each'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          Hydrogen::ArrayRef::for_each( $testarray, sub { note "Item $_[1] is $_[0]." } );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          Hydrogen::ArrayRef::for_each( $testarrayref, sub { note "Item $_[1] is $_[0]." } );
     };
     is $e, undef, 'no exception thrown running for_each example';
 };
@@ -124,10 +124,10 @@ subtest 'get' => sub {
     ok exists(&Hydrogen::ArrayRef::get), 'function exists';
     ok $EXPORTS{'get'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          is( Hydrogen::ArrayRef::get( $testarray,  0 ), 'foo', q{Hydrogen::ArrayRef::get( $testarray,  0 ) is 'foo'} );
-          is( Hydrogen::ArrayRef::get( $testarray,  1 ), 'bar', q{Hydrogen::ArrayRef::get( $testarray,  1 ) is 'bar'} );
-          is( Hydrogen::ArrayRef::get( $testarray, -1 ), 'baz', q{Hydrogen::ArrayRef::get( $testarray, -1 ) is 'baz'} );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          is( Hydrogen::ArrayRef::get( $testarrayref,  0 ), 'foo', q{Hydrogen::ArrayRef::get( $testarrayref,  0 ) is 'foo'} );
+          is( Hydrogen::ArrayRef::get( $testarrayref,  1 ), 'bar', q{Hydrogen::ArrayRef::get( $testarrayref,  1 ) is 'bar'} );
+          is( Hydrogen::ArrayRef::get( $testarrayref, -1 ), 'baz', q{Hydrogen::ArrayRef::get( $testarrayref, -1 ) is 'baz'} );
     };
     is $e, undef, 'no exception thrown running get example';
 };
@@ -146,9 +146,9 @@ subtest 'insert' => sub {
     ok exists(&Hydrogen::ArrayRef::insert), 'function exists';
     ok $EXPORTS{'insert'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          Hydrogen::ArrayRef::insert( $testarray, 1, 'quux' );
-          is_deeply( $testarray, [ 'foo', 'quux', 'bar', 'baz' ], q{$testarray deep match} );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          Hydrogen::ArrayRef::insert( $testarrayref, 1, 'quux' );
+          is_deeply( $testarrayref, [ 'foo', 'quux', 'bar', 'baz' ], q{$testarrayref deep match} );
     };
     is $e, undef, 'no exception thrown running insert example';
 };
@@ -157,10 +157,10 @@ subtest 'is_empty' => sub {
     ok exists(&Hydrogen::ArrayRef::is_empty), 'function exists';
     ok $EXPORTS{'is_empty'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar' ];
-          ok( !(Hydrogen::ArrayRef::is_empty( $testarray )), q{Hydrogen::ArrayRef::is_empty( $testarray ) is false} );
-          $testarray = [] ;
-          ok( Hydrogen::ArrayRef::is_empty( $testarray ), q{Hydrogen::ArrayRef::is_empty( $testarray ) is true} );
+          my $testarrayref = [ 'foo', 'bar' ];
+          ok( !(Hydrogen::ArrayRef::is_empty( $testarrayref )), q{Hydrogen::ArrayRef::is_empty( $testarrayref ) is false} );
+          $testarrayref = [] ;
+          ok( Hydrogen::ArrayRef::is_empty( $testarrayref ), q{Hydrogen::ArrayRef::is_empty( $testarrayref ) is true} );
     };
     is $e, undef, 'no exception thrown running is_empty example';
 };
@@ -169,9 +169,9 @@ subtest 'join' => sub {
     ok exists(&Hydrogen::ArrayRef::join), 'function exists';
     ok $EXPORTS{'join'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          is( Hydrogen::ArrayRef::join( $testarray ), 'foo,bar,baz', q{Hydrogen::ArrayRef::join( $testarray ) is 'foo,bar,baz'} );
-          is( Hydrogen::ArrayRef::join( $testarray, '|' ), 'foo|bar|baz', q{Hydrogen::ArrayRef::join( $testarray, '|' ) is 'foo|bar|baz'} );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          is( Hydrogen::ArrayRef::join( $testarrayref ), 'foo,bar,baz', q{Hydrogen::ArrayRef::join( $testarrayref ) is 'foo,bar,baz'} );
+          is( Hydrogen::ArrayRef::join( $testarrayref, '|' ), 'foo|bar|baz', q{Hydrogen::ArrayRef::join( $testarrayref, '|' ) is 'foo|bar|baz'} );
     };
     is $e, undef, 'no exception thrown running join example';
 };
@@ -250,10 +250,10 @@ subtest 'pop' => sub {
     ok exists(&Hydrogen::ArrayRef::pop), 'function exists';
     ok $EXPORTS{'pop'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          is( Hydrogen::ArrayRef::pop( $testarray ), 'baz', q{Hydrogen::ArrayRef::pop( $testarray ) is 'baz'} );
-          is( Hydrogen::ArrayRef::pop( $testarray ), 'bar', q{Hydrogen::ArrayRef::pop( $testarray ) is 'bar'} );
-          is_deeply( $testarray, [ 'foo' ], q{$testarray deep match} );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          is( Hydrogen::ArrayRef::pop( $testarrayref ), 'baz', q{Hydrogen::ArrayRef::pop( $testarrayref ) is 'baz'} );
+          is( Hydrogen::ArrayRef::pop( $testarrayref ), 'bar', q{Hydrogen::ArrayRef::pop( $testarrayref ) is 'bar'} );
+          is_deeply( $testarrayref, [ 'foo' ], q{$testarrayref deep match} );
     };
     is $e, undef, 'no exception thrown running pop example';
 };
@@ -272,9 +272,9 @@ subtest 'push' => sub {
     ok exists(&Hydrogen::ArrayRef::push), 'function exists';
     ok $EXPORTS{'push'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo' ];
-          Hydrogen::ArrayRef::push( $testarray, 'bar', 'baz' );
-          is_deeply( $testarray, [ 'foo', 'bar', 'baz' ], q{$testarray deep match} );
+          my $testarrayref = [ 'foo' ];
+          Hydrogen::ArrayRef::push( $testarrayref, 'bar', 'baz' );
+          is_deeply( $testarrayref, [ 'foo', 'bar', 'baz' ], q{$testarrayref deep match} );
     };
     is $e, undef, 'no exception thrown running push example';
 };
@@ -293,9 +293,9 @@ subtest 'reset' => sub {
     ok exists(&Hydrogen::ArrayRef::reset), 'function exists';
     ok $EXPORTS{'reset'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          Hydrogen::ArrayRef::reset( $testarray );
-          is_deeply( $testarray, [], q{$testarray deep match} );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          Hydrogen::ArrayRef::reset( $testarrayref );
+          is_deeply( $testarrayref, [], q{$testarrayref deep match} );
     };
     is $e, undef, 'no exception thrown running reset example';
 };
@@ -314,9 +314,9 @@ subtest 'set' => sub {
     ok exists(&Hydrogen::ArrayRef::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          Hydrogen::ArrayRef::set( $testarray, 1, 'quux' );
-          is_deeply( $testarray, [ 'foo', 'quux', 'baz' ], q{$testarray deep match} );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          Hydrogen::ArrayRef::set( $testarrayref, 1, 'quux' );
+          is_deeply( $testarrayref, [ 'foo', 'quux', 'baz' ], q{$testarrayref deep match} );
     };
     is $e, undef, 'no exception thrown running set example';
 };
@@ -330,10 +330,10 @@ subtest 'shift' => sub {
     ok exists(&Hydrogen::ArrayRef::shift), 'function exists';
     ok $EXPORTS{'shift'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo', 'bar', 'baz' ];
-          is( Hydrogen::ArrayRef::shift( $testarray ), 'foo', q{Hydrogen::ArrayRef::shift( $testarray ) is 'foo'} );
-          is( Hydrogen::ArrayRef::shift( $testarray ), 'bar', q{Hydrogen::ArrayRef::shift( $testarray ) is 'bar'} );
-          is_deeply( $testarray, [ 'baz' ], q{$testarray deep match} );
+          my $testarrayref = [ 'foo', 'bar', 'baz' ];
+          is( Hydrogen::ArrayRef::shift( $testarrayref ), 'foo', q{Hydrogen::ArrayRef::shift( $testarrayref ) is 'foo'} );
+          is( Hydrogen::ArrayRef::shift( $testarrayref ), 'bar', q{Hydrogen::ArrayRef::shift( $testarrayref ) is 'bar'} );
+          is_deeply( $testarrayref, [ 'baz' ], q{$testarrayref deep match} );
     };
     is $e, undef, 'no exception thrown running shift example';
 };
@@ -407,9 +407,9 @@ subtest 'unshift' => sub {
     ok exists(&Hydrogen::ArrayRef::unshift), 'function exists';
     ok $EXPORTS{'unshift'}, 'function is importable';
     my $e = exception {
-          my $testarray = [ 'foo' ];
-          Hydrogen::ArrayRef::unshift( $testarray, 'bar', 'baz' );
-          is_deeply( $testarray, [ 'bar', 'baz', 'foo' ], q{$testarray deep match} );
+          my $testarrayref = [ 'foo' ];
+          Hydrogen::ArrayRef::unshift( $testarrayref, 'bar', 'baz' );
+          is_deeply( $testarrayref, [ 'bar', 'baz', 'foo' ], q{$testarrayref deep match} );
     };
     is $e, undef, 'no exception thrown running unshift example';
 };

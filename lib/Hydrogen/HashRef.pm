@@ -45,7 +45,7 @@ use Exporter::Shiny qw(
     values
 );
 
-=head2 C<< accessor( $hash, $key, $value? ) >>
+=head2 C<< accessor( $hashref, $key, $value? ) >>
 
 Additional arguments: B<< Str >>, B<< Optional[Any] >>.
 
@@ -111,7 +111,7 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
     }
 }
 
-=head2 C<< all( $hash ) >>
+=head2 C<< all( $hashref ) >>
 
 Returns the hash in list context.
 
@@ -123,11 +123,11 @@ sub all {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for all; usage: "
-          . "Hydrogen::HashRef::all( \$hash )" );
+          . "Hydrogen::HashRef::all( \$hashref )" );
     %{$$__REF__};
 }
 
-=head2 C<< clear( $hash ) >>
+=head2 C<< clear( $hashref ) >>
 
 Empties the hash.
 
@@ -139,12 +139,12 @@ sub clear {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
-          . "Hydrogen::HashRef::clear( \$hash )" );
+          . "Hydrogen::HashRef::clear( \$hashref )" );
     1;
     ( %{ $_[0] } = () );
 }
 
-=head2 C<< count( $hash ) >>
+=head2 C<< count( $hashref ) >>
 
 Returns the number of keys in the hash.
 
@@ -156,11 +156,11 @@ sub count {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for count; usage: "
-          . "Hydrogen::HashRef::count( \$hash )" );
+          . "Hydrogen::HashRef::count( \$hashref )" );
     scalar keys %{$$__REF__};
 }
 
-=head2 C<< defined( $hash, $key ) >>
+=head2 C<< defined( $hashref, $key ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -204,7 +204,7 @@ sub defined {
     defined( ($$__REF__)->{ $_[1] } );
 }
 
-=head2 C<< delete( $hash, $key ) >>
+=head2 C<< delete( $hashref, $key ) >>
 
 Removes a value from the hashref by its key.
 
@@ -216,7 +216,7 @@ sub delete {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for delete; usage: "
-          . "Hydrogen::HashRef::delete( \$hash, \$key )" );
+          . "Hydrogen::HashRef::delete( \$hashref, \$key )" );
     1;
     my %shv_tmp    = %{$$__REF__};
     my @shv_return = delete @shv_tmp{ @_[ 1 .. $#_ ] };
@@ -224,7 +224,7 @@ sub delete {
     wantarray ? @shv_return : $shv_return[-1];
 }
 
-=head2 C<< elements( $hash ) >>
+=head2 C<< elements( $hashref ) >>
 
 Returns the hash in list context.
 
@@ -236,11 +236,11 @@ sub elements {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for elements; usage: "
-          . "Hydrogen::HashRef::elements( \$hash )" );
+          . "Hydrogen::HashRef::elements( \$hashref )" );
     %{$$__REF__};
 }
 
-=head2 C<< exists( $hash, $key ) >>
+=head2 C<< exists( $hashref, $key ) >>
 
 Additional arguments: B<< Str >>.
 
@@ -284,7 +284,7 @@ sub exists {
     defined( ($$__REF__)->{ $_[1] } );
 }
 
-=head2 C<< for_each_key( $hash, $coderef ) >>
+=head2 C<< for_each_key( $hashref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -324,7 +324,7 @@ sub for_each_key {
     $__REF__;
 }
 
-=head2 C<< for_each_pair( $hash, $coderef ) >>
+=head2 C<< for_each_pair( $hashref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -366,7 +366,7 @@ sub for_each_pair {
     $__REF__;
 }
 
-=head2 C<< for_each_value( $hash, $coderef ) >>
+=head2 C<< for_each_value( $hashref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -406,7 +406,7 @@ sub for_each_value {
     $__REF__;
 }
 
-=head2 C<< get( $hash, $key ) >>
+=head2 C<< get( $hashref, $key ) >>
 
 Returns a value from the hashref by its key.
 
@@ -418,11 +418,11 @@ sub get {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for get; usage: "
-          . "Hydrogen::HashRef::get( \$hash, \$key )" );
+          . "Hydrogen::HashRef::get( \$hashref, \$key )" );
     ( @_ - 1 ) > 1 ? @{$$__REF__}{ @_[ 1 .. $#_ ] } : ($$__REF__)->{ $_[1] };
 }
 
-=head2 C<< is_empty( $hash ) >>
+=head2 C<< is_empty( $hashref ) >>
 
 Returns true iff there are no keys in the hash.
 
@@ -434,11 +434,11 @@ sub is_empty {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for is_empty; usage: "
-          . "Hydrogen::HashRef::is_empty( \$hash )" );
+          . "Hydrogen::HashRef::is_empty( \$hashref )" );
     !scalar keys %{$$__REF__};
 }
 
-=head2 C<< keys( $hash ) >>
+=head2 C<< keys( $hashref ) >>
 
 Returns the list of keys in the hash.
 
@@ -450,11 +450,11 @@ sub keys {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for keys; usage: "
-          . "Hydrogen::HashRef::keys( \$hash )" );
+          . "Hydrogen::HashRef::keys( \$hashref )" );
     keys %{$$__REF__};
 }
 
-=head2 C<< kv( $hash ) >>
+=head2 C<< kv( $hashref ) >>
 
 Returns a list of arrayrefs, where each arrayref is a key-value pair.
 
@@ -466,11 +466,11 @@ sub kv {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for kv; usage: "
-          . "Hydrogen::HashRef::kv( \$hash )" );
+          . "Hydrogen::HashRef::kv( \$hashref )" );
     map [ $_ => ($$__REF__)->{$_} ], keys %{$$__REF__};
 }
 
-=head2 C<< reset( $hash ) >>
+=head2 C<< reset( $hashref ) >>
 
 Resets the original value to its default value, or an empty hashref if it has no default.
 
@@ -482,7 +482,7 @@ sub reset {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
-          . "Hydrogen::HashRef::reset( \$hash )" );
+          . "Hydrogen::HashRef::reset( \$hashref )" );
     (
         %{ $_[0] } = %{
             +do {
@@ -500,7 +500,7 @@ sub reset {
     );
 }
 
-=head2 C<< set( $hash, $key, $value, ... ) >>
+=head2 C<< set( $hashref, $key, $value, ... ) >>
 
 Given a key and value, adds the key to the hashref with the given value.
 
@@ -512,7 +512,7 @@ sub set {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ >= 3
       or Hydrogen::croak( "Wrong number of parameters for set; usage: "
-          . "Hydrogen::HashRef::set( \$hash, \$key, \$value, ... )" );
+          . "Hydrogen::HashRef::set( \$hashref, \$key, \$value, ... )" );
     my (@shv_params) = @_[ 1 .. $#_ ];
     scalar(@shv_params) % 2 and do {
         require Carp;
@@ -551,7 +551,7 @@ sub set {
       : $shv_tmp{ $shv_params[ $shv_keys_idx[0] ] };
 }
 
-=head2 C<< shallow_clone( $hash ) >>
+=head2 C<< shallow_clone( $hashref ) >>
 
 Creates a new hashref with the same keys and values as the original.
 
@@ -564,11 +564,11 @@ sub shallow_clone {
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for shallow_clone; usage: "
-          . "Hydrogen::HashRef::shallow_clone( \$hash )" );
+          . "Hydrogen::HashRef::shallow_clone( \$hashref )" );
     +{ %{$$__REF__} };
 }
 
-=head2 C<< sorted_keys( $hash ) >>
+=head2 C<< sorted_keys( $hashref ) >>
 
 Returns an alphabetically sorted list of keys in the hash.
 
@@ -580,11 +580,11 @@ sub sorted_keys {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for sorted_keys; usage: "
-          . "Hydrogen::HashRef::sorted_keys( \$hash )" );
+          . "Hydrogen::HashRef::sorted_keys( \$hashref )" );
     sort( keys %{$$__REF__} );
 }
 
-=head2 C<< values( $hash ) >>
+=head2 C<< values( $hashref ) >>
 
 Returns the list of values in the hash.
 
@@ -596,7 +596,7 @@ sub values {
     package Hydrogen::HashRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for values; usage: "
-          . "Hydrogen::HashRef::values( \$hash )" );
+          . "Hydrogen::HashRef::values( \$hashref )" );
     values %{$$__REF__};
 }
 

@@ -65,7 +65,10 @@ sub _build_example_var {
 			Array => '@array',
 			Code  => '{ CODE }',
 			Hash  => '%hash',
-		}->{$self->type_name} // $example_var;
+		}->{ $self->type_name } // $example_var;
+	}
+	elsif ( $self->type_name =~ /^(Array|Code|Hash)$/ ) {
+		$example_var .= 'ref';
 	}
 
 	return $example_var;

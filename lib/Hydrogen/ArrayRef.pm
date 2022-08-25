@@ -86,7 +86,7 @@ use Exporter::Shiny qw(
     unshift
 );
 
-=head2 C<< accessor( $array, $index, $value? ) >>
+=head2 C<< accessor( $arrayref, $index, $value? ) >>
 
 Additional arguments: B<< Int >>, B<< Optional[Any] >>.
 
@@ -151,7 +151,7 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
     }
 }
 
-=head2 C<< all( $array ) >>
+=head2 C<< all( $arrayref ) >>
 
 All elements in the array, in list context.
 
@@ -163,11 +163,11 @@ sub all {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for all; usage: "
-          . "Hydrogen::ArrayRef::all( \$array )" );
+          . "Hydrogen::ArrayRef::all( \$arrayref )" );
     @{$$__REF__};
 }
 
-=head2 C<< all_true( $array, $coderef ) >>
+=head2 C<< all_true( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -204,7 +204,7 @@ sub all_true {
     &List::Util::all( $_[1], @{$$__REF__} );
 }
 
-=head2 C<< any( $array, $coderef ) >>
+=head2 C<< any( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -241,7 +241,7 @@ sub any {
     &List::Util::any( $_[1], @{$$__REF__} );
 }
 
-=head2 C<< apply( $array, $coderef ) >>
+=head2 C<< apply( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -280,7 +280,7 @@ sub apply {
     wantarray ? @shv_tmp : $shv_tmp[-1];
 }
 
-=head2 C<< clear( $array ) >>
+=head2 C<< clear( $arrayref ) >>
 
 Empties the array.
 
@@ -292,12 +292,12 @@ sub clear {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
-          . "Hydrogen::ArrayRef::clear( \$array )" );
+          . "Hydrogen::ArrayRef::clear( \$arrayref )" );
     1;
     ( @{ $_[0] } = () );
 }
 
-=head2 C<< count( $array ) >>
+=head2 C<< count( $arrayref ) >>
 
 The number of elements in the referenced array.
 
@@ -309,11 +309,11 @@ sub count {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for count; usage: "
-          . "Hydrogen::ArrayRef::count( \$array )" );
+          . "Hydrogen::ArrayRef::count( \$arrayref )" );
     scalar( @{$$__REF__} );
 }
 
-=head2 C<< delete( $array, $index ) >>
+=head2 C<< delete( $arrayref, $index ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -359,7 +359,7 @@ sub delete {
     $shv_return;
 }
 
-=head2 C<< elements( $array ) >>
+=head2 C<< elements( $arrayref ) >>
 
 All elements in the array, in list context.
 
@@ -371,11 +371,11 @@ sub elements {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for elements; usage: "
-          . "Hydrogen::ArrayRef::elements( \$array )" );
+          . "Hydrogen::ArrayRef::elements( \$arrayref )" );
     @{$$__REF__};
 }
 
-=head2 C<< first( $array, $coderef ) >>
+=head2 C<< first( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -412,7 +412,7 @@ sub first {
     &List::Util::first( $_[1], @{$$__REF__} );
 }
 
-=head2 C<< first_index( $array, $coderef ) >>
+=head2 C<< first_index( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -449,7 +449,7 @@ sub first_index {
     Sub::HandlesVia::HandlerLibrary::Array::_firstidx( $_[1], @{$$__REF__} );
 }
 
-=head2 C<< flatten( $array ) >>
+=head2 C<< flatten( $arrayref ) >>
 
 All elements in the array, in list context.
 
@@ -461,11 +461,11 @@ sub flatten {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for flatten; usage: "
-          . "Hydrogen::ArrayRef::flatten( \$array )" );
+          . "Hydrogen::ArrayRef::flatten( \$arrayref )" );
     @{$$__REF__};
 }
 
-=head2 C<< flatten_deep( $array, $depth? ) >>
+=head2 C<< flatten_deep( $arrayref, $depth? ) >>
 
 Additional arguments: B<< Optional[Int] >>.
 
@@ -517,7 +517,7 @@ Flattens the arrayref into a list, including any nested arrayrefs.
     }
 }
 
-=head2 C<< for_each( $array, $coderef ) >>
+=head2 C<< for_each( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -557,7 +557,7 @@ sub for_each {
     $__REF__;
 }
 
-=head2 C<< for_each_pair( $array, $coderef ) >>
+=head2 C<< for_each_pair( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -599,7 +599,7 @@ sub for_each_pair {
     $__REF__;
 }
 
-=head2 C<< get( $array, $index ) >>
+=head2 C<< get( $arrayref, $index ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -641,7 +641,7 @@ sub get {
     ($$__REF__)->[ $_[1] ];
 }
 
-=head2 C<< grep( $array, $coderef ) >>
+=head2 C<< grep( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -678,7 +678,7 @@ sub grep {
     grep( $_[1]->($_), @{$$__REF__} );
 }
 
-=head2 C<< head( $array, $count ) >>
+=head2 C<< head( $arrayref, $count ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -723,7 +723,7 @@ sub head {
     ( @{$$__REF__} )[ 0 .. ( $shv_count - 1 ) ];
 }
 
-=head2 C<< insert( $array, $index, $value ) >>
+=head2 C<< insert( $arrayref, $index, $value ) >>
 
 Additional arguments: B<< Int >>, B<< Any >>.
 
@@ -771,7 +771,7 @@ sub insert {
     ( @{ $_[0] } = @{ +\@shv_tmp } );
 }
 
-=head2 C<< is_empty( $array ) >>
+=head2 C<< is_empty( $arrayref ) >>
 
 Boolean indicating if the referenced array is empty.
 
@@ -783,11 +783,11 @@ sub is_empty {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for is_empty; usage: "
-          . "Hydrogen::ArrayRef::is_empty( \$array )" );
+          . "Hydrogen::ArrayRef::is_empty( \$arrayref )" );
     !scalar( @{$$__REF__} );
 }
 
-=head2 C<< join( $array, $with? ) >>
+=head2 C<< join( $arrayref, $with? ) >>
 
 Additional arguments: B<< Optional[Str] >>.
 
@@ -839,7 +839,7 @@ Returns a string joining all the elements in the array; if C<< $with >> is omitt
     }
 }
 
-=head2 C<< map( $array, $coderef ) >>
+=head2 C<< map( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -876,7 +876,7 @@ sub map {
     map( $_[1]->($_), @{$$__REF__} );
 }
 
-=head2 C<< max( $array ) >>
+=head2 C<< max( $arrayref ) >>
 
 Like C<< List::Util::max() >>.
 
@@ -888,11 +888,11 @@ sub max {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for max; usage: "
-          . "Hydrogen::ArrayRef::max( \$array )" );
+          . "Hydrogen::ArrayRef::max( \$arrayref )" );
     &List::Util::max( @{$$__REF__} );
 }
 
-=head2 C<< maxstr( $array ) >>
+=head2 C<< maxstr( $arrayref ) >>
 
 Like C<< List::Util::maxstr() >>.
 
@@ -904,11 +904,11 @@ sub maxstr {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for maxstr; usage: "
-          . "Hydrogen::ArrayRef::maxstr( \$array )" );
+          . "Hydrogen::ArrayRef::maxstr( \$arrayref )" );
     &List::Util::maxstr( @{$$__REF__} );
 }
 
-=head2 C<< min( $array ) >>
+=head2 C<< min( $arrayref ) >>
 
 Like C<< List::Util::min() >>.
 
@@ -920,11 +920,11 @@ sub min {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for min; usage: "
-          . "Hydrogen::ArrayRef::min( \$array )" );
+          . "Hydrogen::ArrayRef::min( \$arrayref )" );
     &List::Util::min( @{$$__REF__} );
 }
 
-=head2 C<< minstr( $array ) >>
+=head2 C<< minstr( $arrayref ) >>
 
 Like C<< List::Util::minstr() >>.
 
@@ -936,11 +936,11 @@ sub minstr {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for minstr; usage: "
-          . "Hydrogen::ArrayRef::minstr( \$array )" );
+          . "Hydrogen::ArrayRef::minstr( \$arrayref )" );
     &List::Util::minstr( @{$$__REF__} );
 }
 
-=head2 C<< natatime( $array, $n, $callback? ) >>
+=head2 C<< natatime( $arrayref, $n, $callback? ) >>
 
 Additional arguments: B<< Int >>, B<< Optional[CodeRef] >>.
 
@@ -1006,7 +1006,7 @@ Given just a number, returns an iterator which reads that many elements from the
     }
 }
 
-=head2 C<< not_all_true( $array, $coderef ) >>
+=head2 C<< not_all_true( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1045,7 +1045,7 @@ sub not_all_true {
     &List::Util::notall( $_[1], @{$$__REF__} );
 }
 
-=head2 C<< pairfirst( $array, $coderef ) >>
+=head2 C<< pairfirst( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1082,7 +1082,7 @@ sub pairfirst {
     List::Util::pairfirst { $_[1]->($_) } @{$$__REF__};
 }
 
-=head2 C<< pairgrep( $array, $coderef ) >>
+=head2 C<< pairgrep( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1119,7 +1119,7 @@ sub pairgrep {
     List::Util::pairgrep { $_[1]->($_) } @{$$__REF__};
 }
 
-=head2 C<< pairkeys( $array ) >>
+=head2 C<< pairkeys( $arrayref ) >>
 
 Like C<< List::Util::pairkeys() >>.
 
@@ -1131,11 +1131,11 @@ sub pairkeys {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairkeys; usage: "
-          . "Hydrogen::ArrayRef::pairkeys( \$array )" );
+          . "Hydrogen::ArrayRef::pairkeys( \$arrayref )" );
     &List::Util::pairkeys( @{$$__REF__} );
 }
 
-=head2 C<< pairmap( $array, $coderef ) >>
+=head2 C<< pairmap( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1172,7 +1172,7 @@ sub pairmap {
     List::Util::pairmap { $_[1]->($_) } @{$$__REF__};
 }
 
-=head2 C<< pairs( $array ) >>
+=head2 C<< pairs( $arrayref ) >>
 
 Like C<< List::Util::pairs() >>.
 
@@ -1184,11 +1184,11 @@ sub pairs {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairs; usage: "
-          . "Hydrogen::ArrayRef::pairs( \$array )" );
+          . "Hydrogen::ArrayRef::pairs( \$arrayref )" );
     &List::Util::pairs( @{$$__REF__} );
 }
 
-=head2 C<< pairvalues( $array ) >>
+=head2 C<< pairvalues( $arrayref ) >>
 
 Like C<< List::Util::pairvalues() >>.
 
@@ -1200,11 +1200,11 @@ sub pairvalues {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pairvalues; usage: "
-          . "Hydrogen::ArrayRef::pairvalues( \$array )" );
+          . "Hydrogen::ArrayRef::pairvalues( \$arrayref )" );
     &List::Util::pairvalues( @{$$__REF__} );
 }
 
-=head2 C<< pick_random( $array, $count ) >>
+=head2 C<< pick_random( $arrayref, $count ) >>
 
 Additional arguments: B<< Optional[Int] >>.
 
@@ -1261,7 +1261,7 @@ If no C<< $count >> is given, returns one element of the array at random. If C<<
     }
 }
 
-=head2 C<< pop( $array ) >>
+=head2 C<< pop( $arrayref ) >>
 
 Removes the last element from the array and returns it.
 
@@ -1273,7 +1273,7 @@ sub pop {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for pop; usage: "
-          . "Hydrogen::ArrayRef::pop( \$array )" );
+          . "Hydrogen::ArrayRef::pop( \$arrayref )" );
     1;
     my @shv_tmp    = @{$$__REF__};
     my $shv_return = pop @shv_tmp;
@@ -1281,7 +1281,7 @@ sub pop {
     $shv_return;
 }
 
-=head2 C<< print( $array, $fh?, $with? ) >>
+=head2 C<< print( $arrayref, $fh?, $with? ) >>
 
 Additional arguments: B<< Optional[FileHandle] >>, B<< Optional[Str] >>.
 
@@ -1350,7 +1350,7 @@ Prints a string joining all the elements in the array; if C<< $fh >> is omitted,
     }
 }
 
-=head2 C<< product( $array ) >>
+=head2 C<< product( $arrayref ) >>
 
 Like C<< List::Util::product() >>.
 
@@ -1362,11 +1362,11 @@ sub product {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for product; usage: "
-          . "Hydrogen::ArrayRef::product( \$array )" );
+          . "Hydrogen::ArrayRef::product( \$arrayref )" );
     &List::Util::product( 1, @{$$__REF__} );
 }
 
-=head2 C<< push( $array, @values ) >>
+=head2 C<< push( $arrayref, @values ) >>
 
 Adds elements to the end of the array.
 
@@ -1383,7 +1383,7 @@ sub push {
     $shv_return;
 }
 
-=head2 C<< reduce( $array, $coderef ) >>
+=head2 C<< reduce( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1421,7 +1421,7 @@ sub reduce {
     List::Util::reduce { $shv_callback->( $a, $b ) } @{$$__REF__};
 }
 
-=head2 C<< reductions( $array, $coderef ) >>
+=head2 C<< reductions( $arrayref, $coderef ) >>
 
 Additional arguments: B<< CodeRef >>.
 
@@ -1459,7 +1459,7 @@ sub reductions {
     List::Util::reductions { $shv_callback->( $a, $b ) } @{$$__REF__};
 }
 
-=head2 C<< reset( $array ) >>
+=head2 C<< reset( $arrayref ) >>
 
 Resets the original value to its default value, or an empty arrayref if it has no default.
 
@@ -1471,7 +1471,7 @@ sub reset {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reset; usage: "
-          . "Hydrogen::ArrayRef::reset( \$array )" );
+          . "Hydrogen::ArrayRef::reset( \$arrayref )" );
     (
         @{ $_[0] } = @{
             +do {
@@ -1489,7 +1489,7 @@ sub reset {
     );
 }
 
-=head2 C<< reverse( $array ) >>
+=head2 C<< reverse( $arrayref ) >>
 
 Returns the reversed array in list context.
 
@@ -1501,11 +1501,11 @@ sub reverse {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for reverse; usage: "
-          . "Hydrogen::ArrayRef::reverse( \$array )" );
+          . "Hydrogen::ArrayRef::reverse( \$arrayref )" );
     reverse @{$$__REF__};
 }
 
-=head2 C<< sample( $array, $count ) >>
+=head2 C<< sample( $arrayref, $count ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -1547,7 +1547,7 @@ sub sample {
     &List::Util::sample( $_[1], @{$$__REF__} );
 }
 
-=head2 C<< set( $array, $index, $value ) >>
+=head2 C<< set( $arrayref, $index, $value ) >>
 
 Additional arguments: B<< Int >>, B<< Any >>.
 
@@ -1596,7 +1596,7 @@ sub set {
     $_[2];
 }
 
-=head2 C<< shallow_clone( $array ) >>
+=head2 C<< shallow_clone( $arrayref ) >>
 
 Creates a new arrayref with the same elements as the original.
 
@@ -1609,11 +1609,11 @@ sub shallow_clone {
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for shallow_clone; usage: "
-          . "Hydrogen::ArrayRef::shallow_clone( \$array )" );
+          . "Hydrogen::ArrayRef::shallow_clone( \$arrayref )" );
     [ @{$$__REF__} ];
 }
 
-=head2 C<< shift( $array ) >>
+=head2 C<< shift( $arrayref ) >>
 
 Removes an element from the start of the array and returns it.
 
@@ -1625,7 +1625,7 @@ sub shift {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for shift; usage: "
-          . "Hydrogen::ArrayRef::shift( \$array )" );
+          . "Hydrogen::ArrayRef::shift( \$arrayref )" );
     1;
     my @shv_tmp    = @{$$__REF__};
     my $shv_return = shift @shv_tmp;
@@ -1633,7 +1633,7 @@ sub shift {
     $shv_return;
 }
 
-=head2 C<< shuffle( $array ) >>
+=head2 C<< shuffle( $arrayref ) >>
 
 Returns the array in a random order; can be called in list context or scalar context and will return an arrayref in the latter case.
 
@@ -1645,12 +1645,12 @@ sub shuffle {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for shuffle; usage: "
-          . "Hydrogen::ArrayRef::shuffle( \$array )" );
+          . "Hydrogen::ArrayRef::shuffle( \$arrayref )" );
     my @shv_return = List::Util::shuffle( @{$$__REF__} );
     wantarray ? @shv_return : \@shv_return;
 }
 
-=head2 C<< shuffle_in_place( $array ) >>
+=head2 C<< shuffle_in_place( $arrayref ) >>
 
 Rearranges the array in a random order, and changes the original value to point to the new order.
 
@@ -1663,13 +1663,13 @@ sub shuffle_in_place {
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for shuffle_in_place; usage: "
-          . "Hydrogen::ArrayRef::shuffle_in_place( \$array )" );
+          . "Hydrogen::ArrayRef::shuffle_in_place( \$arrayref )" );
     1;
     my @shv_return = List::Util::shuffle( @{$$__REF__} );
     ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
-=head2 C<< sort( $array, $coderef? ) >>
+=head2 C<< sort( $arrayref, $coderef? ) >>
 
 Additional arguments: B<< Optional[CodeRef] >>.
 
@@ -1716,7 +1716,7 @@ Like C<sort> from L<perlfunc>.
     }
 }
 
-=head2 C<< sort_in_place( $array, $coderef? ) >>
+=head2 C<< sort_in_place( $arrayref, $coderef? ) >>
 
 Additional arguments: B<< Optional[CodeRef] >>.
 
@@ -1767,7 +1767,7 @@ Like C<sort> from L<perlfunc>, but changes the original value to point to the ne
     }
 }
 
-=head2 C<< splice( $array, $index, $length, @values ) >>
+=head2 C<< splice( $arrayref, $index, $length, @values ) >>
 
 Like C<splice> from L<perlfunc>.
 
@@ -1779,7 +1779,7 @@ sub splice {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ >= 2
       or Hydrogen::croak( "Wrong number of parameters for splice; usage: "
-          . "Hydrogen::ArrayRef::splice( \$array, \$index, \$length, \@values )"
+          . "Hydrogen::ArrayRef::splice( \$arrayref, \$index, \$length, \@values )"
       );
     if ( ( @_ - 1 ) >= 1 ) {
         do {
@@ -1821,7 +1821,7 @@ sub splice {
     wantarray ? @shv_return : $shv_return[-1];
 }
 
-=head2 C<< sum( $array ) >>
+=head2 C<< sum( $arrayref ) >>
 
 Like C<< List::Util::sum0() >>.
 
@@ -1833,11 +1833,11 @@ sub sum {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for sum; usage: "
-          . "Hydrogen::ArrayRef::sum( \$array )" );
+          . "Hydrogen::ArrayRef::sum( \$arrayref )" );
     &List::Util::sum( 0, @{$$__REF__} );
 }
 
-=head2 C<< tail( $array, $count ) >>
+=head2 C<< tail( $arrayref, $count ) >>
 
 Additional arguments: B<< Int >>.
 
@@ -1884,7 +1884,7 @@ sub tail {
     ( @{$$__REF__} )[ $shv_start .. $shv_end ];
 }
 
-=head2 C<< uniq( $array ) >>
+=head2 C<< uniq( $arrayref ) >>
 
 Returns the array filtered to remove duplicates; can be called in list context or scalar context and will return an arrayref in the latter case.
 
@@ -1896,12 +1896,12 @@ sub uniq {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniq; usage: "
-          . "Hydrogen::ArrayRef::uniq( \$array )" );
+          . "Hydrogen::ArrayRef::uniq( \$arrayref )" );
     my @shv_return = List::Util::uniq( @{$$__REF__} );
     wantarray ? @shv_return : \@shv_return;
 }
 
-=head2 C<< uniq_in_place( $array ) >>
+=head2 C<< uniq_in_place( $arrayref ) >>
 
 Filters the array to remove duplicates, and changes the original value to point to the filtered array.
 
@@ -1914,13 +1914,13 @@ sub uniq_in_place {
     @_ == 1
       or
       Hydrogen::croak( "Wrong number of parameters for uniq_in_place; usage: "
-          . "Hydrogen::ArrayRef::uniq_in_place( \$array )" );
+          . "Hydrogen::ArrayRef::uniq_in_place( \$arrayref )" );
     1;
     my @shv_return = List::Util::uniq( @{$$__REF__} );
     ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
-=head2 C<< uniqnum( $array ) >>
+=head2 C<< uniqnum( $arrayref ) >>
 
 Returns the array filtered to remove duplicates numerically; can be called in list context or scalar context and will return an arrayref in the latter case.
 
@@ -1932,12 +1932,12 @@ sub uniqnum {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniqnum; usage: "
-          . "Hydrogen::ArrayRef::uniqnum( \$array )" );
+          . "Hydrogen::ArrayRef::uniqnum( \$arrayref )" );
     my @shv_return = List::Util::uniqnum( @{$$__REF__} );
     wantarray ? @shv_return : \@shv_return;
 }
 
-=head2 C<< uniqnum_in_place( $array ) >>
+=head2 C<< uniqnum_in_place( $arrayref ) >>
 
 Filters the array to remove duplicates numerically, and changes the original value to point to the filtered array.
 
@@ -1950,13 +1950,13 @@ sub uniqnum_in_place {
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for uniqnum_in_place; usage: "
-          . "Hydrogen::ArrayRef::uniqnum_in_place( \$array )" );
+          . "Hydrogen::ArrayRef::uniqnum_in_place( \$arrayref )" );
     1;
     my @shv_return = List::Util::uniqnum( @{$$__REF__} );
     ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
-=head2 C<< uniqstr( $array ) >>
+=head2 C<< uniqstr( $arrayref ) >>
 
 Returns the array filtered to remove duplicates stringwise; can be called in list context or scalar context and will return an arrayref in the latter case.
 
@@ -1968,12 +1968,12 @@ sub uniqstr {
     package Hydrogen::ArrayRef::__SANDBOX__;
     @_ == 1
       or Hydrogen::croak( "Wrong number of parameters for uniqstr; usage: "
-          . "Hydrogen::ArrayRef::uniqstr( \$array )" );
+          . "Hydrogen::ArrayRef::uniqstr( \$arrayref )" );
     my @shv_return = List::Util::uniqstr( @{$$__REF__} );
     wantarray ? @shv_return : \@shv_return;
 }
 
-=head2 C<< uniqstr_in_place( $array ) >>
+=head2 C<< uniqstr_in_place( $arrayref ) >>
 
 Filters the array to remove duplicates stringwise, and changes the original value to point to the filtered array.
 
@@ -1986,13 +1986,13 @@ sub uniqstr_in_place {
     @_ == 1
       or Hydrogen::croak(
             "Wrong number of parameters for uniqstr_in_place; usage: "
-          . "Hydrogen::ArrayRef::uniqstr_in_place( \$array )" );
+          . "Hydrogen::ArrayRef::uniqstr_in_place( \$arrayref )" );
     1;
     my @shv_return = List::Util::uniqstr( @{$$__REF__} );
     ( @{ $_[0] } = @{ +\@shv_return } );
 }
 
-=head2 C<< unshift( $array, @values ) >>
+=head2 C<< unshift( $arrayref, @values ) >>
 
 Adds an element to the start of the array.
 

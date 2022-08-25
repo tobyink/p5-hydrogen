@@ -26,7 +26,7 @@ use Exporter::Shiny qw(
     execute
 );
 
-=head2 C<< execute( $code, @args ) >>
+=head2 C<< execute( $coderef, @args ) >>
 
 Calls the coderef, passing it any arguments.
 

@@ -17,10 +17,10 @@ subtest 'execute' => sub {
     ok $EXPORTS{'execute'}, 'function is importable';
     my $e = exception {
           my $coderef = sub { 'code' };
-          my $testcode = $coderef;
+          my $testcoderef = $coderef;
           
           # $coderef->( 1, 2, 3 )
-          Hydrogen::CodeRef::execute( $testcode, 1, 2, 3 );
+          Hydrogen::CodeRef::execute( $testcoderef, 1, 2, 3 );
     };
     is $e, undef, 'no exception thrown running execute example';
 };

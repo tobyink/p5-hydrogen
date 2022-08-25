@@ -46,7 +46,7 @@ use Exporter::Shiny qw(
     curry_values
 );
 
-=head2 C<< curry_accessor( $hash ) >>
+=head2 C<< curry_accessor( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::accessor >>.
 
@@ -67,7 +67,7 @@ sub curry_accessor {
     return sub { Hydrogen::HashRef::accessor( $$ref, @_ ) };
 }
 
-=head2 C<< curry_all( $hash ) >>
+=head2 C<< curry_all( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::all >>.
 
@@ -88,7 +88,7 @@ sub curry_all {
     return sub { Hydrogen::HashRef::all( $$ref, @_ ) };
 }
 
-=head2 C<< curry_clear( $hash ) >>
+=head2 C<< curry_clear( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::clear >>.
 
@@ -109,7 +109,7 @@ sub curry_clear {
     return sub { Hydrogen::HashRef::clear( $$ref, @_ ) };
 }
 
-=head2 C<< curry_count( $hash ) >>
+=head2 C<< curry_count( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::count >>.
 
@@ -130,7 +130,7 @@ sub curry_count {
     return sub { Hydrogen::HashRef::count( $$ref, @_ ) };
 }
 
-=head2 C<< curry_defined( $hash ) >>
+=head2 C<< curry_defined( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::defined >>.
 
@@ -151,7 +151,7 @@ sub curry_defined {
     return sub { Hydrogen::HashRef::defined( $$ref, @_ ) };
 }
 
-=head2 C<< curry_delete( $hash ) >>
+=head2 C<< curry_delete( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::delete >>.
 
@@ -172,7 +172,7 @@ sub curry_delete {
     return sub { Hydrogen::HashRef::delete( $$ref, @_ ) };
 }
 
-=head2 C<< curry_elements( $hash ) >>
+=head2 C<< curry_elements( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::elements >>.
 
@@ -193,7 +193,7 @@ sub curry_elements {
     return sub { Hydrogen::HashRef::elements( $$ref, @_ ) };
 }
 
-=head2 C<< curry_exists( $hash ) >>
+=head2 C<< curry_exists( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::exists >>.
 
@@ -214,7 +214,7 @@ sub curry_exists {
     return sub { Hydrogen::HashRef::exists( $$ref, @_ ) };
 }
 
-=head2 C<< curry_for_each_key( $hash ) >>
+=head2 C<< curry_for_each_key( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::for_each_key >>.
 
@@ -235,7 +235,7 @@ sub curry_for_each_key {
     return sub { Hydrogen::HashRef::for_each_key( $$ref, @_ ) };
 }
 
-=head2 C<< curry_for_each_pair( $hash ) >>
+=head2 C<< curry_for_each_pair( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::for_each_pair >>.
 
@@ -256,7 +256,7 @@ sub curry_for_each_pair {
     return sub { Hydrogen::HashRef::for_each_pair( $$ref, @_ ) };
 }
 
-=head2 C<< curry_for_each_value( $hash ) >>
+=head2 C<< curry_for_each_value( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::for_each_value >>.
 
@@ -277,7 +277,7 @@ sub curry_for_each_value {
     return sub { Hydrogen::HashRef::for_each_value( $$ref, @_ ) };
 }
 
-=head2 C<< curry_get( $hash ) >>
+=head2 C<< curry_get( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::get >>.
 
@@ -298,7 +298,7 @@ sub curry_get {
     return sub { Hydrogen::HashRef::get( $$ref, @_ ) };
 }
 
-=head2 C<< curry_is_empty( $hash ) >>
+=head2 C<< curry_is_empty( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::is_empty >>.
 
@@ -319,7 +319,7 @@ sub curry_is_empty {
     return sub { Hydrogen::HashRef::is_empty( $$ref, @_ ) };
 }
 
-=head2 C<< curry_keys( $hash ) >>
+=head2 C<< curry_keys( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::keys >>.
 
@@ -340,7 +340,7 @@ sub curry_keys {
     return sub { Hydrogen::HashRef::keys( $$ref, @_ ) };
 }
 
-=head2 C<< curry_kv( $hash ) >>
+=head2 C<< curry_kv( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::kv >>.
 
@@ -361,7 +361,7 @@ sub curry_kv {
     return sub { Hydrogen::HashRef::kv( $$ref, @_ ) };
 }
 
-=head2 C<< curry_reset( $hash ) >>
+=head2 C<< curry_reset( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::reset >>.
 
@@ -382,7 +382,7 @@ sub curry_reset {
     return sub { Hydrogen::HashRef::reset( $$ref, @_ ) };
 }
 
-=head2 C<< curry_set( $hash ) >>
+=head2 C<< curry_set( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::set >>.
 
@@ -403,7 +403,7 @@ sub curry_set {
     return sub { Hydrogen::HashRef::set( $$ref, @_ ) };
 }
 
-=head2 C<< curry_shallow_clone( $hash ) >>
+=head2 C<< curry_shallow_clone( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::shallow_clone >>.
 
@@ -424,7 +424,7 @@ sub curry_shallow_clone {
     return sub { Hydrogen::HashRef::shallow_clone( $$ref, @_ ) };
 }
 
-=head2 C<< curry_sorted_keys( $hash ) >>
+=head2 C<< curry_sorted_keys( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::sorted_keys >>.
 
@@ -445,7 +445,7 @@ sub curry_sorted_keys {
     return sub { Hydrogen::HashRef::sorted_keys( $$ref, @_ ) };
 }
 
-=head2 C<< curry_values( $hash ) >>
+=head2 C<< curry_values( $hashref ) >>
 
 Curry the first argument of C<< Hydrogen::HashRef::values >>.
 
