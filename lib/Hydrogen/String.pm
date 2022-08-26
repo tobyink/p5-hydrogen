@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::String;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.008';
+our $VERSION   = '0.009';
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ Hydrogen::String - a standard library for strings
 
 =head1 VERSION
 
-This documentation is for Hydrogen::String 0.008.
+This documentation is for Hydrogen::String 0.009.
 
 =cut
 

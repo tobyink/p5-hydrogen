@@ -9,7 +9,7 @@ use Hydrogen::HashRef ();
 package Hydrogen::Curry::HashRef;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.008';
+our $VERSION   = '0.009';
 
 =head1 NAME
 
@@ -17,7 +17,7 @@ Hydrogen::Curry::HashRef - easily curry functions from Hydrogen::HashRef
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::HashRef 0.008.
+This documentation is for Hydrogen::Curry::HashRef 0.009.
 
 =cut
 

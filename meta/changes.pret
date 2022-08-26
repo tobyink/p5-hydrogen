@@ -78,3 +78,20 @@
 			label "Document Hydrogen.pm's own exported functions.";
 		];
 	].
+
+`Hydrogen 0.009 cpan:TOBYINK`
+	issued  2022-08-26;
+	changeset [
+		item [
+			a dcs:Documentation;
+			label "Minor pod improvements.";
+		];
+		item [
+			a dcs:Tests;
+			label "Minor improvements.";
+		];
+		item [
+			a dcs:Change;
+			label "Minor formatting changes.";
+		];
+	].

@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::HashRef;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.008';
+our $VERSION   = '0.009';
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ Hydrogen::HashRef - a standard library for hashrefs
 
 =head1 VERSION
 
-This documentation is for Hydrogen::HashRef 0.008.
+This documentation is for Hydrogen::HashRef 0.009.
 
 =cut
 
