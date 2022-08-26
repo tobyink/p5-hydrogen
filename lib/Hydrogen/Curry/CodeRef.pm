@@ -29,6 +29,9 @@ Each function expects a reference to a sub as its only argument and returns a co
 
 use Exporter::Shiny qw(
     curry_execute
+    curry_execute_list
+    curry_execute_scalar
+    curry_execute_void
 );
 
 =head2 C<< curry_execute( $coderef ) >>
@@ -52,6 +55,69 @@ sub curry_execute {
     return sub { Hydrogen::CodeRef::execute( $$ref, @_ ) };
 }
 
+=head2 C<< curry_execute_list( $coderef ) >>
+
+Curry the first argument of C<< Hydrogen::CodeRef::execute_list >>.
+
+=cut
+
+sub curry_execute_list {
+    @_ == 1
+        or Hydrogen::croak(
+            "Wrong number of parameters in signature for curry_execute_list: got %d, %s",
+            scalar(@_), "expected exactly 1 parameter"
+        );
+    (ref($_[0]) eq 'CODE')
+        or Hydrogen::croak(
+            "Type check failed in signature for curry_execute_list: %s should be %s",
+            "\\$_[0]", "CodeRef"
+        );
+    my $ref = \$_[0];
+    return sub { Hydrogen::CodeRef::execute_list( $$ref, @_ ) };
+}
+
+=head2 C<< curry_execute_scalar( $coderef ) >>
+
+Curry the first argument of C<< Hydrogen::CodeRef::execute_scalar >>.
+
+=cut
+
+sub curry_execute_scalar {
+    @_ == 1
+        or Hydrogen::croak(
+            "Wrong number of parameters in signature for curry_execute_scalar: got %d, %s",
+            scalar(@_), "expected exactly 1 parameter"
+        );
+    (ref($_[0]) eq 'CODE')
+        or Hydrogen::croak(
+            "Type check failed in signature for curry_execute_scalar: %s should be %s",
+            "\\$_[0]", "CodeRef"
+        );
+    my $ref = \$_[0];
+    return sub { Hydrogen::CodeRef::execute_scalar( $$ref, @_ ) };
+}
+
+=head2 C<< curry_execute_void( $coderef ) >>
+
+Curry the first argument of C<< Hydrogen::CodeRef::execute_void >>.
+
+=cut
+
+sub curry_execute_void {
+    @_ == 1
+        or Hydrogen::croak(
+            "Wrong number of parameters in signature for curry_execute_void: got %d, %s",
+            scalar(@_), "expected exactly 1 parameter"
+        );
+    (ref($_[0]) eq 'CODE')
+        or Hydrogen::croak(
+            "Type check failed in signature for curry_execute_void: %s should be %s",
+            "\\$_[0]", "CodeRef"
+        );
+    my $ref = \$_[0];
+    return sub { Hydrogen::CodeRef::execute_void( $$ref, @_ ) };
+}
+
 1;
 
 =head1 EXPORT
@@ -62,11 +128,11 @@ No functions are exported by this module by default. To import them all (this is
 
 To import a particular function, use:
 
-    use Hydrogen::Curry::CodeRef 'curry_execute';
+    use Hydrogen::Curry::CodeRef 'curry_execute_scalar';
 
 To rename functions:
 
-    use Hydrogen::Curry::CodeRef 'curry_execute' => { -as => 'myfunc' };
+    use Hydrogen::Curry::CodeRef 'curry_execute_scalar' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 

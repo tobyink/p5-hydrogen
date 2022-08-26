@@ -344,7 +344,7 @@ sub delete {
 
 Operates on C<< $_ >>, which must be a reference to an array.
 
-All elements in the array, in list context.
+All elements in the array, in list context. (Essentially the same as C<all>.)
 
 =cut
 
@@ -418,14 +418,15 @@ sub first_index {
 
         (@_);
     };
-    Sub::HandlesVia::HandlerLibrary::Array::_firstidx( $_[0], @{$_} );
+    for my $i ( 0 .. $#{$_} ) { local *_ = \$_->[$i]; return $i if $_[0]->($_) };
+    return -1;
 }
 
 =head2 C<< flatten() >>
 
 Operates on C<< $_ >>, which must be a reference to an array.
 
-All elements in the array, in list context.
+All elements in the array, in list context. (Essentially the same as C<all>.)
 
 =cut
 
@@ -444,7 +445,7 @@ Operates on C<< $_ >>, which must be a reference to an array.
 
 Arguments: B<< Optional[Int] >>.
 
-Flattens the arrayref into a list, including any nested arrayrefs.
+Flattens the arrayref into a list, including any nested arrayrefs. (Has the potential to loop infinitely.)
 
 =cut
 
@@ -479,7 +480,17 @@ Flattens the arrayref into a list, including any nested arrayrefs.
             (@_);
         };
         @_ = &$__signature;
-        Sub::HandlesVia::HandlerLibrary::Array::_flatten_deep( @{$_}, $_[0] );
+        my $shv_fd;
+        $shv_fd = sub {
+            my $d = pop;
+            --$d if defined $d;
+            map ref() eq "ARRAY"
+              ? ( defined $d && $d < 0 )
+                  ? $_
+                  : $shv_fd->( @$_, $d )
+              : $_, @_;
+        };
+        $shv_fd->( @{$_}, $_[0] );
     }
 }
 
@@ -918,8 +929,9 @@ Given just a number, returns an iterator which reads that many elements from the
             (@_);
         };
         @_ = &$__signature;
-        my $shv_iterator =
-          Sub::HandlesVia::HandlerLibrary::Array::_natatime( $_[0], @{$_} );
+        my @shv_remaining = @{$_};
+        my $shv_n         = $_[0];
+        my $shv_iterator  = sub { CORE::splice @shv_remaining, 0, $shv_n };
         if ( $_[1] ) {
             while ( my @shv_values = $shv_iterator->() ) {
                 $_[1]->(@shv_values);

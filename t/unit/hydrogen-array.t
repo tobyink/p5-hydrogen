@@ -50,6 +50,7 @@ subtest 'all' => sub {
     my $exception = dies {
         my @testarray = @{ + [ 'foo', 'bar' ] };
         my @list = Hydrogen::Array::all( @testarray );
+        is( \@list, [ 'foo', 'bar' ], q{\@list deep match} );
     };
     is $exception, undef, 'no exception thrown running all example';
 };
@@ -62,6 +63,12 @@ subtest 'all_true' => sub {
 subtest 'any' => sub {
     ok exists(&Hydrogen::Array::any), 'function exists';
     ok $EXPORTS{'any'}, 'function is importable';
+    my $exception = dies {
+        my @testarray = @{ + [ 'foo', 'bar', 'baz' ] };
+        my $truth  = Hydrogen::Array::any( @testarray, sub { /a/ } );
+        ok( $truth, q{$truth is true} );
+    };
+    is $exception, undef, 'no exception thrown running any example';
 };
 
 subtest 'apply' => sub {
@@ -101,6 +108,7 @@ subtest 'elements' => sub {
     my $exception = dies {
         my @testarray = @{ + [ 'foo', 'bar' ] };
         my @list = Hydrogen::Array::elements( @testarray );
+        is( \@list, [ 'foo', 'bar' ], q{\@list deep match} );
     };
     is $exception, undef, 'no exception thrown running elements example';
 };
@@ -108,21 +116,47 @@ subtest 'elements' => sub {
 subtest 'first' => sub {
     ok exists(&Hydrogen::Array::first), 'function exists';
     ok $EXPORTS{'first'}, 'function is importable';
+    my $exception = dies {
+        my @testarray = @{ + [ 'foo', 'bar', 'baz' ] };
+        my $found  = Hydrogen::Array::first( @testarray, sub { /a/ } );
+        is( $found, 'bar', q{$found is 'bar'} );
+    };
+    is $exception, undef, 'no exception thrown running first example';
 };
 
 subtest 'first_index' => sub {
     ok exists(&Hydrogen::Array::first_index), 'function exists';
     ok $EXPORTS{'first_index'}, 'function is importable';
+    my $exception = dies {
+        my @testarray = @{ + [ 'foo', 'bar', 'baz' ] };
+        my $found  = Hydrogen::Array::first_index( @testarray, sub { /z$/ } );
+        is( $found, 2, q{$found is 2} );
+    };
+    is $exception, undef, 'no exception thrown running first_index example';
 };
 
 subtest 'flatten' => sub {
     ok exists(&Hydrogen::Array::flatten), 'function exists';
     ok $EXPORTS{'flatten'}, 'function is importable';
+    my $exception = dies {
+        my @testarray = @{ + [ 'foo', 'bar' ] };
+        my @list = Hydrogen::Array::flatten( @testarray );
+        is( \@list, [ 'foo', 'bar' ], q{\@list deep match} );
+    };
+    is $exception, undef, 'no exception thrown running flatten example';
 };
 
 subtest 'flatten_deep' => sub {
     ok exists(&Hydrogen::Array::flatten_deep), 'function exists';
     ok $EXPORTS{'flatten_deep'}, 'function is importable';
+    my $exception = dies {
+        my @testarray = @{ + [ 'foo', [ 'bar', [ 'baz' ] ] ] };
+        is( [ Hydrogen::Array::flatten_deep( @testarray ) ], [ 'foo', 'bar', 'baz' ], q{[ Hydrogen::Array::flatten_deep( @testarray ) ] deep match} );
+      
+        my @testarray2 = @{ + [ 'foo', [ 'bar', [ 'baz' ] ] ] };
+        is( [ Hydrogen::Array::flatten_deep( @testarray,1) ], [ 'foo', 'bar', [ 'baz' ] ], q{[ Hydrogen::Array::flatten_deep( @testarray,1) ] deep match} );
+    };
+    is $exception, undef, 'no exception thrown running flatten_deep example';
 };
 
 subtest 'for_each' => sub {
@@ -224,6 +258,13 @@ subtest 'minstr' => sub {
 subtest 'natatime' => sub {
     ok exists(&Hydrogen::Array::natatime), 'function exists';
     ok $EXPORTS{'natatime'}, 'function is importable';
+    my $exception = dies {
+        my @testarray = @{ + [ 'foo', 'bar', 'baz' ] };
+        my $iter   = Hydrogen::Array::natatime( @testarray, 2 );
+        is( [ $iter->() ], [ 'foo', 'bar' ], q{[ $iter->() ] deep match} );
+        is( [ $iter->() ], [ 'baz' ], q{[ $iter->() ] deep match} );
+    };
+    is $exception, undef, 'no exception thrown running natatime example';
 };
 
 subtest 'not_all_true' => sub {

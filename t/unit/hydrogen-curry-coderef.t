@@ -42,4 +42,34 @@ subtest 'curry_execute' => sub {
     is $exception, undef, 'no exception thrown running curry_execute';
 };
 
+subtest 'curry_execute_list' => sub {
+    ok exists(&Hydrogen::Curry::CodeRef::curry_execute_list), 'function exists';
+    ok $EXPORTS{'curry_execute_list'}, 'function is importable';
+    my $exception = dies {
+        my $curried = Hydrogen::Curry::CodeRef::curry_execute_list( sub {} );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
+    };
+    is $exception, undef, 'no exception thrown running curry_execute_list';
+};
+
+subtest 'curry_execute_scalar' => sub {
+    ok exists(&Hydrogen::Curry::CodeRef::curry_execute_scalar), 'function exists';
+    ok $EXPORTS{'curry_execute_scalar'}, 'function is importable';
+    my $exception = dies {
+        my $curried = Hydrogen::Curry::CodeRef::curry_execute_scalar( sub {} );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
+    };
+    is $exception, undef, 'no exception thrown running curry_execute_scalar';
+};
+
+subtest 'curry_execute_void' => sub {
+    ok exists(&Hydrogen::Curry::CodeRef::curry_execute_void), 'function exists';
+    ok $EXPORTS{'curry_execute_void'}, 'function is importable';
+    my $exception = dies {
+        my $curried = Hydrogen::Curry::CodeRef::curry_execute_void( sub {} );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
+    };
+    is $exception, undef, 'no exception thrown running curry_execute_void';
+};
+
 done_testing; # :)

@@ -28,6 +28,9 @@ Each function implicitly operates on C<< $_ >>, expecting it to be a reference t
 
 use Exporter::Shiny qw(
     execute
+    execute_list
+    execute_scalar
+    execute_void
 );
 
 =head2 C<< execute( @args ) >>
@@ -44,6 +47,50 @@ sub execute {
     $_->(@_);
 }
 
+=head2 C<< execute_list( @args ) >>
+
+Operates on C<< $_ >>, which must be a reference to a sub.
+
+Calls the coderef, passing it any arguments, and forcing list context. If called in scalar context, returns an arrayref.
+
+=cut
+
+sub execute_list {
+
+    package Hydrogen::CodeRef::__SANDBOX__;
+    my @shv_list = $_->(@_);
+    wantarray ? @shv_list : \@shv_list;
+}
+
+=head2 C<< execute_scalar( @args ) >>
+
+Operates on C<< $_ >>, which must be a reference to a sub.
+
+Calls the coderef, passing it any arguments, and forcing scalar context.
+
+=cut
+
+sub execute_scalar {
+
+    package Hydrogen::CodeRef::__SANDBOX__;
+    scalar( $_->(@_) );
+}
+
+=head2 C<< execute_void( @args ) >>
+
+Operates on C<< $_ >>, which must be a reference to a sub.
+
+Calls the coderef, passing it any arguments, and forcing void context. Returns undef.
+
+=cut
+
+sub execute_void {
+
+    package Hydrogen::CodeRef::__SANDBOX__;
+    $_->(@_);
+    undef;
+}
+
 1;
 
 =head1 EXPORT
@@ -54,11 +101,11 @@ No functions are exported by this module by default. To import them all (this is
 
 To import a particular function, use:
 
-    use Hydrogen::Topic::CodeRef 'execute';
+    use Hydrogen::Topic::CodeRef 'execute_scalar';
 
 To rename functions:
 
-    use Hydrogen::Topic::CodeRef 'execute' => { -as => 'myfunc' };
+    use Hydrogen::Topic::CodeRef 'execute_scalar' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 

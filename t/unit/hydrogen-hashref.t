@@ -90,6 +90,21 @@ subtest 'delete' => sub {
     is $exception, undef, 'no exception thrown running delete example';
 };
 
+subtest 'delete_where' => sub {
+    ok exists(&Hydrogen::HashRef::delete_where), 'function exists';
+    ok $EXPORTS{'delete_where'}, 'function is importable';
+    my $exception = dies {
+        my $testhashref = { foo => 0, bar => 1, baz => 2 };
+        Hydrogen::HashRef::delete_where( $testhashref, sub { $_ eq 'foo' or $_ eq 'bar' } );
+        is( $testhashref, { baz => 2 }, q{$testhashref deep match} );
+        
+        my $testhashref2 = { foo => 0, bar => 1, baz => 2 };
+        Hydrogen::HashRef::delete_where( $testhashref2, qr/^b/ );
+        is( $testhashref2, { foo => 0 }, q{$testhashref2 deep match} );
+    };
+    is $exception, undef, 'no exception thrown running delete_where example';
+};
+
 subtest 'elements' => sub {
     ok exists(&Hydrogen::HashRef::elements), 'function exists';
     ok $EXPORTS{'elements'}, 'function is importable';

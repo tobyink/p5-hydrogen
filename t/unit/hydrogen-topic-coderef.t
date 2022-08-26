@@ -40,10 +40,64 @@ subtest 'execute' => sub {
         my $coderef = sub { 'code' };
         $_ = $coderef;
         
-        # $coderef->( 1, 2, 3 )
+        # Calls: $coderef->( 1, 2, 3 )
         Hydrogen::Topic::CodeRef::execute( 1, 2, 3 );
     };
     is $exception, undef, 'no exception thrown running execute example';
+};
+
+subtest 'execute_list' => sub {
+    ok exists(&Hydrogen::Topic::CodeRef::execute_list), 'function exists';
+    ok $EXPORTS{'execute_list'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        my $context;
+        my $coderef = sub { $context = wantarray(); 'code' };
+        $_ = $coderef;
+        
+        # Calls: $coderef->( 1, 2, 3 )
+        my $result = Hydrogen::Topic::CodeRef::execute_list( 1, 2, 3 );
+        
+        is( $result, [ 'code' ], q{$result deep match} );
+        ok( $context, q{$context is true} );
+    };
+    is $exception, undef, 'no exception thrown running execute_list example';
+};
+
+subtest 'execute_scalar' => sub {
+    ok exists(&Hydrogen::Topic::CodeRef::execute_scalar), 'function exists';
+    ok $EXPORTS{'execute_scalar'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        my $context;
+        my $coderef = sub { $context = wantarray(); 'code' };
+        $_ = $coderef;
+        
+        # Calls: $coderef->( 1, 2, 3 )
+        my $result = Hydrogen::Topic::CodeRef::execute_scalar( 1, 2, 3 );
+        
+        is( $result, 'code', q{$result is 'code'} );
+        ok( !($context), q{$context is false} );
+    };
+    is $exception, undef, 'no exception thrown running execute_scalar example';
+};
+
+subtest 'execute_void' => sub {
+    ok exists(&Hydrogen::Topic::CodeRef::execute_void), 'function exists';
+    ok $EXPORTS{'execute_void'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        my $context;
+        my $coderef = sub { $context = wantarray(); 'code' };
+        $_ = $coderef;
+        
+        # Calls: $coderef->( 1, 2, 3 )
+        my $result = Hydrogen::Topic::CodeRef::execute_void( 1, 2, 3 );
+        
+        is( $result, undef, q{$result is undef} );
+        is( $context, undef, q{$context is undef} );
+    };
+    is $exception, undef, 'no exception thrown running execute_void example';
 };
 
 done_testing; # :)

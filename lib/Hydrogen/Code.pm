@@ -30,6 +30,9 @@ The functions use prototypes, so you don't have to pass a reference.
 
 use Exporter::Shiny qw(
     execute
+    execute_list
+    execute_scalar
+    execute_void
 );
 
 =head2 C<< execute { CODE } @args >>
@@ -45,6 +48,47 @@ sub execute (&;@) {
     $$__REF__->( @_[ 1 .. $#_ ] );
 }
 
+=head2 C<< execute_list { CODE } @args >>
+
+Calls the coderef, passing it any arguments, and forcing list context. If called in scalar context, returns an arrayref.
+
+=cut
+
+sub execute_list (&;@) {
+    my $__REF__ = \$_[0];
+
+    package Hydrogen::Code::__SANDBOX__;
+    my @shv_list = $$__REF__->( @_[ 1 .. $#_ ] );
+    wantarray ? @shv_list : \@shv_list;
+}
+
+=head2 C<< execute_scalar { CODE } @args >>
+
+Calls the coderef, passing it any arguments, and forcing scalar context.
+
+=cut
+
+sub execute_scalar (&;@) {
+    my $__REF__ = \$_[0];
+
+    package Hydrogen::Code::__SANDBOX__;
+    scalar( $$__REF__->( @_[ 1 .. $#_ ] ) );
+}
+
+=head2 C<< execute_void { CODE } @args >>
+
+Calls the coderef, passing it any arguments, and forcing void context. Returns undef.
+
+=cut
+
+sub execute_void (&;@) {
+    my $__REF__ = \$_[0];
+
+    package Hydrogen::Code::__SANDBOX__;
+    $$__REF__->( @_[ 1 .. $#_ ] );
+    undef;
+}
+
 1;
 
 =head1 EXPORT
@@ -55,11 +99,11 @@ No functions are exported by this module by default. To import them all (this is
 
 To import a particular function, use:
 
-    use Hydrogen::Code 'execute';
+    use Hydrogen::Code 'execute_scalar';
 
 To rename functions:
 
-    use Hydrogen::Code 'execute' => { -as => 'myfunc' };
+    use Hydrogen::Code 'execute_scalar' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 

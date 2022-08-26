@@ -37,4 +37,19 @@ subtest 'execute' => sub {
     ok $EXPORTS{'execute'}, 'function is importable';
 };
 
+subtest 'execute_list' => sub {
+    ok exists(&Hydrogen::Code::execute_list), 'function exists';
+    ok $EXPORTS{'execute_list'}, 'function is importable';
+};
+
+subtest 'execute_scalar' => sub {
+    ok exists(&Hydrogen::Code::execute_scalar), 'function exists';
+    ok $EXPORTS{'execute_scalar'}, 'function is importable';
+};
+
+subtest 'execute_void' => sub {
+    ok exists(&Hydrogen::Code::execute_void), 'function exists';
+    ok $EXPORTS{'execute_void'}, 'function is importable';
+};
+
 done_testing; # :)

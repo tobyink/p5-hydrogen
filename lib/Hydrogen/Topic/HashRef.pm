@@ -33,6 +33,7 @@ use Exporter::Shiny qw(
     count
     defined
     delete
+    delete_where
     elements
     exists
     for_each_key
@@ -218,6 +219,77 @@ sub delete {
     my %shv_tmp    = %{$_};
     my @shv_return = delete @shv_tmp{@_};
     ( %{$_} = %{ +\%shv_tmp } );
+    wantarray ? @shv_return : $shv_return[-1];
+}
+
+=head2 C<< delete_where( $match ) >>
+
+Operates on C<< $_ >>, which must be a reference to a hash.
+
+Arguments: B<< CodeRef|RegexpRef >>.
+
+Removes values from the hashref by matching keys against a coderef or regexp.
+
+=cut
+
+sub delete_where {
+
+    package Hydrogen::HashRef::__SANDBOX__;
+    @_ = do {
+        my ( %tmp, $tmp );
+
+        @_ == 1
+          or Hydrogen::croak(
+            "Wrong number of parameters in signature for %s: got %d, %s",
+            "delete_where", scalar(@_), "expected exactly 1 parameters" );
+
+        # Parameter $_[0] (type: CodeRef|RegexpRef)
+        do {
+
+            package Hydrogen::HashRef::__SANDBOX__;
+            (
+                ( ref( $_[0] ) eq 'CODE' ) or (
+                    do {
+
+                        package Hydrogen::HashRef::__SANDBOX__;
+                        use Scalar::Util ();
+                        use re           ();
+                        ref( $_[0] ) && !!re::is_regexp( $_[0] )
+                          or Scalar::Util::blessed( $_[0] )
+                          && $_[0]->isa('Regexp');
+                    }
+                )
+            );
+          }
+          or Hydrogen::croak(
+            "Type check failed in signature for delete_where: %s should be %s",
+            "\$_[0]", "CodeRef|RegexpRef"
+          );
+
+        (@_);
+    };
+    my %shv_tmp   = %{$_};
+    my $shv_match = $_[0];
+    my @shv_keys =
+      ( "CODE" eq ref $shv_match )
+      ? grep( $shv_match->($_), keys %shv_tmp )
+      : grep( /$shv_match/,     keys %shv_tmp );
+    my @shv_return = delete @shv_tmp{@shv_keys};
+    (
+        %{$_} = %{
+            +do {
+                my $shv_final_unchecked = \%shv_tmp;
+                do {
+                    ( ref($shv_final_unchecked) eq 'HASH' )
+                      or Hydrogen::croak(
+"Type check failed for delete_where: expected %s, got value %s",
+                        "HashRef", $shv_final_unchecked
+                      );
+                    $shv_final_unchecked;
+                };
+            }
+        }
+    );
     wantarray ? @shv_return : $shv_return[-1];
 }
 

@@ -52,6 +52,7 @@ subtest 'all' => sub {
         local $_;
         $_ = [ 'foo', 'bar' ];
         my @list = Hydrogen::Topic::ArrayRef::all();
+        is( \@list, [ 'foo', 'bar' ], q{\@list deep match} );
     };
     is $exception, undef, 'no exception thrown running all example';
 };
@@ -64,6 +65,13 @@ subtest 'all_true' => sub {
 subtest 'any' => sub {
     ok exists(&Hydrogen::Topic::ArrayRef::any), 'function exists';
     ok $EXPORTS{'any'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        $_ = [ 'foo', 'bar', 'baz' ];
+        my $truth  = Hydrogen::Topic::ArrayRef::any( sub { /a/ } );
+        ok( $truth, q{$truth is true} );
+    };
+    is $exception, undef, 'no exception thrown running any example';
 };
 
 subtest 'apply' => sub {
@@ -106,6 +114,7 @@ subtest 'elements' => sub {
         local $_;
         $_ = [ 'foo', 'bar' ];
         my @list = Hydrogen::Topic::ArrayRef::elements();
+        is( \@list, [ 'foo', 'bar' ], q{\@list deep match} );
     };
     is $exception, undef, 'no exception thrown running elements example';
 };
@@ -113,21 +122,51 @@ subtest 'elements' => sub {
 subtest 'first' => sub {
     ok exists(&Hydrogen::Topic::ArrayRef::first), 'function exists';
     ok $EXPORTS{'first'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        $_ = [ 'foo', 'bar', 'baz' ];
+        my $found  = Hydrogen::Topic::ArrayRef::first( sub { /a/ } );
+        is( $found, 'bar', q{$found is 'bar'} );
+    };
+    is $exception, undef, 'no exception thrown running first example';
 };
 
 subtest 'first_index' => sub {
     ok exists(&Hydrogen::Topic::ArrayRef::first_index), 'function exists';
     ok $EXPORTS{'first_index'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        $_ = [ 'foo', 'bar', 'baz' ];
+        my $found  = Hydrogen::Topic::ArrayRef::first_index( sub { /z$/ } );
+        is( $found, 2, q{$found is 2} );
+    };
+    is $exception, undef, 'no exception thrown running first_index example';
 };
 
 subtest 'flatten' => sub {
     ok exists(&Hydrogen::Topic::ArrayRef::flatten), 'function exists';
     ok $EXPORTS{'flatten'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        $_ = [ 'foo', 'bar' ];
+        my @list = Hydrogen::Topic::ArrayRef::flatten();
+        is( \@list, [ 'foo', 'bar' ], q{\@list deep match} );
+    };
+    is $exception, undef, 'no exception thrown running flatten example';
 };
 
 subtest 'flatten_deep' => sub {
     ok exists(&Hydrogen::Topic::ArrayRef::flatten_deep), 'function exists';
     ok $EXPORTS{'flatten_deep'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        $_ = [ 'foo', [ 'bar', [ 'baz' ] ] ];
+        is( [ Hydrogen::Topic::ArrayRef::flatten_deep() ], [ 'foo', 'bar', 'baz' ], q{[ Hydrogen::Topic::ArrayRef::flatten_deep() ] deep match} );
+      
+        $_ = [ 'foo', [ 'bar', [ 'baz' ] ] ];
+        is( [ Hydrogen::Topic::ArrayRef::flatten_deep(1) ], [ 'foo', 'bar', [ 'baz' ] ], q{[ Hydrogen::Topic::ArrayRef::flatten_deep(1) ] deep match} );
+    };
+    is $exception, undef, 'no exception thrown running flatten_deep example';
 };
 
 subtest 'for_each' => sub {
@@ -234,6 +273,14 @@ subtest 'minstr' => sub {
 subtest 'natatime' => sub {
     ok exists(&Hydrogen::Topic::ArrayRef::natatime), 'function exists';
     ok $EXPORTS{'natatime'}, 'function is importable';
+    my $exception = dies {
+        local $_;
+        $_ = [ 'foo', 'bar', 'baz' ];
+        my $iter   = Hydrogen::Topic::ArrayRef::natatime( 2 );
+        is( [ $iter->() ], [ 'foo', 'bar' ], q{[ $iter->() ] deep match} );
+        is( [ $iter->() ], [ 'baz' ], q{[ $iter->() ] deep match} );
+    };
+    is $exception, undef, 'no exception thrown running natatime example';
 };
 
 subtest 'not_all_true' => sub {

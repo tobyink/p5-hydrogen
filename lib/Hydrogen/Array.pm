@@ -367,7 +367,7 @@ sub delete (\@$) {
 
 =head2 C<< elements( @array ) >>
 
-All elements in the array, in list context.
+All elements in the array, in list context. (Essentially the same as C<all>.)
 
 =cut
 
@@ -452,12 +452,16 @@ sub first_index (\@$) {
 
         (@_);
     };
-    Sub::HandlesVia::HandlerLibrary::Array::_firstidx( $_[1], @{$$__REF__} );
+    for my $i ( 0 .. $#{$$__REF__} ) {
+        local *_ = \$$__REF__->[$i];
+        return $i if $_[1]->($_);
+    };
+    return -1;
 }
 
 =head2 C<< flatten( @array ) >>
 
-All elements in the array, in list context.
+All elements in the array, in list context. (Essentially the same as C<all>.)
 
 =cut
 
@@ -475,7 +479,7 @@ sub flatten (\@) {
 
 Additional arguments: B<< Optional[Int] >>.
 
-Flattens the arrayref into a list, including any nested arrayrefs.
+Flattens the arrayref into a list, including any nested arrayrefs. (Has the potential to loop infinitely.)
 
 =cut
 
@@ -518,8 +522,17 @@ Flattens the arrayref into a list, including any nested arrayrefs.
             (@_);
         };
         @_ = &$__signature;
-        Sub::HandlesVia::HandlerLibrary::Array::_flatten_deep( @{$$__REF__},
-            $_[1] );
+        my $shv_fd;
+        $shv_fd = sub {
+            my $d = pop;
+            --$d if defined $d;
+            map ref() eq "ARRAY"
+              ? ( defined $d && $d < 0 )
+                  ? $_
+                  : $shv_fd->( @$_, $d )
+              : $_, @_;
+        };
+        $shv_fd->( @{$$__REF__}, $_[1] );
     }
 }
 
@@ -1000,9 +1013,9 @@ Given just a number, returns an iterator which reads that many elements from the
             (@_);
         };
         @_ = &$__signature;
-        my $shv_iterator =
-          Sub::HandlesVia::HandlerLibrary::Array::_natatime( $_[1],
-            @{$$__REF__} );
+        my @shv_remaining = @{$$__REF__};
+        my $shv_n         = $_[1];
+        my $shv_iterator  = sub { CORE::splice @shv_remaining, 0, $shv_n };
         if ( $_[2] ) {
             while ( my @shv_values = $shv_iterator->() ) {
                 $_[2]->(@shv_values);

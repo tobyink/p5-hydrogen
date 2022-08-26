@@ -92,6 +92,16 @@ subtest 'curry_delete' => sub {
     is $exception, undef, 'no exception thrown running curry_delete';
 };
 
+subtest 'curry_delete_where' => sub {
+    ok exists(&Hydrogen::Curry::HashRef::curry_delete_where), 'function exists';
+    ok $EXPORTS{'curry_delete_where'}, 'function is importable';
+    my $exception = dies {
+        my $curried = Hydrogen::Curry::HashRef::curry_delete_where( {} );
+        is ref( $curried ), 'CODE', 'function returns a coderef';
+    };
+    is $exception, undef, 'no exception thrown running curry_delete_where';
+};
+
 subtest 'curry_elements' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_elements), 'function exists';
     ok $EXPORTS{'curry_elements'}, 'function is importable';

@@ -34,6 +34,7 @@ use Exporter::Shiny qw(
     curry_count
     curry_defined
     curry_delete
+    curry_delete_where
     curry_elements
     curry_exists
     curry_for_each_key
@@ -174,6 +175,27 @@ sub curry_delete {
         );
     my $ref = \$_[0];
     return sub { Hydrogen::HashRef::delete( $$ref, @_ ) };
+}
+
+=head2 C<< curry_delete_where( $hashref ) >>
+
+Curry the first argument of C<< Hydrogen::HashRef::delete_where >>.
+
+=cut
+
+sub curry_delete_where {
+    @_ == 1
+        or Hydrogen::croak(
+            "Wrong number of parameters in signature for curry_delete_where: got %d, %s",
+            scalar(@_), "expected exactly 1 parameter"
+        );
+    (ref($_[0]) eq 'HASH')
+        or Hydrogen::croak(
+            "Type check failed in signature for curry_delete_where: %s should be %s",
+            "\\$_[0]", "HashRef"
+        );
+    my $ref = \$_[0];
+    return sub { Hydrogen::HashRef::delete_where( $$ref, @_ ) };
 }
 
 =head2 C<< curry_elements( $hashref ) >>
