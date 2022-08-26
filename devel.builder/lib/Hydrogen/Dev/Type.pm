@@ -611,7 +611,7 @@ sub __compile_module_footer {
 	$_ .= "\n";
 	$_ .= "    use @{[ $arg{module} ]} '$egfunc' => { -as => 'myfunc' };\n";
 	$_ .= "\n";
-	$_ .= "See L<Exporter::Tiny::Manual::Importing> for more hints on importing.";
+	$_ .= "See L<Exporter::Tiny::Manual::Importing> for more hints on importing.\n";
 	$_ .= "\n";
 
 	$_ .= $self->dev->compile_bug_section . "\n";

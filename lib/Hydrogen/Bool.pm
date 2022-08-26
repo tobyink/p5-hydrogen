@@ -131,6 +131,7 @@ To rename functions:
     use Hydrogen::Bool 'set' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
+
 =head1 BUGS
 
 Please report any bugs to
