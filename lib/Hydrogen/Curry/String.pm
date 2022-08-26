@@ -870,8 +870,7 @@ sub curry_uc {
 
 =head1 EXPORT
 
-No functions are exported by this module by default. To import them all
-(this is usually a bad idea), use:
+No functions are exported by this module by default. To import them all (this is usually a bad idea), use:
 
     use Hydrogen::Curry::String -all;
 
@@ -884,7 +883,6 @@ To rename functions:
     use Hydrogen::Curry::String 'curry_chop' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
-
 =head1 BUGS
 
 Please report any bugs to
@@ -894,6 +892,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::String>,
+L<Hydrogen::Topic::String>,
 L<Sub::HandlesVia::HandlerLibrary::String>.
 
 =head1 AUTHOR

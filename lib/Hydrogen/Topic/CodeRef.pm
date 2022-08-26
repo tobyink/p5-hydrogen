@@ -48,8 +48,7 @@ sub execute {
 
 =head1 EXPORT
 
-No functions are exported by this module by default. To import them all
-(this is usually a bad idea), use:
+No functions are exported by this module by default. To import them all (this is usually a bad idea), use:
 
     use Hydrogen::Topic::CodeRef -all;
 
@@ -62,7 +61,6 @@ To rename functions:
     use Hydrogen::Topic::CodeRef 'execute' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
-
 =head1 BUGS
 
 Please report any bugs to
@@ -72,7 +70,10 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::CodeRef>,
-L<Sub::HandlesVia::HandlerLibrary::Code>.
+L<Hydrogen::Code>,
+L<Hydrogen::Curry::CodeRef>,
+L<Sub::HandlesVia::HandlerLibrary::Code>,
+L<Sub::Util>.
 
 =head1 AUTHOR
 

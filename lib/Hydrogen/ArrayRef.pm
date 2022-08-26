@@ -2015,8 +2015,7 @@ sub unshift {
 
 =head1 EXPORT
 
-No functions are exported by this module by default. To import them all
-(this is usually a bad idea), use:
+No functions are exported by this module by default. To import them all (this is usually a bad idea), use:
 
     use Hydrogen::ArrayRef -all;
 
@@ -2029,7 +2028,6 @@ To rename functions:
     use Hydrogen::ArrayRef 'all_true' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
-
 =head1 BUGS
 
 Please report any bugs to
@@ -2038,9 +2036,12 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 =head1 SEE ALSO
 
 L<Hydrogen>,
+L<Hydrogen::Array>,
 L<Hydrogen::Curry::ArrayRef>,
 L<Hydrogen::Topic::ArrayRef>,
-L<Sub::HandlesVia::HandlerLibrary::Array>.
+L<Sub::HandlesVia::HandlerLibrary::Array>,
+L<List::Util>,
+L<List::MoreUtils>.
 
 =head1 AUTHOR
 

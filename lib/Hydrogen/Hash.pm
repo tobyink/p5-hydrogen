@@ -609,8 +609,7 @@ sub values (\%) {
 
 =head1 EXPORT
 
-No functions are exported by this module by default. To import them all
-(this is usually a bad idea), use:
+No functions are exported by this module by default. To import them all (this is usually a bad idea), use:
 
     use Hydrogen::Hash -all;
 
@@ -623,7 +622,6 @@ To rename functions:
     use Hydrogen::Hash 'clear' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
-
 =head1 BUGS
 
 Please report any bugs to
@@ -634,7 +632,8 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 L<Hydrogen>,
 L<Hydrogen::Curry::HashRef>,
 L<Hydrogen::Topic::HashRef>,
-L<Sub::HandlesVia::HandlerLibrary::Hash>.
+L<Sub::HandlesVia::HandlerLibrary::Hash>,
+L<Hash::Util>.
 
 =head1 AUTHOR
 

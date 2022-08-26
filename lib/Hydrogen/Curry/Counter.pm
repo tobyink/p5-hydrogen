@@ -122,8 +122,7 @@ sub curry_set {
 
 =head1 EXPORT
 
-No functions are exported by this module by default. To import them all
-(this is usually a bad idea), use:
+No functions are exported by this module by default. To import them all (this is usually a bad idea), use:
 
     use Hydrogen::Curry::Counter -all;
 
@@ -136,7 +135,6 @@ To rename functions:
     use Hydrogen::Curry::Counter 'curry_reset' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
-
 =head1 BUGS
 
 Please report any bugs to
@@ -146,6 +144,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::Counter>,
+L<Hydrogen::Topic::Counter>,
 L<Sub::HandlesVia::HandlerLibrary::Counter>.
 
 =head1 AUTHOR

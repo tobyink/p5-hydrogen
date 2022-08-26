@@ -123,8 +123,7 @@ sub unset {
 
 =head1 EXPORT
 
-No functions are exported by this module by default. To import them all
-(this is usually a bad idea), use:
+No functions are exported by this module by default. To import them all (this is usually a bad idea), use:
 
     use Hydrogen::Topic::Bool -all;
 
@@ -137,7 +136,6 @@ To rename functions:
     use Hydrogen::Topic::Bool 'set' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
-
 =head1 BUGS
 
 Please report any bugs to
@@ -147,6 +145,7 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 
 L<Hydrogen>,
 L<Hydrogen::Bool>,
+L<Hydrogen::Curry::Bool>,
 L<Sub::HandlesVia::HandlerLibrary::Bool>.
 
 =head1 AUTHOR

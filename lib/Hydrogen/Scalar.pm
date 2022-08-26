@@ -69,8 +69,7 @@ sub make_setter {
 
 =head1 EXPORT
 
-No functions are exported by this module by default. To import them all
-(this is usually a bad idea), use:
+No functions are exported by this module by default. To import them all (this is usually a bad idea), use:
 
     use Hydrogen::Scalar -all;
 
@@ -83,7 +82,6 @@ To rename functions:
     use Hydrogen::Scalar 'make_getter' => { -as => 'myfunc' };
 
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
-
 =head1 BUGS
 
 Please report any bugs to
