@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Topic::Number;
+use Test2::V0 -target => "Hydrogen::Topic::Number";
 
 isa_ok( 'Hydrogen::Topic::Number', 'Exporter::Tiny' );
 
@@ -39,25 +35,25 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Topic::Number::EXPORT_OK;
 subtest 'abs' => sub {
     ok exists(&Hydrogen::Topic::Number::abs), 'function exists';
     ok $EXPORTS{'abs'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = -5;
         Hydrogen::Topic::Number::abs();
         is( $_, 5, q{$_ is 5} );
     };
-    is $e, undef, 'no exception thrown running abs example';
+    is $exception, undef, 'no exception thrown running abs example';
 };
 
 subtest 'add' => sub {
     ok exists(&Hydrogen::Topic::Number::add), 'function exists';
     ok $EXPORTS{'add'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 4;
         Hydrogen::Topic::Number::add( 5 );
         is( $_, 9, q{$_ is 9} );
     };
-    is $e, undef, 'no exception thrown running add example';
+    is $exception, undef, 'no exception thrown running add example';
 };
 
 subtest 'cmp' => sub {
@@ -68,13 +64,13 @@ subtest 'cmp' => sub {
 subtest 'div' => sub {
     ok exists(&Hydrogen::Topic::Number::div), 'function exists';
     ok $EXPORTS{'div'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 6;
         Hydrogen::Topic::Number::div( 2 );
         is( $_, 3, q{$_ is 3} );
     };
-    is $e, undef, 'no exception thrown running div example';
+    is $exception, undef, 'no exception thrown running div example';
 };
 
 subtest 'eq' => sub {
@@ -90,12 +86,12 @@ subtest 'ge' => sub {
 subtest 'get' => sub {
     ok exists(&Hydrogen::Topic::Number::get), 'function exists';
     ok $EXPORTS{'get'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 4;
         is( Hydrogen::Topic::Number::get(), 4, q{Hydrogen::Topic::Number::get() is 4} );
     };
-    is $e, undef, 'no exception thrown running get example';
+    is $exception, undef, 'no exception thrown running get example';
 };
 
 subtest 'gt' => sub {
@@ -116,25 +112,25 @@ subtest 'lt' => sub {
 subtest 'mod' => sub {
     ok exists(&Hydrogen::Topic::Number::mod), 'function exists';
     ok $EXPORTS{'mod'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 5;
         Hydrogen::Topic::Number::mod( 2 );
         is( $_, 1, q{$_ is 1} );
     };
-    is $e, undef, 'no exception thrown running mod example';
+    is $exception, undef, 'no exception thrown running mod example';
 };
 
 subtest 'mul' => sub {
     ok exists(&Hydrogen::Topic::Number::mul), 'function exists';
     ok $EXPORTS{'mul'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 2;
         Hydrogen::Topic::Number::mul( 5 );
         is( $_, 10, q{$_ is 10} );
     };
-    is $e, undef, 'no exception thrown running mul example';
+    is $exception, undef, 'no exception thrown running mul example';
 };
 
 subtest 'ne' => sub {
@@ -145,25 +141,25 @@ subtest 'ne' => sub {
 subtest 'set' => sub {
     ok exists(&Hydrogen::Topic::Number::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 4;
         Hydrogen::Topic::Number::set( 5 );
         is( $_, 5, q{$_ is 5} );
     };
-    is $e, undef, 'no exception thrown running set example';
+    is $exception, undef, 'no exception thrown running set example';
 };
 
 subtest 'sub' => sub {
     ok exists(&Hydrogen::Topic::Number::sub), 'function exists';
     ok $EXPORTS{'sub'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 9;
         Hydrogen::Topic::Number::sub( 6 );
         is( $_, 3, q{$_ is 3} );
     };
-    is $e, undef, 'no exception thrown running sub example';
+    is $exception, undef, 'no exception thrown running sub example';
 };
 
 done_testing; # :)

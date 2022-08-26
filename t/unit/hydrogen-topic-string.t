@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Topic::String;
+use Test2::V0 -target => "Hydrogen::Topic::String";
 
 isa_ok( 'Hydrogen::Topic::String', 'Exporter::Tiny' );
 
@@ -39,13 +35,13 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Topic::String::EXPORT_OK;
 subtest 'append' => sub {
     ok exists(&Hydrogen::Topic::String::append), 'function exists';
     ok $EXPORTS{'append'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         Hydrogen::Topic::String::append( 'bar' );
         is( $_, 'foobar', q{$_ is 'foobar'} );
     };
-    is $e, undef, 'no exception thrown running append example';
+    is $exception, undef, 'no exception thrown running append example';
 };
 
 subtest 'chomp' => sub {
@@ -61,13 +57,13 @@ subtest 'chop' => sub {
 subtest 'clear' => sub {
     ok exists(&Hydrogen::Topic::String::clear), 'function exists';
     ok $EXPORTS{'clear'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         Hydrogen::Topic::String::clear();
         note $_; ## nothing
     };
-    is $e, undef, 'no exception thrown running clear example';
+    is $exception, undef, 'no exception thrown running clear example';
 };
 
 subtest 'cmp' => sub {
@@ -128,12 +124,12 @@ subtest 'gei' => sub {
 subtest 'get' => sub {
     ok exists(&Hydrogen::Topic::String::get), 'function exists';
     ok $EXPORTS{'get'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         is( Hydrogen::Topic::String::get(), 'foo', q{Hydrogen::Topic::String::get() is 'foo'} );
     };
-    is $e, undef, 'no exception thrown running get example';
+    is $exception, undef, 'no exception thrown running get example';
 };
 
 subtest 'gt' => sub {
@@ -169,12 +165,12 @@ subtest 'lei' => sub {
 subtest 'length' => sub {
     ok exists(&Hydrogen::Topic::String::length), 'function exists';
     ok $EXPORTS{'length'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         is( Hydrogen::Topic::String::length(), 3, q{Hydrogen::Topic::String::length() is 3} );
     };
-    is $e, undef, 'no exception thrown running length example';
+    is $exception, undef, 'no exception thrown running length example';
 };
 
 subtest 'lt' => sub {
@@ -190,27 +186,27 @@ subtest 'lti' => sub {
 subtest 'match' => sub {
     ok exists(&Hydrogen::Topic::String::match), 'function exists';
     ok $EXPORTS{'match'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         if ( Hydrogen::Topic::String::match( '^f..$' ) ) {
           note 'matched!';
         }
     };
-    is $e, undef, 'no exception thrown running match example';
+    is $exception, undef, 'no exception thrown running match example';
 };
 
 subtest 'match_i' => sub {
     ok exists(&Hydrogen::Topic::String::match_i), 'function exists';
     ok $EXPORTS{'match_i'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         if ( Hydrogen::Topic::String::match_i( '^F..$' ) ) {
           note 'matched!';
         }
     };
-    is $e, undef, 'no exception thrown running match_i example';
+    is $exception, undef, 'no exception thrown running match_i example';
 };
 
 subtest 'ne' => sub {
@@ -226,19 +222,19 @@ subtest 'nei' => sub {
 subtest 'prepend' => sub {
     ok exists(&Hydrogen::Topic::String::prepend), 'function exists';
     ok $EXPORTS{'prepend'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         Hydrogen::Topic::String::prepend( 'bar' );
         is( $_, 'barfoo', q{$_ is 'barfoo'} );
     };
-    is $e, undef, 'no exception thrown running prepend example';
+    is $exception, undef, 'no exception thrown running prepend example';
 };
 
 subtest 'replace' => sub {
     ok exists(&Hydrogen::Topic::String::replace), 'function exists';
     ok $EXPORTS{'replace'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         Hydrogen::Topic::String::replace( 'o' => 'a' );
@@ -248,13 +244,13 @@ subtest 'replace' => sub {
         Hydrogen::Topic::String::replace( qr/O/i => sub { return 'e' } );
         is( $_, 'feo', q{$_ is 'feo'} );
     };
-    is $e, undef, 'no exception thrown running replace example';
+    is $exception, undef, 'no exception thrown running replace example';
 };
 
 subtest 'replace_globally' => sub {
     ok exists(&Hydrogen::Topic::String::replace_globally), 'function exists';
     ok $EXPORTS{'replace_globally'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         Hydrogen::Topic::String::replace_globally( 'o' => 'a' );
@@ -264,7 +260,7 @@ subtest 'replace_globally' => sub {
         Hydrogen::Topic::String::replace_globally( qr/O/i => sub { return 'e' } );
         is( $_, 'fee', q{$_ is 'fee'} );
     };
-    is $e, undef, 'no exception thrown running replace_globally example';
+    is $exception, undef, 'no exception thrown running replace_globally example';
 };
 
 subtest 'reset' => sub {
@@ -275,13 +271,13 @@ subtest 'reset' => sub {
 subtest 'set' => sub {
     ok exists(&Hydrogen::Topic::String::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 'foo';
         Hydrogen::Topic::String::set( 'bar' );
         is( $_, 'bar', q{$_ is 'bar'} );
     };
-    is $e, undef, 'no exception thrown running set example';
+    is $exception, undef, 'no exception thrown running set example';
 };
 
 subtest 'starts_with' => sub {

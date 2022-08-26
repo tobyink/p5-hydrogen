@@ -31,7 +31,12 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 use strict;
 use warnings;
-use Test::More;
+use Test2::V0;
+
+sub use_ok {
+	my ( $module ) = @_;
+	ok ( eval( "require $module; 1" ), "use $module" );
+}
 
 use_ok('Hydrogen');
 

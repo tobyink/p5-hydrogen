@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Topic::Counter;
+use Test2::V0 -target => "Hydrogen::Topic::Counter";
 
 isa_ok( 'Hydrogen::Topic::Counter', 'Exporter::Tiny' );
 
@@ -39,7 +35,7 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Topic::Counter::EXPORT_OK;
 subtest 'dec' => sub {
     ok exists(&Hydrogen::Topic::Counter::dec), 'function exists';
     ok $EXPORTS{'dec'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 10;
         Hydrogen::Topic::Counter::dec();
@@ -48,13 +44,13 @@ subtest 'dec' => sub {
         Hydrogen::Topic::Counter::dec( 5 );
         is( $_, 3, q{$_ is 3} );
     };
-    is $e, undef, 'no exception thrown running dec example';
+    is $exception, undef, 'no exception thrown running dec example';
 };
 
 subtest 'inc' => sub {
     ok exists(&Hydrogen::Topic::Counter::inc), 'function exists';
     ok $EXPORTS{'inc'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 0;
         Hydrogen::Topic::Counter::inc();
@@ -63,31 +59,31 @@ subtest 'inc' => sub {
         Hydrogen::Topic::Counter::inc( 3 );
         is( $_, 5, q{$_ is 5} );
     };
-    is $e, undef, 'no exception thrown running inc example';
+    is $exception, undef, 'no exception thrown running inc example';
 };
 
 subtest 'reset' => sub {
     ok exists(&Hydrogen::Topic::Counter::reset), 'function exists';
     ok $EXPORTS{'reset'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 10;
         Hydrogen::Topic::Counter::reset();
         is( $_, 0, q{$_ is 0} );
     };
-    is $e, undef, 'no exception thrown running reset example';
+    is $exception, undef, 'no exception thrown running reset example';
 };
 
 subtest 'set' => sub {
     ok exists(&Hydrogen::Topic::Counter::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 0;
         Hydrogen::Topic::Counter::set( 5 );
         is( $_, 5, q{$_ is 5} );
     };
-    is $e, undef, 'no exception thrown running set example';
+    is $exception, undef, 'no exception thrown running set example';
 };
 
 done_testing; # :)

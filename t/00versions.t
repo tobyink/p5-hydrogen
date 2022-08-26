@@ -27,7 +27,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 use strict;
 use warnings;
-use Test::More;
+use Test2::V0;
 
 sub diag_version {
 	my ( $module, $version ) = @_;
@@ -45,8 +45,7 @@ diag_version 'Data::Dumper';
 diag_version 'Exporter::Shiny';
 diag_version 'List::Util';
 diag_version 'Scalar::Util';
-diag_version 'Test::Fatal';
-diag_version 'Test::More';
+diag_version 'Test2::V0';
 diag '';
 
 pass;

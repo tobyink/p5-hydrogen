@@ -31,12 +31,12 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 use strict;
 use warnings;
-use Test::More;
+use Test2::V0;
 
-use_ok('Hydrogen::Curry::String');
+use Hydrogen::Curry::String 'curry_append';
 
 my $string = 'xxx';
-my $appender = Hydrogen::Curry::String::curry_append( $string );
+my $appender = curry_append( $string );
 
 $appender->( 'foo' );
 $appender->( 'bar' );

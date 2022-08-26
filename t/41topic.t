@@ -31,15 +31,15 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 use strict;
 use warnings;
-use Test::More;
+use Test2::V0;
 
-use_ok('Hydrogen::Topic::String');
+use Hydrogen::Topic::String 'append';
 
 {
 	local $_ = 'xxx';
-	Hydrogen::Topic::String::append( 'foo' );
-	Hydrogen::Topic::String::append( 'bar' );
-	Hydrogen::Topic::String::append( 'baz' );
+	append( 'foo' );
+	append( 'bar' );
+	append( 'baz' );
 	is $_, 'xxxfoobarbaz', 'append worked!';
 }
 

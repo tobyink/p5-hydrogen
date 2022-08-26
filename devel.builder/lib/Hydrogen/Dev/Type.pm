@@ -544,11 +544,7 @@ sub __compile_unittest_header {
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use @{[ $arg{module} ]};
+use Test2::V0 -target => "@{[ $arg{module} ]}";
 
 isa_ok( '@{[ $arg{module} ]}', 'Exporter::Tiny' );
 

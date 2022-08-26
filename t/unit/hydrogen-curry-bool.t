@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Curry::Bool;
+use Test2::V0 -target => "Hydrogen::Curry::Bool";
 
 isa_ok( 'Hydrogen::Curry::Bool', 'Exporter::Tiny' );
 
@@ -39,51 +35,51 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Curry::Bool::EXPORT_OK;
 subtest 'curry_not' => sub {
     ok exists(&Hydrogen::Curry::Bool::curry_not), 'function exists';
     ok $EXPORTS{'curry_not'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Bool::curry_not( !!0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_not';
+    is $exception, undef, 'no exception thrown running curry_not';
 };
 
 subtest 'curry_reset' => sub {
     ok exists(&Hydrogen::Curry::Bool::curry_reset), 'function exists';
     ok $EXPORTS{'curry_reset'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Bool::curry_reset( !!0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_reset';
+    is $exception, undef, 'no exception thrown running curry_reset';
 };
 
 subtest 'curry_set' => sub {
     ok exists(&Hydrogen::Curry::Bool::curry_set), 'function exists';
     ok $EXPORTS{'curry_set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Bool::curry_set( !!0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_set';
+    is $exception, undef, 'no exception thrown running curry_set';
 };
 
 subtest 'curry_toggle' => sub {
     ok exists(&Hydrogen::Curry::Bool::curry_toggle), 'function exists';
     ok $EXPORTS{'curry_toggle'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Bool::curry_toggle( !!0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_toggle';
+    is $exception, undef, 'no exception thrown running curry_toggle';
 };
 
 subtest 'curry_unset' => sub {
     ok exists(&Hydrogen::Curry::Bool::curry_unset), 'function exists';
     ok $EXPORTS{'curry_unset'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Bool::curry_unset( !!0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_unset';
+    is $exception, undef, 'no exception thrown running curry_unset';
 };
 
 done_testing; # :)

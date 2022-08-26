@@ -274,10 +274,10 @@ sub compile_test {
 			"attribute",
 			join( '::', $self->type->target_module, $func ),
 		);
-		$t .= "    my \$e = exception {\n";
+		$t .= "    my \$exception = dies {\n";
 		$t .= '      ' . $self->_munge_line( $_ ) . "\n" for @lines;
 		$t .= "    };\n";
-		$t .= "    is \$e, undef, 'no exception thrown running $func example';\n";
+		$t .= "    is \$exception, undef, 'no exception thrown running $func example';\n";
 	}
 
 	$t .= "};\n\n";
@@ -297,12 +297,12 @@ sub compile_curry_test {
 		$self->type->curry_module, $func;
 	$t .= sprintf "    ok \$EXPORTS{'%s'}, 'function is importable';\n",
 		$func;
-	$t .= "    my \$e = exception {\n";
+	$t .= "    my \$exception = dies {\n";
 	$t .= sprintf "        my \$curried = %s::%s( %s );\n",
 		$self->type->curry_module, $func, $self->type->code_for_default;
 	$t .= "        is ref( \$curried ), 'CODE', 'function returns a coderef';\n";
 	$t .= "    };\n";
-	$t .= "    is \$e, undef, 'no exception thrown running $func';\n";
+	$t .= "    is \$exception, undef, 'no exception thrown running $func';\n";
 	$t .= "};\n\n";
 
 	return $t;
@@ -328,11 +328,11 @@ sub compile_topic_test {
 			"attribute",
 			join( '::', $self->type->topic_module, $func ),
 		);
-		$t .= "    my \$e = exception {\n";
+		$t .= "    my \$exception = dies {\n";
 		$t .= "        local \$_;\n";
 		$t .= '      ' . $self->_munge_line_topic( $_ ) . "\n" for @lines;
 		$t .= "    };\n";
-		$t .= "    is \$e, undef, 'no exception thrown running $func example';\n";
+		$t .= "    is \$exception, undef, 'no exception thrown running $func example';\n";
 	}
 
 	$t .= "};\n\n";
@@ -385,7 +385,7 @@ sub _munge_line {
 		if ( $expr =~ /^[@%]/ ) {
 			$esc = '\\';
 		}
-		$line = "${space}${pfx}is_deeply( ${esc}${expr}, $expected, q{$expr deep match} );";
+		$line = "${space}${pfx}is( ${esc}${expr}, $expected, q{$expr deep match} );";
 	}
 	elsif ( $line =~ /^(\s*)say(.*);\s*#(.*)# ==>(.*)$/ ) {
 		my ( $space, $expr, $pfx, $expected ) = ( $1, __trim("$2"), $3, __trim("$4") );
@@ -433,7 +433,7 @@ sub _munge_line_topic {
 		if ( $expr =~ /^[@%]/ ) {
 			$esc = '\\';
 		}
-		$line = "${space}${pfx}is_deeply( ${esc}${expr}, $expected, q{$expr deep match} );";
+		$line = "${space}${pfx}is( ${esc}${expr}, $expected, q{$expr deep match} );";
 	}
 	elsif ( $line =~ /^(\s*)say(.*);\s*#(.*)# ==>(.*)$/ ) {
 		my ( $space, $expr, $pfx, $expected ) = ( $1, __trim("$2"), $3, __trim("$4") );

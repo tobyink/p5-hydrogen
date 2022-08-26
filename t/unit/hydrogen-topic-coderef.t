@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Topic::CodeRef;
+use Test2::V0 -target => "Hydrogen::Topic::CodeRef";
 
 isa_ok( 'Hydrogen::Topic::CodeRef', 'Exporter::Tiny' );
 
@@ -39,7 +35,7 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Topic::CodeRef::EXPORT_OK;
 subtest 'execute' => sub {
     ok exists(&Hydrogen::Topic::CodeRef::execute), 'function exists';
     ok $EXPORTS{'execute'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         my $coderef = sub { 'code' };
         $_ = $coderef;
@@ -47,7 +43,7 @@ subtest 'execute' => sub {
         # $coderef->( 1, 2, 3 )
         Hydrogen::Topic::CodeRef::execute( 1, 2, 3 );
     };
-    is $e, undef, 'no exception thrown running execute example';
+    is $exception, undef, 'no exception thrown running execute example';
 };
 
 done_testing; # :)

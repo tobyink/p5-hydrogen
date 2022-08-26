@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::String;
+use Test2::V0 -target => "Hydrogen::String";
 
 isa_ok( 'Hydrogen::String', 'Exporter::Tiny' );
 
@@ -39,12 +35,12 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::String::EXPORT_OK;
 subtest 'append' => sub {
     ok exists(&Hydrogen::String::append), 'function exists';
     ok $EXPORTS{'append'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         Hydrogen::String::append( $teststring, 'bar' );
         is( $teststring, 'foobar', q{$teststring is 'foobar'} );
     };
-    is $e, undef, 'no exception thrown running append example';
+    is $exception, undef, 'no exception thrown running append example';
 };
 
 subtest 'chomp' => sub {
@@ -60,12 +56,12 @@ subtest 'chop' => sub {
 subtest 'clear' => sub {
     ok exists(&Hydrogen::String::clear), 'function exists';
     ok $EXPORTS{'clear'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         Hydrogen::String::clear( $teststring );
         note $teststring; ## nothing
     };
-    is $e, undef, 'no exception thrown running clear example';
+    is $exception, undef, 'no exception thrown running clear example';
 };
 
 subtest 'cmp' => sub {
@@ -126,11 +122,11 @@ subtest 'gei' => sub {
 subtest 'get' => sub {
     ok exists(&Hydrogen::String::get), 'function exists';
     ok $EXPORTS{'get'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         is( Hydrogen::String::get( $teststring ), 'foo', q{Hydrogen::String::get( $teststring ) is 'foo'} );
     };
-    is $e, undef, 'no exception thrown running get example';
+    is $exception, undef, 'no exception thrown running get example';
 };
 
 subtest 'gt' => sub {
@@ -166,11 +162,11 @@ subtest 'lei' => sub {
 subtest 'length' => sub {
     ok exists(&Hydrogen::String::length), 'function exists';
     ok $EXPORTS{'length'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         is( Hydrogen::String::length( $teststring ), 3, q{Hydrogen::String::length( $teststring ) is 3} );
     };
-    is $e, undef, 'no exception thrown running length example';
+    is $exception, undef, 'no exception thrown running length example';
 };
 
 subtest 'lt' => sub {
@@ -186,25 +182,25 @@ subtest 'lti' => sub {
 subtest 'match' => sub {
     ok exists(&Hydrogen::String::match), 'function exists';
     ok $EXPORTS{'match'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         if ( Hydrogen::String::match( $teststring, '^f..$' ) ) {
           note 'matched!';
         }
     };
-    is $e, undef, 'no exception thrown running match example';
+    is $exception, undef, 'no exception thrown running match example';
 };
 
 subtest 'match_i' => sub {
     ok exists(&Hydrogen::String::match_i), 'function exists';
     ok $EXPORTS{'match_i'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         if ( Hydrogen::String::match_i( $teststring, '^F..$' ) ) {
           note 'matched!';
         }
     };
-    is $e, undef, 'no exception thrown running match_i example';
+    is $exception, undef, 'no exception thrown running match_i example';
 };
 
 subtest 'ne' => sub {
@@ -220,18 +216,18 @@ subtest 'nei' => sub {
 subtest 'prepend' => sub {
     ok exists(&Hydrogen::String::prepend), 'function exists';
     ok $EXPORTS{'prepend'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         Hydrogen::String::prepend( $teststring, 'bar' );
         is( $teststring, 'barfoo', q{$teststring is 'barfoo'} );
     };
-    is $e, undef, 'no exception thrown running prepend example';
+    is $exception, undef, 'no exception thrown running prepend example';
 };
 
 subtest 'replace' => sub {
     ok exists(&Hydrogen::String::replace), 'function exists';
     ok $EXPORTS{'replace'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         Hydrogen::String::replace( $teststring, 'o' => 'a' );
         is( $teststring, 'fao', q{$teststring is 'fao'} );
@@ -240,13 +236,13 @@ subtest 'replace' => sub {
         Hydrogen::String::replace( $teststring2, qr/O/i => sub { return 'e' } );
         is( $teststring2, 'feo', q{$teststring2 is 'feo'} );
     };
-    is $e, undef, 'no exception thrown running replace example';
+    is $exception, undef, 'no exception thrown running replace example';
 };
 
 subtest 'replace_globally' => sub {
     ok exists(&Hydrogen::String::replace_globally), 'function exists';
     ok $EXPORTS{'replace_globally'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         Hydrogen::String::replace_globally( $teststring, 'o' => 'a' );
         is( $teststring, 'faa', q{$teststring is 'faa'} );
@@ -255,7 +251,7 @@ subtest 'replace_globally' => sub {
         Hydrogen::String::replace_globally( $teststring2, qr/O/i => sub { return 'e' } );
         is( $teststring2, 'fee', q{$teststring2 is 'fee'} );
     };
-    is $e, undef, 'no exception thrown running replace_globally example';
+    is $exception, undef, 'no exception thrown running replace_globally example';
 };
 
 subtest 'reset' => sub {
@@ -266,12 +262,12 @@ subtest 'reset' => sub {
 subtest 'set' => sub {
     ok exists(&Hydrogen::String::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $teststring = 'foo';
         Hydrogen::String::set( $teststring, 'bar' );
         is( $teststring, 'bar', q{$teststring is 'bar'} );
     };
-    is $e, undef, 'no exception thrown running set example';
+    is $exception, undef, 'no exception thrown running set example';
 };
 
 subtest 'starts_with' => sub {

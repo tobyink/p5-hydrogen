@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Topic::Bool;
+use Test2::V0 -target => "Hydrogen::Topic::Bool";
 
 isa_ok( 'Hydrogen::Topic::Bool', 'Exporter::Tiny' );
 
@@ -39,12 +35,12 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Topic::Bool::EXPORT_OK;
 subtest 'not' => sub {
     ok exists(&Hydrogen::Topic::Bool::not), 'function exists';
     ok $EXPORTS{'not'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = 1;
         ok( !(Hydrogen::Topic::Bool::not()), q{Hydrogen::Topic::Bool::not() is false} );
     };
-    is $e, undef, 'no exception thrown running not example';
+    is $exception, undef, 'no exception thrown running not example';
 };
 
 subtest 'reset' => sub {
@@ -55,19 +51,19 @@ subtest 'reset' => sub {
 subtest 'set' => sub {
     ok exists(&Hydrogen::Topic::Bool::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = !!0;
         Hydrogen::Topic::Bool::set();
         ok( $_, q{$_ is true} );
     };
-    is $e, undef, 'no exception thrown running set example';
+    is $exception, undef, 'no exception thrown running set example';
 };
 
 subtest 'toggle' => sub {
     ok exists(&Hydrogen::Topic::Bool::toggle), 'function exists';
     ok $EXPORTS{'toggle'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = !!0;
         Hydrogen::Topic::Bool::toggle();
@@ -75,19 +71,19 @@ subtest 'toggle' => sub {
         Hydrogen::Topic::Bool::toggle();
         ok( !($_), q{$_ is false} );
     };
-    is $e, undef, 'no exception thrown running toggle example';
+    is $exception, undef, 'no exception thrown running toggle example';
 };
 
 subtest 'unset' => sub {
     ok exists(&Hydrogen::Topic::Bool::unset), 'function exists';
     ok $EXPORTS{'unset'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = !!0;
         Hydrogen::Topic::Bool::unset();
         ok( !($_), q{$_ is false} );
     };
-    is $e, undef, 'no exception thrown running unset example';
+    is $exception, undef, 'no exception thrown running unset example';
 };
 
 done_testing; # :)

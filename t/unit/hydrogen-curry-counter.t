@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Curry::Counter;
+use Test2::V0 -target => "Hydrogen::Curry::Counter";
 
 isa_ok( 'Hydrogen::Curry::Counter', 'Exporter::Tiny' );
 
@@ -39,41 +35,41 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Curry::Counter::EXPORT_OK;
 subtest 'curry_dec' => sub {
     ok exists(&Hydrogen::Curry::Counter::curry_dec), 'function exists';
     ok $EXPORTS{'curry_dec'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Counter::curry_dec( 0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_dec';
+    is $exception, undef, 'no exception thrown running curry_dec';
 };
 
 subtest 'curry_inc' => sub {
     ok exists(&Hydrogen::Curry::Counter::curry_inc), 'function exists';
     ok $EXPORTS{'curry_inc'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Counter::curry_inc( 0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_inc';
+    is $exception, undef, 'no exception thrown running curry_inc';
 };
 
 subtest 'curry_reset' => sub {
     ok exists(&Hydrogen::Curry::Counter::curry_reset), 'function exists';
     ok $EXPORTS{'curry_reset'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Counter::curry_reset( 0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_reset';
+    is $exception, undef, 'no exception thrown running curry_reset';
 };
 
 subtest 'curry_set' => sub {
     ok exists(&Hydrogen::Curry::Counter::curry_set), 'function exists';
     ok $EXPORTS{'curry_set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::Counter::curry_set( 0 );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_set';
+    is $exception, undef, 'no exception thrown running curry_set';
 };
 
 done_testing; # :)

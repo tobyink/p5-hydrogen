@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Curry::CodeRef;
+use Test2::V0 -target => "Hydrogen::Curry::CodeRef";
 
 isa_ok( 'Hydrogen::Curry::CodeRef', 'Exporter::Tiny' );
 
@@ -39,11 +35,11 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Curry::CodeRef::EXPORT_OK;
 subtest 'curry_execute' => sub {
     ok exists(&Hydrogen::Curry::CodeRef::curry_execute), 'function exists';
     ok $EXPORTS{'curry_execute'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::CodeRef::curry_execute( sub {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_execute';
+    is $exception, undef, 'no exception thrown running curry_execute';
 };
 
 done_testing; # :)

@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Topic::HashRef;
+use Test2::V0 -target => "Hydrogen::Topic::HashRef";
 
 isa_ok( 'Hydrogen::Topic::HashRef', 'Exporter::Tiny' );
 
@@ -44,82 +40,82 @@ subtest 'accessor' => sub {
 subtest 'all' => sub {
     ok exists(&Hydrogen::Topic::HashRef::all), 'function exists';
     ok $EXPORTS{'all'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         my %hash = Hydrogen::Topic::HashRef::all();
     };
-    is $e, undef, 'no exception thrown running all example';
+    is $exception, undef, 'no exception thrown running all example';
 };
 
 subtest 'clear' => sub {
     ok exists(&Hydrogen::Topic::HashRef::clear), 'function exists';
     ok $EXPORTS{'clear'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         Hydrogen::Topic::HashRef::clear();
         ok( !(exists $_->{foo}), q{exists $_->{foo} is false} );
         ok( !(exists $_->{bar}), q{exists $_->{bar} is false} );
     };
-    is $e, undef, 'no exception thrown running clear example';
+    is $exception, undef, 'no exception thrown running clear example';
 };
 
 subtest 'count' => sub {
     ok exists(&Hydrogen::Topic::HashRef::count), 'function exists';
     ok $EXPORTS{'count'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         is( Hydrogen::Topic::HashRef::count(), 2, q{Hydrogen::Topic::HashRef::count() is 2} );
     };
-    is $e, undef, 'no exception thrown running count example';
+    is $exception, undef, 'no exception thrown running count example';
 };
 
 subtest 'defined' => sub {
     ok exists(&Hydrogen::Topic::HashRef::defined), 'function exists';
     ok $EXPORTS{'defined'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         is( Hydrogen::Topic::HashRef::defined( 'foo' ), 1, q{Hydrogen::Topic::HashRef::defined( 'foo' ) is 1} );
     };
-    is $e, undef, 'no exception thrown running defined example';
+    is $exception, undef, 'no exception thrown running defined example';
 };
 
 subtest 'delete' => sub {
     ok exists(&Hydrogen::Topic::HashRef::delete), 'function exists';
     ok $EXPORTS{'delete'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         Hydrogen::Topic::HashRef::delete( 'foo' );
         ok( !(exists $_->{foo}), q{exists $_->{foo} is false} );
     };
-    is $e, undef, 'no exception thrown running delete example';
+    is $exception, undef, 'no exception thrown running delete example';
 };
 
 subtest 'elements' => sub {
     ok exists(&Hydrogen::Topic::HashRef::elements), 'function exists';
     ok $EXPORTS{'elements'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         my %hash = Hydrogen::Topic::HashRef::elements();
     };
-    is $e, undef, 'no exception thrown running elements example';
+    is $exception, undef, 'no exception thrown running elements example';
 };
 
 subtest 'exists' => sub {
     ok exists(&Hydrogen::Topic::HashRef::exists), 'function exists';
     ok $EXPORTS{'exists'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         ok( Hydrogen::Topic::HashRef::exists( 'foo' ), q{Hydrogen::Topic::HashRef::exists( 'foo' ) is true} );
         ok( !(Hydrogen::Topic::HashRef::exists( 'baz' )), q{Hydrogen::Topic::HashRef::exists( 'baz' ) is false} );
     };
-    is $e, undef, 'no exception thrown running exists example';
+    is $exception, undef, 'no exception thrown running exists example';
 };
 
 subtest 'for_each_key' => sub {
@@ -140,37 +136,37 @@ subtest 'for_each_value' => sub {
 subtest 'get' => sub {
     ok exists(&Hydrogen::Topic::HashRef::get), 'function exists';
     ok $EXPORTS{'get'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         is( Hydrogen::Topic::HashRef::get( 'bar' ), 1, q{Hydrogen::Topic::HashRef::get( 'bar' ) is 1} );
     };
-    is $e, undef, 'no exception thrown running get example';
+    is $exception, undef, 'no exception thrown running get example';
 };
 
 subtest 'is_empty' => sub {
     ok exists(&Hydrogen::Topic::HashRef::is_empty), 'function exists';
     ok $EXPORTS{'is_empty'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         ok( !(Hydrogen::Topic::HashRef::is_empty()), q{Hydrogen::Topic::HashRef::is_empty() is false} );
         $_ = {} ;
         ok( Hydrogen::Topic::HashRef::is_empty(), q{Hydrogen::Topic::HashRef::is_empty() is true} );
     };
-    is $e, undef, 'no exception thrown running is_empty example';
+    is $exception, undef, 'no exception thrown running is_empty example';
 };
 
 subtest 'keys' => sub {
     ok exists(&Hydrogen::Topic::HashRef::keys), 'function exists';
     ok $EXPORTS{'keys'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         # says 'foo' and 'bar' in an unpredictable order
         note for Hydrogen::Topic::HashRef::keys();
     };
-    is $e, undef, 'no exception thrown running keys example';
+    is $exception, undef, 'no exception thrown running keys example';
 };
 
 subtest 'kv' => sub {
@@ -186,7 +182,7 @@ subtest 'reset' => sub {
 subtest 'set' => sub {
     ok exists(&Hydrogen::Topic::HashRef::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         Hydrogen::Topic::HashRef::set( bar => 2, baz => 1 );
@@ -194,7 +190,7 @@ subtest 'set' => sub {
         is( $_->{baz}, 1, q{$_->{baz} is 1} );
         is( $_->{bar}, 2, q{$_->{bar} is 2} );
     };
-    is $e, undef, 'no exception thrown running set example';
+    is $exception, undef, 'no exception thrown running set example';
 };
 
 subtest 'shallow_clone' => sub {
@@ -205,25 +201,25 @@ subtest 'shallow_clone' => sub {
 subtest 'sorted_keys' => sub {
     ok exists(&Hydrogen::Topic::HashRef::sorted_keys), 'function exists';
     ok $EXPORTS{'sorted_keys'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         # says 'bar' then 'foo'
         note for Hydrogen::Topic::HashRef::sorted_keys();
     };
-    is $e, undef, 'no exception thrown running sorted_keys example';
+    is $exception, undef, 'no exception thrown running sorted_keys example';
 };
 
 subtest 'values' => sub {
     ok exists(&Hydrogen::Topic::HashRef::values), 'function exists';
     ok $EXPORTS{'values'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         local $_;
         $_ = { foo => 0, bar => 1 };
         # says '0' and '1' in an unpredictable order
         note for Hydrogen::Topic::HashRef::values();
     };
-    is $e, undef, 'no exception thrown running values example';
+    is $exception, undef, 'no exception thrown running values example';
 };
 
 done_testing; # :)

@@ -284,13 +284,8 @@ the CPAN.
 Hydrogen also requires the module L<Exporter::Shiny> which can be found on
 the CPAN.
 
-Hydrogen's test suite additionally requires the module L<Test::More>, which
-normally comes with Perl. Hydrogen's test suite needs at least version 0.96
-of Test::More; Perl versions older than 5.14.0 will be distributed with older
-versions of Test::More, but upgrades to the module can be found on the CPAN.
-
-Hydrogen's test suite also requires the module L<Test::Fatal> which can be
-found on the CPAN.
+Hydrogen's test suite requires the module L<Test2::V0> which can be found on
+the CPAN.
 
 =head1 BUGS
 

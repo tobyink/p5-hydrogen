@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Code;
+use Test2::V0 -target => "Hydrogen::Code";
 
 isa_ok( 'Hydrogen::Code', 'Exporter::Tiny' );
 

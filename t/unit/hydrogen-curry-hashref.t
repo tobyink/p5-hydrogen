@@ -26,11 +26,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-
-use Test::More 0.96;
-use Test::Fatal;
-
-use Hydrogen::Curry::HashRef;
+use Test2::V0 -target => "Hydrogen::Curry::HashRef";
 
 isa_ok( 'Hydrogen::Curry::HashRef', 'Exporter::Tiny' );
 
@@ -39,201 +35,201 @@ my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Curry::HashRef::EXPORT_OK;
 subtest 'curry_accessor' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_accessor), 'function exists';
     ok $EXPORTS{'curry_accessor'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_accessor( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_accessor';
+    is $exception, undef, 'no exception thrown running curry_accessor';
 };
 
 subtest 'curry_all' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_all), 'function exists';
     ok $EXPORTS{'curry_all'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_all( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_all';
+    is $exception, undef, 'no exception thrown running curry_all';
 };
 
 subtest 'curry_clear' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_clear), 'function exists';
     ok $EXPORTS{'curry_clear'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_clear( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_clear';
+    is $exception, undef, 'no exception thrown running curry_clear';
 };
 
 subtest 'curry_count' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_count), 'function exists';
     ok $EXPORTS{'curry_count'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_count( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_count';
+    is $exception, undef, 'no exception thrown running curry_count';
 };
 
 subtest 'curry_defined' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_defined), 'function exists';
     ok $EXPORTS{'curry_defined'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_defined( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_defined';
+    is $exception, undef, 'no exception thrown running curry_defined';
 };
 
 subtest 'curry_delete' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_delete), 'function exists';
     ok $EXPORTS{'curry_delete'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_delete( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_delete';
+    is $exception, undef, 'no exception thrown running curry_delete';
 };
 
 subtest 'curry_elements' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_elements), 'function exists';
     ok $EXPORTS{'curry_elements'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_elements( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_elements';
+    is $exception, undef, 'no exception thrown running curry_elements';
 };
 
 subtest 'curry_exists' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_exists), 'function exists';
     ok $EXPORTS{'curry_exists'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_exists( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_exists';
+    is $exception, undef, 'no exception thrown running curry_exists';
 };
 
 subtest 'curry_for_each_key' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_for_each_key), 'function exists';
     ok $EXPORTS{'curry_for_each_key'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_for_each_key( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_for_each_key';
+    is $exception, undef, 'no exception thrown running curry_for_each_key';
 };
 
 subtest 'curry_for_each_pair' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_for_each_pair), 'function exists';
     ok $EXPORTS{'curry_for_each_pair'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_for_each_pair( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_for_each_pair';
+    is $exception, undef, 'no exception thrown running curry_for_each_pair';
 };
 
 subtest 'curry_for_each_value' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_for_each_value), 'function exists';
     ok $EXPORTS{'curry_for_each_value'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_for_each_value( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_for_each_value';
+    is $exception, undef, 'no exception thrown running curry_for_each_value';
 };
 
 subtest 'curry_get' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_get), 'function exists';
     ok $EXPORTS{'curry_get'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_get( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_get';
+    is $exception, undef, 'no exception thrown running curry_get';
 };
 
 subtest 'curry_is_empty' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_is_empty), 'function exists';
     ok $EXPORTS{'curry_is_empty'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_is_empty( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_is_empty';
+    is $exception, undef, 'no exception thrown running curry_is_empty';
 };
 
 subtest 'curry_keys' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_keys), 'function exists';
     ok $EXPORTS{'curry_keys'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_keys( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_keys';
+    is $exception, undef, 'no exception thrown running curry_keys';
 };
 
 subtest 'curry_kv' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_kv), 'function exists';
     ok $EXPORTS{'curry_kv'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_kv( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_kv';
+    is $exception, undef, 'no exception thrown running curry_kv';
 };
 
 subtest 'curry_reset' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_reset), 'function exists';
     ok $EXPORTS{'curry_reset'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_reset( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_reset';
+    is $exception, undef, 'no exception thrown running curry_reset';
 };
 
 subtest 'curry_set' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_set), 'function exists';
     ok $EXPORTS{'curry_set'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_set( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_set';
+    is $exception, undef, 'no exception thrown running curry_set';
 };
 
 subtest 'curry_shallow_clone' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_shallow_clone), 'function exists';
     ok $EXPORTS{'curry_shallow_clone'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_shallow_clone( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_shallow_clone';
+    is $exception, undef, 'no exception thrown running curry_shallow_clone';
 };
 
 subtest 'curry_sorted_keys' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_sorted_keys), 'function exists';
     ok $EXPORTS{'curry_sorted_keys'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_sorted_keys( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_sorted_keys';
+    is $exception, undef, 'no exception thrown running curry_sorted_keys';
 };
 
 subtest 'curry_values' => sub {
     ok exists(&Hydrogen::Curry::HashRef::curry_values), 'function exists';
     ok $EXPORTS{'curry_values'}, 'function is importable';
-    my $e = exception {
+    my $exception = dies {
         my $curried = Hydrogen::Curry::HashRef::curry_values( {} );
         is ref( $curried ), 'CODE', 'function returns a coderef';
     };
-    is $e, undef, 'no exception thrown running curry_values';
+    is $exception, undef, 'no exception thrown running curry_values';
 };
 
 done_testing; # :)
