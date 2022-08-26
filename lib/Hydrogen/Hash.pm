@@ -16,7 +16,8 @@ Hydrogen::Hash - a standard library for hashes
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Hash 0.012.
+This documentation is for Hydrogen::Hash 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::Hash 0.036.
 
 =cut
 

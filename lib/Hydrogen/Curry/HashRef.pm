@@ -17,7 +17,8 @@ Hydrogen::Curry::HashRef - easily curry functions from Hydrogen::HashRef
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::HashRef 0.012.
+This documentation is for Hydrogen::Curry::HashRef 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::Hash 0.036.
 
 =cut
 

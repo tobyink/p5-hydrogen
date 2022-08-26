@@ -17,7 +17,8 @@ Hydrogen::Curry::Counter - easily curry functions from Hydrogen::Counter
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::Counter 0.012.
+This documentation is for Hydrogen::Curry::Counter 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::Counter 0.036.
 
 =cut
 

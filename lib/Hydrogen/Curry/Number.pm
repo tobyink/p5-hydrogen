@@ -17,7 +17,8 @@ Hydrogen::Curry::Number - easily curry functions from Hydrogen::Number
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::Number 0.012.
+This documentation is for Hydrogen::Curry::Number 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::Number 0.036.
 
 =cut
 

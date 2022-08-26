@@ -16,7 +16,8 @@ Hydrogen::Topic::Bool - functions from Hydrogen::Bool applied to C<$_>
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Topic::Bool 0.012.
+This documentation is for Hydrogen::Topic::Bool 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::Bool 0.036.
 
 =cut
 

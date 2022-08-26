@@ -17,7 +17,8 @@ Hydrogen::Curry::CodeRef - easily curry functions from Hydrogen::CodeRef
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::CodeRef 0.012.
+This documentation is for Hydrogen::Curry::CodeRef 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::Code 0.036.
 
 =cut
 

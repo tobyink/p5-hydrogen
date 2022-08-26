@@ -505,7 +505,8 @@ sub __compile_module_header {
 	$_ .= "\n";
 	$_ .= "=head1 VERSION\n";
 	$_ .= "\n";
-	$_ .= "This documentation is for @{[ $arg{module} ]} @{[ $self->dev->target_version ]}.\n";
+	$_ .= "This documentation is for @{[ $arg{module} ]} @{[ $self->dev->target_version ]},\n";
+	$_ .= "which is based on @{[ $self->handler_library ]} @{[ $self->handler_library->VERSION ]}.\n";
 	$_ .= "\n";
 	$_ .= "=cut\n";
 	$_ .= "\n";

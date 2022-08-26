@@ -16,7 +16,8 @@ Hydrogen::Scalar - a standard library for scalars
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Scalar 0.012.
+This documentation is for Hydrogen::Scalar 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::Scalar 0.036.
 
 =cut
 

@@ -17,7 +17,8 @@ Hydrogen::Curry::ArrayRef - easily curry functions from Hydrogen::ArrayRef
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::ArrayRef 0.012.
+This documentation is for Hydrogen::Curry::ArrayRef 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::Array 0.036.
 
 =cut
 

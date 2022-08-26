@@ -16,7 +16,8 @@ Hydrogen::String - a standard library for strings
 
 =head1 VERSION
 
-This documentation is for Hydrogen::String 0.012.
+This documentation is for Hydrogen::String 0.012,
+which is based on Sub::HandlesVia::HandlerLibrary::String 0.036.
 
 =cut
 
