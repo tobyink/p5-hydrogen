@@ -125,3 +125,12 @@
 			label "Document distribution dependencies.";
 		];
 	].
+
+`Hydrogen 0.012 cpan:TOBYINK`
+	issued  2022-08-26;
+	changeset [
+		item [
+			a dcs:Update;
+			label "Rebuild with latest Sub::HandlesVia.";
+		];
+	].
