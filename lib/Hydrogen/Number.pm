@@ -935,6 +935,10 @@ To rename functions:
 
     use Hydrogen::Number 'cmp' => { -as => 'myfunc' };
 
+On Perl 5.37.2+, you can import lexically:
+
+    use Hydrogen::Number -lexical, 'cmp';
+
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 =head1 BUGS

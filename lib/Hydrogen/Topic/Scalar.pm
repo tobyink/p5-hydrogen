@@ -84,6 +84,10 @@ To rename functions:
 
     use Hydrogen::Topic::Scalar 'make_getter' => { -as => 'myfunc' };
 
+On Perl 5.37.2+, you can import lexically:
+
+    use Hydrogen::Topic::Scalar -lexical, 'make_getter';
+
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 =head1 BUGS

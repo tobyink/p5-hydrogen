@@ -700,6 +700,10 @@ To rename functions:
 
     use Hydrogen::Hash 'clear' => { -as => 'myfunc' };
 
+On Perl 5.37.2+, you can import lexically:
+
+    use Hydrogen::Hash -lexical, 'clear';
+
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 =head1 BUGS

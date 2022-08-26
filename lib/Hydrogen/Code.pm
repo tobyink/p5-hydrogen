@@ -106,6 +106,10 @@ To rename functions:
 
     use Hydrogen::Code 'execute_scalar' => { -as => 'myfunc' };
 
+On Perl 5.37.2+, you can import lexically:
+
+    use Hydrogen::Code -lexical, 'execute_scalar';
+
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 =head1 BUGS

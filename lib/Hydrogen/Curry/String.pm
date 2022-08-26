@@ -883,6 +883,10 @@ To rename functions:
 
     use Hydrogen::Curry::String 'curry_chop' => { -as => 'myfunc' };
 
+On Perl 5.37.2+, you can import lexically:
+
+    use Hydrogen::Curry::String -lexical, 'curry_chop';
+
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 =head1 BUGS

@@ -6,7 +6,7 @@
 	:runtime-requirement    [ :on "perl 5.008001"^^:CpanId ];
 	:runtime-requirement    [ :on "Carp"^^:CpanId ];
 	:runtime-requirement    [ :on "Data::Dumper"^^:CpanId ];
-	:runtime-requirement    [ :on "Exporter::Shiny"^^:CpanId ];
+	:runtime-requirement    [ :on "Exporter::Shiny 1.004000"^^:CpanId ];
 	:runtime-requirement    [ :on "List::Util 1.54"^^:CpanId ];
 	:runtime-requirement    [ :on "Scalar::Util"^^:CpanId ];
 

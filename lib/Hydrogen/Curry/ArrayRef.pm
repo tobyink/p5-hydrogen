@@ -1389,6 +1389,10 @@ To rename functions:
 
     use Hydrogen::Curry::ArrayRef 'curry_all_true' => { -as => 'myfunc' };
 
+On Perl 5.37.2+, you can import lexically:
+
+    use Hydrogen::Curry::ArrayRef -lexical, 'curry_all_true';
+
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 =head1 BUGS

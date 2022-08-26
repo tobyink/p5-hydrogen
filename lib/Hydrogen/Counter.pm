@@ -293,6 +293,10 @@ To rename functions:
 
     use Hydrogen::Counter 'reset' => { -as => 'myfunc' };
 
+On Perl 5.37.2+, you can import lexically:
+
+    use Hydrogen::Counter -lexical, 'reset';
+
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 =head1 BUGS

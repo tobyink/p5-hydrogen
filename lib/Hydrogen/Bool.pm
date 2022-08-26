@@ -131,6 +131,10 @@ To rename functions:
 
     use Hydrogen::Bool 'set' => { -as => 'myfunc' };
 
+On Perl 5.37.2+, you can import lexically:
+
+    use Hydrogen::Bool -lexical, 'set';
+
 See L<Exporter::Tiny::Manual::Importing> for more hints on importing.
 
 =head1 BUGS

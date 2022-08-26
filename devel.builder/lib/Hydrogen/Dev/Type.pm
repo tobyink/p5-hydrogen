@@ -608,6 +608,10 @@ sub __compile_module_footer {
 	$_ .= "\n";
 	$_ .= "    use @{[ $arg{module} ]} '$egfunc' => { -as => 'myfunc' };\n";
 	$_ .= "\n";
+	$_ .= "On Perl 5.37.2+, you can import lexically:\n";
+	$_ .= "\n";
+	$_ .= "    use @{[ $arg{module} ]} -lexical, '$egfunc';\n";
+	$_ .= "\n";
 	$_ .= "See L<Exporter::Tiny::Manual::Importing> for more hints on importing.\n";
 	$_ .= "\n";
 
