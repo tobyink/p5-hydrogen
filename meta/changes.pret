@@ -104,3 +104,16 @@
 			label "Fix missing linebreak before '=head1 BUGS' in pod.";
 		];
 	].
+
+`Hydrogen 0.011 cpan:TOBYINK`
+	issued  2022-08-26;
+	changeset [
+		item [
+			a dcs:Bugfix;
+			label "Perl 5.8.x doesn't support re::is_regexp(), so provide a polyfill for a few functions in Hydrogen::String and Hydrogen::Topic::String which require it.";
+		];
+		item [
+			a dcs:Change;
+			label "Support Perl as old as 5.8.1.";
+		];
+	].
