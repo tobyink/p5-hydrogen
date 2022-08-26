@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-scalar.t - unit tests for Hydrogen::Scalar
+hydrogen-scalar.t - unit tests for Hydrogen::Scalar
 
 =head1 AUTHOR
 

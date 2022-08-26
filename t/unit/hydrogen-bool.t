@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-bool.t - unit tests for Hydrogen::Bool
+hydrogen-bool.t - unit tests for Hydrogen::Bool
 
 =head1 AUTHOR
 

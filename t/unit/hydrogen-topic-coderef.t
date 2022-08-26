@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-topic-coderef.t - unit tests for Hydrogen::Topic::CodeRef
+hydrogen-topic-coderef.t - unit tests for Hydrogen::Topic::CodeRef
 
 =head1 AUTHOR
 

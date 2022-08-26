@@ -536,7 +536,7 @@ sub __compile_unittest_header {
 
 =head1 NAME
 
-@{[ $arg{filename} ]} - unit tests for @{[ $arg{module} ]}
+@{[ Path::Tiny::path( $arg{filename} )->basename ]} - unit tests for @{[ $arg{module} ]}
 
 @{[ $self->dev->compile_author_section ]}
 =cut

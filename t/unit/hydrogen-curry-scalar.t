@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-curry-scalar.t - unit tests for Hydrogen::Curry::Scalar
+hydrogen-curry-scalar.t - unit tests for Hydrogen::Curry::Scalar
 
 =head1 AUTHOR
 

@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-curry-bool.t - unit tests for Hydrogen::Curry::Bool
+hydrogen-curry-bool.t - unit tests for Hydrogen::Curry::Bool
 
 =head1 AUTHOR
 

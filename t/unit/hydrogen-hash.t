@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-hash.t - unit tests for Hydrogen::Hash
+hydrogen-hash.t - unit tests for Hydrogen::Hash
 
 =head1 AUTHOR
 

@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-topic-arrayref.t - unit tests for Hydrogen::Topic::ArrayRef
+hydrogen-topic-arrayref.t - unit tests for Hydrogen::Topic::ArrayRef
 
 =head1 AUTHOR
 

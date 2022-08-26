@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-array.t - unit tests for Hydrogen::Array
+hydrogen-array.t - unit tests for Hydrogen::Array
 
 =head1 AUTHOR
 

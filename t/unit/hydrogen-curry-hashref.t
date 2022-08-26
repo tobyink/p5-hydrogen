@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-t/unit/hydrogen-curry-hashref.t - unit tests for Hydrogen::Curry::HashRef
+hydrogen-curry-hashref.t - unit tests for Hydrogen::Curry::HashRef
 
 =head1 AUTHOR
 
