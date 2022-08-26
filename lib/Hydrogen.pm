@@ -34,6 +34,15 @@ else {
    eval 'sub fc { lc( @_ ? $_[0] : $_ ) }';
 }
 
+# Compatibility shim for Perl < 5.10
+eval 'require re';
+unless ( exists &re::is_regexp ) {
+    require B;
+    *re::is_regexp = sub {
+        eval { B::svref_2object( $_[0] )->MAGIC->TYPE eq 'r' };
+    };
+}
+
 1;
 
 __END__
