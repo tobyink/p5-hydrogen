@@ -116,4 +116,12 @@
 			a dcs:Change;
 			label "Support Perl as old as 5.8.1.";
 		];
+		item [
+			a dcs:Tests;
+			label "Rewrite test suite to use Test2::V0.";
+		];
+		item [
+			a dcs:Documentation;
+			label "Document distribution dependencies.";
+		];
 	].
