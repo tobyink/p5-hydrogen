@@ -630,8 +630,7 @@ sub __compile_unittest_footer {
 	my $self = shift;
 
 	return <<"FOOTER";
-# :)
-done_testing;
+done_testing; # :)
 FOOTER
 }
 

@@ -21,7 +21,6 @@ THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
 WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
 MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
-
 =cut
 
 use 5.008008;
@@ -47,5 +46,4 @@ subtest 'curry_execute' => sub {
     is $e, undef, 'no exception thrown running curry_execute';
 };
 
-# :)
-done_testing;
+done_testing; # :)

@@ -21,7 +21,6 @@ THIS PACKAGE IS PROVIDED "AS IS" AND WITHOUT ANY EXPRESS OR IMPLIED
 WARRANTIES, INCLUDING, WITHOUT LIMITATION, THE IMPLIED WARRANTIES OF
 MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
-
 =cut
 
 use 5.008008;
@@ -42,5 +41,4 @@ subtest 'execute' => sub {
     ok $EXPORTS{'execute'}, 'function is importable';
 };
 
-# :)
-done_testing;
+done_testing; # :)
