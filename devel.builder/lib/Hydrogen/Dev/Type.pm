@@ -94,7 +94,7 @@ sub _build_function_names {
 
 	# These make no sense to provide
 	if ( $self->type_name eq 'Code' ) {
-		@funcs = grep $_ ne 'execute_method', @funcs;
+		@funcs = grep $_ !~ /method/, @funcs;
 	}
 	elsif ( $self->type_name eq 'Scalar' ) {
 		@funcs = grep $_ ne 'scalar_reference', @funcs;
