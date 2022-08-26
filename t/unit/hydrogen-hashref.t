@@ -23,7 +23,7 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 
 =cut
 
-use 5.008008;
+use 5.008001;
 use strict;
 use warnings;
 
