@@ -88,64 +88,46 @@ sub write_all {
 	$self->write_topic_tests;
 }
 
+sub __call_all {
+	my ( $self, $method, $objects ) = ( shift, @_ );
+	$_->$method for @$objects;
+	return $self;
+}
+
 sub write_modules {
 	my $self = shift;
-
-	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
-		$type->write_module;
-	}
-
-	return $self;
-}
-
-sub write_curry_modules {
-	my $self = shift;
-
-	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
-		$type->write_curry_module unless $type->is_prototyped;
-	}
-
-	return $self;
-}
-
-sub write_topic_modules {
-	my $self = shift;
-
-	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
-		$type->write_topic_module unless $type->is_prototyped;
-	}
-
-	return $self;
+	return $self->__call_all( write_module => [
+		@{ $self->types },
+		@{ $self->reference_types }
+	] );
 }
 
 sub write_tests {
 	my $self = shift;
+	return $self->__call_all( write_test => [
+		@{ $self->types },
+		@{ $self->reference_types }
+	] );
+}
 
-	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
-		$type->write_test;
-	}
-
-	return $self;
+sub write_curry_modules {
+	my $self = shift;
+	return $self->__call_all( write_curry_module => $self->types );
 }
 
 sub write_curry_tests {
 	my $self = shift;
+	return $self->__call_all( write_curry_test => $self->types );
+}
 
-	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
-		$type->write_curry_test unless $type->is_prototyped;
-	}
-
-	return $self;
+sub write_topic_modules {
+	my $self = shift;
+	return $self->__call_all( write_topic_module => $self->types );
 }
 
 sub write_topic_tests {
 	my $self = shift;
-
-	for my $type ( @{ $self->types }, @{ $self->reference_types } ) {
-		$type->write_topic_test unless $type->is_prototyped;
-	}
-
-	return $self;
+	return $self->__call_all( write_topic_test => $self->types );
 }
 
 sub compile_bug_section {
