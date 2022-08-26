@@ -271,6 +271,27 @@ otherwise.
 
 If no C<< $string >> is provided, operates on C<< $_ >>.
 
+=head1 DEPENDENCIES
+
+Hydrogen requires Perl 5.8.1 or above.
+
+Hydrogen requires the modules L<Carp>, L<Data::Dumper>, L<List::Util>, and
+L<Scalar::Util>, all of which normally come with Perl. Hydrogen needs at least
+version 1.54 of List::Util; Perl versions older than 5.32.0 will be distributed
+with older versions of List::Util, but upgrades to the module can be found on
+the CPAN.
+
+Hydrogen also requires the module L<Exporter::Shiny> which can be found on
+the CPAN.
+
+Hydrogen's test suite additionally requires the module L<Test::More>, which
+normally comes with Perl. Hydrogen's test suite needs at least version 0.96
+of Test::More; Perl versions older than 5.14.0 will be distributed with older
+versions of Test::More, but upgrades to the module can be found on the CPAN.
+
+Hydrogen's test suite also requires the module L<Test::Fatal> which can be
+found on the CPAN.
+
 =head1 BUGS
 
 Please report any bugs to
