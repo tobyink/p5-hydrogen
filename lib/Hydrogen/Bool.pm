@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::Bool;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.009';
+our $VERSION   = '0.010';
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ Hydrogen::Bool - a standard library for booleans
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Bool 0.009.
+This documentation is for Hydrogen::Bool 0.010.
 
 =cut
 
