@@ -102,12 +102,7 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
         };
         @_ = &$__signature;
         1;
-        if ( ( 0 + @_ ) == 1 ) { ($_)->{ $_[0] } }
-        else {
-            my %shv_tmp = %{$_};
-            $shv_tmp{ $_[0] } = $_[1];
-            ( %{$_} = %{ +\%shv_tmp } );
-        }
+        ( ( 0 + @_ ) == 1 ) ? ($_)->{ $_[0] } : ( ($_)->{ $_[0] } = $_[1] );
     }
 }
 
@@ -143,7 +138,7 @@ sub clear {
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
           . "Hydrogen::Topic::HashRef::clear()" );
     1;
-    ( %{$_} = () );
+    %{$_} = ();
 }
 
 =head2 C<< count() >>
@@ -217,10 +212,7 @@ sub delete {
       or Hydrogen::croak( "Wrong number of parameters for delete; usage: "
           . "Hydrogen::Topic::HashRef::delete( \$key )" );
     1;
-    my %shv_tmp    = %{$_};
-    my @shv_return = delete @shv_tmp{@_};
-    ( %{$_} = %{ +\%shv_tmp } );
-    wantarray ? @shv_return : $shv_return[-1];
+    delete( @{$_}{@_} );
 }
 
 =head2 C<< delete_where( $match ) >>
@@ -596,12 +588,10 @@ sub set {
             $shv_params[$shv_tmp];
         };
     };
-    my %shv_tmp = %{$_};
-    @shv_tmp{ @shv_params[@shv_keys_idx] } = @shv_params[@shv_values_idx];
-    ( %{$_} = %{ +\%shv_tmp } );
+    @{$_}{ @shv_params[@shv_keys_idx] } = @shv_params[@shv_values_idx];
     wantarray
-      ? @shv_tmp{ @shv_params[@shv_keys_idx] }
-      : $shv_tmp{ $shv_params[ $shv_keys_idx[0] ] };
+      ? @{$_}{ @shv_params[@shv_keys_idx] }
+      : ($_)->{ $shv_params[ $shv_keys_idx[0] ] };
 }
 
 =head2 C<< shallow_clone() >>

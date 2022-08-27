@@ -146,13 +146,9 @@ Acts like C<get> if given one argument, or C<set> if given two arguments.
         };
         @_ = &$__signature;
         1;
-        if ( ( @_ - 1 ) == 1 ) { ($$__REF__)->[ $_[1] ] }
-        else {
-            my @shv_tmp = @{$$__REF__};
-            $shv_tmp[ $_[1] ] = $_[2];
-            ( @{ $_[0] } = @{ +\@shv_tmp } );
-            $_[2];
-        }
+        ( ( @_ - 1 ) == 1 )
+          ? ($$__REF__)->[ $_[1] ]
+          : ( ($$__REF__)->[ $_[1] ] = $_[2] );
     }
 }
 
@@ -299,7 +295,7 @@ sub clear {
       or Hydrogen::croak( "Wrong number of parameters for clear; usage: "
           . "Hydrogen::ArrayRef::clear( \$arrayref )" );
     1;
-    ( @{ $_[0] } = () );
+    @{$$__REF__} = ();
 }
 
 =head2 C<< count( $arrayref ) >>
@@ -358,10 +354,7 @@ sub delete {
         (@_);
     };
     1;
-    my @shv_tmp = @{$$__REF__};
-    my ($shv_return) = splice( @shv_tmp, $_[1], 1 );
-    ( @{ $_[0] } = @{ +\@shv_tmp } );
-    $shv_return;
+    splice( @{$$__REF__}, $_[1], 1 );
 }
 
 =head2 C<< elements( $arrayref ) >>
@@ -784,9 +777,7 @@ sub insert {
         (@_);
     };
     1;
-    my @shv_tmp = @{$$__REF__};
-    my ($shv_return) = splice( @shv_tmp, $_[1], 0, $_[2] );
-    ( @{ $_[0] } = @{ +\@shv_tmp } );
+    splice( @{$$__REF__}, $_[1], 0, $_[2] );
 }
 
 =head2 C<< is_empty( $arrayref ) >>
@@ -1293,10 +1284,7 @@ sub pop {
       or Hydrogen::croak( "Wrong number of parameters for pop; usage: "
           . "Hydrogen::ArrayRef::pop( \$arrayref )" );
     1;
-    my @shv_tmp    = @{$$__REF__};
-    my $shv_return = pop @shv_tmp;
-    ( @{ $_[0] } = @{ +\@shv_tmp } );
-    $shv_return;
+    pop( @{$$__REF__} );
 }
 
 =head2 C<< print( $arrayref, $fh?, $with? ) >>
@@ -1395,10 +1383,7 @@ sub push {
 
     package Hydrogen::ArrayRef::__SANDBOX__;
     1;
-    my @shv_tmp    = @{$$__REF__};
-    my $shv_return = push( @shv_tmp, @_[ 1 .. $#_ ] );
-    ( @{ $_[0] } = @{ +\@shv_tmp } );
-    $shv_return;
+    push( @{$$__REF__}, @_[ 1 .. $#_ ] );
 }
 
 =head2 C<< reduce( $arrayref, $coderef ) >>
@@ -1608,10 +1593,7 @@ sub set {
         (@_);
     };
     1;
-    my @shv_tmp = @{$$__REF__};
-    $shv_tmp[ $_[1] ] = $_[2];
-    ( @{ $_[0] } = @{ +\@shv_tmp } );
-    $_[2];
+    ($$__REF__)->[ $_[1] ] = $_[2];
 }
 
 =head2 C<< shallow_clone( $arrayref ) >>
@@ -1645,10 +1627,7 @@ sub shift {
       or Hydrogen::croak( "Wrong number of parameters for shift; usage: "
           . "Hydrogen::ArrayRef::shift( \$arrayref )" );
     1;
-    my @shv_tmp    = @{$$__REF__};
-    my $shv_return = shift @shv_tmp;
-    ( @{ $_[0] } = @{ +\@shv_tmp } );
-    $shv_return;
+    shift( @{$$__REF__} );
 }
 
 =head2 C<< shuffle( $arrayref ) >>
@@ -1828,13 +1807,8 @@ sub splice {
             $_[2];
         };
     }
-    my @shv_tmp = @{$$__REF__};
     my ( $shv_index, $shv_length, @shv_values ) = @_[ 1 .. $#_ ];
-    defined($shv_index)  or $shv_index  = 0;
-    defined($shv_length) or $shv_length = 0;
-    my @shv_return = splice( @shv_tmp, $shv_index, $shv_length, @shv_values );
-    ( @{ $_[0] } = @{ +\@shv_tmp } );
-    wantarray ? @shv_return : $shv_return[-1];
+    splice( @{$$__REF__}, $shv_index, $shv_length, @shv_values );
 }
 
 =head2 C<< sum( $arrayref ) >>
@@ -2019,10 +1993,7 @@ sub unshift {
 
     package Hydrogen::ArrayRef::__SANDBOX__;
     1;
-    my @shv_tmp    = @{$$__REF__};
-    my $shv_return = unshift( @shv_tmp, @_[ 1 .. $#_ ] );
-    ( @{ $_[0] } = @{ +\@shv_tmp } );
-    $shv_return;
+    unshift( @{$$__REF__}, @_[ 1 .. $#_ ] );
 }
 
 1;

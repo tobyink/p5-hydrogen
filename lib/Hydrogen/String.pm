@@ -152,9 +152,7 @@ sub chomp {
       or Hydrogen::croak( "Wrong number of parameters for chomp; usage: "
           . "Hydrogen::String::chomp( \$string )" );
     1;
-    my $shv_return = chomp( my $shv_tmp = $$__REF__ );
-    ( ${$__REF__} = $shv_tmp );
-    $shv_return;
+    chomp($$__REF__);
 }
 
 =head2 C<< chop( $string ) >>
@@ -171,9 +169,7 @@ sub chop {
       or Hydrogen::croak( "Wrong number of parameters for chop; usage: "
           . "Hydrogen::String::chop( \$string )" );
     1;
-    my $shv_return = chop( my $shv_tmp = $$__REF__ );
-    ( ${$__REF__} = $shv_tmp );
-    $shv_return;
+    chop($$__REF__);
 }
 
 =head2 C<< clear( $string ) >>
@@ -851,9 +847,7 @@ sub inc {
       or Hydrogen::croak( "Wrong number of parameters for inc; usage: "
           . "Hydrogen::String::inc( \$string )" );
     1;
-    (
-        ${$__REF__} = do { my $shv_tmp = $$__REF__; ++$shv_tmp }
-    );
+    ++$$__REF__;
 }
 
 =head2 C<< lc( $string ) >>
