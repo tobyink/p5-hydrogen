@@ -134,3 +134,12 @@
 			label "Rebuild with latest Sub::HandlesVia.";
 		];
 	].
+
+`Hydrogen 0.013 cpan:TOBYINK`
+	issued  2022-08-27;
+	changeset [
+		item [
+			a dcs:Update;
+			label "Use Exporter::Shiny 1.004000 so that Hydrogen can do lexical exports on Perl 5.37.2+.";
+		];
+	].

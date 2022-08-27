@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::Topic::HashRef;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.012';
+our $VERSION   = '0.013';
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ Hydrogen::Topic::HashRef - functions from Hydrogen::HashRef applied to C<$_>
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Topic::HashRef 0.012,
+This documentation is for Hydrogen::Topic::HashRef 0.013,
 which is based on Sub::HandlesVia::HandlerLibrary::Hash 0.036.
 
 =cut
