@@ -69,18 +69,6 @@ Normal version of the function:
     say $hash{Alice};                ## ==> 123
     say hhr_get( \%hash, 'Bob' );    ## ==> 456
 
-Autoboxing, kinda:
-
-    use feature 'say';
-    use Hydrogen::HashRef ();
-    
-    my $hashref = {};
-    $hashref->Hydrogen::HashRef::set( Alice => 123 );
-    $hashref->Hydrogen::HashRef::set( Bob   => 456 );
-    
-    say $hashref->{Alice};                            ## ==> 123
-    say $hashref->Hydrogen::HashRef::get( 'Bob' );    ## ==> 456
-
 Version of the function which uses prototypes:
 
     use feature 'say';
