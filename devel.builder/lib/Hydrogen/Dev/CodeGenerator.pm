@@ -7,7 +7,7 @@ use Mite::Signature::Compiler ();
 package Hydrogen::Dev::CodeGenerator;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.013';
+our $VERSION   = '0.014';
 
 use parent 'Sub::HandlesVia::CodeGenerator';
 

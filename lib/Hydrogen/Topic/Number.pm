@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::Topic::Number;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.013';
+our $VERSION   = '0.014';
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ Hydrogen::Topic::Number - functions from Hydrogen::Number applied to C<$_>
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Topic::Number 0.013,
+This documentation is for Hydrogen::Topic::Number 0.014,
 which is based on Sub::HandlesVia::HandlerLibrary::Number 0.036.
 
 =cut

@@ -9,7 +9,7 @@ use Hydrogen::CodeRef ();
 package Hydrogen::Curry::CodeRef;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.013';
+our $VERSION   = '0.014';
 
 =head1 NAME
 
@@ -17,7 +17,7 @@ Hydrogen::Curry::CodeRef - easily curry functions from Hydrogen::CodeRef
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::CodeRef 0.013,
+This documentation is for Hydrogen::Curry::CodeRef 0.014,
 which is based on Sub::HandlesVia::HandlerLibrary::Code 0.036.
 
 =cut
