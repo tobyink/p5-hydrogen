@@ -160,3 +160,12 @@
 			label "Generate some slightly more efficient mutator functions for strings, arrays, and hashes.";
 		];
 	].
+
+`Hydrogen 0.015 cpan:TOBYINK`
+	issued  2022-08-27;
+	changeset [
+		item [
+			a dcs:Documentation;
+			label "Remove SYNOPSIS example that didn't work.";
+		];
+	].
