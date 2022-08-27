@@ -33,6 +33,13 @@ sub _build_generator_for_type_assertion {
 	};
 }
 
+sub _build_generator_for_error {
+	return sub {
+		my ( $self, $error ) = @_;
+		sprintf '%s(%s)', $self->_function_for_croak, $error;
+	};
+}
+
 sub _handle_sigcheck {
 	my ( $self, $method_name, $handler, $env, $code, $state ) = @_;
 
