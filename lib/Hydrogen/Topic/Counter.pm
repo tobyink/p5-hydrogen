@@ -17,7 +17,7 @@ Hydrogen::Topic::Counter - functions from Hydrogen::Counter applied to C<$_>
 =head1 VERSION
 
 This documentation is for Hydrogen::Topic::Counter 0.015,
-which is based on Sub::HandlesVia::HandlerLibrary::Counter 0.036.
+which is based on Sub::HandlesVia::HandlerLibrary::Counter 0.037.
 
 =cut
 
