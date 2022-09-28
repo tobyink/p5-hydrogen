@@ -6,7 +6,7 @@
 	:runtime-requirement    [ :on "perl 5.008001"^^:CpanId ];
 	:runtime-requirement    [ :on "Carp"^^:CpanId ];
 	:runtime-requirement    [ :on "Data::Dumper"^^:CpanId ];
-	:runtime-requirement    [ :on "Exporter::Shiny 1.004000"^^:CpanId ];
+	:runtime-requirement    [ :on "Exporter::Shiny 1.004001"^^:CpanId ];
 	:runtime-requirement    [ :on "List::Util 1.54"^^:CpanId ];
 	:runtime-requirement    [ :on "Scalar::Util"^^:CpanId ];
 
@@ -16,7 +16,7 @@
 	:develop-requirement    [ :on "Mite"^^:CpanId ];
 	:develop-requirement    [ :on "Module::Runtime"^^:CpanId ];
 	:develop-requirement    [ :on "Path::Tiny"^^:CpanId ];
-	:develop-requirement    [ :on "Sub::HandlesVia"^^:CpanId ];
-	:develop-requirement    [ :on "Types::Standard"^^:CpanId ];
+	:develop-requirement    [ :on "Sub::HandlesVia 0.037"^^:CpanId ];
+	:develop-requirement    [ :on "Types::Standard 2.000000"^^:CpanId ];
 
 	.

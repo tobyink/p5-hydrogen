@@ -169,3 +169,16 @@
 			label "Remove SYNOPSIS example that didn't work.";
 		];
 	].
+
+`Hydrogen 0.016 cpan:TOBYINK`
+	issued  2022-09-28;
+	changeset [
+		item [
+			a dcs:Update;
+			label "Rebuild with latest Sub::HandlesVia.";
+		];
+		item [
+			a dcs:Packaging;
+			label "Require Exporter::Tiny 1.004001+.";
+		];
+	].
