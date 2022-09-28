@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::Counter;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.015';
+our $VERSION   = '0.016';
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ Hydrogen::Counter - a standard library for integer counters
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Counter 0.015,
+This documentation is for Hydrogen::Counter 0.016,
 which is based on Sub::HandlesVia::HandlerLibrary::Counter 0.037.
 
 =cut
