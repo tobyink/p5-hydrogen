@@ -182,3 +182,12 @@
 			label "Require Exporter::Tiny 1.004001+.";
 		];
 	].
+
+`Hydrogen 0.017 cpan:TOBYINK`
+	issued  2022-10-21;
+	changeset [
+		item [
+			a dcs:Update;
+			label "Rebuild with Sub::HandlesVia 0.038.";
+		];
+	].
