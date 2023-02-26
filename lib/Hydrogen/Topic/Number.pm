@@ -17,7 +17,7 @@ Hydrogen::Topic::Number - functions from Hydrogen::Number applied to C<$_>
 =head1 VERSION
 
 This documentation is for Hydrogen::Topic::Number 0.017,
-which is based on Sub::HandlesVia::HandlerLibrary::Number 0.038.
+which is based on Sub::HandlesVia::HandlerLibrary::Number 0.046.
 
 =cut
 

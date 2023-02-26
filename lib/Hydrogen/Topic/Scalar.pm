@@ -17,7 +17,7 @@ Hydrogen::Topic::Scalar - functions from Hydrogen::Scalar applied to C<$_>
 =head1 VERSION
 
 This documentation is for Hydrogen::Topic::Scalar 0.017,
-which is based on Sub::HandlesVia::HandlerLibrary::Scalar 0.038.
+which is based on Sub::HandlesVia::HandlerLibrary::Scalar 0.046.
 
 =cut
 

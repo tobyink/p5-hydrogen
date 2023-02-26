@@ -18,7 +18,7 @@ Hydrogen::Curry::Bool - easily curry functions from Hydrogen::Bool
 =head1 VERSION
 
 This documentation is for Hydrogen::Curry::Bool 0.017,
-which is based on Sub::HandlesVia::HandlerLibrary::Bool 0.038.
+which is based on Sub::HandlesVia::HandlerLibrary::Bool 0.046.
 
 =cut
 

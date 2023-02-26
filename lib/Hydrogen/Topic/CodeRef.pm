@@ -17,7 +17,7 @@ Hydrogen::Topic::CodeRef - functions from Hydrogen::CodeRef applied to C<$_>
 =head1 VERSION
 
 This documentation is for Hydrogen::Topic::CodeRef 0.017,
-which is based on Sub::HandlesVia::HandlerLibrary::Code 0.038.
+which is based on Sub::HandlesVia::HandlerLibrary::Code 0.046.
 
 =cut
 

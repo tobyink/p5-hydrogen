@@ -17,7 +17,7 @@ Hydrogen::Topic::HashRef - functions from Hydrogen::HashRef applied to C<$_>
 =head1 VERSION
 
 This documentation is for Hydrogen::Topic::HashRef 0.017,
-which is based on Sub::HandlesVia::HandlerLibrary::Hash 0.038.
+which is based on Sub::HandlesVia::HandlerLibrary::Hash 0.046.
 
 =cut
 

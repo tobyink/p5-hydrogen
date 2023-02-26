@@ -17,7 +17,7 @@ Hydrogen::CodeRef - a standard library for coderefs
 =head1 VERSION
 
 This documentation is for Hydrogen::CodeRef 0.017,
-which is based on Sub::HandlesVia::HandlerLibrary::Code 0.038.
+which is based on Sub::HandlesVia::HandlerLibrary::Code 0.046.
 
 =cut
 

@@ -17,7 +17,7 @@ Hydrogen::ArrayRef - a standard library for arrayrefs
 =head1 VERSION
 
 This documentation is for Hydrogen::ArrayRef 0.017,
-which is based on Sub::HandlesVia::HandlerLibrary::Array 0.038.
+which is based on Sub::HandlesVia::HandlerLibrary::Array 0.046.
 
 =cut
 

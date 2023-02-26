@@ -374,6 +374,9 @@ sub _munge_line {
 		$line =~ s/\$object(\d*)->_set_attribute\(\s*(.+)\s*\)/$egvar$1 = $2/g;
 	}
 
+#	$line =~ s/= \@\{ \+ \[([^]]+)\] \}/= ($1)/;
+#	$line =~ s/= \%\{ \+ \{([^}]+)\} \}/= ($1)/;
+
 	my $qqn = quotemeta( $self->type->target_module . "::$func" );
 	$line =~ s/\$object(\d*)->($qqn)\(\s*\)/$2( $egvar$1 )/;
 	$line =~ s/\$object(\d*)->($qqn)\(/$2( $egvar$1,/;

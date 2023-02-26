@@ -17,7 +17,7 @@ Hydrogen::Number - a standard library for numbers
 =head1 VERSION
 
 This documentation is for Hydrogen::Number 0.017,
-which is based on Sub::HandlesVia::HandlerLibrary::Number 0.038.
+which is based on Sub::HandlesVia::HandlerLibrary::Number 0.046.
 
 =cut
 
