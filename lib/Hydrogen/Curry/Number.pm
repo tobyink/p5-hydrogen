@@ -377,7 +377,7 @@ To rename functions:
 
     use Hydrogen::Curry::Number 'curry_cmp' => { -as => 'myfunc' };
 
-On Perl 5.37.2+, you can import lexically:
+On Perl 5.37.2+ (or if L<Lexical::Sub> is installed) you can import lexically:
 
     use Hydrogen::Curry::Number -lexical, 'curry_cmp';
 

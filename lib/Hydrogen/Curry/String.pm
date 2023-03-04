@@ -883,7 +883,7 @@ To rename functions:
 
     use Hydrogen::Curry::String 'curry_chop' => { -as => 'myfunc' };
 
-On Perl 5.37.2+, you can import lexically:
+On Perl 5.37.2+ (or if L<Lexical::Sub> is installed) you can import lexically:
 
     use Hydrogen::Curry::String -lexical, 'curry_chop';
 
@@ -899,7 +899,8 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 L<Hydrogen>,
 L<Hydrogen::String>,
 L<Hydrogen::Topic::String>,
-L<Sub::HandlesVia::HandlerLibrary::String>.
+L<Sub::HandlesVia::HandlerLibrary::String>,
+L<String::Util>.
 
 =head1 AUTHOR
 

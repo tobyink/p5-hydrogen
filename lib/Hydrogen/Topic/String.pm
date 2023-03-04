@@ -1648,7 +1648,7 @@ To rename functions:
 
     use Hydrogen::Topic::String 'chop' => { -as => 'myfunc' };
 
-On Perl 5.37.2+, you can import lexically:
+On Perl 5.37.2+ (or if L<Lexical::Sub> is installed) you can import lexically:
 
     use Hydrogen::Topic::String -lexical, 'chop';
 
@@ -1664,7 +1664,8 @@ L<http://github.com/tobyink/p5-hydrogen/issues>.
 L<Hydrogen>,
 L<Hydrogen::String>,
 L<Hydrogen::Curry::String>,
-L<Sub::HandlesVia::HandlerLibrary::String>.
+L<Sub::HandlesVia::HandlerLibrary::String>,
+L<String::Util>.
 
 =head1 AUTHOR
 

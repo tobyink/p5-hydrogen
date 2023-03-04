@@ -595,6 +595,9 @@ sub __compile_module_footer {
 	if ( $self->type_name eq 'Code' ) {
 		push @see_also, qw( Sub::Util );
 	}
+	if ( $self->type_name eq 'String' ) {
+		push @see_also, qw( String::Util );
+	}
 
 	local $_ = "1;\n\n";
 	
@@ -612,7 +615,7 @@ sub __compile_module_footer {
 	$_ .= "\n";
 	$_ .= "    use @{[ $arg{module} ]} '$egfunc' => { -as => 'myfunc' };\n";
 	$_ .= "\n";
-	$_ .= "On Perl 5.37.2+, you can import lexically:\n";
+	$_ .= "On Perl 5.37.2+ (or if L<Lexical::Sub> is installed) you can import lexically:\n";
 	$_ .= "\n";
 	$_ .= "    use @{[ $arg{module} ]} -lexical, '$egfunc';\n";
 	$_ .= "\n";
