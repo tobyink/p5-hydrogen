@@ -12,7 +12,7 @@ use Types::Standard ();
 package Hydrogen::Dev::Type;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.017';
+our $VERSION   = '0.018';
 
 use Hydrogen::Dev::Mite -all;
 

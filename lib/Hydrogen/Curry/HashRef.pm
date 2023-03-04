@@ -9,7 +9,7 @@ use Hydrogen::HashRef ();
 package Hydrogen::Curry::HashRef;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.017';
+our $VERSION   = '0.018';
 
 =head1 NAME
 

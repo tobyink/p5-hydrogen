@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::Topic::CodeRef;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.017';
+our $VERSION   = '0.018';
 
 =head1 NAME
 

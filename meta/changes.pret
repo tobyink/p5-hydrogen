@@ -191,3 +191,12 @@
 			label "Rebuild with Sub::HandlesVia 0.038.";
 		];
 	].
+
+`Hydrogen 0.018 cpan:TOBYINK`
+	issued  2023-03-04;
+	changeset [
+		item [
+			a dcs:Update;
+			label "Rebuild with Sub::HandlesVia 0.046.";
+		];
+	].
