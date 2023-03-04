@@ -12,7 +12,7 @@ use Types::Standard ();
 package Hydrogen::Dev::Type;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.018';
+our $VERSION   = '0.020000';
 
 use Hydrogen::Dev::Mite -all;
 
@@ -457,8 +457,8 @@ sub __build_module_filename {
 sub __build_unittest_filename {
 	my ( $self, $attribute ) = ( shift, @_ );
 
-	my $testfile = lc( $self->$attribute );
-	$testfile =~ s{::}{-}g;
+	my $testfile = $self->$attribute;
+	$testfile =~ s{::}{/}g;
 	$testfile .= '.t';
 
 	return Path::Tiny::path( $self->dev->test_directory, $testfile );
@@ -541,7 +541,7 @@ sub __compile_unittest_header {
 
 =head1 NAME
 
-@{[ Path::Tiny::path( $arg{filename} )->basename ]} - unit tests for @{[ $arg{module} ]}
+@{[ $arg{filename} ]} - unit tests for @{[ $arg{module} ]}
 
 @{[ $self->dev->compile_author_section ]}
 =cut

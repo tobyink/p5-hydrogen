@@ -7,7 +7,7 @@ use Hydrogen::Dev::Type ();
 package Hydrogen::Dev;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.018';
+our $VERSION   = '0.020000';
 
 use Hydrogen::Dev::Mite -all;
 

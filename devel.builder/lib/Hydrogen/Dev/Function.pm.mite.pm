@@ -7,7 +7,7 @@
 
     our $USES_MITE    = "Mite::Class";
     our $MITE_SHIM    = "Hydrogen::Dev::Mite";
-    our $MITE_VERSION = "0.010008";
+    our $MITE_VERSION = "0.012000";
 
     # Mite keywords
     BEGIN {
@@ -47,10 +47,12 @@
         *false   = \&Hydrogen::Dev::Mite::false;
         *guard   = \&Hydrogen::Dev::Mite::guard;
         *lazy    = \&Hydrogen::Dev::Mite::lazy;
+        *lock    = \&Hydrogen::Dev::Mite::lock;
         *ro      = \&Hydrogen::Dev::Mite::ro;
         *rw      = \&Hydrogen::Dev::Mite::rw;
         *rwp     = \&Hydrogen::Dev::Mite::rwp;
         *true    = \&Hydrogen::Dev::Mite::true;
+        *unlock  = \&Hydrogen::Dev::Mite::unlock;
     }
 
     # Gather metadata for constructor and destructor

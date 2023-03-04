@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-hydrogen-array.t - unit tests for Hydrogen::Array
+t/unit/Hydrogen/Array.t - unit tests for Hydrogen::Array
 
 =head1 AUTHOR
 
@@ -10,7 +10,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2022 by Toby Inkster.
+This software is copyright (c) 2022-2023 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

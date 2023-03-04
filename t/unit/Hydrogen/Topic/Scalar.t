@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-hydrogen-scalar.t - unit tests for Hydrogen::Scalar
+t/unit/Hydrogen/Topic/Scalar.t - unit tests for Hydrogen::Topic::Scalar
 
 =head1 AUTHOR
 
@@ -10,7 +10,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2022 by Toby Inkster.
+This software is copyright (c) 2022-2023 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
@@ -26,32 +26,34 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-use Test2::V0 -target => "Hydrogen::Scalar";
+use Test2::V0 -target => "Hydrogen::Topic::Scalar";
 
-isa_ok( 'Hydrogen::Scalar', 'Exporter::Tiny' );
+isa_ok( 'Hydrogen::Topic::Scalar', 'Exporter::Tiny' );
 
-my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Scalar::EXPORT_OK;
+my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Topic::Scalar::EXPORT_OK;
 
 subtest 'make_getter' => sub {
-    ok exists(&Hydrogen::Scalar::make_getter), 'function exists';
+    ok exists(&Hydrogen::Topic::Scalar::make_getter), 'function exists';
     ok $EXPORTS{'make_getter'}, 'function is importable';
     my $exception = dies {
-        my $testscalar = 10;
-        my $getter = Hydrogen::Scalar::make_getter( $testscalar );
-        $testscalar = 11 ;
+        local $_;
+        $_ = 10;
+        my $getter = Hydrogen::Topic::Scalar::make_getter();
+        $_ = 11 ;
         is( $getter->(), 11, q{$getter->() is 11} );
     };
     is $exception, undef, 'no exception thrown running make_getter example';
 };
 
 subtest 'make_setter' => sub {
-    ok exists(&Hydrogen::Scalar::make_setter), 'function exists';
+    ok exists(&Hydrogen::Topic::Scalar::make_setter), 'function exists';
     ok $EXPORTS{'make_setter'}, 'function is importable';
     my $exception = dies {
-        my $testscalar = 10;
-        my $setter = Hydrogen::Scalar::make_setter( $testscalar );
+        local $_;
+        $_ = 10;
+        my $setter = Hydrogen::Topic::Scalar::make_setter();
         $setter->( 11 );
-        is( $testscalar, 11, q{$testscalar is 11} );
+        is( $_, 11, q{$_ is 11} );
     };
     is $exception, undef, 'no exception thrown running make_setter example';
 };

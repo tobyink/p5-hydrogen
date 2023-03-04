@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-hydrogen-bool.t - unit tests for Hydrogen::Bool
+t/unit/Hydrogen/Topic/Bool.t - unit tests for Hydrogen::Topic::Bool
 
 =head1 AUTHOR
 
@@ -10,7 +10,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2022 by Toby Inkster.
+This software is copyright (c) 2022-2023 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
@@ -26,58 +26,62 @@ MERCHANTIBILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 use 5.008001;
 use strict;
 use warnings;
-use Test2::V0 -target => "Hydrogen::Bool";
+use Test2::V0 -target => "Hydrogen::Topic::Bool";
 
-isa_ok( 'Hydrogen::Bool', 'Exporter::Tiny' );
+isa_ok( 'Hydrogen::Topic::Bool', 'Exporter::Tiny' );
 
-my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Bool::EXPORT_OK;
+my %EXPORTS = map +( $_ => 1 ), @Hydrogen::Topic::Bool::EXPORT_OK;
 
 subtest 'not' => sub {
-    ok exists(&Hydrogen::Bool::not), 'function exists';
+    ok exists(&Hydrogen::Topic::Bool::not), 'function exists';
     ok $EXPORTS{'not'}, 'function is importable';
     my $exception = dies {
-        my $testbool = 1;
-        ok( !(Hydrogen::Bool::not( $testbool )), q{Hydrogen::Bool::not( $testbool ) is false} );
+        local $_;
+        $_ = 1;
+        ok( !(Hydrogen::Topic::Bool::not()), q{Hydrogen::Topic::Bool::not() is false} );
     };
     is $exception, undef, 'no exception thrown running not example';
 };
 
 subtest 'reset' => sub {
-    ok exists(&Hydrogen::Bool::reset), 'function exists';
+    ok exists(&Hydrogen::Topic::Bool::reset), 'function exists';
     ok $EXPORTS{'reset'}, 'function is importable';
 };
 
 subtest 'set' => sub {
-    ok exists(&Hydrogen::Bool::set), 'function exists';
+    ok exists(&Hydrogen::Topic::Bool::set), 'function exists';
     ok $EXPORTS{'set'}, 'function is importable';
     my $exception = dies {
-        my $testbool = !!0;
-        Hydrogen::Bool::set( $testbool );
-        ok( $testbool, q{$testbool is true} );
+        local $_;
+        $_ = !!0;
+        Hydrogen::Topic::Bool::set();
+        ok( $_, q{$_ is true} );
     };
     is $exception, undef, 'no exception thrown running set example';
 };
 
 subtest 'toggle' => sub {
-    ok exists(&Hydrogen::Bool::toggle), 'function exists';
+    ok exists(&Hydrogen::Topic::Bool::toggle), 'function exists';
     ok $EXPORTS{'toggle'}, 'function is importable';
     my $exception = dies {
-        my $testbool = !!0;
-        Hydrogen::Bool::toggle( $testbool );
-        ok( $testbool, q{$testbool is true} );
-        Hydrogen::Bool::toggle( $testbool );
-        ok( !($testbool), q{$testbool is false} );
+        local $_;
+        $_ = !!0;
+        Hydrogen::Topic::Bool::toggle();
+        ok( $_, q{$_ is true} );
+        Hydrogen::Topic::Bool::toggle();
+        ok( !($_), q{$_ is false} );
     };
     is $exception, undef, 'no exception thrown running toggle example';
 };
 
 subtest 'unset' => sub {
-    ok exists(&Hydrogen::Bool::unset), 'function exists';
+    ok exists(&Hydrogen::Topic::Bool::unset), 'function exists';
     ok $EXPORTS{'unset'}, 'function is importable';
     my $exception = dies {
-        my $testbool = !!0;
-        Hydrogen::Bool::unset( $testbool );
-        ok( !($testbool), q{$testbool is false} );
+        local $_;
+        $_ = !!0;
+        Hydrogen::Topic::Bool::unset();
+        ok( !($_), q{$_ is false} );
     };
     is $exception, undef, 'no exception thrown running unset example';
 };

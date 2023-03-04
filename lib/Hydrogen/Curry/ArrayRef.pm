@@ -9,7 +9,7 @@ use Hydrogen::ArrayRef ();
 package Hydrogen::Curry::ArrayRef;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.018';
+our $VERSION   = '0.020000';
 
 =head1 NAME
 
@@ -17,7 +17,7 @@ Hydrogen::Curry::ArrayRef - easily curry functions from Hydrogen::ArrayRef
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::ArrayRef 0.018,
+This documentation is for Hydrogen::Curry::ArrayRef 0.020000,
 which is based on Sub::HandlesVia::HandlerLibrary::Array 0.046.
 
 =cut
@@ -1416,7 +1416,7 @@ Toby Inkster E<lt>tobyink@cpan.orgE<gt>.
 
 =head1 COPYRIGHT AND LICENCE
 
-This software is copyright (c) 2022 by Toby Inkster.
+This software is copyright (c) 2022-2023 by Toby Inkster.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
