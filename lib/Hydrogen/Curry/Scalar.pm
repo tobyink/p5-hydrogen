@@ -17,7 +17,7 @@ Hydrogen::Curry::Scalar - easily curry functions from Hydrogen::Scalar
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Curry::Scalar 0.017,
+This documentation is for Hydrogen::Curry::Scalar 0.018,
 which is based on Sub::HandlesVia::HandlerLibrary::Scalar 0.046.
 
 =cut

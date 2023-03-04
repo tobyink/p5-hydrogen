@@ -16,7 +16,7 @@ Hydrogen::HashRef - a standard library for hashrefs
 
 =head1 VERSION
 
-This documentation is for Hydrogen::HashRef 0.017,
+This documentation is for Hydrogen::HashRef 0.018,
 which is based on Sub::HandlesVia::HandlerLibrary::Hash 0.046.
 
 =cut

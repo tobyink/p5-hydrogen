@@ -16,7 +16,7 @@ Hydrogen::Array - a standard library for arrays
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Array 0.017,
+This documentation is for Hydrogen::Array 0.018,
 which is based on Sub::HandlesVia::HandlerLibrary::Array 0.046.
 
 =cut
