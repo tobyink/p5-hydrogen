@@ -13,7 +13,7 @@ use Hydrogen::Dev::Mite -all;
 
 param author_cpanid    => ( isa => 'Str', default => 'tobyink' );
 param author_name      => ( isa => 'Str', default => 'Toby Inkster' );
-param copyright_years  => ( isa => 'Str', default => '2022' );
+param copyright_years  => ( isa => 'Str', default => '2022-2023' );
 param target_version   => ( isa => 'Str', builder => sub { $VERSION } );
 param bug_tracker      => ( isa => 'Str', default => 'http://github.com/tobyink/p5-hydrogen/issues' );
 param target_namespace => ( isa => 'Str', default => 'Hydrogen' );
