@@ -200,3 +200,28 @@
 			label "Rebuild with Sub::HandlesVia 0.046.";
 		];
 	].
+
+`Hydrogen 0.020000 cpan:TOBYINK`
+	issued  2023-03-04;
+	changeset [
+		item [
+			a dcs:Tests;
+			label "Rename a bunch of test files.";
+		];
+		item [
+			a dcs:Documentation;
+			label "Include String::Util in SEE ALSO.";
+		];
+		item [
+			a dcs:Documentation;
+			label "Mention that Lexical::Sub enables lexical imports on older Perls.";
+		];
+		item [
+			a dcs:Documentation;
+			label "Copyright 2023.";
+		];
+		item [
+			a dcs:Packaging;
+			label "Switch to X.YYYZZZ version numbers.";
+		];
+	].
