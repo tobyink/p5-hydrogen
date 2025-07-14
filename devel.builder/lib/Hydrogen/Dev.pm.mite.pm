@@ -7,7 +7,7 @@
 
     our $USES_MITE    = "Mite::Class";
     our $MITE_SHIM    = "Hydrogen::Dev::Mite";
-    our $MITE_VERSION = "0.012000";
+    our $MITE_VERSION = "0.013000";
 
     # Mite keywords
     BEGIN {
@@ -66,8 +66,8 @@
                 map { "$_\::BUILD" } reverse @$linear_isa
             ],
             DEMOLISH => [
-                map   { ( *{$_}{CODE} ) ? ( *{$_}{CODE} ) : () }
-                  map { "$_\::DEMOLISH" } @$linear_isa
+                map { ( *{$_}{CODE} ) ? ( *{$_}{CODE} ) : () }
+                map { "$_\::DEMOLISH" } @$linear_isa
             ],
             HAS_BUILDARGS        => $class->can('BUILDARGS'),
             HAS_FOREIGNBUILDARGS => $class->can('FOREIGNBUILDARGS'),
@@ -131,7 +131,7 @@
             my $value =
               exists( $args->{"copyright_years"} )
               ? $args->{"copyright_years"}
-              : "2022-2023";
+              : "2022-2025";
             do {
 
                 package Hydrogen::Dev::Mite;

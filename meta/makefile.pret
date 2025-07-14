@@ -7,6 +7,8 @@
 	:runtime-requirement    [ :on "Carp"^^:CpanId ];
 	:runtime-requirement    [ :on "Data::Dumper"^^:CpanId ];
 	:runtime-requirement    [ :on "Exporter::Shiny 1.004001"^^:CpanId ];
+	:runtime-requirement    [ :on "Import::Into"^^:CpanId ];
+	:runtime-requirement    [ :on "autobox"^^:CpanId ];
 	:runtime-requirement    [ :on "List::Util 1.54"^^:CpanId ];
 	:runtime-requirement    [ :on "Scalar::Util"^^:CpanId ];
 
