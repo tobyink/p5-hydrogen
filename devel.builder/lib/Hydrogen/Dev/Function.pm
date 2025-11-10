@@ -7,7 +7,7 @@ use Sub::HandlesVia::Handler ();
 package Hydrogen::Dev::Function;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.020000';
+our $VERSION   = '0.021001';
 
 use Hydrogen::Dev::Mite -all;
 

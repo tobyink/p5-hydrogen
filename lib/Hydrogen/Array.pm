@@ -8,7 +8,7 @@ use Hydrogen ();
 package Hydrogen::Array;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.021000';
+our $VERSION   = '0.021001';
 
 =head1 NAME
 
@@ -16,7 +16,7 @@ Hydrogen::Array - a standard library for arrays
 
 =head1 VERSION
 
-This documentation is for Hydrogen::Array 0.021000,
+This documentation is for Hydrogen::Array 0.021001,
 which is based on Sub::HandlesVia::HandlerLibrary::Array 0.050005.
 
 =cut
