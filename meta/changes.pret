@@ -238,3 +238,12 @@
 			label "Hydrogen::Autobox.";
 		];
 	].
+
+`Hydrogen 0.021001 cpan:TOBYINK`
+	issued  2025-10-11;
+	changeset [
+		item [
+			a dcs:Update;
+			label "Rebuild with latest version of Sub::HandlesVia.";
+		];
+	].
