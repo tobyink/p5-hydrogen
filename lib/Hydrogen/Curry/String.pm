@@ -18,7 +18,7 @@ Hydrogen::Curry::String - easily curry functions from Hydrogen::String
 =head1 VERSION
 
 This documentation is for Hydrogen::Curry::String 0.021000,
-which is based on Sub::HandlesVia::HandlerLibrary::String 0.050003.
+which is based on Sub::HandlesVia::HandlerLibrary::String 0.050005.
 
 =cut
 

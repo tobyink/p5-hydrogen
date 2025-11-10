@@ -17,7 +17,7 @@ Hydrogen::Counter - a standard library for integer counters
 =head1 VERSION
 
 This documentation is for Hydrogen::Counter 0.021000,
-which is based on Sub::HandlesVia::HandlerLibrary::Counter 0.050003.
+which is based on Sub::HandlesVia::HandlerLibrary::Counter 0.050005.
 
 =cut
 

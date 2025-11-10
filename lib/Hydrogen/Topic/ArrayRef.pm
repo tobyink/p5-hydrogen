@@ -17,7 +17,7 @@ Hydrogen::Topic::ArrayRef - functions from Hydrogen::ArrayRef applied to C<$_>
 =head1 VERSION
 
 This documentation is for Hydrogen::Topic::ArrayRef 0.021000,
-which is based on Sub::HandlesVia::HandlerLibrary::Array 0.050003.
+which is based on Sub::HandlesVia::HandlerLibrary::Array 0.050005.
 
 =cut
 
@@ -493,7 +493,7 @@ Operates on C<< $_ >>, which must be a reference to an array.
 
 Arguments: B<< CodeRef >>.
 
-Function which executes the coderef on each element of the array. The coderef will be passed two values: the element and its index.
+Function which executes the coderef on each element of the array. The coderef will be passed two values: the element and its index. The element will also be available as C<< $_ >>.
 
 =cut
 
@@ -516,9 +516,13 @@ sub for_each {
 
         (@_);
     };
-    foreach my $shv_index ( 0 .. $#{$_} ) {
-        &{ $_[0] }( ($_)->[$shv_index], $shv_index );
-    };
+    my $shv_tmp = $_;
+    {
+        local $_;
+        foreach my $shv_index ( 0 .. $#{$shv_tmp} ) {
+            &{ $_[0] }( $_ = $shv_tmp->[$shv_index], $shv_index );
+        }
+    }
     $_;
 }
 

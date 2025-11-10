@@ -17,7 +17,7 @@ Hydrogen::ArrayRef - a standard library for arrayrefs
 =head1 VERSION
 
 This documentation is for Hydrogen::ArrayRef 0.021000,
-which is based on Sub::HandlesVia::HandlerLibrary::Array 0.050003.
+which is based on Sub::HandlesVia::HandlerLibrary::Array 0.050005.
 
 =cut
 
@@ -533,7 +533,7 @@ Flattens the arrayref into a list, including any nested arrayrefs. (Has the pote
 
 Additional arguments: B<< CodeRef >>.
 
-Function which executes the coderef on each element of the array. The coderef will be passed two values: the element and its index.
+Function which executes the coderef on each element of the array. The coderef will be passed two values: the element and its index. The element will also be available as C<< $_ >>.
 
 =cut
 
@@ -563,9 +563,13 @@ sub for_each {
 
         (@_);
     };
-    foreach my $shv_index ( 0 .. $#{$$__REF__} ) {
-        &{ $_[1] }( ($$__REF__)->[$shv_index], $shv_index );
-    };
+    my $shv_tmp = $$__REF__;
+    {
+        local $_;
+        foreach my $shv_index ( 0 .. $#{$shv_tmp} ) {
+            &{ $_[1] }( $_ = $shv_tmp->[$shv_index], $shv_index );
+        }
+    }
     $__REF__;
 }
 

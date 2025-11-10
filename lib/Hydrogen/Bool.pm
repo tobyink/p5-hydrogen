@@ -17,7 +17,7 @@ Hydrogen::Bool - a standard library for booleans
 =head1 VERSION
 
 This documentation is for Hydrogen::Bool 0.021000,
-which is based on Sub::HandlesVia::HandlerLibrary::Bool 0.050003.
+which is based on Sub::HandlesVia::HandlerLibrary::Bool 0.050005.
 
 =cut
 

@@ -17,7 +17,7 @@ Hydrogen::Topic::String - functions from Hydrogen::String applied to C<$_>
 =head1 VERSION
 
 This documentation is for Hydrogen::Topic::String 0.021000,
-which is based on Sub::HandlesVia::HandlerLibrary::String 0.050003.
+which is based on Sub::HandlesVia::HandlerLibrary::String 0.050005.
 
 =cut
 

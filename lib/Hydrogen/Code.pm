@@ -17,7 +17,7 @@ Hydrogen::Code - a standard library for code blocks
 =head1 VERSION
 
 This documentation is for Hydrogen::Code 0.021000,
-which is based on Sub::HandlesVia::HandlerLibrary::Code 0.050003.
+which is based on Sub::HandlesVia::HandlerLibrary::Code 0.050005.
 
 =cut
 
